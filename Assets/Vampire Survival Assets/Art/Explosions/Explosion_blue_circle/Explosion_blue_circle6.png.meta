@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: 78a579a8108716947aa46dd5dc1cd211
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -652481639697682207
+    second: Explosion_blue_circle6_0
+  - first:
+      213: 8309967911343268104
+    second: Explosion_blue_circle6_1
+  - first:
+      213: -299121758513516395
+    second: Explosion_blue_circle6_2
+  - first:
+      213: 1539174787291370082
+    second: Explosion_blue_circle6_3
+  - first:
+      213: -7768706155229616134
+    second: Explosion_blue_circle6_4
+  - first:
+      213: -3214853331509814183
+    second: Explosion_blue_circle6_5
+  - first:
+      213: 1655535324636248152
+    second: Explosion_blue_circle6_6
+  - first:
+      213: 5840652669578401227
+    second: Explosion_blue_circle6_7
+  - first:
+      213: -137712757953619371
+    second: Explosion_blue_circle6_8
+  - first:
+      213: -5417017528100159738
+    second: Explosion_blue_circle6_9
+  - first:
+      213: -8902353296064087575
+    second: Explosion_blue_circle6_10
+  - first:
+      213: 8394702669799743098
+    second: Explosion_blue_circle6_11
+  - first:
+      213: 901747003216247818
+    second: Explosion_blue_circle6_12
+  - first:
+      213: 7132342429796734968
+    second: Explosion_blue_circle6_13
+  - first:
+      213: 6974980998338881981
+    second: Explosion_blue_circle6_14
+  - first:
+      213: 5966722345972988337
+    second: Explosion_blue_circle6_15
+  - first:
+      213: 2891237405922289037
+    second: Explosion_blue_circle6_16
+  - first:
+      213: 8390763680028555575
+    second: Explosion_blue_circle6_17
+  - first:
+      213: 7823704501401494984
+    second: Explosion_blue_circle6_18
+  - first:
+      213: 5457887206801422374
+    second: Explosion_blue_circle6_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_0
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 180
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0fa5bd76be1f6f0800000000000000
+      internalID: -652481639697682207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 156
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 801a28a89cfe25370800000000000000
+      internalID: 8309967911343268104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_2
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 153
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 590363f685e49dbf0800000000000000
+      internalID: -299121758513516395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_3
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 86
+        width: 31
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2625dbb605f3c5510800000000000000
+      internalID: 1539174787291370082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 150
+        width: 55
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af7e52589e2003490800000000000000
+      internalID: -7768706155229616134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_5
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 128
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c50629deb8263d0800000000000000
+      internalID: -3214853331509814183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 151
+        width: 31
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 858fd0a3b94a9f610800000000000000
+      internalID: 1655535324636248152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_7
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 144
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc558aa68aa2e0150800000000000000
+      internalID: 5840652669578401227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_8
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 121
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55a922de9feb61ef0800000000000000
+      internalID: -137712757953619371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 121
+        width: 9
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60f768f3243e2d4b0800000000000000
+      internalID: -5417017528100159738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 131
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e9721b08dc747480800000000000000
+      internalID: -8902353296064087575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_11
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 104
+        width: 11
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7edf64e999ff7470800000000000000
+      internalID: 8394702669799743098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_12
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 106
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0c3afb2f16a38c00800000000000000
+      internalID: 901747003216247818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_13
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 89
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f71b70b6ab2bf260800000000000000
+      internalID: 7132342429796734968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_14
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 82
+        width: 45
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db9a611534c1cc060800000000000000
+      internalID: 6974980998338881981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_15
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 107
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b9fa115c5e0ec250800000000000000
+      internalID: 5966722345972988337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_16
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 87
+        width: 27
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85e15d2a1dbf1820800000000000000
+      internalID: 2891237405922289037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_17
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 70
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 739f95e5c1bf17470800000000000000
+      internalID: 8390763680028555575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_18
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 65
+        width: 32
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c529a1dac1639c60800000000000000
+      internalID: 7823704501401494984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_blue_circle6_19
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 55
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6283c895f7f4ebb40800000000000000
+      internalID: 5457887206801422374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Explosion_blue_circle6_0: -652481639697682207
+      Explosion_blue_circle6_1: 8309967911343268104
+      Explosion_blue_circle6_10: -8902353296064087575
+      Explosion_blue_circle6_11: 8394702669799743098
+      Explosion_blue_circle6_12: 901747003216247818
+      Explosion_blue_circle6_13: 7132342429796734968
+      Explosion_blue_circle6_14: 6974980998338881981
+      Explosion_blue_circle6_15: 5966722345972988337
+      Explosion_blue_circle6_16: 2891237405922289037
+      Explosion_blue_circle6_17: 8390763680028555575
+      Explosion_blue_circle6_18: 7823704501401494984
+      Explosion_blue_circle6_19: 5457887206801422374
+      Explosion_blue_circle6_2: -299121758513516395
+      Explosion_blue_circle6_3: 1539174787291370082
+      Explosion_blue_circle6_4: -7768706155229616134
+      Explosion_blue_circle6_5: -3214853331509814183
+      Explosion_blue_circle6_6: 1655535324636248152
+      Explosion_blue_circle6_7: 5840652669578401227
+      Explosion_blue_circle6_8: -137712757953619371
+      Explosion_blue_circle6_9: -5417017528100159738
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

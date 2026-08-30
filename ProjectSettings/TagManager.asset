@@ -2,13 +2,14 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
@@ -38,6 +39,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 432925941
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy
+    uniqueID: 909366775
+    locked: 0
+  - name: Pickups
+    uniqueID: 2392323129
+    locked: 0
+  - name: Player
+    uniqueID: 1180212225
+    locked: 0
+  - name: UI
+    uniqueID: 3081932009
+    locked: 0
+  - name: Overlay UI
+    uniqueID: 2425203773
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []
