@@ -1452,20 +1452,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059ff2fc00d976045b2a2e205048057c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyToSpawn: {fileID: 751250583785907397, guid: 316a25f50cec07745bd2ebec5e9fbe76, type: 3}
-  spawnTime: 1.25
   spawnCounter: 0
   minSpawn: {fileID: 740867640}
   maxSpawn: {fileID: 1512642530}
   checkPerFrame: 20
   waves:
-  - enemyToSpawn: {fileID: 751250583785907397, guid: 316a25f50cec07745bd2ebec5e9fbe76, type: 3}
+  - enemiesToSpawn:
+    - {fileID: 751250583785907397, guid: 316a25f50cec07745bd2ebec5e9fbe76, type: 3}
     waveLength: 30
     timeBetweenSpawns: 0.75
-  - enemyToSpawn: {fileID: 751250583785907397, guid: 316a25f50cec07745bd2ebec5e9fbe76, type: 3}
+  - enemiesToSpawn:
+    - {fileID: 6055514803848717499, guid: 65cb5017b05ec7842ad5f296ea558326, type: 3}
     waveLength: 30
     timeBetweenSpawns: 0.65
-  - enemyToSpawn: {fileID: 6055514803848717499, guid: 65cb5017b05ec7842ad5f296ea558326, type: 3}
+  - enemiesToSpawn:
+    - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
+    - {fileID: 7750153534527334857, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
     waveLength: 30
     timeBetweenSpawns: 0.6
 --- !u!4 &413176122

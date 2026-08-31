@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Called when the Hollow enemy uses their projectile
 public class HollowProjectile : MonoBehaviour
 {
     private Vector3 direction;
@@ -7,10 +8,11 @@ public class HollowProjectile : MonoBehaviour
     private float speed;
     public float channelTime = 1f;
     private float channelCountdown;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         channelCountdown = channelTime;
+        //Destroy the projectile after 10 seconds
         Destroy(gameObject, 10f);
     }
 
@@ -18,6 +20,7 @@ public class HollowProjectile : MonoBehaviour
     void Update()
     {
         channelCountdown -= Time.deltaTime;
+        //Once the channel countdown has finished, make the projectile move in the direction of the player
         if(channelCountdown <= 0)
         {
             transform.position += direction * speed * Time.deltaTime;
@@ -33,6 +36,7 @@ public class HollowProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void SetTarget(Vector3 newTarget)
     {
         direction = (newTarget - transform.position).normalized;

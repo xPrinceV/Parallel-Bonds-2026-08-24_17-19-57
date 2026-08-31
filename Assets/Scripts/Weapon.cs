@@ -19,20 +19,9 @@ public class Weapon : MonoBehaviour
     public Sprite icon;
     public string weaponName;
     public UpgradeType[] availableUpgrades;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
 
+//Weapons that are created should inherit WeaponStats
 [System.Serializable]
 public class WeaponStats
 {

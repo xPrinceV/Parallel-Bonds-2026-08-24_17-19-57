@@ -35,6 +35,7 @@ public class UIController : MonoBehaviour
         expLvlText.text = "Level: " + currentLvl;
     }
 
+    //Function for adding a game timer
     public void UpdateTimer(float time)
     {
         float minutes = Mathf.FloorToInt (time / 60f);

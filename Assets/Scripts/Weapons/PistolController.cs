@@ -25,6 +25,7 @@ public class PistolController : Weapon
         //When the attack counter is 0, it means its ready to attack
         if (attackCounter <= 0)
         {
+            //Call the FindClosestEnemy to determine the closest enemy, and assigned that gameObject to target
             EnemyController target = FindClosestEnemy();
             if (target != null)
             {
@@ -40,6 +41,7 @@ public class PistolController : Weapon
 
     private EnemyController FindClosestEnemy()
     {
+        //Nearest enemy = null, closest distance = infinity
         EnemyController nearestEnemy = null;
         float closestDistance = Mathf.Infinity;
 
@@ -51,11 +53,16 @@ public class PistolController : Weapon
             EnemyController foundEnemy = enemy.GetComponent<EnemyController>();
             if (foundEnemy != null)
             {
+                //Get the distance from that particular enemy
                 float distance = Vector3.Distance(transform.position, foundEnemy.transform.position);
 
+                //If the distance from that enemy, is lower than the closest distance
                 if (distance < closestDistance)
                 {
+                    //Assign it as the new closest distance
                     closestDistance = distance;
+
+                    //Assign that game object as the nearestEnemy
                     nearestEnemy = foundEnemy;
                 }
             }

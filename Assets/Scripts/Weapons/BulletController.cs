@@ -15,11 +15,14 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If the target gets lost, destroy the gameObject (Might change behaviour soon)
         if(target == null)
         {
             Destroy(gameObject);
             return;
         }
+
+        //Make bullet move towards the target
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
     }
 

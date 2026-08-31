@@ -46,8 +46,7 @@ public class RangedEnemyController : EnemyController
         // Move toward player
         else
         {
-            RB.linearVelocity =
-                (target.position - transform.position).normalized * moveSpeed;
+            RB.linearVelocity = (target.position - transform.position).normalized * moveSpeed;
         }
     }
 

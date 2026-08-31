@@ -21,7 +21,6 @@ public class EnemySpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // spawnCounter = spawnTime;
         target = PlayerHealth.instance.transform;
         despawnDistance = Vector3.Distance(transform.position, maxSpawn.position) + 5f;
         currentWave = -1;

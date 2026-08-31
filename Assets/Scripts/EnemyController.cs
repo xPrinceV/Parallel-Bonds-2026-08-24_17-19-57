@@ -42,9 +42,11 @@ public class EnemyController : MonoBehaviour
 
             if(knockbackCounter <= 0)
             {
+                //This is to reset the mobs moveSpeed back to normal
                 moveSpeed = Mathf.Abs(moveSpeed * .5f);
             }
         }
+
         //Sets the Rigidbody velocity to be moving towards the player
         RB.linearVelocity = (target.position - transform.position).normalized * moveSpeed;
 
@@ -68,23 +70,28 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damageTaken)
     {
+        //Reduce health by damage taken
         health -= damageTaken;
+
         //When the enemy dies
         if(health <= 0)
         {
             Destroy(gameObject);
 
-            //Spawn Exp Orb
+            //Spawn Exp Orb at the position of the enemy
             ExperienceLevelController.instance.SpawnExp(transform.position, expDrop);
         }
 
+        //Spawn the damage number
         DamageNumberController.instance.SpawnDamage(damageTaken, transform.position);
     }
 
-    public void TakeDamage(float damageTaken, bool Knockback)
+    //This function is the same as the above, but it takes in an extra argument to account for knockback
+    //Call this function when you want the damage dealt to knockback the enemies too
+    public void TakeDamage(float damageTaken, bool shouldKnockback)
     {
         TakeDamage(damageTaken);
-        if(Knockback)
+        if(shouldKnockback)
         {
             knockbackCounter = knockbackTime;
         }

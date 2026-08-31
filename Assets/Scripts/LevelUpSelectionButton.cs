@@ -23,6 +23,7 @@ public class LevelUpSelectionButton : MonoBehaviour
 
     }
 
+    //Update upgrade display text based on selected upgrades
     public void UpdateButtonDisplay(Weapon theWeapon)
     {
         weaponIcon.sprite = theWeapon.icon;
@@ -57,6 +58,7 @@ public class LevelUpSelectionButton : MonoBehaviour
 
     }
 
+    //Add stat based on selected upgrade
     public void SelectUpgrade()
     {
         if (assignedWeapon != null)

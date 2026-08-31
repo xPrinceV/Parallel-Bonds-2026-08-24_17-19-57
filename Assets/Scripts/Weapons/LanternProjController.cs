@@ -15,18 +15,16 @@ public class LanternProjController : MonoBehaviour
     {
         //50% chance to choose -1 or 1 (throw left, throw right)
         float throwDirection = Random.value < 0.5f ? -1f: 1f;
+
+        //Use random range to add variance to the force the lantern is thrown with
         float throwForce = Random.Range(minForce, maxForce);
 
+        //Add the force to the projectile instantly (Impulse)
         Vector2 force = new Vector2(throwForce*throwDirection, vertForce);
         RB.AddForce(force, ForceMode2D.Impulse);
+
         //Destroy Itself after 10 seconds
         Destroy(gameObject, 10f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnTriggerEnter2D(Collider2D collision)

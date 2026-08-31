@@ -14,20 +14,26 @@ public class DamageNumber : MonoBehaviour
     {
         if(lifeCounter > 0)
         {
+            //Count down the damage number's lifetime
             lifeCounter -= Time.deltaTime;
+
+            //When the lifetime expires, place the damage number back into the pool
             if(lifeCounter <= 0)
             {
-                // Destroy(gameObject);
                 DamageNumberController.instance.PlaceInPool(this);
             }
         }
 
+        //Make the damage number float upwards over time
         transform.position += Vector3.up * floatSpeed * Time.deltaTime;
     }
 
     public void Setup(int damageDisplay)
     {
+        //Reset the life counter
         lifeCounter = lifetime;
+
+        //Change the text to display the damage amount
         damageText.text = damageDisplay.ToString();
     }
 }

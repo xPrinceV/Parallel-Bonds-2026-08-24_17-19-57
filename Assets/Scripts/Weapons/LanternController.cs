@@ -23,6 +23,7 @@ public class LanternController : Weapon
 
         if (attackCounter <= 0)
         {
+            //The for loop is to account for projectile count, it will loop based on the projectile count of the weapon
             for (var i = 0; i < Mathf.FloorToInt(amount + stats.amount); i++)
             {
                 GameObject newLantern = Instantiate(lantern, transform.position, Quaternion.identity);
