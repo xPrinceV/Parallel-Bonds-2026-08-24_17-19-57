@@ -205,7 +205,7 @@ MonoBehaviour:
   RB: {fileID: 3359570191515382226}
   moveSpeed: 2
   attack: 15
-  health: 150
+  health: 50
   hitWaitTime: 1
   hitCounter: 0
   knockbackTime: 0.25

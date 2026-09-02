@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
         //Temporary for now until weapon chest implemented
         AddWeapon(0);
         AddWeapon(0);
+        AddWeapon(0);
     }
 
     // Update is called once per frame
