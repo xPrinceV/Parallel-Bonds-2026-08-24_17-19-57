@@ -8,6 +8,8 @@ public class UIController : MonoBehaviour
     public LevelUpSelectionButton[] levelUpButtons;
     public GameObject levelUpPanel;
     public TMP_Text timeText;
+    public GameObject gameOverScreen;
+
     void Awake()
     {
         instance = this;
