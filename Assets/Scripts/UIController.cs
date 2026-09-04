@@ -10,11 +10,6 @@ public class UIController : MonoBehaviour
     public TMP_Text timeText;
     public GameObject gameOverScreen;
 
-    void Awake()
-    {
-        instance = this;
-    }
-
     public Slider expLvlSlider;
     public TMP_Text expLvlText;
 
