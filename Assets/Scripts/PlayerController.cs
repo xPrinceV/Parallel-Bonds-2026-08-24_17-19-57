@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public float pickupRange = 2f;
+    public Vector2 facingDirection = Vector2.right;
     public static PlayerController instance;
 
     void Awake()
@@ -20,9 +21,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Temporary for now until weapon chest implemented
-        AddWeapon(0);
-        AddWeapon(0);
-        AddWeapon(0);
+        AddWeapon(3);
+        // AddWeapon(0);
+        // AddWeapon(0);
     }
 
     // Update is called once per frame
@@ -31,6 +32,12 @@ public class PlayerController : MonoBehaviour
         Vector3 moveInput = new Vector3(0f, 0f, 0f);
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
+
+        //Condition to check if the player is moving, if so, update the facing direction to the direction of movement
+        if(moveInput != Vector3.zero)
+        {
+            facingDirection = moveInput.normalized;
+        }
 
         //Normalizes vector so diagonal movement isn't faster than horizontal and vertical movement
         moveInput.Normalize();
