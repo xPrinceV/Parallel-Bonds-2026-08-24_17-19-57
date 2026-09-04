@@ -44,4 +44,9 @@ public class UIController : MonoBehaviour
 
         timeText.text = minutes + ":" + seconds.ToString("00");
     }
+
+    public void GameOver()
+    {
+        gameOverScreen.SetActive(true);
+    }
 }

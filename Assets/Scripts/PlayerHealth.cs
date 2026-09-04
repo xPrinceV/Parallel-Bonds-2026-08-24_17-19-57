@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
 
     public Slider healthSlider;
     public TMP_Text healthText;
+    private UIController UI;
 
     //Called before start
     private void Awake()
@@ -25,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.value = currentHealth;
 
         healthText.text = currentHealth + " / " + maxHealth;
+        UI = UIController.instance;
     }
 
     // Update is called once per frame
@@ -40,6 +42,8 @@ public class PlayerHealth : MonoBehaviour
         {
             //Trigger Lost Condition (SetActive to false is temporary)
             gameObject.SetActive(false);
+            UI.GameOver();
+
         }
 
         //Update health slider
