@@ -13,6 +13,10 @@ public class UIController : MonoBehaviour
     public Slider expLvlSlider;
     public TMP_Text expLvlText;
 
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
 
