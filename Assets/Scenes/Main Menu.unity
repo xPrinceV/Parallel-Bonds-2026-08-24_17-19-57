@@ -1268,7 +1268,7 @@ MonoBehaviour:
     - Upgrade Weapons
 
 
-    Survive to the end, NO pausing'
+    No pause survival'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc9cbd0f250094743ae9107a9c46fcb1, type: 2}
   m_sharedMaterial: {fileID: 8396591170515024485, guid: bc9cbd0f250094743ae9107a9c46fcb1, type: 2}
