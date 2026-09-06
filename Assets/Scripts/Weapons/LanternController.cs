@@ -16,16 +16,13 @@ public class LanternController : Weapon
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         //Attack Timer
         attackCounter -= Time.deltaTime;
 
-        if (attackCounter <= 0)
-        {
+        if (attackCounter <= 0) {
             //The for loop is to account for projectile count, it will loop based on the projectile count of the weapon
-            for (var i = 0; i < Mathf.FloorToInt(amount + stats.amount); i++)
-            {
+            for (uint i = 0; i < Mathf.FloorToInt(amount + stats.amount); i += 1) {
                 GameObject newLantern = Instantiate(lantern, transform.position, Quaternion.identity);
                 newLantern.GetComponent<LanternProjController>().SetDamage(attackDamage * stats.damage);
                 newLantern.GetComponent<LanternProjController>().SetDuration(duration * stats.duration);

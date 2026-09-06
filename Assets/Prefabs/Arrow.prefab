@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1427554181454665283}
   - component: {fileID: 6805110054686295151}
   - component: {fileID: 4981625473677477776}
+  - component: {fileID: -2523748073997283971}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -64,7 +65,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -94,6 +95,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArrowController
   projectileSpeed: 0
   damage: 0
+--- !u!50 &-2523748073997283971
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929202282129024446}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &2369790071496728716
 GameObject:
   m_ObjectHideFlags: 0

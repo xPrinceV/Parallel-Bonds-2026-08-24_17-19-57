@@ -15,6 +15,8 @@ public enum UpgradeType
 }
 public class Weapon : MonoBehaviour
 {
+    public PlayerController player;
+
     public WeaponStats stats;
     public int weaponLevel;
 

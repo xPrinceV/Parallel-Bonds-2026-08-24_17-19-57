@@ -2,43 +2,33 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
     public float moveSpeed;
     public float pickupRange = 2f;
     public Vector2 facingDirection = Vector2.right;
-    public static PlayerController instance;
-
-    void Awake()
-    {
-        instance = this;
-    }
 
     // public Weapon activeWeapon;
     public List<Weapon> unassignedWeapons, assignedWeapons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    void Start() {
         //Temporary for now until weapon chest implemented
-        // AddWeapon(0);
-        // AddWeapon(0);
-        // AddWeapon(0);
-        // AddWeapon(0);
-        // AddWeapon(0);
+        AddWeapon(0);
+        AddWeapon(1);
+        AddWeapon(2);
+        AddWeapon(3);
+        AddWeapon(4);
         AddWeapon(5);
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         Vector3 moveInput = new Vector3(0f, 0f, 0f);
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
         //Condition to check if the player is moving, if so, update the facing direction to the direction of movement
-        if(moveInput != Vector3.zero)
-        {
+        if (moveInput != Vector3.zero) {
             facingDirection = moveInput.normalized;
         }
 
@@ -48,13 +38,11 @@ public class PlayerController : MonoBehaviour
         transform.position += moveInput * moveSpeed * Time.deltaTime;
     }
 
-    public void AddWeapon(int weaponNumber)
-    {
-        if(weaponNumber < unassignedWeapons.Count)
-        {
-            assignedWeapons.Add(unassignedWeapons[weaponNumber]);
-            unassignedWeapons[weaponNumber].gameObject.SetActive(true);
-            unassignedWeapons.RemoveAt(weaponNumber);
+    public void AddWeapon(int weaponNumber) {
+        if (weaponNumber < unassignedWeapons.Count && unassignedWeapons[weaponNumber] != null) {
+            assignedWeapons[weaponNumber] = unassignedWeapons[weaponNumber];
+            assignedWeapons[weaponNumber].gameObject.SetActive(true);
+            unassignedWeapons[weaponNumber] = null;
         }
     }
 }

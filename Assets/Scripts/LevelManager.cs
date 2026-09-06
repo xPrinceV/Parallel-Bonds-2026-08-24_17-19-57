@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
         instance = this;
     }
 
+    public UIController ui;
+
     public float timer;
     private bool gameIsActive;
     void Start()
@@ -21,7 +23,7 @@ public class LevelManager : MonoBehaviour
         if(gameIsActive)
         {
             timer += Time.deltaTime;
-            UIController.instance.UpdateTimer(timer);
+            ui.UpdateTimer(timer);
         }
     }
 }

@@ -4,14 +4,9 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    public static UIController instance;
     public LevelUpSelectionButton[] levelUpButtons;
     public GameObject levelUpPanel;
     public TMP_Text timeText;
-    void Awake()
-    {
-        instance = this;
-    }
 
     public Slider expLvlSlider;
     public TMP_Text expLvlText;
@@ -36,10 +31,9 @@ public class UIController : MonoBehaviour
     }
 
     //Function for adding a game timer
-    public void UpdateTimer(float time)
-    {
-        float minutes = Mathf.FloorToInt (time / 60f);
-        float seconds = Mathf.FloorToInt(time % 60); 
+    public void UpdateTimer(float time) {
+        int minutes = Mathf.FloorToInt (time / 60f);
+        int seconds = Mathf.FloorToInt(time % 60); 
 
         timeText.text = minutes + ":" + seconds.ToString("00");
     }

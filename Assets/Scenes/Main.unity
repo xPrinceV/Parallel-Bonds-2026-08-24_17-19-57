@@ -177,8 +177,11 @@ MonoBehaviour:
   - {fileID: 123630154}
   - {fileID: 1881042334}
   - {fileID: 508784823}
+  - {fileID: 441805111}
+  - {fileID: 143472809}
   - {fileID: 273773926}
-  assignedWeapons: []
+  assignedWeapons: [{fileID: 0}, {fileID: 0}, {fileID: 0}, {fileID: 0}, {fileID: 0},
+    {fileID: 0}]
 --- !u!58 &5576026
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -879,6 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562a62d8efa211b40b3ddd2b927314f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LanternController
+  player: {fileID: 5576025}
   stats:
     speed: 1
     damage: 1
@@ -924,6 +928,73 @@ MonoBehaviour:
   duration: 10
   amount: 0
   lantern: {fileID: 5361012015849273172, guid: e524b71f3d9f5b644a0756cdd5e28523, type: 3}
+--- !u!1 &143472807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 143472808}
+  - component: {fileID: 143472809}
+  m_Layer: 3
+  m_Name: Sniper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &143472808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143472807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 367653038}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &143472809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143472807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f509c35341f6404fa102572d64f1a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SniperController
+  player: {fileID: 5576025}
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    damageUpgrades: []
+    speedUpgrades: []
+    rangeUpgrades: []
+    attackSpeedUpgrades: []
+    amountUpgrades: []
+    durationUpgrades: []
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: 0}
+  weaponName: 
+  availableUpgrades: 
+  attackSpeed: 2
+  attackDamage: 20
+  attackRange: 15
+  bullet: {fileID: 9132437147970937572, guid: e44e30c026ba5234b90ca6115ba14481, type: 3}
 --- !u!1 &179380101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1273,7 @@ MonoBehaviour:
   upgradeDescText: {fileID: 726394171}
   nameLevelText: {fileID: 34628382}
   weaponIcon: {fileID: 1035782525}
+  ui: {fileID: 179380106}
 --- !u!1 &273773925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1546,8 @@ Transform:
   - {fileID: 123630153}
   - {fileID: 1881042333}
   - {fileID: 508784822}
+  - {fileID: 441805112}
+  - {fileID: 143472808}
   - {fileID: 273773927}
   m_Father: {fileID: 5576024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1609,6 +1683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860140e869bd8684a88d41b1ec1334fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  ui: {fileID: 179380106}
   timer: 0
 --- !u!4 &404105753
 Transform:
@@ -1834,11 +1909,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd750b51a59e814d9648062ef2535ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceLevelController
+  playerController: {fileID: 5576025}
+  ui: {fileID: 179380106}
   currentExperience: 0
   pickup: {fileID: 3931066615594718357, guid: d8d3a3df25b563244a1e76bc2b1c14fc, type: 3}
   expLevels: 0000000005000000080000000b0000000f00000013000000180000001d000000230000002a000000
   currentLevels: 1
   levelCount: 100
+--- !u!1 &441805110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441805112}
+  - component: {fileID: 441805111}
+  m_Layer: 3
+  m_Name: Aura
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &441805111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441805110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ecbab4237428e43b0cca23d11f9563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AuraController
+  player: {fileID: 5576025}
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    damageUpgrades: []
+    speedUpgrades: []
+    rangeUpgrades: []
+    attackSpeedUpgrades: []
+    amountUpgrades: []
+    durationUpgrades: []
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: 0}
+  weaponName: 
+  availableUpgrades: 
+  template: {fileID: 9144066574732431216, guid: b7b913a9152a7c449993c1decec8a651, type: 3}
+  damage: 11
+  amount: 1
+  revolveSpeed: 60
+--- !u!4 &441805112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441805110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 367653038}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &508784821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,6 +2027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa448029ac02ef747990352686cbd659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BowController
+  player: {fileID: 5576025}
   stats:
     speed: 1
     damage: 1
@@ -1891,31 +2036,11 @@ MonoBehaviour:
     amount: 1
     duration: 1
     bounces: 1
-    damageUpgrades:
-    - 0.1
-    - 0.15
-    - 0.22
-    - 0.35
-    - 0.5
-    speedUpgrades:
-    - 0.05
-    - 0.07
-    - 0.11
-    - 0.15
-    - 0.2
+    damageUpgrades: [0.05, 0.15, 0.2, 0.35, 0.1, 0.15, 0.22, 0.35, 0.5]
+    speedUpgrades: [0.05, 0.07, 0.11, 0.15, 0.2]
     rangeUpgrades: []
-    attackSpeedUpgrades:
-    - 0.08
-    - 0.12
-    - 0.17
-    - 0.22
-    - 0.3
-    amountUpgrades:
-    - 0.2
-    - 0.3
-    - 0.4
-    - 0.55
-    - 0.75
+    attackSpeedUpgrades: [0.08, 0.12, 0.17, 0.22, 0.3]
+    amountUpgrades: [0.2, 0.3, 0.4, 0.55, 0.75]
     durationUpgrades: []
     bouncesUpgrades: []
     UpgradeText: 
@@ -1925,7 +2050,7 @@ MonoBehaviour:
   availableUpgrades: 00000000030000000400000001000000
   attackSpeed: 1
   attackDamage: 10
-  amount: 0
+  amount: 1
   projectileSpeed: 10
   arrow: {fileID: 1929202282129024446, guid: 5efe8dcf1c6c81f418f56615b4dd2445, type: 3}
 --- !u!1 &544970446
@@ -1985,6 +2110,7 @@ MonoBehaviour:
   upgradeDescText: {fileID: 1286456942}
   nameLevelText: {fileID: 1185931372}
   weaponIcon: {fileID: 873677705}
+  ui: {fileID: 179380106}
 --- !u!114 &544970449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3522,6 +3648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a340e0224149240478c1b0d4d49b5fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PistolController
+  player: {fileID: 5576025}
   stats:
     speed: 1
     damage: 1
@@ -4107,6 +4234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ec39bd89e15c47beacf9c0d1d7c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightningController
+  player: {fileID: 5576025}
   stats:
     speed: 1
     damage: 1
@@ -93641,6 +93769,7 @@ MonoBehaviour:
   upgradeDescText: {fileID: 91206974}
   nameLevelText: {fileID: 103913254}
   weaponIcon: {fileID: 1227939841}
+  ui: {fileID: 179380106}
 --- !u!114 &2064884800
 MonoBehaviour:
   m_ObjectHideFlags: 0

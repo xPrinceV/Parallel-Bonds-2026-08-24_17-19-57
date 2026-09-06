@@ -13,6 +13,9 @@ public class ExperienceLevelController : MonoBehaviour
         instance = this;
     }
 
+    public PlayerController playerController;
+    public UIController ui;
+
     public int currentExperience;
     public ExpPickup pickup;
     public List<int> expLevels;
@@ -38,7 +41,7 @@ public class ExperienceLevelController : MonoBehaviour
             LevelUp();
         }
         //Update the experience bar
-        UIController.instance.UpdateExperience(currentExperience, expLevels[currentLevels], currentLevels);
+        ui.UpdateExperience(currentExperience, expLevels[currentLevels], currentLevels);
     }
 
     //This function is to spawn the exp orb
@@ -62,7 +65,7 @@ public class ExperienceLevelController : MonoBehaviour
         }
 
         //Activate Level Up UI
-        UIController.instance.levelUpPanel.SetActive(true);
+        ui.levelUpPanel.SetActive(true);
 
         //Freezes Time
         Time.timeScale = 0f;
@@ -70,15 +73,14 @@ public class ExperienceLevelController : MonoBehaviour
         
         //This portion is to call the upgrade screen, that triggers when the player levels up
         //For now its hardcoded to 3 since there is only plans for 3 buttons on a page
-        for (var i = 0; i < 3; i++)
-        {
-            int randomIndex = Random.Range(0, PlayerController.instance.assignedWeapons.Count);
-            Weapon weapon = PlayerController.instance.assignedWeapons[randomIndex];
+        for (uint i = 0; i < 3; i += 1) {
+            int randomIndex = Random.Range(0, playerController.assignedWeapons.Count);
+            Weapon weapon = playerController.assignedWeapons[randomIndex];
             Debug.Log("Button " + i + " got weapon: " + weapon);
-            UIController.instance.levelUpButtons[i].UpdateButtonDisplay(PlayerController.instance.assignedWeapons[randomIndex]);
+            ui.levelUpButtons[i].UpdateButtonDisplay(playerController.assignedWeapons[randomIndex]);
         }
 
-        // UIController.instance.levelUpButtons[0].UpdateButtonDisplay(PlayerController.instance.activeWeapon);
+        // ui.levelUpButtons[0].UpdateButtonDisplay(PlayerController.instance.activeWeapon);
 
     }
 }

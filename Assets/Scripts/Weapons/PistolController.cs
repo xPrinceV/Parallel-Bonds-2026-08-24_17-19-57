@@ -11,29 +11,30 @@ public class PistolController : Weapon
 
     private float attackCounter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    void Start() {
         attackCounter = 0;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         //Attack Timer
         attackCounter -= Time.deltaTime;
 
         //When the attack counter is 0, it means its ready to attack
-        if (attackCounter <= 0)
-        {
+        if (attackCounter <= 0) {
             //Call the FindClosestEnemy to determine the closest enemy, and assigned that gameObject to target
             EnemyController target = FindClosestEnemy();
-            if (target != null)
-            {
+            if (target != null) {
+             // GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
+             // newBullet.GetComponent<PhysicsBullet>().vector = (target.transform.position - transform.position).normalized;
+             // newBullet.GetComponent<PhysicsBullet>().damage = attackDamage * stats.damage;
                 GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
-                newBullet.GetComponent<BulletController>().SetTarget(target);
-                newBullet.GetComponent<BulletController>().SetDamage(attackDamage * stats.damage);
-                newBullet.GetComponent<BulletController>().SetSpeed(projectileSpeed * stats.speed);
-                newBullet.GetComponent<BulletController>().SetKnockback(true);
+                BulletController bulletController = newBullet.GetComponent<BulletController>();
+                bulletController.target = target;
+                bulletController.damage = attackDamage * stats.damage;
+                bulletController.speed = projectileSpeed * stats.speed;
+                bulletController.shouldKnockback = true;
+                bulletController.playerCollider = player.GetComponent<Collider2D>();
             }
             attackCounter = 1f / (attackSpeed*stats.attackSpeed);
         }

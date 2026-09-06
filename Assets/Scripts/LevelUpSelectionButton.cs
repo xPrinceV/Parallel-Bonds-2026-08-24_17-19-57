@@ -6,6 +6,7 @@ public class LevelUpSelectionButton : MonoBehaviour
 {
     public TMP_Text upgradeDescText, nameLevelText;
     public Image weaponIcon;
+    public UIController ui;
     private Weapon assignedWeapon;
     private float selectedUpgrade;
     private UpgradeType selectedUpgradeType;
@@ -105,7 +106,7 @@ public class LevelUpSelectionButton : MonoBehaviour
             }
 
             //Close level up screen and unpause time
-            UIController.instance.levelUpPanel.SetActive(false);
+            ui.levelUpPanel.SetActive(false);
             Time.timeScale = 1f;
         }
     }
