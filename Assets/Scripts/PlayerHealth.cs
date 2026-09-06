@@ -10,6 +10,9 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
     public TMP_Text healthText;
 
+    private bool isDead;
+    public GameManager gameManager;
+
     //Called before start
     private void Awake()
     {
@@ -36,8 +39,11 @@ public class PlayerHealth : MonoBehaviour
     public void DamageHandler(float damageTaken)
     {
         currentHealth -= damageTaken;
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && !isDead)
         {
+            isDead = true;  
+            //Once health 0, isDead is true, call over GameOver function
+            gameManager.gameOver();
             //Trigger Lost Condition (SetActive to false is temporary)
             gameObject.SetActive(false);
         }

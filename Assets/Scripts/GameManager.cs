@@ -1,16 +1,29 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject gameOverUI;
+
+    public void gameOver()
     {
-        
+        gameOverUI.SetActive(true);
+    }
+    //Restart button function
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    // Update is called once per frame
-    void Update()
+    //Main menu button function
+    public void mainMenu()
     {
-        
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    //Quit button function
+    public void quit()
+    {
+        Application.Quit();
     }
 }
