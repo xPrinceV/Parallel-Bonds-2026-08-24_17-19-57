@@ -9,6 +9,7 @@ public class BuffController : MonoBehaviour, IBuffReceiver
     private BuffDefinition[] initialBuffs = new BuffDefinition[0];
 
     private readonly List<BuffInstance> instances = new List<BuffInstance>();
+    private readonly Dictionary<BuffInstance, BuffHandle> grants = new Dictionary<BuffInstance, BuffHandle>();
     private bool isDispatching;
 
     public GameObject Owner => gameObject;
@@ -43,6 +44,50 @@ public class BuffController : MonoBehaviour, IBuffReceiver
             return true;
         }
 
+        return TryCreateInstance(definition) != null;
+    }
+
+    // source identity belongs to the equipment instance, not its shared item definition
+    public BuffHandle GrantBuff(BuffDefinition definition, object source)
+    {
+        if (!isActiveAndEnabled || definition == null || !definition.isValid
+            || source == null || (source is UnityEngine.Object unitySource && unitySource == null))
+            return null;
+
+        foreach (BuffHandle grant in grants.Values)
+        {
+            if (grant.IsActive && grant.Definition == definition && ReferenceEquals(grant.Source, source))
+            {
+                grant.Instance.RefreshDuration();
+                return grant;
+            }
+        }
+
+        BuffInstance instance = TryCreateInstance(definition);
+        if (instance == null)
+            return null;
+
+        var handle = new BuffHandle(instance, source);
+        grants.Add(instance, handle);
+        return handle;
+    }
+
+    // a handle can revoke only the grant issued by this controller
+    public bool RevokeBuff(BuffHandle handle)
+    {
+        if (handle == null || !grants.TryGetValue(handle.Instance, out BuffHandle existing)
+            || !ReferenceEquals(existing, handle))
+            return false;
+
+        bool wasActive = handle.IsActive;
+        handle.Instance.Remove();
+        instances.Remove(handle.Instance);
+        grants.Remove(handle.Instance);
+        return wasActive;
+    }
+
+    private BuffInstance TryCreateInstance(BuffDefinition definition)
+    {
         // construct the complete instance before publishing any of its effects
         BuffInstance instance;
         try
@@ -52,18 +97,19 @@ public class BuffController : MonoBehaviour, IBuffReceiver
         catch (ArgumentException)
         {
             // reject invalid combined configuration without publishing an instance
-            return false;
+            return null;
         }
 
         instances.Add(instance);
-        return true;
+        return instance;
     }
 
+    // definition-based calls manage legacy buffs only; owned grants require their handles
     public BuffInstance FindBuff(BuffDefinition definition)
     {
         foreach (BuffInstance instance in instances)
         {
-            if (instance.IsActive && instance.Definition == definition)
+            if (instance.IsActive && instance.Definition == definition && !grants.ContainsKey(instance))
                 return instance;
         }
 
@@ -93,7 +139,10 @@ public class BuffController : MonoBehaviour, IBuffReceiver
             BuffInstance instance = instances[i];
             instance.Tick(deltaTime);
             if (!instance.IsActive)
+            {
+                grants.Remove(instance);
                 instances.RemoveAt(i);
+            }
         }
     }
 
@@ -194,5 +243,6 @@ public class BuffController : MonoBehaviour, IBuffReceiver
         foreach (BuffInstance instance in instances)
             instance.Remove();
         instances.Clear();
+        grants.Clear();
     }
 }

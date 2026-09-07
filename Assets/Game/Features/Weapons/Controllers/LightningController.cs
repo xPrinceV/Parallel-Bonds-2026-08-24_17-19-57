@@ -8,6 +8,8 @@ public class LightningController : Weapon
     public float attackRange;
     public float amount;
     public GameObject lightningPrefab;
+    [SerializeField] private BuffController buffHolder;
+    private float strikeDamage;
     private float attackCounter;
     private float strikeCounter;
     private float strikeInterval;
@@ -16,6 +18,8 @@ public class LightningController : Weapon
     void Start()
     {
         attackCounter = 0;
+        if (buffHolder == null)
+            buffHolder = GetComponentInParent<BuffController>();
     }
 
     // Update is called once per frame
@@ -26,7 +30,15 @@ public class LightningController : Weapon
         if (attackCounter <= 0)
         {
             attackCounter = 1f / (attackSpeed * stats.attackSpeed);
-            strikes = Mathf.FloorToInt(amount * stats.amount);
+            // snapshot the burst so its hits only change later bursts
+            strikeDamage = attackDamage * stats.damage;
+            int count = Mathf.Max(0, Mathf.FloorToInt(amount * stats.amount));
+            if (buffHolder != null)
+            {
+                strikeDamage = buffHolder.CalculateWeaponDamage(strikeDamage);
+                count = buffHolder.CalculateProjectileCount(count);
+            }
+            strikes = count;
             float strikeDuration = attackCounter * 0.5f;
 
             if (strikes > 1)
@@ -48,7 +60,12 @@ public class LightningController : Weapon
                 if (targetEnemy != null)
                 {
                     Instantiate(lightningPrefab, targetEnemy.transform.position, Quaternion.identity);
-                    targetEnemy.TakeDamage(attackDamage * stats.damage);
+                    float healthBefore = targetEnemy.health;
+                    targetEnemy.TakeDamage(strikeDamage);
+                    // report actual loss before deferred destruction, including lethal strikes
+                    float damageDealt = Mathf.Clamp(healthBefore - targetEnemy.health, 0f, healthBefore);
+                    if (buffHolder != null && damageDealt > 0f)
+                        buffHolder.ReportHit(targetEnemy.gameObject, damageDealt);
                 }
                 strikes--;
                 strikeCounter = strikeInterval;
@@ -69,7 +86,8 @@ public class LightningController : Weapon
             //Store all enemy controller within the range of the weapon into a list
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
 
-            if (enemyController != null)
+            if (enemyController != null && enemyController.gameObject.activeInHierarchy
+                && enemyController.health > 0f && !availableEnemies.Contains(enemyController))
             {
                 availableEnemies.Add(enemyController);
             }

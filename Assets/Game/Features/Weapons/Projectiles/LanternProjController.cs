@@ -11,6 +11,8 @@ public class LanternProjController : MonoBehaviour
     public float duration;
     public GameObject explosion;
     public GameObject fire;
+    private BuffController buffSource;
+    private bool hasHit;
     void Start()
     {
         //50% chance to choose -1 or 1 (throw left, throw right)
@@ -29,15 +31,40 @@ public class LanternProjController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (hasHit || collision == null || !collision.CompareTag("Enemy"))
+            return;
+
+        EnemyController enemy = collision.GetComponentInParent<EnemyController>();
+        if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f)
+            return;
+
+        // Consume the impact before other colliders can trigger it.
+        hasHit = true;
+        try
         {
-            collision.GetComponent<EnemyController>().TakeDamage(damage);
+            float healthBefore = enemy.health;
+            enemy.TakeDamage(damage);
+            float damageDealt = Mathf.Clamp(healthBefore - enemy.health, 0f, healthBefore);
+            // Report lethal hits before deferred destruction.
+            if (buffSource != null && damageDealt > 0f)
+                buffSource.ReportHit(enemy.gameObject, damageDealt);
+
             GameObject newFire = Instantiate(fire, transform.position, Quaternion.identity);
-            newFire.GetComponent<LanternFire>().SetDamage(damage);
-            newFire.GetComponent<LanternFire>().SetDuration(duration);
+            LanternFire lanternFire = newFire.GetComponent<LanternFire>();
+            lanternFire.SetDamage(damage);
+            lanternFire.SetDuration(duration);
+            lanternFire.SetBuffSource(buffSource);
             Instantiate(explosion, transform.position, Quaternion.identity);
+        }
+        finally
+        {
             Destroy(gameObject);
         }
+    }
+
+    public void SetBuffSource(BuffController source)
+    {
+        buffSource = source;
     }
 
     public void SetDamage(float newDamage)

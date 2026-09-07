@@ -35,7 +35,17 @@ The Inspector provides **Use Internal Effects**, **Use Independent Buff Grant**,
 
 `BulletController` retains the firing holder and reports one positive confirmed hit after subtracting health, before deferred target destruction. Overkill is capped to the target's remaining health for the event. A consumed-projectile guard prevents duplicate collider callbacks; already-dead or inactive targets are ignored. A lost or inactive homing target ends the projectile. No BuffController is created automatically by combat code.
 
-Lantern and Lightning are intentionally unchanged: they do not consume these buffs or report hit stacks. The sample's hits are accumulated across this holder's reporting pistol projectiles, not distinct enemies or volleys. The sample activates once per instance and does not expire automatically; removing it also removes its internal bonus. Disabling the holder still ends all buffs, as before.
+Pistol, Lantern and Lightning consume the holder's damage and projectile-count modifiers and report confirmed hits. The sample's hits accumulate across all three weapons sharing that holder, not distinct enemies or volleys. Lantern impact, first fire entry and each fire tick are separate damage applications and each can add a stack. The sample activates once per instance and does not expire automatically; removing it also removes its internal bonus. Disabling the holder still ends all buffs, as before.
+
+### Lantern and Lightning integration
+
+Both controllers accept an explicit `Buff Holder` reference and fall back to `GetComponentInParent<BuffController>()` in `Start`, matching the pistol. They do not create a holder. Keep the weapons under the intended holder or assign the reference explicitly. A missing holder preserves unbuffed attacks.
+
+Lantern snapshots `attackDamage * stats.damage` and the nonnegative floor of `amount + stats.amount` once per volley, then applies the holder's damage and count modifiers. The additive base-count rule is preserved. Each projectile passes its damage, duration and holder to the spawned fire. Fire still deals half the projectile damage, with no second Buff calculation. Existing projectiles and fire keep their damage after later Buff changes. An impact is consumed before damage to prevent multiple colliders spawning duplicate fires; fire tracks each enemy's overlapping colliders so entry damage occurs once and burning ends only after the last collider leaves or becomes invalid.
+
+Lightning snapshots damage and the nonnegative floor of `amount * stats.amount` once per burst, preserving its multiplicative base-count rule. Projectile-count modifiers represent extra strikes for this weapon. The original strike spacing and random targeting remain; candidates are deduplicated by enemy and dead/inactive enemies are excluded. Hits during a burst change later bursts, not its remaining strikes.
+
+All reports use positive actual health loss capped to the target's remaining health, before deferred destruction. Burn ticks intentionally count as hits under the existing `HitStackCondition`; this can activate five-hit effects faster than direct attacks. Attack speed, range, projectile speed and duration continue using existing weapon upgrades; this integration does not add Buff evaluation for those properties or weapon-tag filtering.
 
 ## Independent grant example (preserved)
 
@@ -65,11 +75,37 @@ The damage entry point delegates to `DamageCalculator`; it does not apply damage
 
 Attack callers need only `CalculateWeaponDamage` and `CalculateProjectileCount`, not atom inspection. `CalculateProjectileCount(int baseCount)` evaluates only Weapon/ProjectileCount modifiers as `(baseCount + sum(Prefix)) * product(Multiplier) + sum(Postfix)`, floors the result, then clamps to a minimum of zero. Negative base counts, nonfinite matching modifiers and undefined matching stages throw `ArgumentOutOfRangeException`; nonfinite intermediate/final arithmetic or a floored result above `int.MaxValue` throws `OverflowException`. Double intermediates preserve `int.MaxValue` for an unmodified base count. Empty or disabled controllers return nonnegative base counts unchanged.
 
-`GetModifiers()` remains available for lower-level consumers and inspection. Existing APIs, independent reward activation and the world-disable lifecycle are preserved. The pistol uses these entry points; other production weapon controllers still require explicit integration.
+`GetModifiers()` remains available for lower-level consumers and inspection. Existing APIs, independent reward activation and the world-disable lifecycle are preserved. Pistol, Lantern and Lightning use these entry points; future weapons still require explicit integration.
+
+## Source-owned grants
+
+Equipment and set systems can share recipes without sharing runtime state:
+
+```csharp
+// retain this source object and handle for the equipped item's lifetime
+object equipmentSource = new object();
+BuffHandle handle = holderBuffs.GrantBuff(definition, equipmentSource);
+if (handle == null)
+    return; // invalid configuration or unavailable holder
+
+// repeat with the same source to refresh without resetting stacks
+holderBuffs.GrantBuff(definition, equipmentSource);
+
+// unequip only this source's effect
+holderBuffs.RevokeBuff(handle);
+```
+
+`GrantBuff` keys active grants by source reference identity and recipe within one controller. Different sources get independent instances even when their `Equals` results match. Use an equipment instance or a stable per-slot token, not a shared item asset, string ID, boxed value, or a new token on every refresh. The same source may grant several different recipes; retain each handle.
+
+`BuffHandle` exposes `Definition`, `Source` and `IsActive`, but does not expose mutable runtime state. Repeating a grant refreshes its lifetime and returns the same handle, preserving counters and activated effects. Different grants multiply independently under the existing global damage formula. The source does not alter stat targets or hit filtering.
+
+Null/invalid definitions, null/destroyed Unity sources and disabled holders return `null`. Construction validation follows `TryAddBuff`: `ArgumentException` returns failure; other exceptions propagate. `RevokeBuff` returns `false` for null, foreign or inactive handles and never removes a replacement grant. Expiry or holder disable invalidates handles; regrant creates a fresh instance. Source destruction alone does not revoke an existing grant: the owning equipment system must revoke it when unequipped or destroyed. The holder's existing lifetime and disable rules remain the fallback.
+
+The legacy `TryAddBuff`, `FindBuff` and `RemoveBuff` manage only definition-based instances, never source-owned grants. Initial buffs and `GrantBuffActivation` retain this legacy behavior; independent rewards do not automatically inherit a source or cascade-remove with their granting buff. Internal activation still belongs to its own instance. All active instances contribute to calculations and receive holder events, regardless of grant API. No item or set controller is introduced here.
 
 ## Runtime rules
 
-- One active instance per BuffDefinition per controller. Regrant refreshes duration, preserves stack progress and does not duplicate stat modifiers.
+- One active legacy instance per BuffDefinition per controller; source-owned grants additionally have one instance per source reference and definition. Regrant refreshes duration, preserves stack progress and does not duplicate stat modifiers.
 - `TryAddBuff` constructs a new instance before publishing it. An `ArgumentException` during construction (including combined Damage multiplier overflow despite individually finite atoms) returns `false`, leaving existing buffs unchanged. Other exception types propagate rather than hiding programming errors. Initial-buff startup logs the rejected configuration through its existing failure path and continues to later entries.
 - Threshold consumption supports consuming the required count, clearing all stacks, or triggering once per instance.
 - A failed grant retains stacks. Further valid hits continue accumulating them, saturating only at `int.MaxValue`.
@@ -82,21 +118,24 @@ Attack callers need only `CalculateWeaponDamage` and `CalculateProjectileCount`,
 - Time uses `Time.deltaTime`, so upgrade pauses also pause buff duration.
 - Disabling the holder/controller ends all its buffs in this version. Re-enabling does not re-run Start or restore initial buffs.
 - Removing a recipe removes its contribution rather than reversing arithmetic on weapon/player values.
-- The core does not yet implement target capability/allowedBuffs filtering, player stat application, world-based attack isolation, or integration for weapons other than the pistol.
+- The core does not yet implement target capability/allowedBuffs filtering, player stat application, weapon-category scopes or world-based attack isolation.
 
 `BuffDefinition` is now a ScriptableObject recipe. The old unused `Strength` and `isDestroyed` properties have been replaced by per-atom values and `BuffInstance.IsActive`. Existing Type/Duration are read-only configuration accessors.
 
 ## Verification
 
+`Tools/WeaponBuffChecks.cs` is a separate Play Mode runner. Compile it against the current `Assembly-CSharp` and Unity assemblies and call `WeaponBuffChecks.Run()` on the main thread after Main's damage-number and experience singletons initialize. It creates isolated temporary weapons and enemies, calls lifecycle/trigger methods synchronously, and restores temporary objects and borrowed damage-number pool state in `finally`. It covers Lantern/Lightning count rules, snapshots, five-hit activation, confirmed-hit reporting, duplicate impacts and multi-collider fire tracking. It does not replace real physics delivery tests and does not exercise lethal hits or experience drops. Compiling this runner is not evidence that its checks have executed.
+
 `Tools/BuffRuntimeChecks.cs` remains the standalone entry point outside Assets. Compile it **together with every `.cs` file in `Tools/BuffRuntimeChecks/`**, the Buffs sources and DamageCalculator into the same in-memory assembly using Unity's compiler APIs. Keeping the runtime sources in the same assembly permits testing internal stack event processing. Do not compile only the entry-point file.
 
-- `BuffRuntimeChecks.Run()` runs all 100 checks (the original 45 plus 55 new checks).
+- `BuffRuntimeChecks.Run()` runs all 156 checks, including source-owned grant isolation.
 - `RunStackChecks()` runs 11 stack and activation checks.
 - `RunLifecycleChecks()` runs 7 lifetime and configuration checks.
 - `RunControllerChecks()` runs 14 holder integration checks, including the simplified damage entry point.
 - `RunDamageChecks()` runs 13 damage formula checks without creating Unity objects.
 - `RunInternalActivationChecks()` runs 38 internal activation, isolation, lifecycle, validation/retry, per-Buff aggregation, extensible stat atom contract and construction-failure checks.
 - `RunProjectileCountChecks()` runs 17 count formula, filtering, boundary and disabled-holder checks.
+- `RunSourceGrantChecks()` runs 56 checks for source reference identity, handle ownership, legacy coexistence, independent modifiers, refresh, expiry, disable and stack activation isolation.
 
 The formula group can also run independently with the .NET 10 SDK, without Unity or external test packages:
 

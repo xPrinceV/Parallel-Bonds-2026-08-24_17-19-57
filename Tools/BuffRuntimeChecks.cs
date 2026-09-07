@@ -7,7 +7,7 @@ public static class BuffRuntimeChecks
     public static string Run()
     {
         int checks = RunStackChecks() + RunLifecycleChecks() + RunControllerChecks() + RunDamageChecks()
-                    + RunInternalActivationChecks() + RunProjectileCountChecks();
+                    + RunInternalActivationChecks() + RunProjectileCountChecks() + RunSourceGrantChecks();
         return checks + " checks passed";
     }
 
@@ -41,6 +41,11 @@ public static class BuffRuntimeChecks
     public static int RunProjectileCountChecks()
     {
         return RunGroup("Projectile count", ProjectileCountChecks.Run);
+    }
+
+    public static int RunSourceGrantChecks()
+    {
+        return RunGroup("Source grant", SourceGrantChecks.Run);
     }
 
     private static int RunGroup(string name, Action<BuffCheckContext> run)
