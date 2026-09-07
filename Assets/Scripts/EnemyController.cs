@@ -8,13 +8,18 @@ public class EnemyController : MonoBehaviour
 
     public float attack;
     public float health;
-    
+
     public float hitWaitTime = 1f;
     public float hitCounter;
     public float knockbackTime = .25f;
     private float knockbackCounter;
 
     public int expDrop = 1;
+    //These are for handling status effects like poison
+    private float poisonDamage;
+    private float poisonDuration;
+    private float poisonCounter;
+    [SerializeField] private GameObject poisonEffect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,16 +36,16 @@ public class EnemyController : MonoBehaviour
         .25s would mean enemy would be knockback for that duration. Knockback counter will countdown and
         during the duration of 0.25s, the enemy movement speed will be inversed, making them move backwards
         */
-        if(knockbackCounter > 0)
+        if (knockbackCounter > 0)
         {
             knockbackCounter -= Time.deltaTime;
-            if(moveSpeed > 0)
+            if (moveSpeed > 0)
             {
                 //This sets the force of knockback to be 2x the mobs moveSpeed
                 moveSpeed = -moveSpeed * 2f;
             }
 
-            if(knockbackCounter <= 0)
+            if (knockbackCounter <= 0)
             {
                 //This is to reset the mobs moveSpeed back to normal
                 moveSpeed = Mathf.Abs(moveSpeed * .5f);
@@ -50,17 +55,43 @@ public class EnemyController : MonoBehaviour
         //Sets the Rigidbody velocity to be moving towards the player
         RB.linearVelocity = (target.position - transform.position).normalized * moveSpeed;
 
-        if(hitCounter > 0f)
+        if (hitCounter > 0f)
         {
             hitCounter -= Time.deltaTime;
         }
+        
+        UpdatePoison();
+
     }
 
+    protected void UpdatePoison()
+    {
+        //If poison damage is assigned, then the enemy will take poison damage over time
+        if (poisonDamage > 0)
+        {
+            //Poison duration is the total time the enemy will be poisoned, while poison counter is the time between each tick of poison damage
+            poisonDuration -= Time.deltaTime;
+            poisonCounter -= Time.deltaTime;
+            if (poisonCounter <= 0)
+            {
+                //Enemy takes tick damage and reset the poison counter to 1 second, so that the enemy takes poison damage every 1 second
+                TakeDamage(poisonDamage);
+                poisonCounter = 1f;
+            }
+            if (poisonDuration <= 0)
+            {
+                //Reset poison damage and poison counter to 0, so that the enemy stops taking poison damage
+                poisonDamage = 0;
+                poisonCounter = 0;
+                poisonEffect.SetActive(false);
+            }
+        }
+    }
     //Method to detect collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Check if collision is done with a player
-        if(collision.gameObject.tag == "Player" && hitCounter <= 0f)
+        if (collision.gameObject.tag == "Player" && hitCounter <= 0f)
         {
             PlayerHealth.instance.DamageHandler(attack);
             //A cooldown for the player taking damage
@@ -74,7 +105,7 @@ public class EnemyController : MonoBehaviour
         health -= damageTaken;
 
         //When the enemy dies
-        if(health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
 
@@ -91,10 +122,19 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damageTaken, bool shouldKnockback)
     {
         TakeDamage(damageTaken);
-        if(shouldKnockback)
+        if (shouldKnockback)
         {
             knockbackCounter = knockbackTime;
         }
+    }
+
+    public void ApplyPoison(float damage, float duration)
+    {
+        //This is so poison will stack damage, but not stack duration
+        poisonDamage += damage;
+        poisonDuration = duration;
+        poisonCounter = 1f;
+        poisonEffect.SetActive(true);
     }
 
 }

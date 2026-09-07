@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Temporary for now until weapon chest implemented
-        AddWeapon(3);
+        AddWeapon(4);
         // AddWeapon(0);
         // AddWeapon(0);
     }
