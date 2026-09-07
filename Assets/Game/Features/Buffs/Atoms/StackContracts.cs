@@ -27,11 +27,18 @@ public readonly struct BuffActivationContext
 {
     public IBuffReceiver Receiver { get; }
     public BuffDefinition SourceBuff { get; }
+    public BuffInstance SourceInstance { get; }
 
     public BuffActivationContext(IBuffReceiver receiver, BuffDefinition sourceBuff)
+        : this(receiver, sourceBuff, null)
+    {
+    }
+
+    public BuffActivationContext(IBuffReceiver receiver, BuffDefinition sourceBuff, BuffInstance sourceInstance)
     {
         Receiver = receiver;
         SourceBuff = sourceBuff;
+        SourceInstance = sourceInstance;
     }
 }
 

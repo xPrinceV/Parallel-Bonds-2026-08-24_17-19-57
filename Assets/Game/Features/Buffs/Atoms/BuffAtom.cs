@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 // abstract definition a buff atom 
 // this definition only declares that an atom will held a stat modifier to the game
 // it is not tied to any specific buff type or source
@@ -20,14 +19,19 @@ public abstract class BuffAtom
     }
 }
 
+// identify numeric effects without coupling activation to concrete atom types
+[Serializable]
+public abstract class StatBuffAtom : BuffAtom
+{
+}
+
 // detailed definition of each buff atom type
 // when creating a buff, use the atoms that declared in this file
 // never create a buff directly without using the buff atom types declared in this file
 // 
 
-
 [Serializable]
-public class DamageBuffAtom : BuffAtom
+public class DamageBuffAtom : StatBuffAtom
 {
     [SerializeField]
     private float damageMultiplier = 1f;
@@ -36,7 +40,8 @@ public class DamageBuffAtom : BuffAtom
     [SerializeField]
     private float damagePostfix = 0f;
 
-    public override bool isValid => IsFinite(damageMultiplier) && IsFinite(damagePrefix) && IsFinite(damagePostfix) ;
+    public override bool isValid =>
+        IsFinite(damageMultiplier) && IsFinite(damagePrefix) && IsFinite(damagePostfix);
 
     public override StatModifier[] CreateModifiers()
     {
@@ -54,7 +59,7 @@ public class DamageBuffAtom : BuffAtom
 }
 
 [Serializable]
-public class ProjectileBuffAtom : BuffAtom
+public class ProjectileBuffAtom : StatBuffAtom
 {
     // add extra projectiles before count multipliers; zero leaves the base count unchanged
     [SerializeField]
@@ -83,7 +88,7 @@ public class ProjectileBuffAtom : BuffAtom
 }
 
 [Serializable]
-public class HealthBuffAtom : BuffAtom
+public class HealthBuffAtom : StatBuffAtom
 {
     // modify maximum health; healing and current health adjustment belong to the health system
     [SerializeField]
@@ -104,7 +109,7 @@ public class HealthBuffAtom : BuffAtom
 }
 
 [Serializable]
-public class ArmorBuffAtom : BuffAtom
+public class ArmorBuffAtom : StatBuffAtom
 {
     // add armor without deciding how armor reduces incoming damage
     [SerializeField]
@@ -125,7 +130,7 @@ public class ArmorBuffAtom : BuffAtom
 }
 
 [Serializable]
-public class StatsBuffAtom : BuffAtom
+public class StatsBuffAtom : StatBuffAtom
 {
     // use this template for a single weapon stat modification
     [SerializeField]
@@ -136,7 +141,8 @@ public class StatsBuffAtom : BuffAtom
     private float value = 0f;
 
     // reject undefined ids and invalid values before exporting the modifier
-    public override bool isValid => Enum.IsDefined(typeof(WeaponStatId), stat)
+    public override bool isValid =>
+        Enum.IsDefined(typeof(WeaponStatId), stat)
         && Enum.IsDefined(typeof(ModifierType), modifierType)
         && IsFinite(value);
 

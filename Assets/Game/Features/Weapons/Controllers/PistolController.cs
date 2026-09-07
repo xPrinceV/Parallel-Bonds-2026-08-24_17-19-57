@@ -7,6 +7,8 @@ public class PistolController : Weapon
     [SerializeField] private float attackRange;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private BuffController buffHolder;
+    [SerializeField, Min(0f)] private float projectileSpacing = 0.15f;
 
 
     private float attackCounter;
@@ -14,6 +16,8 @@ public class PistolController : Weapon
     void Start()
     {
         attackCounter = 0;
+        if (buffHolder == null)
+            buffHolder = GetComponentInParent<BuffController>();
     }
 
     // Update is called once per frame
@@ -29,11 +33,28 @@ public class PistolController : Weapon
             EnemyController target = FindClosestEnemy();
             if (target != null)
             {
-                GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
-                newBullet.GetComponent<BulletController>().SetTarget(target);
-                newBullet.GetComponent<BulletController>().SetDamage(attackDamage * stats.damage);
-                newBullet.GetComponent<BulletController>().SetSpeed(projectileSpeed * stats.speed);
-                newBullet.GetComponent<BulletController>().SetKnockback(true);
+                // snapshot this attack so a hit only changes later volleys
+                float damage = attackDamage * stats.damage;
+                int count = Mathf.Max(0, Mathf.FloorToInt(stats.amount));
+                if (buffHolder != null)
+                {
+                    damage = buffHolder.CalculateWeaponDamage(damage);
+                    count = buffHolder.CalculateProjectileCount(count);
+                }
+
+                Vector3 direction = (target.transform.position - transform.position).normalized;
+                Vector3 side = Vector3.Cross(direction, Vector3.forward);
+                for (int i = 0; i < count; i++)
+                {
+                    Vector3 offset = side * ((i - (count - 1) * 0.5f) * projectileSpacing);
+                    GameObject newBullet = Instantiate(bullet, transform.position + offset, transform.rotation);
+                    BulletController projectile = newBullet.GetComponent<BulletController>();
+                    projectile.SetTarget(target);
+                    projectile.SetDamage(damage);
+                    projectile.SetSpeed(projectileSpeed * stats.speed);
+                    projectile.SetKnockback(true);
+                    projectile.SetBuffSource(buffHolder);
+                }
             }
             attackCounter = 1f / (attackSpeed*stats.attackSpeed);
         }

@@ -3,6 +3,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     private EnemyController target;
+    private BuffController buffSource;
+    private bool hasHit;
     public float speed;
     public float damage;
     public bool shouldKnockback;
@@ -16,7 +18,7 @@ public class BulletController : MonoBehaviour
     void Update()
     {
         //If the target gets lost, destroy the gameObject (Might change behaviour soon)
-        if(target == null)
+        if(target == null || !target.gameObject.activeInHierarchy)
         {
             Destroy(gameObject);
             return;
@@ -33,11 +35,34 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (hasHit || !collision.CompareTag("Enemy"))
+            return;
+
+        EnemyController enemy = collision.GetComponent<EnemyController>();
+        if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f)
+            return;
+
+        // one projectile reports one confirmed hit, even with multiple colliders
+        hasHit = true;
+        try
         {
-            collision.GetComponent<EnemyController>().TakeDamage(damage, shouldKnockback);
+            float healthBefore = enemy.health;
+            enemy.TakeDamage(damage, shouldKnockback);
+            float damageDealt = Mathf.Clamp(healthBefore - enemy.health, 0f, healthBefore);
+            // Destroy is deferred; report lethal hits before the target leaves this frame
+            if (buffSource != null && damageDealt > 0f)
+                buffSource.ReportHit(enemy.gameObject, damageDealt);
+        }
+        finally
+        {
             Destroy(gameObject);
         }
+    }
+
+    // keep the firing holder separate from the projectile object
+    public void SetBuffSource(BuffController source)
+    {
+        buffSource = source;
     }
 
     public void SetDamage(float newDamage)

@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 5576028}
   - component: {fileID: 5576025}
   - component: {fileID: 5576027}
+  - component: {fileID: 5576029}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -255,6 +256,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5576029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c65c37c09f6844b94f0f710b54e8c9, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::BuffController
+  initialBuffs:
+  - {fileID: 11400000, guid: 5a02351963923fd43bd2f9c9ac723892, type: 2}
 --- !u!1 &34628380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3481,6 +3496,8 @@ MonoBehaviour:
   attackRange: 6
   projectileSpeed: 6
   bullet: {fileID: 8317864461979714340, guid: 464db4f813d6c3a4197fea2ffab31090, type: 3}
+  buffHolder: {fileID: 5576029}
+  projectileSpacing: 0.15
 --- !u!1 &1621958286
 GameObject:
   m_ObjectHideFlags: 0

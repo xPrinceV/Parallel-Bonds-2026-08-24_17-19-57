@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 // keep stack state per holder instead of changing the shared atom configuration
 public sealed class StackBuffInstance
@@ -18,7 +17,8 @@ public sealed class StackBuffInstance
         this.atom = atom;
     }
 
-    internal void ProcessEvent(StackEventContext context, IBuffReceiver receiver, BuffDefinition sourceBuff)
+    internal void ProcessEvent(StackEventContext context, IBuffReceiver receiver, BuffDefinition sourceBuff,
+            BuffInstance sourceInstance = null)
     {
         if (!IsActive || isProcessing || receiver == null)
             return;
@@ -27,19 +27,22 @@ public sealed class StackBuffInstance
         isProcessing = true;
         try
         {
-            if (!atom.isValid
-                || (atom.ConsumeMode == StackConsumeMode.TriggerOnce && HasTriggered)
-                || !atom.Condition.Matches(context, receiver.Owner) || !IsActive)
+            if (!atom.isValid || (atom.ConsumeMode == StackConsumeMode.TriggerOnce && HasTriggered))
+                return;
+
+            if (!atom.Condition.Matches(context, receiver.Owner) || !IsActive)
                 return;
 
             // failed grants keep accumulated stacks; saturate only at the integer limit
             if (CurrentStacks < int.MaxValue)
                 CurrentStacks++;
+
             if (CurrentStacks < atom.RequiredStackCount)
                 return;
 
             // at most one activation per event; remaining stacks carry to the next event
-            if (!atom.Activation.TryActivate(new BuffActivationContext(receiver, sourceBuff)) || !IsActive)
+            var activationContext = new BuffActivationContext(receiver, sourceBuff, sourceInstance);
+            if (!atom.Activation.TryActivate(activationContext) || !IsActive)
                 return;
 
             HasTriggered = true;

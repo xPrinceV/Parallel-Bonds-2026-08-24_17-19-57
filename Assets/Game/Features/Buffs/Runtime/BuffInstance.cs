@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public sealed class BuffInstance
 {
     private readonly List<StatModifier> modifiers = new List<StatModifier>();
+    private readonly List<StatModifier> contributions = new List<StatModifier>();
+    private readonly HashSet<ActivateBuffEffects> activatedEffects = new HashSet<ActivateBuffEffects>();
     private readonly List<StackBuffInstance> stacks = new List<StackBuffInstance>();
     private readonly IBuffReceiver receiver;
     private readonly bool isPermanent;
@@ -36,9 +38,12 @@ public sealed class BuffInstance
             if (atom is StackToActivationBuffAtom stackAtom)
                 stacks.Add(new StackBuffInstance(stackAtom));
             else
-                modifiers.AddRange(atom.CreateModifiers());
+                contributions.AddRange(atom.CreateModifiers());
         }
 
+        if (!TryResolveModifiers(contributions, out List<StatModifier> resolved))
+            throw new ArgumentException("Combined damage multiplier must be finite.", nameof(definition));
+        modifiers.AddRange(resolved);
         Modifiers = modifiers.AsReadOnly();
         StackInstances = stacks.AsReadOnly();
     }
@@ -68,14 +73,71 @@ public sealed class BuffInstance
         {
             if (!IsActive)
                 break;
-            stack.ProcessEvent(context, receiver, Definition);
+            stack.ProcessEvent(context, receiver, Definition, this);
         }
+    }
+
+    internal bool TryActivateEffects(ActivateBuffEffects activation, BuffActivationContext context)
+    {
+        if (!IsActive || !ReferenceEquals(context.SourceInstance, this)
+            || !ReferenceEquals(context.Receiver, receiver) || context.SourceBuff != Definition
+            || activation == null || !activation.isValid || activatedEffects.Contains(activation))
+            return false;
+
+        // resolve the entire candidate before publishing; failed actions contribute nothing
+        var candidate = new List<StatModifier>(contributions);
+        foreach (BuffAtom effect in activation.Effects)
+            candidate.AddRange(effect.CreateModifiers());
+        if (!TryResolveModifiers(candidate, out List<StatModifier> resolved))
+            return false;
+
+        contributions.Clear();
+        contributions.AddRange(candidate);
+        modifiers.Clear();
+        modifiers.AddRange(resolved);
+        activatedEffects.Add(activation);
+        return true;
+    }
+
+    private static bool TryResolveModifiers(List<StatModifier> source, out List<StatModifier> resolved)
+    {
+        resolved = new List<StatModifier>();
+        double damageBonus = 0d;
+        int damageIndex = -1;
+        foreach (StatModifier modifier in source)
+        {
+            if (modifier.Target == ModifierTarget.Weapon && modifier.Stat == WeaponStatId.Damage
+                && modifier.Type == ModifierType.Multiplier)
+            {
+                if (damageIndex < 0)
+                {
+                    damageIndex = resolved.Count;
+                    resolved.Add(modifier);
+                }
+                // fields remain actual multipliers; only this instance combines their bonuses
+                damageBonus += (double)modifier.Value - 1d;
+            }
+            else
+                resolved.Add(modifier);
+        }
+
+        if (damageIndex >= 0)
+        {
+            float multiplier = (float)(1d + damageBonus);
+            if (float.IsNaN(multiplier) || float.IsInfinity(multiplier))
+                return false;
+            resolved[damageIndex] = new StatModifier(WeaponStatId.Damage, ModifierType.Multiplier, multiplier);
+        }
+        return true;
     }
 
     // removal stops both stat contribution and event processing
     public void Remove()
     {
         IsActive = false;
+        contributions.Clear();
+        modifiers.Clear();
+        activatedEffects.Clear();
         foreach (StackBuffInstance stack in stacks)
             stack.Remove();
     }

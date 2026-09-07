@@ -11,9 +11,9 @@ public class DamageCalculator
         if (modifiers == null)
             throw new ArgumentNullException(nameof(modifiers));
 
-        float prefix = 0f;
-        float damageMultiplier = 1f;
-        float postfix = 0f;
+        float totalPrefix = 0f;
+        float combinedMultiplier = 1f;
+        float totalPostfix = 0f;
 
         // group modifiers by stage so postfix never receives an attack multiplier
         foreach (StatModifier modifier in modifiers)
@@ -27,28 +27,28 @@ public class DamageCalculator
             switch (modifier.Type)
             {
                 case ModifierType.Prefix:
-                    prefix += modifier.Value;
+                    totalPrefix += modifier.Value;
                     break;
                 case ModifierType.Multiplier:
-                    damageMultiplier *= modifier.Value;
+                    combinedMultiplier *= modifier.Value;
                     break;
                 case ModifierType.Postfix:
-                    postfix += modifier.Value;
+                    totalPostfix += modifier.Value;
                     break;
                 default:
                     throw new ArgumentException("Unknown damage modifier type.", nameof(modifiers));
             }
 
-            if (!IsFinite(prefix) || !IsFinite(damageMultiplier) || !IsFinite(postfix))
+            if (!IsFinite(totalPrefix) || !IsFinite(combinedMultiplier) || !IsFinite(totalPostfix))
                 throw new OverflowException("Damage modifiers exceed the supported numeric range.");
         }
 
         // apply the requested formula without clamping or target defense calculation
-        float damage = (prefix + weaponDamage) * damageMultiplier + postfix;
-        if (!IsFinite(damage))
+        float finalDamage = (totalPrefix + weaponDamage) * combinedMultiplier + totalPostfix;
+        if (!IsFinite(finalDamage))
             throw new OverflowException("Calculated damage exceeds the supported numeric range.");
 
-        return damage;
+        return finalDamage;
     }
 
     private static bool IsFinite(float value)

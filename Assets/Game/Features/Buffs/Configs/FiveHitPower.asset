@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e195fd96c24ab428289d71265b44c8, type: 3}
+  m_Name: FiveHitPower
+  m_EditorClassIdentifier: Assembly-CSharp::BuffDefinition
+  type: 0
+  duration: 10
+  isPermanent: 1
+  atoms:
+  - rid: 3603911196470149198
+  - rid: 3603911196470149199
+  references:
+    version: 2
+    RefIds:
+    - rid: 3603911196470149198
+      type: {class: DamageBuffAtom, ns: , asm: Assembly-CSharp}
+      data:
+        damageMultiplier: 1.2
+        damagePrefix: 0
+        damagePostfix: 0
+    - rid: 3603911196470149199
+      type: {class: StackToActivationBuffAtom, ns: , asm: Assembly-CSharp}
+      data:
+        stackCount: 5
+        condition:
+          rid: 3603911196470149200
+        activation:
+          rid: 3603911196470149202
+        consumeMode: 2
+    - rid: 3603911196470149200
+      type: {class: HitStackCondition, ns: , asm: Assembly-CSharp}
+      data:
+    - rid: 3603911196470149202
+      type: {class: ActivateBuffEffects, ns: , asm: Assembly-CSharp}
+      data:
+        effects:
+        - rid: 3603911196470149203
+        - rid: 3603911196470149204
+    - rid: 3603911196470149203
+      type: {class: DamageBuffAtom, ns: , asm: Assembly-CSharp}
+      data:
+        damageMultiplier: 1.1
+        damagePrefix: 0
+        damagePostfix: 0
+    - rid: 3603911196470149204
+      type: {class: ProjectileBuffAtom, ns: , asm: Assembly-CSharp}
+      data:
+        projectileCount: 1
+        projectileSpeed: 1
+        projectileRange: 1

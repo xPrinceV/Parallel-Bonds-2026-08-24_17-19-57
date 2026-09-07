@@ -22,26 +22,27 @@ public class StackToActivationBuffAtom : BuffAtom
     public StackActivation Activation => activation;
     public StackConsumeMode ConsumeMode => consumeMode;
 
-
-
-    public override bool isValid => 
-        stackCount > 0 && condition != null && activation != null && condition.isValid && activation.isValid
+    public override bool isValid =>
+        stackCount > 0
+        && condition != null
+        && activation != null
+        && condition.isValid
+        && activation.isValid
         && Enum.IsDefined(typeof(StackConsumeMode), consumeMode);
 
     public override StatModifier[] CreateModifiers()
     {
-        if (!isValid){
+        if (!isValid)
             throw new InvalidOperationException("StackToActivationBuffAtom is not valid");
-        }
+
         // stack instances process events separately from stat calculation
         return Array.Empty<StatModifier>();
     }
 }
-
 
 public enum StackConsumeMode
 {
     ConsumeRequiredStacks = 0,
     ConsumeAllStacks = 1,
     TriggerOnce = 2,
-} 
+}

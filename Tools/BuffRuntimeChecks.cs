@@ -6,7 +6,8 @@ public static class BuffRuntimeChecks
 {
     public static string Run()
     {
-        int checks = RunStackChecks() + RunLifecycleChecks() + RunControllerChecks();
+        int checks = RunStackChecks() + RunLifecycleChecks() + RunControllerChecks() + RunDamageChecks()
+                    + RunInternalActivationChecks() + RunProjectileCountChecks();
         return checks + " checks passed";
     }
 
@@ -24,6 +25,22 @@ public static class BuffRuntimeChecks
     public static int RunControllerChecks()
     {
         return RunGroup("Controller", ControllerChecks.Run);
+    }
+
+    // formula checks use resolved modifiers and do not create Unity objects
+    public static int RunDamageChecks()
+    {
+        return DamageFormulaChecks.Run();
+    }
+
+    public static int RunInternalActivationChecks()
+    {
+        return RunGroup("Internal activation", InternalActivationChecks.Run);
+    }
+
+    public static int RunProjectileCountChecks()
+    {
+        return RunGroup("Projectile count", ProjectileCountChecks.Run);
     }
 
     private static int RunGroup(string name, Action<BuffCheckContext> run)

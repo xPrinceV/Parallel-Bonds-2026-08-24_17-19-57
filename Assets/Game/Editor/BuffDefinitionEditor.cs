@@ -37,6 +37,17 @@ public class BuffDefinitionEditor : Editor
                     condition.managedReferenceValue = new HitStackCondition();
                 if (activation.managedReferenceValue == null && GUILayout.Button("Restore Grant Activation"))
                     activation.managedReferenceValue = new GrantBuffActivation();
+
+                // switching action types is explicit because each action owns different parameters
+                if (!(activation.managedReferenceValue is ActivateBuffEffects)
+                    && GUILayout.Button("Use Internal Effects"))
+                    activation.managedReferenceValue = new ActivateBuffEffects();
+                if (!(activation.managedReferenceValue is GrantBuffActivation)
+                    && GUILayout.Button("Use Independent Buff Grant"))
+                    activation.managedReferenceValue = new GrantBuffActivation();
+                if (activation.managedReferenceValue is ActivateBuffEffects
+                    && GUILayout.Button("Add Internal Effect"))
+                    ShowAddAtomMenu(activation.FindPropertyRelative("effects").propertyPath, true);
             }
             bool remove = GUILayout.Button("Remove Atom");
             EditorGUILayout.EndVertical();
@@ -60,9 +71,15 @@ public class BuffDefinitionEditor : Editor
 
     private void ShowAddAtomMenu()
     {
+        ShowAddAtomMenu("atoms", false);
+    }
+
+    private void ShowAddAtomMenu(string propertyPath, bool numericOnly)
+    {
         var menu = new GenericMenu();
         var types = TypeCache.GetTypesDerivedFrom<BuffAtom>()
-            .Where(type => !type.IsAbstract && !type.ContainsGenericParameters)
+            .Where(type => !type.IsAbstract && !type.ContainsGenericParameters
+                && (!numericOnly || typeof(StatBuffAtom).IsAssignableFrom(type)))
             .OrderBy(type => type.FullName);
 
         foreach (Type type in types)
@@ -74,7 +91,7 @@ public class BuffDefinitionEditor : Editor
                 continue;
             }
 
-            menu.AddItem(label, false, () => AddAtom(type));
+            menu.AddItem(label, false, () => AddAtom(type, propertyPath));
         }
 
         if (menu.GetItemCount() == 0)
@@ -82,7 +99,7 @@ public class BuffDefinitionEditor : Editor
         menu.ShowAsContext();
     }
 
-    private void AddAtom(Type type)
+    private void AddAtom(Type type, string propertyPath)
     {
         if (target == null)
             return;
@@ -90,7 +107,7 @@ public class BuffDefinitionEditor : Editor
         // construct only after a menu choice so nested defaults stay intact
         var instance = (BuffAtom)Activator.CreateInstance(type);
         serializedObject.Update();
-        SerializedProperty atoms = serializedObject.FindProperty("atoms");
+        SerializedProperty atoms = serializedObject.FindProperty(propertyPath);
         if (atoms == null || !atoms.isArray)
             return;
 
