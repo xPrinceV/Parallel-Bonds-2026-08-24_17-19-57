@@ -8,17 +8,27 @@ public class HollowProjectile : MonoBehaviour
     private float speed;
     public float channelTime = 1f;
     private float channelCountdown;
+    private float lifetimeRemaining = 10f;
+    private bool hasHit;
 
     void Start()
     {
         channelCountdown = channelTime;
         //Destroy the projectile after 10 seconds
-        Destroy(gameObject, 10f);
+        // Count only active time so sleeping worlds retain their projectiles.
+        lifetimeRemaining = 10f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        lifetimeRemaining -= Time.deltaTime;
+        if (lifetimeRemaining <= 0f)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         channelCountdown -= Time.deltaTime;
         //Once the channel countdown has finished, make the projectile move in the direction of the player
         if(channelCountdown <= 0)
@@ -32,7 +42,15 @@ public class HollowProjectile : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            collision.GetComponent<PlayerHealth>().DamageHandler(damage);
+            if (hasHit || !isActiveAndEnabled || World.GetFor(this) != World.GetFor(collision))
+                return;
+
+            PlayerHealth playerHealth = collision.GetComponentInParent<PlayerHealth>();
+            if (playerHealth == null)
+                return;
+
+            hasHit = true;
+            playerHealth.DamageHandler(damage);
             Destroy(gameObject);
         }
     }

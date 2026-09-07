@@ -61,7 +61,8 @@ public class LevelUpSelectionButton : MonoBehaviour
     //Add stat based on selected upgrade
     public void SelectUpgrade()
     {
-        if (assignedWeapon != null)
+        if (assignedWeapon != null && PlayerController.instance != null &&
+            assignedWeapon.GetComponentInParent<PlayerController>() == PlayerController.instance)
         {
             Debug.Log("Weapon: " + assignedWeapon.weaponName + " | Upgrade: " + selectedUpgradeType + " | Value: " + selectedUpgrade);
             if (selectedUpgradeType == UpgradeType.Damage)
@@ -90,7 +91,10 @@ public class LevelUpSelectionButton : MonoBehaviour
             }
 
             //Close level up screen and unpause time
-            UIController.instance.levelUpPanel.SetActive(false);
+            if (UIController.instance != null && UIController.instance.levelUpPanel != null)
+            {
+                UIController.instance.levelUpPanel.SetActive(false);
+            }
             Time.timeScale = 1f;
         }
     }

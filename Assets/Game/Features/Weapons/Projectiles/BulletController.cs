@@ -18,7 +18,7 @@ public class BulletController : MonoBehaviour
     void Update()
     {
         //If the target gets lost, destroy the gameObject (Might change behaviour soon)
-        if(target == null || !target.gameObject.activeInHierarchy)
+        if(target == null || !target.gameObject.activeInHierarchy || World.GetFor(this) != World.GetFor(target))
         {
             Destroy(gameObject);
             return;
@@ -30,16 +30,17 @@ public class BulletController : MonoBehaviour
 
     public void SetTarget(EnemyController newTarget)
     {
-        target = newTarget;
+        target = newTarget != null && World.GetFor(this) == World.GetFor(newTarget) ? newTarget : null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hasHit || !collision.CompareTag("Enemy"))
+        if (hasHit || !isActiveAndEnabled || !collision.CompareTag("Enemy"))
             return;
 
         EnemyController enemy = collision.GetComponent<EnemyController>();
-        if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f)
+        if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f
+            || World.GetFor(this) != World.GetFor(enemy))
             return;
 
         // one projectile reports one confirmed hit, even with multiple colliders

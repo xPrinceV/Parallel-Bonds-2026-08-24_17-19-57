@@ -8,9 +8,29 @@ public class PlayerController : MonoBehaviour
     public float pickupRange = 2f;
     public static PlayerController instance;
 
-    void Awake()
+    void OnEnable()
     {
+        BindAsCurrent();
+    }
+
+    void OnDisable()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
+
+    public void BindAsCurrent()
+    {
+        if (!isActiveAndEnabled)
+        {
+            return;
+        }
+
         instance = this;
+        GetComponent<PlayerHealth>()?.BindAsCurrent();
+        GetComponent<ExperienceLevelController>()?.BindAsCurrent();
     }
 
     // public Weapon activeWeapon;

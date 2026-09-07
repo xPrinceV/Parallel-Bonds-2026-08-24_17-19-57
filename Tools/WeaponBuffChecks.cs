@@ -440,6 +440,14 @@ public static class WeaponBuffChecks
 
     private static object Call(object target, string name, params object[] arguments)
     {
+        // world-aware damage paths require a live source; templates remain inactive until exercised
+        if ((target is LanternProjController || target is LanternFire)
+            && (name == "OnTriggerEnter2D" || name == "Update"))
+        {
+            var source = (MonoBehaviour)target;
+            source.enabled = true;
+            source.gameObject.SetActive(true);
+        }
         MethodInfo method = target.GetType().GetMethod(name, Fields);
         if (method == null) throw new MissingMethodException(target.GetType().FullName, name);
         try { return method.Invoke(target, arguments); }

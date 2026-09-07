@@ -11,6 +11,13 @@ public class BuffController : MonoBehaviour, IBuffReceiver
     private readonly List<BuffInstance> instances = new List<BuffInstance>();
     private readonly Dictionary<BuffInstance, BuffHandle> grants = new Dictionary<BuffInstance, BuffHandle>();
     private bool isDispatching;
+    public bool IsWorldSuspended { get; private set; }
+
+    // mark sleep before the world disables its content hierarchy
+    public void SetWorldSuspended(bool suspended)
+    {
+        IsWorldSuspended = suspended;
+    }
 
     public GameObject Owner => gameObject;
 
@@ -238,6 +245,18 @@ public class BuffController : MonoBehaviour, IBuffReceiver
     }
 
     private void OnDisable()
+    {
+        if (IsWorldSuspended)
+            return;
+        ClearBuffs();
+    }
+
+    private void OnDestroy()
+    {
+        ClearBuffs();
+    }
+
+    private void ClearBuffs()
     {
         // this first version ends buffs when their holder is disabled
         foreach (BuffInstance instance in instances)

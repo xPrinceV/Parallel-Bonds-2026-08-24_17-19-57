@@ -18,6 +18,12 @@ public class RangedEnemyController : EnemyController
     // Update is called once per frame
     void Update()
     {
+        if (target == null || !target.gameObject.activeInHierarchy)
+        {
+            RB.linearVelocity = Vector2.zero;
+            return;
+        }
+
         // Calculate distance from target and the monster
         distance = Vector3.Distance(transform.position, target.position);
 
@@ -53,13 +59,17 @@ public class RangedEnemyController : EnemyController
 
     public void ShootProjectile()
     {
+        if (!isActiveAndEnabled || target == null || !target.gameObject.activeInHierarchy)
+            return;
+
         // Remember where the player is when the attack finishes
         attackLocation = target.position;
 
         GameObject newProjectile = Instantiate(
             projectile,
             transform.position + Vector3.up * 0.5f,
-            Quaternion.identity
+            Quaternion.identity,
+            World.GetContentRoot(this)
         );
 
         newProjectile.GetComponent<HollowProjectile>().SetDamage(attack);

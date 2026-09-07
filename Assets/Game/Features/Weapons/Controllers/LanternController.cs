@@ -38,7 +38,7 @@ public class LanternController : Weapon
             //The for loop is to account for projectile count, it will loop based on the projectile count of the weapon
             for (var i = 0; i < count; i++)
             {
-                GameObject newLantern = Instantiate(lantern, transform.position, Quaternion.identity);
+                GameObject newLantern = Instantiate(lantern, transform.position, Quaternion.identity, World.GetContentRoot(this));
                 LanternProjController projectile = newLantern.GetComponent<LanternProjController>();
                 projectile.SetDamage(damage);
                 projectile.SetDuration(duration * stats.duration);

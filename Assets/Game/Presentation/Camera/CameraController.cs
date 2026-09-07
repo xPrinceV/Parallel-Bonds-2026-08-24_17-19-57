@@ -14,6 +14,10 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         //Make camera follow the player
-        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+        Transform followTarget = PlayerController.instance != null ? PlayerController.instance.transform : target;
+        if (followTarget != null)
+        {
+            transform.position = new Vector3(followTarget.position.x, followTarget.position.y, transform.position.z);
+        }
     }
 }

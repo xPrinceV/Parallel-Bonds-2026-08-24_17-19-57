@@ -9,16 +9,22 @@ public class ExpPickup : MonoBehaviour
     private float checkCounter;
 
     private PlayerController player;
+    public bool IsCollected { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = PlayerHealth.instance.GetComponent<PlayerController>();
+        World world = World.GetFor(this);
+        player = world != null ? world.Player
+            : (PlayerHealth.instance != null ? PlayerHealth.instance.GetComponent<PlayerController>() : null);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (IsCollected || player == null || !player.gameObject.activeInHierarchy)
+            return;
+
         //Check if isMoving is true, if it is, make the orb move towards the player
         if(isMoving)
         {
@@ -53,8 +59,23 @@ public class ExpPickup : MonoBehaviour
         //When the orb collides with the player
         if(collision.tag == "Player")
         {
+            if (IsCollected || !isActiveAndEnabled || World.GetFor(this) != World.GetFor(collision))
+                return;
+
+            World world = World.GetFor(this);
+            PlayerController owner = world != null ? world.Player : PlayerController.instance;
+            if (owner == null || collision.GetComponentInParent<PlayerController>() != owner)
+                return;
+
+            ExperienceLevelController experience = world != null
+                ? owner.GetComponent<ExperienceLevelController>() : ExperienceLevelController.instance;
+            if (experience == null)
+                return;
+
+            // Destroy is deferred; multiple colliders must not grant XP twice.
+            IsCollected = true;
             //Call GetExp and destroy the orb
-            ExperienceLevelController.instance.GetExp(expValue);
+            experience.GetExp(expValue);
             Destroy(gameObject);
         }
     }

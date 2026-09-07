@@ -13,6 +13,7 @@ public class LanternProjController : MonoBehaviour
     public GameObject fire;
     private BuffController buffSource;
     private bool hasHit;
+    private float lifetimeRemaining = 10f;
     void Start()
     {
         //50% chance to choose -1 or 1 (throw left, throw right)
@@ -26,16 +27,25 @@ public class LanternProjController : MonoBehaviour
         RB.AddForce(force, ForceMode2D.Impulse);
 
         //Destroy Itself after 10 seconds
-        Destroy(gameObject, 10f);
+        // Preserve the existing lifetime, but count only awake time.
+        lifetimeRemaining = 10f;
+    }
+
+    void Update()
+    {
+        lifetimeRemaining -= Time.deltaTime;
+        if (lifetimeRemaining <= 0f)
+            Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hasHit || collision == null || !collision.CompareTag("Enemy"))
+        if (hasHit || !isActiveAndEnabled || collision == null || !collision.CompareTag("Enemy"))
             return;
 
         EnemyController enemy = collision.GetComponentInParent<EnemyController>();
-        if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f)
+        if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f
+            || World.GetFor(this) != World.GetFor(enemy))
             return;
 
         // Consume the impact before other colliders can trigger it.
@@ -49,12 +59,12 @@ public class LanternProjController : MonoBehaviour
             if (buffSource != null && damageDealt > 0f)
                 buffSource.ReportHit(enemy.gameObject, damageDealt);
 
-            GameObject newFire = Instantiate(fire, transform.position, Quaternion.identity);
+            GameObject newFire = Instantiate(fire, transform.position, Quaternion.identity, World.GetContentRoot(this));
             LanternFire lanternFire = newFire.GetComponent<LanternFire>();
             lanternFire.SetDamage(damage);
             lanternFire.SetDuration(duration);
             lanternFire.SetBuffSource(buffSource);
-            Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, transform.position, Quaternion.identity, World.GetContentRoot(this));
         }
         finally
         {

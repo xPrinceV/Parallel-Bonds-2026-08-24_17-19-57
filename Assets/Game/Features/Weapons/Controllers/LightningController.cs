@@ -57,9 +57,9 @@ public class LightningController : Weapon
             if(strikeCounter <= 0)
             {
                 EnemyController targetEnemy = FindRandomEnemy();
-                if (targetEnemy != null)
+                if (targetEnemy != null && World.GetFor(this) == World.GetFor(targetEnemy))
                 {
-                    Instantiate(lightningPrefab, targetEnemy.transform.position, Quaternion.identity);
+                    Instantiate(lightningPrefab, targetEnemy.transform.position, Quaternion.identity, World.GetContentRoot(this));
                     float healthBefore = targetEnemy.health;
                     targetEnemy.TakeDamage(strikeDamage);
                     // report actual loss before deferred destruction, including lethal strikes
@@ -87,7 +87,8 @@ public class LightningController : Weapon
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
 
             if (enemyController != null && enemyController.gameObject.activeInHierarchy
-                && enemyController.health > 0f && !availableEnemies.Contains(enemyController))
+                && enemyController.health > 0f && World.GetFor(this) == World.GetFor(enemyController)
+                && !availableEnemies.Contains(enemyController))
             {
                 availableEnemies.Add(enemyController);
             }

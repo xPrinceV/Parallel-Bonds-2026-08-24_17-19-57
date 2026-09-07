@@ -6,12 +6,23 @@ public class DamageNumber : MonoBehaviour
     public TMP_Text damageText;
     public float lifetime;
     private float lifeCounter;
+    private World sourceWorld;
+
+    public void SetWorld(World world)
+    {
+        sourceWorld = world;
+    }
     public float floatSpeed = 1f;
 
 
     // Update is called once per frame
     void Update()
     {
+        // shared canvas, but each number sleeps with the world that produced it
+        bool visible = sourceWorld == null || sourceWorld.IsActive;
+        damageText.enabled = visible;
+        if (!visible)
+            return;
         if(lifeCounter > 0)
         {
             //Count down the damage number's lifetime
@@ -32,6 +43,8 @@ public class DamageNumber : MonoBehaviour
     {
         //Reset the life counter
         lifeCounter = lifetime;
+        sourceWorld = null;
+        damageText.enabled = true;
 
         //Change the text to display the damage amount
         damageText.text = damageDisplay.ToString();

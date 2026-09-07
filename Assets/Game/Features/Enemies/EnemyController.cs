@@ -15,12 +15,18 @@ public class EnemyController : MonoBehaviour
     private float knockbackCounter;
 
     public int expDrop = 1;
+    private bool isDead;
+    private PlayerHealth playerHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Sets target to the transform location of the player
-        target = PlayerHealth.instance.transform;
+        World world = World.GetFor(this);
+        playerHealth = world != null
+            ? (world.Player != null ? world.Player.GetComponent<PlayerHealth>() : null)
+            : PlayerHealth.instance;
+        target = playerHealth != null ? playerHealth.transform : null;
     }
 
     // Update is called once per frame
@@ -48,7 +54,9 @@ public class EnemyController : MonoBehaviour
         }
 
         //Sets the Rigidbody velocity to be moving towards the player
-        RB.linearVelocity = (target.position - transform.position).normalized * moveSpeed;
+        RB.linearVelocity = target != null && target.gameObject.activeInHierarchy
+            ? (Vector2)(target.position - transform.position).normalized * moveSpeed
+            : Vector2.zero;
 
         if(hitCounter > 0f)
         {
@@ -62,7 +70,11 @@ public class EnemyController : MonoBehaviour
         //Check if collision is done with a player
         if(collision.gameObject.tag == "Player" && hitCounter <= 0f)
         {
-            PlayerHealth.instance.DamageHandler(attack);
+            if (!isActiveAndEnabled || World.GetFor(this) != World.GetFor(collision.transform)
+                || playerHealth == null || collision.gameObject.GetComponentInParent<PlayerHealth>() != playerHealth)
+                return;
+
+            playerHealth.DamageHandler(attack);
             //A cooldown for the player taking damage
             hitCounter = hitWaitTime;
         }
@@ -70,20 +82,30 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damageTaken)
     {
+        if (isDead || !gameObject.activeInHierarchy)
+            return;
+
         //Reduce health by damage taken
         health -= damageTaken;
 
         //When the enemy dies
         if(health <= 0)
         {
+            isDead = true;
             Destroy(gameObject);
 
             //Spawn Exp Orb at the position of the enemy
-            ExperienceLevelController.instance.SpawnExp(transform.position, expDrop);
+            // SpawnExp owns parenting through the owning hero, never the active-world singleton.
+            World world = World.GetFor(this);
+            ExperienceLevelController experience = world != null
+                ? (world.Player != null ? world.Player.GetComponent<ExperienceLevelController>() : null)
+                : ExperienceLevelController.instance;
+            if (experience != null)
+                experience.SpawnExp(transform.position, expDrop);
         }
 
         //Spawn the damage number
-        DamageNumberController.instance.SpawnDamage(damageTaken, transform.position);
+        DamageNumberController.instance.SpawnDamage(damageTaken, transform.position, World.GetFor(this));
     }
 
     //This function is the same as the above, but it takes in an extra argument to account for knockback

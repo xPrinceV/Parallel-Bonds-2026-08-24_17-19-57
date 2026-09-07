@@ -17,6 +17,11 @@ public class DamageNumberController : MonoBehaviour
     
     public void SpawnDamage(float damageAmount, Vector3 location)
     {
+        SpawnDamage(damageAmount, location, null);
+    }
+
+    public void SpawnDamage(float damageAmount, Vector3 location, World world)
+    {
         //Round damage, display whole number
         int rounded = Mathf.RoundToInt(damageAmount);
 
@@ -25,6 +30,7 @@ public class DamageNumberController : MonoBehaviour
 
         //Activate damage number and place it at the location where the damage occurred 
         newDamage.Setup(rounded);
+        newDamage.SetWorld(world);
         newDamage.gameObject.SetActive(true);
         newDamage.transform.position = location;
     }

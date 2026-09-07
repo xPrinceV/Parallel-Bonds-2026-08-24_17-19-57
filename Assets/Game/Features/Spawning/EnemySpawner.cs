@@ -21,7 +21,11 @@ public class EnemySpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        target = PlayerHealth.instance.transform;
+        World world = World.GetFor(this);
+        PlayerHealth playerHealth = world != null
+            ? (world.Player != null ? world.Player.GetComponent<PlayerHealth>() : null)
+            : PlayerHealth.instance;
+        target = playerHealth != null ? playerHealth.transform : null;
         despawnDistance = Vector3.Distance(transform.position, maxSpawn.position) + 5f;
         currentWave = -1;
         GoToNextWave();
@@ -31,7 +35,10 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
 
-        if(PlayerHealth.instance.gameObject.activeSelf)
+        if (target == null || !target.gameObject.activeInHierarchy)
+            return;
+
+        if(target.gameObject.activeInHierarchy)
         {
             if(currentWave < waves.Count)
             {
@@ -48,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
                     spawnCounter = waves[currentWave].timeBetweenSpawns;
                     List<GameObject> enemies = waves[currentWave].enemiesToSpawn;
                     GameObject enemyToSpawn = enemies[Random.Range(0, enemies.Count)];
-                    GameObject newEnemy  = Instantiate(enemyToSpawn, SelectSpawnPoint(), Quaternion.identity);
+                    GameObject newEnemy  = Instantiate(enemyToSpawn, SelectSpawnPoint(), Quaternion.identity, World.GetContentRoot(this));
                     spawnedEnemies.Add(newEnemy);
                 }
             }

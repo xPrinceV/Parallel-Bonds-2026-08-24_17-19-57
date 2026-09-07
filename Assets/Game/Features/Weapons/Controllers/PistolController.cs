@@ -47,7 +47,7 @@ public class PistolController : Weapon
                 for (int i = 0; i < count; i++)
                 {
                     Vector3 offset = side * ((i - (count - 1) * 0.5f) * projectileSpacing);
-                    GameObject newBullet = Instantiate(bullet, transform.position + offset, transform.rotation);
+                    GameObject newBullet = Instantiate(bullet, transform.position + offset, transform.rotation, World.GetContentRoot(this));
                     BulletController projectile = newBullet.GetComponent<BulletController>();
                     projectile.SetTarget(target);
                     projectile.SetDamage(damage);
@@ -72,7 +72,8 @@ public class PistolController : Weapon
         foreach (Collider2D enemy in enemiesInRange)
         {
             EnemyController foundEnemy = enemy.GetComponent<EnemyController>();
-            if (foundEnemy != null)
+            if (foundEnemy != null && foundEnemy.gameObject.activeInHierarchy && foundEnemy.health > 0f
+                && World.GetFor(this) == World.GetFor(foundEnemy))
             {
                 //Get the distance from that particular enemy
                 float distance = Vector3.Distance(transform.position, foundEnemy.transform.position);

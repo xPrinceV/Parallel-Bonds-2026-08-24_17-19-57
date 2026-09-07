@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class WorldManager : MonoBehaviour
 {
     [SerializeField] private WorldId initialWorldId;
@@ -11,6 +12,7 @@ public class WorldManager : MonoBehaviour
     // security check for world id validity and switching state
     public bool IsSwitching { get; private set; }
     public bool IsInitialized => isInitialized;
+    public World CurrentWorld => FindWorld(CurrentWorldId);
 
     private bool isInitialized;
 
@@ -70,7 +72,8 @@ public class WorldManager : MonoBehaviour
         {
             World world = worlds[i];
             if (world == null || !world.IsConfigured || !world.gameObject.activeInHierarchy
-                || world.ContainsContent(transform))
+                || world.ContainsContent(transform)
+                || (world.Player == null) != (worlds[0].Player == null))
                 return false;
 
             for (int j = 0; j < i; j++)
@@ -123,6 +126,10 @@ public class WorldManager : MonoBehaviour
             return false;
         if (!IsWorldValid(targetWorldId) || targetWorldId == CurrentWorldId)
             return false;
+        // do not transfer control while an upgrade selection belongs to the current hero
+        if (Time.timeScale <= 0f || (UIController.instance != null
+            && UIController.instance.levelUpPanel != null && UIController.instance.levelUpPanel.activeSelf))
+            return false;
         if (!ValidateWorlds())
         {
             Debug.LogError("World configuration is no longer valid.", this);
@@ -135,6 +142,27 @@ public class WorldManager : MonoBehaviour
         {
             Debug.LogError("The current or target world is not configured.", this);
             return false;
+        }
+
+        Vector3 previousTargetPosition = targetWorld.Player == null ? Vector3.zero : targetWorld.Player.transform.position;
+        if (currentWorld.Player != null && targetWorld.Player != null)
+        {
+            PlayerHealth health = currentWorld.Player.GetComponent<PlayerHealth>();
+            PlayerHealth targetHealth = targetWorld.Player.GetComponent<PlayerHealth>();
+            if (!currentWorld.Player.gameObject.activeInHierarchy
+                || (health != null && health.currentHealth <= 0f)
+                || !targetWorld.Player.gameObject.activeSelf
+                || (targetHealth != null && targetHealth.HasInitialized && targetHealth.currentHealth <= 0f))
+                return false;
+
+            // transfer position only; health, experience, upgrades and buffs stay with each hero
+            targetWorld.Player.transform.position = currentWorld.Player.transform.position;
+            Rigidbody2D body = targetWorld.Player.GetComponent<Rigidbody2D>();
+            if (body != null)
+            {
+                body.linearVelocity = Vector2.zero;
+                body.angularVelocity = 0f;
+            }
         }
 
         WorldId previousWorldId = CurrentWorldId;
@@ -159,6 +187,8 @@ public class WorldManager : MonoBehaviour
                 {
                     bool targetDisabled = targetWorld.SetWorldActive(false);
                     CurrentWorldId = previousWorldId;
+                    if (targetWorld.Player != null)
+                        targetWorld.Player.transform.position = previousTargetPosition;
                     bool previousRestored = currentWorld.SetWorldActive(true);
                     Debug.LogError("World switch failed; restoring the previous world.", this);
                     if (!targetDisabled || !previousRestored)

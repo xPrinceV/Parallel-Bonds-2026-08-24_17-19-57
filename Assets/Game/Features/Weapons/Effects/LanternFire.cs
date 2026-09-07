@@ -61,7 +61,7 @@ public class LanternFire : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision == null || !collision.CompareTag("Enemy"))
+        if (!isActiveAndEnabled || collision == null || !collision.CompareTag("Enemy"))
             return;
 
         RemoveStaleEnemies();
@@ -88,14 +88,20 @@ public class LanternFire : MonoBehaviour
     //When the enemy exits the collision box of the fire, get the enemy object and remove them from the burning list
     void OnTriggerExit2D(Collider2D collision)
     {
+        // disabling a world is not a real exit and must not grant another entry hit on wake
+        World world = World.GetFor(this);
+        if (world != null && world.IsSuspended)
+            return;
         // Use the stored collider even if its tag or parent changed.
         foreach (HashSet<Collider2D> colliders in burningColliders.Values)
             colliders.Remove(collision);
         RemoveStaleEnemies();
     }
-    private static bool IsValidEnemy(EnemyController enemy)
+    private bool IsValidEnemy(EnemyController enemy)
     {
-        return enemy != null && enemy.gameObject.activeInHierarchy && enemy.health > 0f;
+        // Recheck ownership for both entry hits and retained burn targets.
+        return isActiveAndEnabled && enemy != null && enemy.gameObject.activeInHierarchy && enemy.health > 0f
+            && World.GetFor(this) == World.GetFor(enemy);
     }
 
     private void ApplyDamage(EnemyController enemy)
