@@ -171,10 +171,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 5
   pickupRange: 2
+  facingDirection: {x: 1, y: 0}
   unassignedWeapons:
   - {fileID: 1591325561}
   - {fileID: 123630154}
   - {fileID: 1881042334}
+  - {fileID: 508784823}
+  - {fileID: 273773926}
   assignedWeapons: []
 --- !u!58 &5576026
 CircleCollider2D:
@@ -883,6 +886,7 @@ MonoBehaviour:
     attackSpeed: 1
     amount: 1
     duration: 1
+    bounces: 1
     damageUpgrades:
     - 0.1
     - 0.15
@@ -909,6 +913,7 @@ MonoBehaviour:
     - 0.3
     - 0.4
     - 0.5
+    bouncesUpgrades: []
     UpgradeText: 
   weaponLevel: 0
   icon: {fileID: 21300000, guid: b9c3ce7b3be1873448a0987b64b2379e, type: 3}
@@ -1197,6 +1202,108 @@ MonoBehaviour:
   upgradeDescText: {fileID: 726394171}
   nameLevelText: {fileID: 34628382}
   weaponIcon: {fileID: 1035782525}
+--- !u!1 &273773925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273773927}
+  - component: {fileID: 273773926}
+  m_Layer: 3
+  m_Name: Dagger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &273773926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273773925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cb96ba1a742a443a512719a5964d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DaggerController
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    bounces: 1
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.35
+    - 0.5
+    speedUpgrades:
+    - 0.05
+    - 0.07
+    - 0.11
+    - 0.15
+    - 0.2
+    rangeUpgrades:
+    - 0.05
+    - 0.08
+    - 0.12
+    - 0.15
+    - 0.2
+    attackSpeedUpgrades:
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
+    amountUpgrades: []
+    durationUpgrades:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    bouncesUpgrades:
+    - 0.4
+    - 0.6
+    - 0.8
+    - 1
+    - 1.5
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: 21300000, guid: f0d40344c344f6f4d9b1797825d7a46d, type: 3}
+  weaponName: Poison Dagger
+  availableUpgrades: 000000000100000002000000030000000600000005000000
+  attackDamage: 7
+  attackSpeed: 0.6
+  duration: 5
+  amount: 1
+  attackRange: 5
+  projectileSpeed: 6
+  bounces: 3
+  dagger: {fileID: 5184616330106527083, guid: a2e8aaf1d4fd97d4c9f8cf274094245d, type: 3}
+--- !u!4 &273773927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273773925}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 367653038}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &316909897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1474,7 @@ Transform:
   - {fileID: 123630153}
   - {fileID: 1881042333}
   - {fileID: 508784822}
+  - {fileID: 273773927}
   m_Father: {fileID: 5576024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &373904100
@@ -1553,17 +1661,28 @@ MonoBehaviour:
   waves:
   - enemiesToSpawn:
     - {fileID: 751250583785907397, guid: 316a25f50cec07745bd2ebec5e9fbe76, type: 3}
-    waveLength: 10
+    waveLength: 20
     timeBetweenSpawns: 0.75
   - enemiesToSpawn:
     - {fileID: 6055514803848717499, guid: 65cb5017b05ec7842ad5f296ea558326, type: 3}
-    waveLength: 10
+    waveLength: 20
     timeBetweenSpawns: 0.65
   - enemiesToSpawn:
     - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
     - {fileID: 7750153534527334857, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
-    waveLength: 10
+    waveLength: 20
     timeBetweenSpawns: 0.6
+  - enemiesToSpawn:
+    - {fileID: 2301725259980351992, guid: 75e22483062410448a916a0b5b73c901, type: 3}
+    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
+    waveLength: 10
+    timeBetweenSpawns: 0.55
+  - enemiesToSpawn:
+    - {fileID: 56760197707603932, guid: a5b0420728abeff49ac2e63e73656a51, type: 3}
+    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
+    - {fileID: 8027336863805150937, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+    waveLength: 10
+    timeBetweenSpawns: 0.5
 --- !u!4 &413176122
 Transform:
   m_ObjectHideFlags: 0
@@ -1771,22 +1890,44 @@ MonoBehaviour:
     attackSpeed: 1
     amount: 1
     duration: 1
-    damageUpgrades: []
-    speedUpgrades: []
+    bounces: 1
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.35
+    - 0.5
+    speedUpgrades:
+    - 0.05
+    - 0.07
+    - 0.11
+    - 0.15
+    - 0.2
     rangeUpgrades: []
-    attackSpeedUpgrades: []
-    amountUpgrades: []
+    attackSpeedUpgrades:
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
+    amountUpgrades:
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
     durationUpgrades: []
+    bouncesUpgrades: []
     UpgradeText: 
   weaponLevel: 0
-  icon: {fileID: 0}
-  weaponName: 
-  availableUpgrades: 00000000
-  attackSpeed: 0
-  attackDamage: 0
+  icon: {fileID: 1208040086343421634, guid: 4d74bfd68161d314cbcdfa49228dfb30, type: 3}
+  weaponName: Crimson Bow
+  availableUpgrades: 00000000030000000400000001000000
+  attackSpeed: 1
+  attackDamage: 10
   amount: 0
-  projectileSpeed: 0
-  arrow: {fileID: 0}
+  projectileSpeed: 10
+  arrow: {fileID: 1929202282129024446, guid: 5efe8dcf1c6c81f418f56615b4dd2445, type: 3}
 --- !u!1 &544970446
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,6 +3529,7 @@ MonoBehaviour:
     attackSpeed: 1
     amount: 1
     duration: 1
+    bounces: 1
     damageUpgrades:
     - 0.1
     - 0.15
@@ -3414,6 +3556,7 @@ MonoBehaviour:
     - 0.3
     amountUpgrades: []
     durationUpgrades: []
+    bouncesUpgrades: []
     UpgradeText: 
   weaponLevel: 0
   icon: {fileID: -3337038689812066966, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
@@ -3971,6 +4114,7 @@ MonoBehaviour:
     attackSpeed: 1
     amount: 1
     duration: 1
+    bounces: 1
     damageUpgrades:
     - 0.1
     speedUpgrades: []
@@ -3980,6 +4124,7 @@ MonoBehaviour:
     amountUpgrades:
     - 0.2
     durationUpgrades: []
+    bouncesUpgrades: []
     UpgradeText: 
   weaponLevel: 0
   icon: {fileID: 0}

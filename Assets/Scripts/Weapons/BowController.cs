@@ -30,7 +30,7 @@ public class BowController : Weapon
             facingDirection = player.facingDirection;
 
             //The loop is account for projectile count
-            int arrowCount = Mathf.FloorToInt(amount * stats.amount);
+            int arrowCount = Mathf.FloorToInt(amount + stats.amount);
             for (int i = 0; i < arrowCount; i++)
             {
                 float angle;

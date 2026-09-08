@@ -48,6 +48,8 @@ public class RangedEnemyController : EnemyController
         {
             RB.linearVelocity = (target.position - transform.position).normalized * moveSpeed;
         }
+
+        UpdatePoison();
     }
 
 
