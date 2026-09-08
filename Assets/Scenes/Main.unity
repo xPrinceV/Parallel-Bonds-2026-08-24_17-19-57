@@ -1278,7 +1278,7 @@ MonoBehaviour:
     - 1.5
     UpgradeText: 
   weaponLevel: 0
-  icon: {fileID: -3278668394409182549, guid: 478667d0d0c5bca4793f4c91438973ca, type: 3}
+  icon: {fileID: 21300000, guid: f0d40344c344f6f4d9b1797825d7a46d, type: 3}
   weaponName: Poison Dagger
   availableUpgrades: 000000000100000002000000030000000600000005000000
   attackDamage: 7
@@ -1677,6 +1677,12 @@ MonoBehaviour:
     - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
     waveLength: 10
     timeBetweenSpawns: 0.55
+  - enemiesToSpawn:
+    - {fileID: 56760197707603932, guid: a5b0420728abeff49ac2e63e73656a51, type: 3}
+    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
+    - {fileID: 8027336863805150937, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+    waveLength: 10
+    timeBetweenSpawns: 0.5
 --- !u!4 &413176122
 Transform:
   m_ObjectHideFlags: 0

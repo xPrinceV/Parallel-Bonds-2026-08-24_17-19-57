@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: f0d40344c344f6f4d9b1797825d7a46d
+guid: e0c89f8aa11ec3d439aeb5d87ef0690a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1872732258777413398
-    second: dagger_0
-  - first:
-      213: -3278668394409182549
-    second: dagger_1
+      213: -980095317097466160
+    second: Indicator_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dagger_0
+      name: Indicator_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 310
-        width: 18
-        height: 24
+        x: 20
+        y: 20
+        width: 56
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 617b7d331184df910800000000000000
-      internalID: 1872732258777413398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dagger_1
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 21
-        width: 290
-        height: 299
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: baab0f66774df72d0800000000000000
-      internalID: -3278668394409182549
+      spriteID: 0d6b16a70800662f0800000000000000
+      internalID: -980095317097466160
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dagger_0: 1872732258777413398
-      dagger_1: -3278668394409182549
+      Indicator_0: -980095317097466160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
