@@ -55,6 +55,10 @@ public class LevelUpSelectionButton : MonoBehaviour
         {
             upgradeDescText.text = "+" + (selectedUpgrade * 100) + "% Projectile Speed";
         }
+        else if (selectedUpgradeType == UpgradeType.Bounces)
+        {
+            upgradeDescText.text = "+" + selectedUpgrade + " Bounces";
+        }
 
     }
 
@@ -88,6 +92,10 @@ public class LevelUpSelectionButton : MonoBehaviour
             else if (selectedUpgradeType == UpgradeType.Duration)
             {
                 assignedWeapon.stats.duration += selectedUpgrade;
+            }
+            else if (selectedUpgradeType == UpgradeType.Bounces)
+            {
+                assignedWeapon.stats.bounces += selectedUpgrade;
             }
 
             //Close level up screen and unpause time
@@ -139,6 +147,11 @@ public class LevelUpSelectionButton : MonoBehaviour
         {
             int randomChoice = Random.Range(0, assignedWeapon.stats.durationUpgrades.Length);
             selectedUpgrade = assignedWeapon.stats.durationUpgrades[randomChoice];
+        }
+        else if (selectedUpgradeType == UpgradeType.Bounces)
+        {
+            int randomChoice = Random.Range(0, assignedWeapon.stats.bouncesUpgrades.Length);
+            selectedUpgrade = assignedWeapon.stats.bouncesUpgrades[randomChoice];
         }
     }
 

@@ -57,7 +57,7 @@ public static class DualWorldChecks
             check(manager.SwitchWorld(a.WorldId), "return to Material");
             check(a != b && ah.Player != bh.Player && ah.Health != bh.Health && ah.Xp != bh.Xp &&
                 ah.Weapon != bh.Weapon && !ReferenceEquals(ah.Stats, bh.Stats) && ah.Buffs != bh.Buffs &&
-                !ReferenceEquals(ah.Xp.expLevels, bh.Xp.expLevels), "distinct hero state and weapon stats");
+                !ReferenceEquals(ah.Xp.expLevels, bh.Xp.expLevels), "distinct hero components, XP and weapon stats");
             Action<World, World> state = (awake, asleep) =>
             {
                 check(manager.CurrentWorld == awake && manager.CurrentWorldId == awake.WorldId && !manager.IsSwitching &&
@@ -82,8 +82,11 @@ public static class DualWorldChecks
             state(a, b);
             check(ah.Health.HasInitialized && bh.Health.HasInitialized && ah.Health.maxHealth > 7 && bh.Health.maxHealth > 9,
                 "both health controllers initialized");
+            SharedHealth(manager, a, b, check);
+            FreshHealth(a.Player, check);
             ah.Health.currentHealth = ah.Health.maxHealth - 7;
-            float aHealth = ah.Health.currentHealth, bHealth = bh.Health.currentHealth;
+            float sharedHealth = ah.Health.currentHealth;
+            check(bh.Health.currentHealth == sharedHealth, "Material property write reaches sleeping Echo");
             // Reserve XP headroom without invoking level-up UI; runtime hero mutation is intentional.
             ah.Xp.currentExperience = bh.Xp.currentExperience = 0;
             check(ah.Xp.expLevels[ah.Xp.currentLevels] > 2 && bh.Xp.expLevels[bh.Xp.currentLevels] > 1, "XP headroom");
@@ -128,10 +131,12 @@ public static class DualWorldChecks
             check(!ah.Buffs.isActiveAndEnabled && timeA.IsActive && ReferenceEquals(Instance(timeA), instanceA) &&
                 instanceA.RemainingDuration == 20f && Instance(stackA).StackInstances.Single().CurrentStacks == 3,
                 "inactive hierarchy ignores Tick and hits, preserves handles/progress");
-            check(bh.Health.currentHealth == bHealth && bh.Xp.currentExperience == 0 && bh.Stats.damage == bDamage,
-                "Echo was not overwritten on activation");
+            check(bh.Health.currentHealth == sharedHealth && bh.Xp.currentExperience == 0 && bh.Stats.damage == bDamage,
+                "Echo shares damaged HP without refill; XP/upgrades remain independent");
             bh.Health.currentHealth = bh.Health.maxHealth - 9;
-            bHealth = bh.Health.currentHealth; bh.Xp.GetExp(1); bh.Stats.damage += 0.625f; bDamage = bh.Stats.damage;
+            sharedHealth = bh.Health.currentHealth;
+            check(ah.Health.currentHealth == sharedHealth, "Echo property write reaches sleeping Material");
+            bh.Xp.GetExp(1); bh.Stats.damage += 0.625f; bDamage = bh.Stats.damage;
             var stackB = grant(bh.Buffs, recipe);
             var timeB = grant(bh.Buffs, timed);
             bh.Buffs.ReportHit(target, 1f); bh.Buffs.Tick(2f);
@@ -141,7 +146,7 @@ public static class DualWorldChecks
                 "same recipe/source independent across holders, foreign revoke rejected");
             var positionB = positionA + new Vector3(4, 6, 0); bh.Player.transform.position = positionB;
             check(manager.SwitchWorld(a.WorldId), "B to A"); state(a, b);
-            check(ah.Player.transform.position == positionB && ah.Health.currentHealth == aHealth && ah.Xp.currentExperience == 1 &&
+            check(ah.Player.transform.position == positionB && ah.Health.currentHealth == sharedHealth && ah.Xp.currentExperience == 1 &&
                 ah.Stats.damage == aDamage && ah.Xp.currentLevels == aLevel && ah.SameReferences(a), "Material persists without reinitialization");
             check(ReferenceEquals(ah.Buffs.GrantBuff(timed, source), timeA) && timeA.IsActive && stackA.IsActive,
                 "wake retains same source handle");
@@ -178,9 +183,9 @@ public static class DualWorldChecks
             check(!manager.SwitchWorld(b.WorldId), "paused time blocks switch independently");
             Time.timeScale = 1f; state(a, b);
             check(manager.SwitchWorld(b.WorldId), "wake Echo for persistence and targeting positive control"); state(b, a);
-            check(bh.SameReferences(b) && bh.Health.currentHealth == bHealth && bh.Xp.currentExperience == 1 &&
+            check(bh.SameReferences(b) && bh.Health.currentHealth == sharedHealth && bh.Xp.currentExperience == 1 &&
                 bh.Xp.currentLevels == bLevel && bh.Stats.damage == bDamage && timeB.IsActive &&
-                Instance(timeB).RemainingDuration == 18f, "Echo HP/XP/upgrades/buffs persist without reinit");
+                Instance(timeB).RemainingDuration == 18f, "Echo shared HP and independent XP/upgrades/buffs persist without reinit");
             enemy.health = 10f; enemy.transform.position = bh.Weapon.transform.position;
             Physics2D.SyncTransforms();
             check(ReferenceEquals(Invoke(bh.Weapon, "FindClosestEnemy"), enemy), "awake same-world targeting positive control");
@@ -234,6 +239,119 @@ public static class DualWorldChecks
                 }
             }
         }
+    }
+
+    private static void SharedHealth(WorldManager manager, World a, World b, Action<bool, string> check)
+    {
+        var active = a.Player.GetComponent<PlayerHealth>();
+        var inactive = b.Player.GetComponent<PlayerHealth>();
+        float hp = active.currentHealth, max = active.maxHealth;
+        try
+        {
+            active.maxHealth = 100f; active.currentHealth = 80f;
+            check(inactive.maxHealth == 100f && inactive.currentHealth == 80f, "active health/max writes share storage");
+            HealthUI(active, check);
+            active.DamageHandler(7f);
+            check(active.currentHealth == 73f && inactive.currentHealth == 73f, "active damage changes shared pool once");
+            HealthUI(active, check);
+            inactive.DamageHandler(1000f);
+            check(active.currentHealth == 73f && inactive.currentHealth == 73f && inactive.gameObject.activeSelf &&
+                PlayerHealth.instance == active, "inactive lethal damage call is ignored");
+            inactive.maxHealth += 25f; inactive.currentHealth += 6f;
+            check(active.maxHealth == 125f && inactive.maxHealth == 125f && active.currentHealth == 79f &&
+                inactive.currentHealth == 79f, "sleeping hero heal/max upgrade writes reach active pool");
+            HealthUI(active, check);
+            for (int i = 0; i < 3; i++)
+            {
+                check(manager.SwitchWorld(b.WorldId), "shared pool switch to Echo");
+                check(PlayerHealth.instance == inactive && inactive.currentHealth == 79f && inactive.maxHealth == 125f,
+                    "Echo activation keeps shared damage and max without refill");
+                HealthUI(inactive, check);
+                check(manager.SwitchWorld(a.WorldId), "shared pool switch to Material");
+                check(PlayerHealth.instance == active && active.currentHealth == 79f && active.maxHealth == 125f,
+                    "Material activation keeps shared damage and max without refill");
+                HealthUI(active, check);
+            }
+        }
+        finally
+        {
+            active.maxHealth = max; active.currentHealth = hp;
+            if (manager.CurrentWorldId != a.WorldId) manager.SwitchWorld(a.WorldId);
+        }
+    }
+
+    private static void HealthUI(PlayerHealth health, Action<bool, string> check)
+    {
+        check(health.healthSlider != null && health.healthText != null, "active health UI assigned");
+        check(Mathf.Approximately(health.healthSlider.maxValue, health.maxHealth) &&
+            Mathf.Approximately(health.healthSlider.value, health.currentHealth) &&
+            health.healthText.text == health.currentHealth + " / " + health.maxHealth,
+            "active slider and text reflect shared health/max immediately");
+    }
+
+    private static void FreshHealth(PlayerController restorePlayer, Action<bool, string> check)
+    {
+        // Inactive content lets the real manager Awake bind both heroes before their first activation.
+        // Destroy synchronously: bare fixture players must never reach weapon-dependent Start.
+        for (int run = 0; run < 2; run++)
+        {
+            var root = new GameObject("DualWorldChecks_FreshHealth"); root.SetActive(false);
+            try
+            {
+                var worlds = new World[2];
+                var health = new PlayerHealth[2];
+                for (int i = 0; i < worlds.Length; i++)
+                {
+                    var worldObject = new GameObject("World"); worldObject.transform.SetParent(root.transform, false);
+                    worlds[i] = worldObject.AddComponent<World>();
+                    var content = new GameObject("Content"); content.transform.SetParent(worldObject.transform, false); content.SetActive(false);
+                    var hero = new GameObject("Hero"); hero.transform.SetParent(content.transform, false);
+                    var player = hero.AddComponent<PlayerController>();
+                    health[i] = hero.AddComponent<PlayerHealth>();
+                    SerializedHealth(health[i], "maxHealth", i == 0 ? 90f : 140f, check);
+                    SerializedHealth(health[i], "currentHealth", 3f, check);
+                    Set(worlds[i], "worldId", i == 0 ? WorldId.Material : WorldId.Echo);
+                    Set(worlds[i], "contentRoot", content); Set(worlds[i], "player", player);
+                }
+                int initial = run == 0 ? 1 : 0, other = 1 - initial;
+                var manager = root.AddComponent<WorldManager>();
+                Set(manager, "worlds", worlds); Set(manager, "initialWorldId", worlds[initial].WorldId);
+                root.SetActive(true);
+                float max = initial == 0 ? 90f : 140f;
+                check(manager.IsInitialized && manager.CurrentWorld == worlds[initial] && worlds[initial].IsActive &&
+                    !worlds[other].IsActive && health.All(h => h.HasInitialized), "fresh manager initializes both heroes before first switch");
+                check(health.All(h => h.maxHealth == max && h.currentHealth == max) && PlayerHealth.instance == health[initial],
+                    "fresh run uses initial hero serialized max, not array order or previous run pool");
+                health[initial].DamageHandler(11f);
+                check(manager.SwitchWorld(worlds[other].WorldId) && health.All(h => h.currentHealth == max - 11f) &&
+                    PlayerHealth.instance == health[other], "first activation of sleeping hero never refills shared health");
+                health[other].DamageHandler(max + 1f);
+                float dead = health[other].currentHealth;
+                check(dead <= 0f && health[initial].currentHealth == dead && !health[other].gameObject.activeSelf &&
+                    health[initial].gameObject.activeSelf && PlayerHealth.instance == null, "shared lethal damage disables only current hero and clears alias");
+                check(!manager.SwitchWorld(worlds[initial].WorldId) && manager.CurrentWorld == worlds[other] &&
+                    !worlds[initial].IsActive && !manager.IsSwitching, "shared death blocks switching without waking other hero");
+                health[other].DamageHandler(5f); health[initial].DamageHandler(5f);
+                check(health.All(h => h.currentHealth == dead), "dead and sleeping damage calls cannot mutate shared pool");
+            }
+            finally
+            {
+                Object.DestroyImmediate(root);
+                restorePlayer.BindAsCurrent();
+            }
+        }
+    }
+
+    private static void SerializedHealth(PlayerHealth health, string name, float value, Action<bool, string> check)
+    {
+        var property = typeof(PlayerHealth).GetProperty(name, BindingFlags.Instance | BindingFlags.Public);
+        check(property != null && property.CanRead && property.CanWrite && property.PropertyType == typeof(float),
+            name + " remains a public read/write float property");
+        var field = typeof(PlayerHealth).GetFields(Flags).SingleOrDefault(f => f.IsDefined(typeof(SerializeField), false) &&
+            f.GetCustomAttributes(typeof(UnityEngine.Serialization.FormerlySerializedAsAttribute), false)
+                .Cast<UnityEngine.Serialization.FormerlySerializedAsAttribute>().Any(a => a.oldName == name));
+        check(field != null && field.FieldType == typeof(float), name + " retains serialized backing field and former name");
+        field.SetValue(health, value);
     }
 
     private sealed class Hero

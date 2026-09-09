@@ -30,6 +30,15 @@ public class WorldManager : MonoBehaviour
         IsSwitching = true;
         try
         {
+            // use the initial hero's health settings for the whole run
+            World initialWorld = FindWorld(initialWorldId);
+            if (initialWorld.Player != null)
+            {
+                PlayerHealth sharedHealth = initialWorld.Player.GetComponent<PlayerHealth>();
+                foreach (World world in worlds)
+                    world.Player.GetComponent<PlayerHealth>().ShareHealthWith(sharedHealth);
+            }
+
             // disable other worlds before enabling the initial world
             foreach (World world in worlds)
             {
@@ -73,7 +82,8 @@ public class WorldManager : MonoBehaviour
             World world = worlds[i];
             if (world == null || !world.IsConfigured || !world.gameObject.activeInHierarchy
                 || world.ContainsContent(transform)
-                || (world.Player == null) != (worlds[0].Player == null))
+                || (world.Player == null) != (worlds[0].Player == null)
+                || (world.Player != null && world.Player.GetComponent<PlayerHealth>() == null))
                 return false;
 
             for (int j = 0; j < i; j++)
@@ -155,7 +165,7 @@ public class WorldManager : MonoBehaviour
                 || (targetHealth != null && targetHealth.HasInitialized && targetHealth.currentHealth <= 0f))
                 return false;
 
-            // transfer position only; health, experience, upgrades and buffs stay with each hero
+            // transfer position only; health is shared, experience, upgrades and buffs stay with each hero
             targetWorld.Player.transform.position = currentWorld.Player.transform.position;
             Rigidbody2D body = targetWorld.Player.GetComponent<Rigidbody2D>();
             if (body != null)

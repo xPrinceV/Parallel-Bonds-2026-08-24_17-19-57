@@ -18,6 +18,11 @@ public class RangedEnemyController : EnemyController
     // Update is called once per frame
     void Update()
     {
+        // This Update replaces the base movement loop, so tick poison here exactly once.
+        UpdatePoison();
+        if (IsDead)
+            return;
+
         if (target == null || !target.gameObject.activeInHierarchy)
         {
             RB.linearVelocity = Vector2.zero;

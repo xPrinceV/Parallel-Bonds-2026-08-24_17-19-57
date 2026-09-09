@@ -2,14 +2,14 @@
 
 A Unity 2D survival prototype built around two alternating worlds, independent heroes, and composable weapon buffs.
 
-The current playable scene includes three automatic weapons, experience-based upgrades, and a five-hit buff activation sample. The gameplay architecture described here is available on the `WIP-Chen-dual-world` branch.
+The current playable scene includes five configured automatic weapons, experience-based upgrades, and a five-hit buff activation sample. Pistol, Lantern, and Lightning are the starting weapons; Bow and Dagger are available in each hero's unassigned weapon list.
 
 ## Getting started
 
 ### Requirements
 
 - **Unity 6000.4.6f1**, installed through Unity Hub.
-- Git to clone the repository.
+- Git and **Git LFS** to clone the repository and download binary art assets.
 - **.NET 10 SDK** only if you want to run the standalone damage formula checks.
 
 Unity restores the project's dependencies from `Packages/manifest.json` and `Packages/packages-lock.json`. The project uses Universal Render Pipeline, Unity 2D tooling, and Unity UI.
@@ -17,6 +17,7 @@ Unity restores the project's dependencies from `Packages/manifest.json` and `Pac
 ### Open and play
 
 ```sh
+git lfs install
 git clone --branch WIP-Chen-dual-world https://github.com/xPrinceV/Parallel-Bonds-2026-08-24_17-19-57.git
 ```
 
@@ -38,7 +39,8 @@ The Main scene is already configured for a dual-world run; no scene migration is
 
 **Material** and **Echo** each own a hero, enemy spawner, and world content. The camera and HUD follow the active hero.
 
-- Health, experience, levels, weapon upgrades, and buff runtime state belong to each hero independently.
+- Both heroes share one current and maximum health pool. The initial world's hero supplies the starting maximum; switching does not refill health, and zero health blocks further switching.
+- Experience, levels, weapon upgrades, and buff runtime state belong to each hero independently.
 - Switching copies only the outgoing hero's position to the incoming hero and clears the incoming velocity.
 - The inactive world's content is disabled, not destroyed or unloaded. Its enemies, experience pickups, projectiles, and fire remain in memory.
 - World-local active-time countdowns and buffs pause while that world sleeps and resume when it becomes active again.
@@ -58,10 +60,14 @@ See [dual-world rules and runtime boundaries](Assets/Game/Features/Worlds/README
 | Pistol | Fires homing projectiles |
 | Lantern | Throws projectiles that create damaging fire on impact |
 | Lightning | Strikes randomly selected live targets |
+| Bow | Fires piercing arrows in the hero's last movement direction, with a spread for multiple arrows |
+| Dagger | Homes toward enemies, bounces between targets, and applies poison |
 
-All three weapons consume buff-modified **damage** and **projectile count**. For Lightning, projectile count controls the number of strikes. Attack speed, range, projectile speed, and duration still use the existing weapon upgrade logic rather than general buff evaluation.
+All five weapons consume buff-modified **damage** and **projectile count**. For Lightning, projectile count controls the number of strikes. Attack speed, range, projectile speed, and duration still use the existing weapon upgrade logic rather than general buff evaluation.
 
 Damage and count are snapshotted for each volley or burst. A buff activated by a hit affects future attacks, not projectiles already in flight.
+
+Bow and Dagger are configured separately for both heroes but do not replace the three starting weapons. Their projectiles belong to the firing world and pause while it sleeps. Dagger supports Bounces upgrades; poison stacks damage and refreshes duration without delaying the next tick. Poison is currently an enemy-local status effect, not a general buff atom, and its ticks do not report additional weapon hits.
 
 ## Buff composition
 
@@ -165,10 +171,13 @@ The runners under `Tools/` are custom verification entry points, **not automatic
 | --- | --- |
 | `BuffRuntimeChecks.cs` and `BuffRuntimeChecks/` | Buff composition, stacks, lifetime, source grants, and stat calculations |
 | `WeaponBuffChecks.cs` | Weapon snapshots, hit reporting, and buff integration |
+| `BowDaggerIntegrationChecks.cs` | Bow/Dagger scene bindings, snapshots, hits, bounces, poison, and world suspension |
 | `DualWorldChecks.cs` | Independent hero state, world ownership, switching guards, and presentation |
 | `DualWorldTimingChecks.cs` | Real-frame physics, suspended lifetimes, and automatic switching |
 
 These runners require compilation with the relevant production or Unity assemblies. See the [buff verification instructions](Assets/Game/Features/Buffs/README.md#verification) and [world verification instructions](Assets/Game/Features/Worlds/README.md#verification).
+
+`Tools/BowDaggerIntegrationBatch.cs` contains staging and batch-execution instructions for the new weapon checks and existing weapon/world regression suites.
 
 Use a **throwaway Play Mode session** for runtime checks: they mutate gameplay state. Synchronous weapon and world checks do not replace real-frame physics verification.
 

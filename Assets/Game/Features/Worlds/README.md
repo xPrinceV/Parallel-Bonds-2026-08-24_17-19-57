@@ -2,15 +2,16 @@
 
 ## Rules
 
-- Material and Echo each own a hero, health, experience/level table, weapons/upgrades, Buff runtime and enemy spawner.
-- Switching transfers only the outgoing hero's position to the incoming hero. It does not copy health, XP, equipment or Buffs. The incoming rigidbody velocity is cleared.
+- Material and Echo each own a hero, experience/level table, weapons/upgrades, Buff runtime and enemy spawner. Both heroes share current and maximum health for the run.
+- Switching transfers only the outgoing hero's position to the incoming hero. It does not copy or refill shared health, XP, equipment or Buffs. The incoming rigidbody velocity is cleared.
+- Before activation, WorldManager binds both PlayerHealth components to the initial hero's health storage. Its serialized maximum initializes the shared pool once per run. Later health/max writes through either component affect that same pool and refresh the active HUD; inactive heroes reject damage callbacks. Existing serialized health fields migrate through FormerlySerializedAs.
 - The inactive world's Content is disabled, not destroyed or unloaded. Its enemies, XP pickups, projectiles, fire and remaining active-time lifetimes stay in memory until that world resumes. Normal gameplay expiry and distance-despawn rules still apply while active.
 - This is run-local retention, not a disk save. Restarting the scene starts a new run. Currency, inventories and save-file persistence are not introduced.
 - An upgrade selection or zero time scale blocks switching. A dead/disabled current hero cannot switch to revive through the other hero. The existing loss flow otherwise remains unchanged.
 
 ## Scene
 
-`Main.unity` contains MaterialWorld/Content/MaterialPlayer and EchoWorld/Content/EchoPlayer, each with its own XP component and three weapon controllers. Each Content also owns its own EnemySpawner and map. WorldManager, the 15-second StateSwitchController, camera and HUD remain shared.
+`Main.unity` contains MaterialWorld/Content/MaterialPlayer and EchoWorld/Content/EchoPlayer, each with its own XP component and five weapon controllers. Pistol, Lantern and Lightning remain the starting weapons; Bow and Dagger are configured as unassigned weapons for each hero. Each Content also owns its own EnemySpawner and map. WorldManager, the 15-second StateSwitchController, camera and HUD remain shared.
 
 The temporary World Ambient Overlay uses a noninteractive screen-space overlay Canvas at sorting order -100, below the HUD. Material is transparent; Echo has a blue tint (alpha 0.22). WorldFilter reads the current World's AmbientColor in LateUpdate. The maps still use the same layout; the heroes use Jeff_0 and Jeff_1 respectively.
 

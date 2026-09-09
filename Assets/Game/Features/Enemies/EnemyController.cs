@@ -16,7 +16,14 @@ public class EnemyController : MonoBehaviour
 
     public int expDrop = 1;
     private bool isDead;
+    protected bool IsDead => isDead;
     private PlayerHealth playerHealth;
+
+    //These are for handling status effects like poison
+    private float poisonDamage;
+    private float poisonDuration;
+    private float poisonCounter;
+    [SerializeField] private GameObject poisonEffect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +39,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdatePoison();
+        if (isDead)
+            return;
+
         /**
         Handle knockback. Knockback Time is a public field where you can customise the knockback time.
         .25s would mean enemy would be knockback for that duration. Knockback counter will countdown and
@@ -62,6 +73,46 @@ public class EnemyController : MonoBehaviour
         {
             hitCounter -= Time.deltaTime;
         }
+    }
+
+    protected void UpdatePoison()
+    {
+        if (isDead || !isActiveAndEnabled || poisonDamage <= 0f || Time.deltaTime <= 0f)
+            return;
+
+        // Only active-world time counts; do not tick beyond the remaining duration on a long frame.
+        float elapsed = Mathf.Min(Time.deltaTime, poisonDuration);
+        poisonDuration -= elapsed;
+        poisonCounter -= elapsed;
+        while (poisonCounter <= 0f && !isDead)
+        {
+            TakeDamage(poisonDamage);
+            poisonCounter += 1f;
+        }
+
+        if (poisonDuration <= 0f || isDead)
+        {
+            poisonDamage = 0f;
+            poisonDuration = 0f;
+            poisonCounter = 0f;
+            if (poisonEffect != null)
+                poisonEffect.SetActive(false);
+        }
+    }
+
+    public void ApplyPoison(float damage, float duration)
+    {
+        if (isDead || !isActiveAndEnabled || damage <= 0f || duration <= 0f)
+            return;
+
+        //This is so poison will stack damage, but not stack duration
+        // Refresh duration without postponing the next tick of an existing effect.
+        if (poisonDamage <= 0f)
+            poisonCounter = 1f;
+        poisonDamage += damage;
+        poisonDuration = duration;
+        if (poisonEffect != null)
+            poisonEffect.SetActive(true);
     }
 
     //Method to detect collision

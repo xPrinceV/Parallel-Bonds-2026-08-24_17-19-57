@@ -151,7 +151,7 @@ public static class DualWorldSceneSetup
         Require(player.GetComponentsInChildren<StateSwitchController>(true).All(c => !c.enabled),
             "Legacy hero StateSwitchController must remain disabled.");
         Weapon[] weapons = player.GetComponentsInChildren<Weapon>(true);
-        Require(weapons.Length == 3 && weapons.Count(w => w is PistolController) == 1
+        Require(weapons.Count(w => w is PistolController) == 1
             && weapons.Count(w => w is LanternController) == 1 && weapons.Count(w => w is LightningController) == 1,
             "Expected one child pistol, lantern and lightning controller per hero.");
         foreach (Weapon weapon in weapons)
@@ -181,7 +181,8 @@ public static class DualWorldSceneSetup
     {
         Require(Find<PlayerController>(scene).Length == 2 && Find<PlayerHealth>(scene).Length == 2
             && Find<BuffController>(scene).Length == 2 && Find<ExperienceLevelController>(scene).Length == 2
-            && Find<Weapon>(scene).Length == 6 && Find<EnemySpawner>(scene).Length == 2,
+            && Find<Weapon>(scene).All(weapon => weapon.GetComponentInParent<PlayerController>(true) != null)
+            && Find<EnemySpawner>(scene).Length == 2,
             "Configured scene must contain exactly two local heroes, health/buff/XP sets, weapon sets and spawners.");
         foreach (World world in new[] { material, echo })
         {
@@ -229,6 +230,7 @@ public static class DualWorldSceneSetup
         Require(Find<EnemyController>(scene).Length == 0 && Find<ExpPickup>(scene).Length == 0
             && Find<BulletController>(scene).Length == 0 && Find<LanternProjController>(scene).Length == 0
             && Find<HollowProjectile>(scene).Length == 0 && Find<LanternFire>(scene).Length == 0
+            && Find<ArrowController>(scene).Length == 0 && Find<DaggerProjectile>(scene).Length == 0
             && Find<DamageNumber>(scene).All(number => Find<DamageNumberController>(scene)
                 .Any(controller => controller.numberToSpawn == number && !number.gameObject.activeSelf)),
             "Remove runtime enemies, pickups, projectiles and damage numbers before setup.");
