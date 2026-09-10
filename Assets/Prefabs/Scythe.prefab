@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6743993591083313593}
   serializedVersion: 2
   m_LocalRotation: {x: -0.9063079, y: 0.42261827, z: -0, w: 0}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5.5, y: 5.5, z: 5.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -123,8 +123,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4446078791727618849}
-  - component: {fileID: 8260482502998611759}
-  - component: {fileID: 4501963131355412386}
   m_Layer: 0
   m_Name: HitboxPivot
   m_TagString: Untagged
@@ -141,19 +139,53 @@ Transform:
   m_GameObject: {fileID: 7766777833115639375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6486380494272377825}
+  m_Father: {fileID: 2358206182210223236}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8136974146102932757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6486380494272377825}
+  - component: {fileID: 7307171161011450065}
+  - component: {fileID: 3012349676059923863}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6486380494272377825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136974146102932757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.08, y: 1.168, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2358206182210223236}
+  m_Father: {fileID: 4446078791727618849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &8260482502998611759
+--- !u!70 &7307171161011450065
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7766777833115639375}
+  m_GameObject: {fileID: 8136974146102932757}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -181,16 +213,16 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.39884275, y: 1.3332744}
-  m_Size: {x: 0.3860451, y: 1.3874474}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1.1}
   m_Direction: 0
---- !u!114 &4501963131355412386
+--- !u!114 &3012349676059923863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7766777833115639375}
+  m_GameObject: {fileID: 8136974146102932757}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 829b44f21f40f134bb2e404f10c36a5c, type: 3}
@@ -243,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScytheHitController
   hitboxPivot: {fileID: 4446078791727618849}
-  offset: 45
-  swingAngle: -225
+  offset: 0
   swingDuration: 0.4
+  swingAngle: -225
+  animationTransform: {fileID: 4757188609283326404}

@@ -10,7 +10,8 @@ public enum UpgradeType
     AttackSpeed,
     Amount,
     Duration,
-    Bounces
+    Bounces,
+    Area
 }
 public class Weapon : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class WeaponStats
     public float amount = 1f;
     public float duration = 1f;   
     public float bounces = 1f; 
+    public float area = 1f;
 
     public float[] damageUpgrades;
     public float[] speedUpgrades;
@@ -41,5 +43,6 @@ public class WeaponStats
     public float[] amountUpgrades;
     public float[] durationUpgrades;
     public float[] bouncesUpgrades;
+    public float[] areaUpgrades;
     public string UpgradeText;
 }
