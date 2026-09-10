@@ -21,11 +21,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Temporary for now until weapon chest implemented
-        AddWeapon(0);
-        AddWeapon(0);
-        AddWeapon(0);
-        AddWeapon(0);
-        AddWeapon(0);
+        // AddWeapon(0);
+        // AddWeapon(0);
+        // AddWeapon(0);
+        // AddWeapon(0);
+        // AddWeapon(0);
+        AddWeapon(5);
     }
 
     // Update is called once per frame

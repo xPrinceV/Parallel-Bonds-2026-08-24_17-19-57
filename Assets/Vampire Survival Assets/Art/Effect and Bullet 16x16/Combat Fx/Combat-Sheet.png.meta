@@ -1,0 +1,6344 @@
+fileFormatVersion: 2
+guid: d9ebbe4dbcb6b0c4f816c95d50f47450
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1688984239575767156
+    second: Combat-Sheet_0
+  - first:
+      213: -195402904824048437
+    second: Combat-Sheet_1
+  - first:
+      213: -4499147819533529707
+    second: Combat-Sheet_2
+  - first:
+      213: 5390674797138787828
+    second: Combat-Sheet_3
+  - first:
+      213: -1674608959014155970
+    second: Combat-Sheet_4
+  - first:
+      213: 1421305188774221507
+    second: Combat-Sheet_5
+  - first:
+      213: 240797989145120947
+    second: Combat-Sheet_6
+  - first:
+      213: 6877103300387526401
+    second: Combat-Sheet_7
+  - first:
+      213: 1160181141841905121
+    second: Combat-Sheet_8
+  - first:
+      213: 6317131354865430931
+    second: Combat-Sheet_9
+  - first:
+      213: -8728547690238302346
+    second: Combat-Sheet_10
+  - first:
+      213: -2861458845857728
+    second: Combat-Sheet_11
+  - first:
+      213: -7589228216334906563
+    second: Combat-Sheet_12
+  - first:
+      213: 6438938173021380114
+    second: Combat-Sheet_13
+  - first:
+      213: -5645747735804801234
+    second: Combat-Sheet_14
+  - first:
+      213: 395409621809966274
+    second: Combat-Sheet_15
+  - first:
+      213: 7574414087914410653
+    second: Combat-Sheet_16
+  - first:
+      213: 8699952703190805772
+    second: Combat-Sheet_17
+  - first:
+      213: -5817082728362248955
+    second: Combat-Sheet_18
+  - first:
+      213: 5493924631865087754
+    second: Combat-Sheet_19
+  - first:
+      213: -7701239403725447839
+    second: Combat-Sheet_20
+  - first:
+      213: 2839158210573385664
+    second: Combat-Sheet_21
+  - first:
+      213: 7264204919026301191
+    second: Combat-Sheet_22
+  - first:
+      213: 1574977449110771120
+    second: Combat-Sheet_23
+  - first:
+      213: 7453241934035487852
+    second: Combat-Sheet_24
+  - first:
+      213: -4707728276206195372
+    second: Combat-Sheet_25
+  - first:
+      213: 3606232398151298705
+    second: Combat-Sheet_26
+  - first:
+      213: -7295630440419047550
+    second: Combat-Sheet_27
+  - first:
+      213: -3795413549576201920
+    second: Combat-Sheet_28
+  - first:
+      213: 2851236752720064745
+    second: Combat-Sheet_29
+  - first:
+      213: 8145023006369877761
+    second: Combat-Sheet_30
+  - first:
+      213: -1996334397634170336
+    second: Combat-Sheet_31
+  - first:
+      213: -2696379467092337393
+    second: Combat-Sheet_32
+  - first:
+      213: -4536714397053712193
+    second: Combat-Sheet_33
+  - first:
+      213: -7626685176747316503
+    second: Combat-Sheet_34
+  - first:
+      213: -4037644013878517922
+    second: Combat-Sheet_35
+  - first:
+      213: 3824859416203328430
+    second: Combat-Sheet_36
+  - first:
+      213: -8316328607989691432
+    second: Combat-Sheet_37
+  - first:
+      213: -8240187072841476473
+    second: Combat-Sheet_38
+  - first:
+      213: -4998962484347817955
+    second: Combat-Sheet_39
+  - first:
+      213: -4957182506122837163
+    second: Combat-Sheet_40
+  - first:
+      213: -6958428855411564090
+    second: Combat-Sheet_41
+  - first:
+      213: -4888408424850815802
+    second: Combat-Sheet_42
+  - first:
+      213: 7834584807366099074
+    second: Combat-Sheet_43
+  - first:
+      213: -9045852183952170660
+    second: Combat-Sheet_44
+  - first:
+      213: 9074681638781089188
+    second: Combat-Sheet_45
+  - first:
+      213: 447305832573114183
+    second: Combat-Sheet_46
+  - first:
+      213: 6869204025955913562
+    second: Combat-Sheet_47
+  - first:
+      213: 7455819689986235259
+    second: Combat-Sheet_48
+  - first:
+      213: -802732198593727272
+    second: Combat-Sheet_49
+  - first:
+      213: 2675859117686502980
+    second: Combat-Sheet_50
+  - first:
+      213: -3687650026348258340
+    second: Combat-Sheet_51
+  - first:
+      213: 5371228281440506506
+    second: Combat-Sheet_52
+  - first:
+      213: -5716917247843100737
+    second: Combat-Sheet_53
+  - first:
+      213: -7210631384173054623
+    second: Combat-Sheet_54
+  - first:
+      213: 1779850251636227738
+    second: Combat-Sheet_55
+  - first:
+      213: -1528435050677289911
+    second: Combat-Sheet_56
+  - first:
+      213: 7324129649009096793
+    second: Combat-Sheet_57
+  - first:
+      213: -4308511310099887231
+    second: Combat-Sheet_58
+  - first:
+      213: -1336985194347591370
+    second: Combat-Sheet_59
+  - first:
+      213: -379324532009666995
+    second: Combat-Sheet_60
+  - first:
+      213: 2331788302218549737
+    second: Combat-Sheet_61
+  - first:
+      213: 4449637607520642212
+    second: Combat-Sheet_62
+  - first:
+      213: 6143329802115205779
+    second: Combat-Sheet_63
+  - first:
+      213: -8037608264189829357
+    second: Combat-Sheet_64
+  - first:
+      213: 3438507319890649999
+    second: Combat-Sheet_65
+  - first:
+      213: 6418704065595539968
+    second: Combat-Sheet_66
+  - first:
+      213: -8222205050156080759
+    second: Combat-Sheet_67
+  - first:
+      213: 6513249558748834103
+    second: Combat-Sheet_68
+  - first:
+      213: 4960023879976949261
+    second: Combat-Sheet_69
+  - first:
+      213: -1986389756080363010
+    second: Combat-Sheet_70
+  - first:
+      213: 7082990534167212669
+    second: Combat-Sheet_71
+  - first:
+      213: -2386786991800773118
+    second: Combat-Sheet_72
+  - first:
+      213: -5682828867307376850
+    second: Combat-Sheet_73
+  - first:
+      213: -7672498385816089981
+    second: Combat-Sheet_74
+  - first:
+      213: 5087136136534274463
+    second: Combat-Sheet_75
+  - first:
+      213: 3128799734745866105
+    second: Combat-Sheet_76
+  - first:
+      213: -3301430343993715953
+    second: Combat-Sheet_77
+  - first:
+      213: -1229789496304097177
+    second: Combat-Sheet_78
+  - first:
+      213: 8771977246757066340
+    second: Combat-Sheet_79
+  - first:
+      213: 7118066098628820595
+    second: Combat-Sheet_80
+  - first:
+      213: -8821554206418517446
+    second: Combat-Sheet_81
+  - first:
+      213: -6600249163238861004
+    second: Combat-Sheet_82
+  - first:
+      213: 6725604534973980541
+    second: Combat-Sheet_83
+  - first:
+      213: -7225351857948100675
+    second: Combat-Sheet_84
+  - first:
+      213: -6075883339127536894
+    second: Combat-Sheet_85
+  - first:
+      213: -3840901852523839531
+    second: Combat-Sheet_86
+  - first:
+      213: -4750201936812061473
+    second: Combat-Sheet_87
+  - first:
+      213: 8873713445479447119
+    second: Combat-Sheet_88
+  - first:
+      213: 7034495876383437422
+    second: Combat-Sheet_89
+  - first:
+      213: -5635858770078614181
+    second: Combat-Sheet_90
+  - first:
+      213: 5763603193845533440
+    second: Combat-Sheet_91
+  - first:
+      213: -3631941013651351000
+    second: Combat-Sheet_92
+  - first:
+      213: 3981891731631263707
+    second: Combat-Sheet_93
+  - first:
+      213: 8464309641750323263
+    second: Combat-Sheet_94
+  - first:
+      213: -7393096921453370935
+    second: Combat-Sheet_95
+  - first:
+      213: -7882926910786833933
+    second: Combat-Sheet_96
+  - first:
+      213: -2961881358158592396
+    second: Combat-Sheet_97
+  - first:
+      213: -2271528079858140692
+    second: Combat-Sheet_98
+  - first:
+      213: -5994841952398133316
+    second: Combat-Sheet_99
+  - first:
+      213: 1655986391239802205
+    second: Combat-Sheet_100
+  - first:
+      213: 3193488171673155076
+    second: Combat-Sheet_101
+  - first:
+      213: -7846982562304543223
+    second: Combat-Sheet_102
+  - first:
+      213: 6539698409913961779
+    second: Combat-Sheet_103
+  - first:
+      213: 4980807217351481588
+    second: Combat-Sheet_104
+  - first:
+      213: -1137126099662650098
+    second: Combat-Sheet_105
+  - first:
+      213: -8737133455371193061
+    second: Combat-Sheet_106
+  - first:
+      213: -5454992707790347341
+    second: Combat-Sheet_107
+  - first:
+      213: 646388711817385711
+    second: Combat-Sheet_108
+  - first:
+      213: 3525695299363165068
+    second: Combat-Sheet_109
+  - first:
+      213: 7063458880316853740
+    second: Combat-Sheet_110
+  - first:
+      213: -3801824816283436045
+    second: Combat-Sheet_111
+  - first:
+      213: 2987788275061647574
+    second: Combat-Sheet_112
+  - first:
+      213: -6378342756852473661
+    second: Combat-Sheet_113
+  - first:
+      213: -4346063154461017971
+    second: Combat-Sheet_114
+  - first:
+      213: -4681394075479067720
+    second: Combat-Sheet_115
+  - first:
+      213: -3571398891911898726
+    second: Combat-Sheet_116
+  - first:
+      213: -3318436468297962135
+    second: Combat-Sheet_117
+  - first:
+      213: 1178514117101519585
+    second: Combat-Sheet_118
+  - first:
+      213: -8046210981435934643
+    second: Combat-Sheet_119
+  - first:
+      213: 6408671931020011762
+    second: Combat-Sheet_120
+  - first:
+      213: 6653523349830584532
+    second: Combat-Sheet_121
+  - first:
+      213: 4741196237541751767
+    second: Combat-Sheet_122
+  - first:
+      213: 8493881853128854791
+    second: Combat-Sheet_123
+  - first:
+      213: -4215459400221010508
+    second: Combat-Sheet_124
+  - first:
+      213: -3230663328140700453
+    second: Combat-Sheet_125
+  - first:
+      213: -8590833566228432600
+    second: Combat-Sheet_126
+  - first:
+      213: -1763839740868825235
+    second: Combat-Sheet_127
+  - first:
+      213: -8010712929639248632
+    second: Combat-Sheet_128
+  - first:
+      213: -6086536571378249252
+    second: Combat-Sheet_129
+  - first:
+      213: -6341335874192531029
+    second: Combat-Sheet_130
+  - first:
+      213: -1506713520035123043
+    second: Combat-Sheet_131
+  - first:
+      213: 2763416963884040953
+    second: Combat-Sheet_132
+  - first:
+      213: -2666838166153430100
+    second: Combat-Sheet_133
+  - first:
+      213: -7566027289068016968
+    second: Combat-Sheet_134
+  - first:
+      213: 3439505041081501590
+    second: Combat-Sheet_135
+  - first:
+      213: 1353029848726889972
+    second: Combat-Sheet_136
+  - first:
+      213: 4687143779131740912
+    second: Combat-Sheet_137
+  - first:
+      213: 5574850196653501470
+    second: Combat-Sheet_138
+  - first:
+      213: -1395233006264192614
+    second: Combat-Sheet_139
+  - first:
+      213: -7522630016488542737
+    second: Combat-Sheet_140
+  - first:
+      213: 642731581198099314
+    second: Combat-Sheet_141
+  - first:
+      213: -5462041023756220702
+    second: Combat-Sheet_142
+  - first:
+      213: -7499904219265419078
+    second: Combat-Sheet_143
+  - first:
+      213: 3327738015532354053
+    second: Combat-Sheet_144
+  - first:
+      213: -1073477980273516865
+    second: Combat-Sheet_145
+  - first:
+      213: -1326655092751384894
+    second: Combat-Sheet_146
+  - first:
+      213: 6927578304000888993
+    second: Combat-Sheet_147
+  - first:
+      213: 7546245105256076262
+    second: Combat-Sheet_148
+  - first:
+      213: 4590844105158842551
+    second: Combat-Sheet_149
+  - first:
+      213: 5885473230915217826
+    second: Combat-Sheet_150
+  - first:
+      213: -18251801592415257
+    second: Combat-Sheet_151
+  - first:
+      213: 1839004275240606205
+    second: Combat-Sheet_152
+  - first:
+      213: 753285857546862687
+    second: Combat-Sheet_153
+  - first:
+      213: -2342439184491728518
+    second: Combat-Sheet_154
+  - first:
+      213: 8170215586339093782
+    second: Combat-Sheet_155
+  - first:
+      213: 368001139648689053
+    second: Combat-Sheet_156
+  - first:
+      213: 9050490945819469754
+    second: Combat-Sheet_157
+  - first:
+      213: 391384665013223871
+    second: Combat-Sheet_158
+  - first:
+      213: -6643360994060021167
+    second: Combat-Sheet_159
+  - first:
+      213: 4683516027288858204
+    second: Combat-Sheet_160
+  - first:
+      213: 1388773351197631027
+    second: Combat-Sheet_161
+  - first:
+      213: 6805828287026671032
+    second: Combat-Sheet_162
+  - first:
+      213: 3782119549681805804
+    second: Combat-Sheet_163
+  - first:
+      213: -1474034701193790975
+    second: Combat-Sheet_164
+  - first:
+      213: 7029589288416878676
+    second: Combat-Sheet_165
+  - first:
+      213: -8981388160097113158
+    second: Combat-Sheet_166
+  - first:
+      213: 6345314254647084661
+    second: Combat-Sheet_167
+  - first:
+      213: 2824142128723248191
+    second: Combat-Sheet_168
+  - first:
+      213: -6378683034998777852
+    second: Combat-Sheet_169
+  - first:
+      213: -4959752557732735097
+    second: Combat-Sheet_170
+  - first:
+      213: 8143113321340059143
+    second: Combat-Sheet_171
+  - first:
+      213: -4505321541303841985
+    second: Combat-Sheet_172
+  - first:
+      213: 597614976274240036
+    second: Combat-Sheet_173
+  - first:
+      213: -5994936591910573781
+    second: Combat-Sheet_174
+  - first:
+      213: -1194230792496867884
+    second: Combat-Sheet_175
+  - first:
+      213: 7334262803741642541
+    second: Combat-Sheet_176
+  - first:
+      213: -8006023023660717878
+    second: Combat-Sheet_177
+  - first:
+      213: -6656510111344183454
+    second: Combat-Sheet_178
+  - first:
+      213: -7451093139513264775
+    second: Combat-Sheet_179
+  - first:
+      213: 1335941690839320513
+    second: Combat-Sheet_180
+  - first:
+      213: 5935802724325140555
+    second: Combat-Sheet_181
+  - first:
+      213: -2737746675360851373
+    second: Combat-Sheet_182
+  - first:
+      213: -4804830460120219839
+    second: Combat-Sheet_183
+  - first:
+      213: -7039849001605591432
+    second: Combat-Sheet_184
+  - first:
+      213: 7588196934316478813
+    second: Combat-Sheet_185
+  - first:
+      213: 944903210442666288
+    second: Combat-Sheet_186
+  - first:
+      213: 7342408392483596110
+    second: Combat-Sheet_187
+  - first:
+      213: 7479967964447986817
+    second: Combat-Sheet_188
+  - first:
+      213: -7087659289693702599
+    second: Combat-Sheet_189
+  - first:
+      213: 2289677850294775642
+    second: Combat-Sheet_190
+  - first:
+      213: 5369916954631020744
+    second: Combat-Sheet_191
+  - first:
+      213: -2642395044495874840
+    second: Combat-Sheet_192
+  - first:
+      213: -8504286513052558569
+    second: Combat-Sheet_193
+  - first:
+      213: 6116406031074380664
+    second: Combat-Sheet_194
+  - first:
+      213: 4725306361471862924
+    second: Combat-Sheet_195
+  - first:
+      213: 4585208459743238612
+    second: Combat-Sheet_196
+  - first:
+      213: -4220583764038395073
+    second: Combat-Sheet_197
+  - first:
+      213: -2919236521557935762
+    second: Combat-Sheet_198
+  - first:
+      213: -4317526656879827717
+    second: Combat-Sheet_199
+  - first:
+      213: 3360444895146550696
+    second: Combat-Sheet_200
+  - first:
+      213: 5659192400558563311
+    second: Combat-Sheet_201
+  - first:
+      213: 501823414390688860
+    second: Combat-Sheet_202
+  - first:
+      213: -7846984292625685769
+    second: Combat-Sheet_203
+  - first:
+      213: -7566453134575931551
+    second: Combat-Sheet_204
+  - first:
+      213: 1349171576058359948
+    second: Combat-Sheet_205
+  - first:
+      213: -6393481492121006423
+    second: Combat-Sheet_206
+  - first:
+      213: -8504788868680850657
+    second: Combat-Sheet_207
+  - first:
+      213: -5756814639881258126
+    second: Combat-Sheet_208
+  - first:
+      213: -3643235439027741147
+    second: Combat-Sheet_209
+  - first:
+      213: -5947619629453807735
+    second: Combat-Sheet_210
+  - first:
+      213: 4860710873678582166
+    second: Combat-Sheet_211
+  - first:
+      213: 7313069096105666759
+    second: Combat-Sheet_212
+  - first:
+      213: 5535992364305596437
+    second: Combat-Sheet_213
+  - first:
+      213: 6954110776936245727
+    second: Combat-Sheet_214
+  - first:
+      213: -1258160055327468076
+    second: Combat-Sheet_215
+  - first:
+      213: 367076994008941274
+    second: Combat-Sheet_216
+  - first:
+      213: 5213609031981786693
+    second: Combat-Sheet_217
+  - first:
+      213: -6819113744500158611
+    second: Combat-Sheet_218
+  - first:
+      213: -6662653542062060768
+    second: Combat-Sheet_219
+  - first:
+      213: -5447787587681539291
+    second: Combat-Sheet_220
+  - first:
+      213: -3572492660014867596
+    second: Combat-Sheet_221
+  - first:
+      213: -5566254692122467950
+    second: Combat-Sheet_222
+  - first:
+      213: -5310575887449231032
+    second: Combat-Sheet_223
+  - first:
+      213: 6356687747774288166
+    second: Combat-Sheet_224
+  - first:
+      213: -7095432203482643195
+    second: Combat-Sheet_225
+  - first:
+      213: 8300407506170467937
+    second: Combat-Sheet_226
+  - first:
+      213: -2515098986139941645
+    second: Combat-Sheet_227
+  - first:
+      213: 1982713518342153332
+    second: Combat-Sheet_228
+  - first:
+      213: -1479737140153575277
+    second: Combat-Sheet_229
+  - first:
+      213: -854414103978062343
+    second: Combat-Sheet_230
+  - first:
+      213: -8187982453432902220
+    second: Combat-Sheet_231
+  - first:
+      213: 8168565824741027873
+    second: Combat-Sheet_232
+  - first:
+      213: -2909090843031246059
+    second: Combat-Sheet_233
+  - first:
+      213: -4943191670836144374
+    second: Combat-Sheet_234
+  - first:
+      213: 1823468880924071518
+    second: Combat-Sheet_235
+  - first:
+      213: 3102913610654104588
+    second: Combat-Sheet_236
+  - first:
+      213: 6337916440959400808
+    second: Combat-Sheet_237
+  - first:
+      213: -8817221688159437162
+    second: Combat-Sheet_238
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Combat-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1846
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 478952f973a707710800000000000000
+      internalID: 1688984239575767156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1843
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc412e5e71ac94df0800000000000000
+      internalID: -195402904824048437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1796
+        width: 49
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59d0bb845e0df81c0800000000000000
+      internalID: -4499147819533529707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1797
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fdbb1fba268fca40800000000000000
+      internalID: 5390674797138787828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 1811
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e394644360892c8e0800000000000000
+      internalID: -1674608959014155970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1807
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c69e4ee98d79b310800000000000000
+      internalID: 1421305188774221507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1797
+        width: 92
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b09f9dce7c775300800000000000000
+      internalID: 240797989145120947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1767
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107d347e301607f50800000000000000
+      internalID: 6877103300387526401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1738
+        width: 25
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e508920a9ac91010800000000000000
+      internalID: 1160181141841905121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1735
+        width: 20
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3917c366f75faa750800000000000000
+      internalID: 6317131354865430931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1734
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6772a4e1f18fdd680800000000000000
+      internalID: -8728547690238302346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1667
+        width: 36
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04804f1b485d5fff0800000000000000
+      internalID: -2861458845857728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1673
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3b8cfd8525ada690800000000000000
+      internalID: -7589228216334906563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1703
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21e54a54724bb5950800000000000000
+      internalID: 6438938173021380114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 1721
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2f83e3c85646a1b0800000000000000
+      internalID: -5645747735804801234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1706
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cc21c0c4f6cc7500800000000000000
+      internalID: 395409621809966274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1712
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d925ad36b79bd1960800000000000000
+      internalID: 7574414087914410653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1687
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d2364a3e07cb870800000000000000
+      internalID: 8699952703190805772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1697
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50578ea2412954fa0800000000000000
+      internalID: -5817082728362248955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 1695
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a07561938575e3c40800000000000000
+      internalID: 5493924631865087754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1698
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d14b2b093bf1590800000000000000
+      internalID: -7701239403725447839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1683
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf3c5a9957b66720800000000000000
+      internalID: 2839158210573385664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 1683
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 709353ee2e3afc460800000000000000
+      internalID: 7264204919026301191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1687
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b59f7735a17bd510800000000000000
+      internalID: 1574977449110771120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1674
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6c0b3fcc0c3f6760800000000000000
+      internalID: 7453241934035487852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1674
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45deaad431acaaeb0800000000000000
+      internalID: -4707728276206195372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1609
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e205d6249eb0230800000000000000
+      internalID: 3606232398151298705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1611
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 287cb42b4c6b0ca90800000000000000
+      internalID: -7295630440419047550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1617
+        width: 13
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0495ec15c7bf35bc0800000000000000
+      internalID: -3795413549576201920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1627
+        width: 34
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e0fa6858b0a19720800000000000000
+      internalID: 2851236752720064745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1626
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10f8f06254fe80170800000000000000
+      internalID: 8145023006369877761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1625
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0223f1041789b44e0800000000000000
+      internalID: -1996334397634170336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1625
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0ddd442929849ad0800000000000000
+      internalID: -2696379467092337393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1623
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb8863cda4a5a01c0800000000000000
+      internalID: -4536714397053712193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1565
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ea2d3a5d32982690800000000000000
+      internalID: -7626685176747316503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 1558
+        width: 11
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5fd947692867f7c0800000000000000
+      internalID: -4037644013878517922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1565
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eab7b92cf51a41530800000000000000
+      internalID: 3824859416203328430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 1548
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8db0b5d5137769c80800000000000000
+      internalID: -8316328607989691432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1482
+        width: 52
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78694800489f4ad80800000000000000
+      internalID: -8240187072841476473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1481
+        width: 45
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d10b1fa2b1e10aab0800000000000000
+      internalID: -4998962484347817955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1548
+        width: 42
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55384c366cc843bb0800000000000000
+      internalID: -4957182506122837163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1489
+        width: 50
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1ad56c2d1be6f90800000000000000
+      internalID: -6958428855411564090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1488
+        width: 50
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c48dbfff62e82cb0800000000000000
+      internalID: -4888408424850815802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1484
+        width: 54
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2808ab57f590abc60800000000000000
+      internalID: 7834584807366099074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1508
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c51e6dc9d5da67280800000000000000
+      internalID: -9045852183952170660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1510
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a57e49eedebfed70800000000000000
+      internalID: 9074681638781089188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1508
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7471b78e846253600800000000000000
+      internalID: 447305832573114183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1483
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f09c0caa0545f50800000000000000
+      internalID: 6869204025955913562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1510
+        width: 33
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7b1ef26184687760800000000000000
+      internalID: 7455819689986235259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 1486
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d47d05815f1cd4f0800000000000000
+      internalID: -802732198593727272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1494
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 446b1b2b0bf822520800000000000000
+      internalID: 2675859117686502980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 1499
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdb5d8bc6d5d2dcc0800000000000000
+      internalID: -3687650026348258340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1422
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a821bcaf9af6a8a40800000000000000
+      internalID: 5371228281440506506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1438
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb712087d0e69a0b0800000000000000
+      internalID: -5716917247843100737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1436
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 165f41ca5f0beeb90800000000000000
+      internalID: -7210631384173054623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1445
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9eba22bf5c43b810800000000000000
+      internalID: 1779850251636227738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1453
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94cbf1e5b68e9cae0800000000000000
+      internalID: -1528435050677289911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1453
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 958f7126c1984a560800000000000000
+      internalID: 7324129649009096793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1437
+        width: 17
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b4eba7ac71534c0800000000000000
+      internalID: -4308511310099887231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1438
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63984f4ac03127de0800000000000000
+      internalID: -1336985194347591370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1417
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d46f8fe095e5cbaf0800000000000000
+      internalID: -379324532009666995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1414
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e9d5254b1d2c5020800000000000000
+      internalID: 2331788302218549737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1387
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4ac7f24d940cd30800000000000000
+      internalID: 4449637607520642212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1369
+        width: 25
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ac52108ed714550800000000000000
+      internalID: 6143329802115205779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 1369
+        width: 49
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31f98396edda47090800000000000000
+      internalID: -8037608264189829357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1318
+        width: 35
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f83a9af703808bf20800000000000000
+      internalID: 3438507319890649999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1305
+        width: 39
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0028d240751d31950800000000000000
+      internalID: 6418704065595539968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 1362
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 981260be11cd4ed80800000000000000
+      internalID: -8222205050156080759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1301
+        width: 80
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 739a1ba07f5b36a50800000000000000
+      internalID: 6513249558748834103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1362
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d061b73807b85d440800000000000000
+      internalID: 4960023879976949261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1371
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef9ea5b8a0dee64e0800000000000000
+      internalID: -1986389756080363010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1356
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72bd701d56db4260800000000000000
+      internalID: 7082990534167212669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1229
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 206113f60ed60eed0800000000000000
+      internalID: -2386786991800773118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 1229
+        width: 26
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2feecc01498221b0800000000000000
+      internalID: -5682828867307376850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1229
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38a8ca56e5fc58590800000000000000
+      internalID: -7672498385816089981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1229
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f91bd260d53299640800000000000000
+      internalID: 5087136136534274463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 1228
+        width: 16
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97f1dda18cabb6b20800000000000000
+      internalID: 3128799734745866105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1177
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f031f870896fe22d0800000000000000
+      internalID: -3301430343993715953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1173
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 768a94408f8eeeee0800000000000000
+      internalID: -1229789496304097177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 1160
+        width: 36
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46693ca74d25cb970800000000000000
+      internalID: 8771977246757066340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_80
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1170
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37e7580576378c260800000000000000
+      internalID: 7118066098628820595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_81
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1160
+        width: 31
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a324297103b839580800000000000000
+      internalID: -8821554206418517446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_82
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1161
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 437141c0b543764a0800000000000000
+      internalID: -6600249163238861004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_83
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1117
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7f51e6d0b5265d50800000000000000
+      internalID: 6725604534973980541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_84
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1097
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db77bc944c46abb90800000000000000
+      internalID: -7225351857948100675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_85
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 1097
+        width: 49
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 203c6926b402eaba0800000000000000
+      internalID: -6075883339127536894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_86
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1100
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df3d277d1062bac0800000000000000
+      internalID: -3840901852523839531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_87
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1100
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdcc1f09184e31eb0800000000000000
+      internalID: -4750201936812061473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_88
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1097
+        width: 22
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4af86c1d53c52b70800000000000000
+      internalID: 8873713445479447119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_89
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1053
+        width: 52
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e62f8cdaabc8f9160800000000000000
+      internalID: 7034495876383437422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_90
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1100
+        width: 46
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5db1350f4869c1b0800000000000000
+      internalID: -5635858770078614181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_91
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1105
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00b4873619e6cff40800000000000000
+      internalID: 5763603193845533440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_92
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 1046
+        width: 45
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a932414e0c89dc0800000000000000
+      internalID: -3631941013651351000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_93
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 1049
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf42f5de65824730800000000000000
+      internalID: 3981891731631263707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_94
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 1052
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f302179f5c4477570800000000000000
+      internalID: 8464309641750323263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_95
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 977
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c1ecbe2581766990800000000000000
+      internalID: -7393096921453370935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_96
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 977
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f1fe2c7db73a9290800000000000000
+      internalID: -7882926910786833933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_97
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 977
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4760b14f89845e6d0800000000000000
+      internalID: -2961881358158592396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_98
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 977
+        width: 96
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce9fab61f39e970e0800000000000000
+      internalID: -2271528079858140692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_99
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 986
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb733be910b0ecca0800000000000000
+      internalID: -5994841952398133316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_100
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 978
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5dbaba59de3bf610800000000000000
+      internalID: 1655986391239802205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_101
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 914
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4067df2829c815c20800000000000000
+      internalID: 3193488171673155076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_102
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 913
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90637274feae91390800000000000000
+      internalID: -7846982562304543223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_103
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 912
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33dcb151e0da1ca50800000000000000
+      internalID: 6539698409913961779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_104
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 909
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f8dfe456c16f1540800000000000000
+      internalID: 4980807217351481588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_105
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 908
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0548cc46dd1830f0800000000000000
+      internalID: -1137126099662650098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_106
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 915
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b153b65e9677fb680800000000000000
+      internalID: -8737133455371193061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_107
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 908
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b36fc7b809fb44b0800000000000000
+      internalID: -5454992707790347341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_108
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 867
+        width: 42
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe692b2db1f68f800800000000000000
+      internalID: 646388711817385711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_109
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 805
+        width: 58
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c835ec0e139cde030800000000000000
+      internalID: 3525695299363165068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_110
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 848
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ced4dd68d62760260800000000000000
+      internalID: 7063458880316853740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_111
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 848
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fb3927f8743d3bc0800000000000000
+      internalID: -3801824816283436045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_112
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 882
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d8602f2b91c67920800000000000000
+      internalID: 2987788275061647574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_113
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 887
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c06f1a7e039b77a0800000000000000
+      internalID: -6378342756852473661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_114
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 887
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d88ffe2669eafa3c0800000000000000
+      internalID: -4346063154461017971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_115
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 889
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b3b37534e8580fb0800000000000000
+      internalID: -4681394075479067720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_116
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 879
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a991e5041a7df6ec0800000000000000
+      internalID: -3571398891911898726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_117
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 868
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96de5692d9b82f1d0800000000000000
+      internalID: -3318436468297962135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_118
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 859
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e28e90785cea5010800000000000000
+      internalID: 1178514117101519585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_119
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 872
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d48f9a73ebd165090800000000000000
+      internalID: -8046210981435934643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_120
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 850
+        width: 12
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f8e67aaa2d20f850800000000000000
+      internalID: 6408671931020011762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_121
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 848
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d84b6b1c30165c50800000000000000
+      internalID: 6653523349830584532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_122
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 770
+        width: 22
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db381dabdc1cc140800000000000000
+      internalID: 4741196237541751767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_123
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 774
+        width: 51
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70dc1ebfa8450e570800000000000000
+      internalID: 8493881853128854791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_124
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 808
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b5debc820eaf75c0800000000000000
+      internalID: -4215459400221010508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_125
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 769
+        width: 73
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd4da41e1d06a23d0800000000000000
+      internalID: -3230663328140700453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_126
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 770
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 829b370436a37c880800000000000000
+      internalID: -8590833566228432600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_127
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 713
+        width: 18
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6febc4d9159587e0800000000000000
+      internalID: -1763839740868825235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_128
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 751
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80d4937780b34d090800000000000000
+      internalID: -8010712929639248632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_129
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 718
+        width: 21
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd153967c37488ba0800000000000000
+      internalID: -6086536571378249252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_130
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 723
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba12059ce9c0ff7a0800000000000000
+      internalID: -6341335874192531029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_131
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 714
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9037045904171be0800000000000000
+      internalID: -1506713520035123043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_132
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 726
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f2c8926611a95620800000000000000
+      internalID: 2763416963884040953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_133
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 717
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab78f041dc7dfad0800000000000000
+      internalID: -2666838166153430100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_134
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 709
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ba60326442100790800000000000000
+      internalID: -7566027289068016968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_135
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 678
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69704d09c939bbf20800000000000000
+      internalID: 3439505041081501590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_136
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 684
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f5eddf8a7de6c210800000000000000
+      internalID: 1353029848726889972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_137
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 681
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f2545efe641c0140800000000000000
+      internalID: 4687143779131740912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_138
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 654
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1c6c8f87b8dd5d40800000000000000
+      internalID: 5574850196653501470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_139
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 648
+        width: 15
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a91f8ba19f223ace0800000000000000
+      internalID: -1395233006264192614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_140
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 655
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed628a4bdf3a9790800000000000000
+      internalID: -7522630016488542737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_141
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 646
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273ec3fb7f07be800800000000000000
+      internalID: 642731581198099314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_142
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 563
+        width: 60
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e64666c0aee234b0800000000000000
+      internalID: -5462041023756220702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_143
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 603
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab83b3949dcfae790800000000000000
+      internalID: -7499904219265419078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_144
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 601
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50a8e5118108e2e20800000000000000
+      internalID: 3327738015532354053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_145
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 604
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbed797e67d3a11f0800000000000000
+      internalID: -1073477980273516865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_146
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 603
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ce3719d836c69de0800000000000000
+      internalID: -1326655092751384894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_147
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 605
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a01dab73c3b32060800000000000000
+      internalID: 6927578304000888993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_148
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 607
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e391d601f5a9b860800000000000000
+      internalID: 7546245105256076262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_149
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 592
+        width: 31
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b8503be364f5bf30800000000000000
+      internalID: 4590844105158842551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_150
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 587
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a9a5cf88b66da150800000000000000
+      internalID: 5885473230915217826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_151
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 617
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ebb29945182fbff0800000000000000
+      internalID: -18251801592415257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_152
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 586
+        width: 20
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df9142615a4758910800000000000000
+      internalID: 1839004275240606205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_153
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 581
+        width: 85
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5008611f75347a00800000000000000
+      internalID: 753285857546862687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_154
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 530
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a713a64f8fbfd7fd0800000000000000
+      internalID: -2342439184491728518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_155
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 524
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61df912c9cf626170800000000000000
+      internalID: 8170215586339093782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_156
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 539
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d93f2b536176b1500800000000000000
+      internalID: 368001139648689053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_157
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 523
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab7657c409dc99d70800000000000000
+      internalID: 9050490945819469754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_158
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 517
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb106a8774a7e6500800000000000000
+      internalID: 391384665013223871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_159
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 522
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 152dd5abf5a0ec3a0800000000000000
+      internalID: -6643360994060021167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_160
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 517
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5ea66233013ff040800000000000000
+      internalID: 4683516027288858204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_161
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 518
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 332e9af310ae54310800000000000000
+      internalID: 1388773351197631027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_162
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 465
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bda78aa4c8237e50800000000000000
+      internalID: 6805828287026671032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_163
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 460
+        width: 46
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce928d021b9cc7430800000000000000
+      internalID: 3782119549681805804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_164
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 497
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10abeb0cf3d2b8be0800000000000000
+      internalID: -1474034701193790975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_165
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 457
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 450aaf4a63e1e8160800000000000000
+      internalID: 7029589288416878676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_166
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 455
+        width: 51
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb2387cd03bb5380800000000000000
+      internalID: -8981388160097113158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_167
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 453
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 576467812b51f0850800000000000000
+      internalID: 6345314254647084661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_168
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 472
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f34c3c99d4e513720800000000000000
+      internalID: 2824142128723248191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_169
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 386
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 408561c439d5a77a0800000000000000
+      internalID: -6378683034998777852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_170
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 386
+        width: 24
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 787518e935b6b2bb0800000000000000
+      internalID: -4959752557732735097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_171
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 384
+        width: 29
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70eb934fb66220170800000000000000
+      internalID: 8143113321340059143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_172
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 385
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3b4babade1e971c0800000000000000
+      internalID: -4505321541303841985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_173
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 386
+        width: 25
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 422974597a72b4800800000000000000
+      internalID: 597614976274240036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_174
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 394
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b29ed24aee4bdcca0800000000000000
+      internalID: -5994936591910573781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_175
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 389
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d51469eb6d3d6fe0800000000000000
+      internalID: -1194230792496867884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_176
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 387
+        width: 31
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2f8162592988c560800000000000000
+      internalID: 7334262803741642541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_177
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 388
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac8aa1b4a74e4e090800000000000000
+      internalID: -8006023023660717878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_178
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 393
+        width: 15
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267b88942535f93a0800000000000000
+      internalID: -6656510111344183454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_179
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 391
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97536f66446689890800000000000000
+      internalID: -7451093139513264775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_180
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 341
+        width: 54
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c7cc13c3e73a8210800000000000000
+      internalID: 1335941690839320513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_181
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 341
+        width: 53
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b482238e025306250800000000000000
+      internalID: 5935802724325140555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_182
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 342
+        width: 54
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35a1c1a67e1910ad0800000000000000
+      internalID: -2737746675360851373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_183
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 342
+        width: 53
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14fbe825720d15db0800000000000000
+      internalID: -4804830460120219839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_184
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 261
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e09eab1ae6d4e90800000000000000
+      internalID: -7039849001605591432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_185
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 269
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5154a368e0be4960800000000000000
+      internalID: 7588196934316478813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_186
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 281
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 031bf8da678fc1d00800000000000000
+      internalID: 944903210442666288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_187
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 214
+        width: 50
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e47e4ddf78975e560800000000000000
+      internalID: 7342408392483596110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_188
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 305
+        width: 80
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 184593cab3f2ec760800000000000000
+      internalID: 7479967964447986817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_189
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 260
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9363fc49d6393ad90800000000000000
+      internalID: -7087659289693702599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_190
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 218
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f66e4afd196cf10800000000000000
+      internalID: 2289677850294775642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_191
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 215
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c0212ae407c58a40800000000000000
+      internalID: 5369916954631020744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_192
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 210
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e4229005b3545bd0800000000000000
+      internalID: -2642395044495874840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_193
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 214
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71b5b595974baf980800000000000000
+      internalID: -8504286513052558569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_194
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 214
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87bce3011e6d1e450800000000000000
+      internalID: 6116406031074380664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_195
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 226
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c888c6a9919a39140800000000000000
+      internalID: 4725306361471862924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_196
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 223
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d99c18fccee1af30800000000000000
+      internalID: 4585208459743238612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_197
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 214
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3bd5bf9d697d65c0800000000000000
+      internalID: -4220583764038395073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_198
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 229
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e693135b9d9cc77d0800000000000000
+      internalID: -2919236521557935762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_199
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 217
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4e56c71601514c0800000000000000
+      internalID: -4317526656879827717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_200
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 145
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a52c76e3d2b2ae20800000000000000
+      internalID: 3360444895146550696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_201
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 155
+        width: 42
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef12ee218d798e40800000000000000
+      internalID: 5659192400558563311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_202
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 165
+        width: 37
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5c0bb29cb5d6f600800000000000000
+      internalID: 501823414390688860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_203
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 157
+        width: 41
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f2e9f76c59e91390800000000000000
+      internalID: -7846984292625685769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_204
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 160
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16fe5ff76fe8ef690800000000000000
+      internalID: -7566453134575931551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_205
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 143
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c803304766839b210800000000000000
+      internalID: 1349171576058359948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_206
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 88
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aec710057ac547a0800000000000000
+      internalID: -6393481492121006423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_207
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 83
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f13e490959be8f980800000000000000
+      internalID: -8504788868680850657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_208
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 80
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27bfb10069fab10b0800000000000000
+      internalID: -5756814639881258126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_209
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 80
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52e13afbba0a07dc0800000000000000
+      internalID: -3643235439027741147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_210
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 79
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98fe347757fc57da0800000000000000
+      internalID: -5947619629453807735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_211
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 77
+        width: 43
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6919d7559c6b47340800000000000000
+      internalID: 4860710873678582166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_212
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 82
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c8e34bb89d3d7560800000000000000
+      internalID: 7313069096105666759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_213
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 101
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510c5b179bbc3dc40800000000000000
+      internalID: 5535992364305596437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_214
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 96
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd9200c38e6f18060800000000000000
+      internalID: 6954110776936245727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_215
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 87
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d5de9f781e1a8ee0800000000000000
+      internalID: -1258160055327468076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_216
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 83
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad20f19c49e181500800000000000000
+      internalID: 367076994008941274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_217
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 80
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 546ea0daac57a5840800000000000000
+      internalID: 5213609031981786693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_218
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 38
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6f8518bd24ad51a0800000000000000
+      internalID: -6819113744500158611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_219
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 39
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b84eb57ef7983a0800000000000000
+      internalID: -6662653542062060768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_220
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 36
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ba5787d029564b0800000000000000
+      internalID: -5447787587681539291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_221
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 40
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47b9f158ad4fb6ec0800000000000000
+      internalID: -3572492660014867596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_222
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 45
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29160ba49d0b0c2b0800000000000000
+      internalID: -5566254692122467950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_223
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 35
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84175d3fd5b0d46b0800000000000000
+      internalID: -5310575887449231032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_224
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 25
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6211a22d3dd773850800000000000000
+      internalID: 6356687747774288166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_225
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 36
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 505cc8f0106f78d90800000000000000
+      internalID: -7095432203482643195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_226
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 25
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 166d64046a8f03370800000000000000
+      internalID: 8300407506170467937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_227
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 26
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f40f243cc2981dd0800000000000000
+      internalID: -2515098986139941645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_228
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 31
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4742628a073048b10800000000000000
+      internalID: 1982713518342153332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_229
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 27
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 398913839eae67be0800000000000000
+      internalID: -1479737140153575277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_230
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 31
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fdcd4936e28424f0800000000000000
+      internalID: -854414103978062343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_231
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 22
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bd100427517e5e80800000000000000
+      internalID: -8187982453432902220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_232
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 12
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 120b514b6539c5170800000000000000
+      internalID: 8168565824741027873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_233
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 19
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51be7c19a45d0a7d0800000000000000
+      internalID: -2909090843031246059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_234
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 17
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0754239d51466bb0800000000000000
+      internalID: -4943191670836144374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_235
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 21
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e56557a39434e4910800000000000000
+      internalID: 1823468880924071518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_236
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 16
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0c33cb2d73cf0b20800000000000000
+      internalID: 3102913610654104588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_237
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 19
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86b3e7f5c6dc4f750800000000000000
+      internalID: 6337916440959400808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet_238
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ef26b179fe2a580800000000000000
+      internalID: -8817221688159437162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Combat-Sheet_0: 1688984239575767156
+      Combat-Sheet_1: -195402904824048437
+      Combat-Sheet_10: -8728547690238302346
+      Combat-Sheet_100: 1655986391239802205
+      Combat-Sheet_101: 3193488171673155076
+      Combat-Sheet_102: -7846982562304543223
+      Combat-Sheet_103: 6539698409913961779
+      Combat-Sheet_104: 4980807217351481588
+      Combat-Sheet_105: -1137126099662650098
+      Combat-Sheet_106: -8737133455371193061
+      Combat-Sheet_107: -5454992707790347341
+      Combat-Sheet_108: 646388711817385711
+      Combat-Sheet_109: 3525695299363165068
+      Combat-Sheet_11: -2861458845857728
+      Combat-Sheet_110: 7063458880316853740
+      Combat-Sheet_111: -3801824816283436045
+      Combat-Sheet_112: 2987788275061647574
+      Combat-Sheet_113: -6378342756852473661
+      Combat-Sheet_114: -4346063154461017971
+      Combat-Sheet_115: -4681394075479067720
+      Combat-Sheet_116: -3571398891911898726
+      Combat-Sheet_117: -3318436468297962135
+      Combat-Sheet_118: 1178514117101519585
+      Combat-Sheet_119: -8046210981435934643
+      Combat-Sheet_12: -7589228216334906563
+      Combat-Sheet_120: 6408671931020011762
+      Combat-Sheet_121: 6653523349830584532
+      Combat-Sheet_122: 4741196237541751767
+      Combat-Sheet_123: 8493881853128854791
+      Combat-Sheet_124: -4215459400221010508
+      Combat-Sheet_125: -3230663328140700453
+      Combat-Sheet_126: -8590833566228432600
+      Combat-Sheet_127: -1763839740868825235
+      Combat-Sheet_128: -8010712929639248632
+      Combat-Sheet_129: -6086536571378249252
+      Combat-Sheet_13: 6438938173021380114
+      Combat-Sheet_130: -6341335874192531029
+      Combat-Sheet_131: -1506713520035123043
+      Combat-Sheet_132: 2763416963884040953
+      Combat-Sheet_133: -2666838166153430100
+      Combat-Sheet_134: -7566027289068016968
+      Combat-Sheet_135: 3439505041081501590
+      Combat-Sheet_136: 1353029848726889972
+      Combat-Sheet_137: 4687143779131740912
+      Combat-Sheet_138: 5574850196653501470
+      Combat-Sheet_139: -1395233006264192614
+      Combat-Sheet_14: -5645747735804801234
+      Combat-Sheet_140: -7522630016488542737
+      Combat-Sheet_141: 642731581198099314
+      Combat-Sheet_142: -5462041023756220702
+      Combat-Sheet_143: -7499904219265419078
+      Combat-Sheet_144: 3327738015532354053
+      Combat-Sheet_145: -1073477980273516865
+      Combat-Sheet_146: -1326655092751384894
+      Combat-Sheet_147: 6927578304000888993
+      Combat-Sheet_148: 7546245105256076262
+      Combat-Sheet_149: 4590844105158842551
+      Combat-Sheet_15: 395409621809966274
+      Combat-Sheet_150: 5885473230915217826
+      Combat-Sheet_151: -18251801592415257
+      Combat-Sheet_152: 1839004275240606205
+      Combat-Sheet_153: 753285857546862687
+      Combat-Sheet_154: -2342439184491728518
+      Combat-Sheet_155: 8170215586339093782
+      Combat-Sheet_156: 368001139648689053
+      Combat-Sheet_157: 9050490945819469754
+      Combat-Sheet_158: 391384665013223871
+      Combat-Sheet_159: -6643360994060021167
+      Combat-Sheet_16: 7574414087914410653
+      Combat-Sheet_160: 4683516027288858204
+      Combat-Sheet_161: 1388773351197631027
+      Combat-Sheet_162: 6805828287026671032
+      Combat-Sheet_163: 3782119549681805804
+      Combat-Sheet_164: -1474034701193790975
+      Combat-Sheet_165: 7029589288416878676
+      Combat-Sheet_166: -8981388160097113158
+      Combat-Sheet_167: 6345314254647084661
+      Combat-Sheet_168: 2824142128723248191
+      Combat-Sheet_169: -6378683034998777852
+      Combat-Sheet_17: 8699952703190805772
+      Combat-Sheet_170: -4959752557732735097
+      Combat-Sheet_171: 8143113321340059143
+      Combat-Sheet_172: -4505321541303841985
+      Combat-Sheet_173: 597614976274240036
+      Combat-Sheet_174: -5994936591910573781
+      Combat-Sheet_175: -1194230792496867884
+      Combat-Sheet_176: 7334262803741642541
+      Combat-Sheet_177: -8006023023660717878
+      Combat-Sheet_178: -6656510111344183454
+      Combat-Sheet_179: -7451093139513264775
+      Combat-Sheet_18: -5817082728362248955
+      Combat-Sheet_180: 1335941690839320513
+      Combat-Sheet_181: 5935802724325140555
+      Combat-Sheet_182: -2737746675360851373
+      Combat-Sheet_183: -4804830460120219839
+      Combat-Sheet_184: -7039849001605591432
+      Combat-Sheet_185: 7588196934316478813
+      Combat-Sheet_186: 944903210442666288
+      Combat-Sheet_187: 7342408392483596110
+      Combat-Sheet_188: 7479967964447986817
+      Combat-Sheet_189: -7087659289693702599
+      Combat-Sheet_19: 5493924631865087754
+      Combat-Sheet_190: 2289677850294775642
+      Combat-Sheet_191: 5369916954631020744
+      Combat-Sheet_192: -2642395044495874840
+      Combat-Sheet_193: -8504286513052558569
+      Combat-Sheet_194: 6116406031074380664
+      Combat-Sheet_195: 4725306361471862924
+      Combat-Sheet_196: 4585208459743238612
+      Combat-Sheet_197: -4220583764038395073
+      Combat-Sheet_198: -2919236521557935762
+      Combat-Sheet_199: -4317526656879827717
+      Combat-Sheet_2: -4499147819533529707
+      Combat-Sheet_20: -7701239403725447839
+      Combat-Sheet_200: 3360444895146550696
+      Combat-Sheet_201: 5659192400558563311
+      Combat-Sheet_202: 501823414390688860
+      Combat-Sheet_203: -7846984292625685769
+      Combat-Sheet_204: -7566453134575931551
+      Combat-Sheet_205: 1349171576058359948
+      Combat-Sheet_206: -6393481492121006423
+      Combat-Sheet_207: -8504788868680850657
+      Combat-Sheet_208: -5756814639881258126
+      Combat-Sheet_209: -3643235439027741147
+      Combat-Sheet_21: 2839158210573385664
+      Combat-Sheet_210: -5947619629453807735
+      Combat-Sheet_211: 4860710873678582166
+      Combat-Sheet_212: 7313069096105666759
+      Combat-Sheet_213: 5535992364305596437
+      Combat-Sheet_214: 6954110776936245727
+      Combat-Sheet_215: -1258160055327468076
+      Combat-Sheet_216: 367076994008941274
+      Combat-Sheet_217: 5213609031981786693
+      Combat-Sheet_218: -6819113744500158611
+      Combat-Sheet_219: -6662653542062060768
+      Combat-Sheet_22: 7264204919026301191
+      Combat-Sheet_220: -5447787587681539291
+      Combat-Sheet_221: -3572492660014867596
+      Combat-Sheet_222: -5566254692122467950
+      Combat-Sheet_223: -5310575887449231032
+      Combat-Sheet_224: 6356687747774288166
+      Combat-Sheet_225: -7095432203482643195
+      Combat-Sheet_226: 8300407506170467937
+      Combat-Sheet_227: -2515098986139941645
+      Combat-Sheet_228: 1982713518342153332
+      Combat-Sheet_229: -1479737140153575277
+      Combat-Sheet_23: 1574977449110771120
+      Combat-Sheet_230: -854414103978062343
+      Combat-Sheet_231: -8187982453432902220
+      Combat-Sheet_232: 8168565824741027873
+      Combat-Sheet_233: -2909090843031246059
+      Combat-Sheet_234: -4943191670836144374
+      Combat-Sheet_235: 1823468880924071518
+      Combat-Sheet_236: 3102913610654104588
+      Combat-Sheet_237: 6337916440959400808
+      Combat-Sheet_238: -8817221688159437162
+      Combat-Sheet_24: 7453241934035487852
+      Combat-Sheet_25: -4707728276206195372
+      Combat-Sheet_26: 3606232398151298705
+      Combat-Sheet_27: -7295630440419047550
+      Combat-Sheet_28: -3795413549576201920
+      Combat-Sheet_29: 2851236752720064745
+      Combat-Sheet_3: 5390674797138787828
+      Combat-Sheet_30: 8145023006369877761
+      Combat-Sheet_31: -1996334397634170336
+      Combat-Sheet_32: -2696379467092337393
+      Combat-Sheet_33: -4536714397053712193
+      Combat-Sheet_34: -7626685176747316503
+      Combat-Sheet_35: -4037644013878517922
+      Combat-Sheet_36: 3824859416203328430
+      Combat-Sheet_37: -8316328607989691432
+      Combat-Sheet_38: -8240187072841476473
+      Combat-Sheet_39: -4998962484347817955
+      Combat-Sheet_4: -1674608959014155970
+      Combat-Sheet_40: -4957182506122837163
+      Combat-Sheet_41: -6958428855411564090
+      Combat-Sheet_42: -4888408424850815802
+      Combat-Sheet_43: 7834584807366099074
+      Combat-Sheet_44: -9045852183952170660
+      Combat-Sheet_45: 9074681638781089188
+      Combat-Sheet_46: 447305832573114183
+      Combat-Sheet_47: 6869204025955913562
+      Combat-Sheet_48: 7455819689986235259
+      Combat-Sheet_49: -802732198593727272
+      Combat-Sheet_5: 1421305188774221507
+      Combat-Sheet_50: 2675859117686502980
+      Combat-Sheet_51: -3687650026348258340
+      Combat-Sheet_52: 5371228281440506506
+      Combat-Sheet_53: -5716917247843100737
+      Combat-Sheet_54: -7210631384173054623
+      Combat-Sheet_55: 1779850251636227738
+      Combat-Sheet_56: -1528435050677289911
+      Combat-Sheet_57: 7324129649009096793
+      Combat-Sheet_58: -4308511310099887231
+      Combat-Sheet_59: -1336985194347591370
+      Combat-Sheet_6: 240797989145120947
+      Combat-Sheet_60: -379324532009666995
+      Combat-Sheet_61: 2331788302218549737
+      Combat-Sheet_62: 4449637607520642212
+      Combat-Sheet_63: 6143329802115205779
+      Combat-Sheet_64: -8037608264189829357
+      Combat-Sheet_65: 3438507319890649999
+      Combat-Sheet_66: 6418704065595539968
+      Combat-Sheet_67: -8222205050156080759
+      Combat-Sheet_68: 6513249558748834103
+      Combat-Sheet_69: 4960023879976949261
+      Combat-Sheet_7: 6877103300387526401
+      Combat-Sheet_70: -1986389756080363010
+      Combat-Sheet_71: 7082990534167212669
+      Combat-Sheet_72: -2386786991800773118
+      Combat-Sheet_73: -5682828867307376850
+      Combat-Sheet_74: -7672498385816089981
+      Combat-Sheet_75: 5087136136534274463
+      Combat-Sheet_76: 3128799734745866105
+      Combat-Sheet_77: -3301430343993715953
+      Combat-Sheet_78: -1229789496304097177
+      Combat-Sheet_79: 8771977246757066340
+      Combat-Sheet_8: 1160181141841905121
+      Combat-Sheet_80: 7118066098628820595
+      Combat-Sheet_81: -8821554206418517446
+      Combat-Sheet_82: -6600249163238861004
+      Combat-Sheet_83: 6725604534973980541
+      Combat-Sheet_84: -7225351857948100675
+      Combat-Sheet_85: -6075883339127536894
+      Combat-Sheet_86: -3840901852523839531
+      Combat-Sheet_87: -4750201936812061473
+      Combat-Sheet_88: 8873713445479447119
+      Combat-Sheet_89: 7034495876383437422
+      Combat-Sheet_9: 6317131354865430931
+      Combat-Sheet_90: -5635858770078614181
+      Combat-Sheet_91: 5763603193845533440
+      Combat-Sheet_92: -3631941013651351000
+      Combat-Sheet_93: 3981891731631263707
+      Combat-Sheet_94: 8464309641750323263
+      Combat-Sheet_95: -7393096921453370935
+      Combat-Sheet_96: -7882926910786833933
+      Combat-Sheet_97: -2961881358158592396
+      Combat-Sheet_98: -2271528079858140692
+      Combat-Sheet_99: -5994841952398133316
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
