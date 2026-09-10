@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitanEnemyController
   RB: {fileID: 3806599139381506063}
-  moveSpeed: 2
+  moveSpeed: 1.5
   attack: 25
   health: 200
   hitWaitTime: 1
@@ -300,8 +300,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.09866142, y: 0}
-  m_Size: {x: 4.775234, y: 9.77397}
+  m_Offset: {x: -0.03105545, y: 0}
+  m_Size: {x: 4.5158005, y: 9.77397}
   m_Direction: 0
 --- !u!50 &3806599139381506063
 Rigidbody2D:

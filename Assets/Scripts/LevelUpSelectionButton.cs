@@ -59,6 +59,10 @@ public class LevelUpSelectionButton : MonoBehaviour
         {
             upgradeDescText.text = "+" + selectedUpgrade + " Bounces";
         }
+        else if (selectedUpgradeType == UpgradeType.Area)
+        {
+            upgradeDescText.text = "+" + (selectedUpgrade * 100) + "% Area Size";
+        }
 
     }
 
@@ -67,7 +71,6 @@ public class LevelUpSelectionButton : MonoBehaviour
     {
         if (assignedWeapon != null)
         {
-            Debug.Log("Weapon: " + assignedWeapon.weaponName + " | Upgrade: " + selectedUpgradeType + " | Value: " + selectedUpgrade);
             if (selectedUpgradeType == UpgradeType.Damage)
             {
                 assignedWeapon.stats.damage += selectedUpgrade;
@@ -96,6 +99,10 @@ public class LevelUpSelectionButton : MonoBehaviour
             {
                 assignedWeapon.stats.bounces += selectedUpgrade;
             }
+            else if (selectedUpgradeType == UpgradeType.Area)
+            {
+                assignedWeapon.stats.area += selectedUpgrade;
+            }
 
             //Close level up screen and unpause time
             UIController.instance.levelUpPanel.SetActive(false);
@@ -105,10 +112,6 @@ public class LevelUpSelectionButton : MonoBehaviour
 
     public void Upgrade()
     {
-        Debug.Log("Weapon: " + assignedWeapon);
-        Debug.Log("Available upgrades: " + assignedWeapon.availableUpgrades);
-
-
         //Pick a random stat from the list of available upgrades the weapon accepts
         int randomStat = Random.Range(0, assignedWeapon.availableUpgrades.Length);
         selectedUpgradeType = assignedWeapon.availableUpgrades[randomStat];
@@ -148,6 +151,11 @@ public class LevelUpSelectionButton : MonoBehaviour
         {
             int randomChoice = Random.Range(0, assignedWeapon.stats.bouncesUpgrades.Length);
             selectedUpgrade = assignedWeapon.stats.bouncesUpgrades[randomChoice];
+        }
+        else if (selectedUpgradeType == UpgradeType.Area)
+        {
+            int randomChoice = Random.Range(0, assignedWeapon.stats.areaUpgrades.Length);
+            selectedUpgrade = assignedWeapon.stats.areaUpgrades[randomChoice];
         }
     }
 

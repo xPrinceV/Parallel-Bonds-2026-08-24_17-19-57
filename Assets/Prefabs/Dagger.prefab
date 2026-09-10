@@ -88,7 +88,7 @@ MonoBehaviour:
   duration: 0
   bounces: 0
   range: 0
-  shouldKnockback: 1
+  shouldKnockback: 0
 --- !u!1 &7084402185227299718
 GameObject:
   m_ObjectHideFlags: 0

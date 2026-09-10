@@ -1,0 +1,6680 @@
+fileFormatVersion: 2
+guid: 27aec4b97e80f0c45bce17607db3288e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2759204035774719728
+    second: Combat-Sheet + Weapon + Glow_0
+  - first:
+      213: -7457050819980167115
+    second: Combat-Sheet + Weapon + Glow_1
+  - first:
+      213: -2023984108258056779
+    second: Combat-Sheet + Weapon + Glow_2
+  - first:
+      213: -8781838701244590128
+    second: Combat-Sheet + Weapon + Glow_3
+  - first:
+      213: -4507480563521603612
+    second: Combat-Sheet + Weapon + Glow_4
+  - first:
+      213: 1281303825744313767
+    second: Combat-Sheet + Weapon + Glow_5
+  - first:
+      213: 5271060569006004683
+    second: Combat-Sheet + Weapon + Glow_6
+  - first:
+      213: 185880641716062260
+    second: Combat-Sheet + Weapon + Glow_7
+  - first:
+      213: -6271702236121636761
+    second: Combat-Sheet + Weapon + Glow_8
+  - first:
+      213: 4448475713843322092
+    second: Combat-Sheet + Weapon + Glow_9
+  - first:
+      213: -2883943571684536607
+    second: Combat-Sheet + Weapon + Glow_10
+  - first:
+      213: -7799420836258345140
+    second: Combat-Sheet + Weapon + Glow_11
+  - first:
+      213: 60781482577721529
+    second: Combat-Sheet + Weapon + Glow_12
+  - first:
+      213: 7588031085036296382
+    second: Combat-Sheet + Weapon + Glow_13
+  - first:
+      213: 6108376593456281646
+    second: Combat-Sheet + Weapon + Glow_14
+  - first:
+      213: 5281741584010549222
+    second: Combat-Sheet + Weapon + Glow_15
+  - first:
+      213: -5180600412744272408
+    second: Combat-Sheet + Weapon + Glow_16
+  - first:
+      213: -5687867929822168114
+    second: Combat-Sheet + Weapon + Glow_17
+  - first:
+      213: 4067176679377456874
+    second: Combat-Sheet + Weapon + Glow_18
+  - first:
+      213: 5145705858721314448
+    second: Combat-Sheet + Weapon + Glow_19
+  - first:
+      213: 2781341805097866184
+    second: Combat-Sheet + Weapon + Glow_20
+  - first:
+      213: -2365494855735867661
+    second: Combat-Sheet + Weapon + Glow_21
+  - first:
+      213: 3030611446070528448
+    second: Combat-Sheet + Weapon + Glow_22
+  - first:
+      213: -1524058713537101012
+    second: Combat-Sheet + Weapon + Glow_23
+  - first:
+      213: -5813724004848776921
+    second: Combat-Sheet + Weapon + Glow_24
+  - first:
+      213: 2018831051087544148
+    second: Combat-Sheet + Weapon + Glow_25
+  - first:
+      213: -269497615418417732
+    second: Combat-Sheet + Weapon + Glow_26
+  - first:
+      213: 1958960334872431710
+    second: Combat-Sheet + Weapon + Glow_27
+  - first:
+      213: 6676460602268413082
+    second: Combat-Sheet + Weapon + Glow_28
+  - first:
+      213: 2973384622344389946
+    second: Combat-Sheet + Weapon + Glow_29
+  - first:
+      213: -4848683897292000035
+    second: Combat-Sheet + Weapon + Glow_30
+  - first:
+      213: -8242663921038794336
+    second: Combat-Sheet + Weapon + Glow_31
+  - first:
+      213: -41869564483809725
+    second: Combat-Sheet + Weapon + Glow_32
+  - first:
+      213: 5229556421233907340
+    second: Combat-Sheet + Weapon + Glow_33
+  - first:
+      213: 2424249042547763301
+    second: Combat-Sheet + Weapon + Glow_34
+  - first:
+      213: 1804455126285034282
+    second: Combat-Sheet + Weapon + Glow_35
+  - first:
+      213: -5140357571708142519
+    second: Combat-Sheet + Weapon + Glow_36
+  - first:
+      213: 1571470914878589271
+    second: Combat-Sheet + Weapon + Glow_37
+  - first:
+      213: -3910615690426967362
+    second: Combat-Sheet + Weapon + Glow_38
+  - first:
+      213: -2396519514135788142
+    second: Combat-Sheet + Weapon + Glow_39
+  - first:
+      213: 4804435488074671062
+    second: Combat-Sheet + Weapon + Glow_40
+  - first:
+      213: 1072845392719131642
+    second: Combat-Sheet + Weapon + Glow_41
+  - first:
+      213: 8198991454470829664
+    second: Combat-Sheet + Weapon + Glow_42
+  - first:
+      213: -77886135761929901
+    second: Combat-Sheet + Weapon + Glow_43
+  - first:
+      213: 7577938586419636131
+    second: Combat-Sheet + Weapon + Glow_44
+  - first:
+      213: 1802824511870520645
+    second: Combat-Sheet + Weapon + Glow_45
+  - first:
+      213: -4190249318260593979
+    second: Combat-Sheet + Weapon + Glow_46
+  - first:
+      213: -3782977925441161406
+    second: Combat-Sheet + Weapon + Glow_47
+  - first:
+      213: -6459518043627201488
+    second: Combat-Sheet + Weapon + Glow_48
+  - first:
+      213: -2690967505253570886
+    second: Combat-Sheet + Weapon + Glow_49
+  - first:
+      213: 1855877578481874965
+    second: Combat-Sheet + Weapon + Glow_50
+  - first:
+      213: 5201585651559246400
+    second: Combat-Sheet + Weapon + Glow_51
+  - first:
+      213: -333634514658566558
+    second: Combat-Sheet + Weapon + Glow_52
+  - first:
+      213: 7760316885273986557
+    second: Combat-Sheet + Weapon + Glow_53
+  - first:
+      213: -2436615992189603809
+    second: Combat-Sheet + Weapon + Glow_54
+  - first:
+      213: -7824190018563998064
+    second: Combat-Sheet + Weapon + Glow_55
+  - first:
+      213: 7923126314726842441
+    second: Combat-Sheet + Weapon + Glow_56
+  - first:
+      213: -3641100494171204565
+    second: Combat-Sheet + Weapon + Glow_57
+  - first:
+      213: 6566360391869280926
+    second: Combat-Sheet + Weapon + Glow_58
+  - first:
+      213: 6147533378541935351
+    second: Combat-Sheet + Weapon + Glow_59
+  - first:
+      213: 9118486150988808693
+    second: Combat-Sheet + Weapon + Glow_60
+  - first:
+      213: 3682943095777663187
+    second: Combat-Sheet + Weapon + Glow_61
+  - first:
+      213: -1637181027242671359
+    second: Combat-Sheet + Weapon + Glow_62
+  - first:
+      213: 5749503558041511342
+    second: Combat-Sheet + Weapon + Glow_63
+  - first:
+      213: -7785381263578154500
+    second: Combat-Sheet + Weapon + Glow_64
+  - first:
+      213: 8251583989759355973
+    second: Combat-Sheet + Weapon + Glow_65
+  - first:
+      213: 2792901129931782358
+    second: Combat-Sheet + Weapon + Glow_66
+  - first:
+      213: -8828023526550851552
+    second: Combat-Sheet + Weapon + Glow_67
+  - first:
+      213: -6330477056225251266
+    second: Combat-Sheet + Weapon + Glow_68
+  - first:
+      213: 5433986788134755722
+    second: Combat-Sheet + Weapon + Glow_69
+  - first:
+      213: -2612010148149704977
+    second: Combat-Sheet + Weapon + Glow_70
+  - first:
+      213: -6224438944266548004
+    second: Combat-Sheet + Weapon + Glow_71
+  - first:
+      213: 5121850818643325275
+    second: Combat-Sheet + Weapon + Glow_72
+  - first:
+      213: -5995178878062067639
+    second: Combat-Sheet + Weapon + Glow_73
+  - first:
+      213: -562865921106884742
+    second: Combat-Sheet + Weapon + Glow_74
+  - first:
+      213: -3855394495419422028
+    second: Combat-Sheet + Weapon + Glow_75
+  - first:
+      213: -3131560406174824969
+    second: Combat-Sheet + Weapon + Glow_76
+  - first:
+      213: 775490062625497113
+    second: Combat-Sheet + Weapon + Glow_77
+  - first:
+      213: -7014364479760526103
+    second: Combat-Sheet + Weapon + Glow_78
+  - first:
+      213: -5847116197775772082
+    second: Combat-Sheet + Weapon + Glow_79
+  - first:
+      213: 9001673025044445319
+    second: Combat-Sheet + Weapon + Glow_80
+  - first:
+      213: -5614742951612539431
+    second: Combat-Sheet + Weapon + Glow_81
+  - first:
+      213: -2879719995696831281
+    second: Combat-Sheet + Weapon + Glow_82
+  - first:
+      213: -6048864839374445793
+    second: Combat-Sheet + Weapon + Glow_83
+  - first:
+      213: 5174538389872166223
+    second: Combat-Sheet + Weapon + Glow_84
+  - first:
+      213: -4668112181649498337
+    second: Combat-Sheet + Weapon + Glow_85
+  - first:
+      213: 3126791546785297912
+    second: Combat-Sheet + Weapon + Glow_86
+  - first:
+      213: 1876682287560023695
+    second: Combat-Sheet + Weapon + Glow_87
+  - first:
+      213: -5539230233077880147
+    second: Combat-Sheet + Weapon + Glow_88
+  - first:
+      213: 5831002545390112451
+    second: Combat-Sheet + Weapon + Glow_89
+  - first:
+      213: -164223897714420115
+    second: Combat-Sheet + Weapon + Glow_90
+  - first:
+      213: -2023787670346681254
+    second: Combat-Sheet + Weapon + Glow_91
+  - first:
+      213: -3437025634832849441
+    second: Combat-Sheet + Weapon + Glow_92
+  - first:
+      213: -7253223229448153871
+    second: Combat-Sheet + Weapon + Glow_93
+  - first:
+      213: 8689853035947388320
+    second: Combat-Sheet + Weapon + Glow_94
+  - first:
+      213: 2650031166719499753
+    second: Combat-Sheet + Weapon + Glow_95
+  - first:
+      213: 7009440214977130767
+    second: Combat-Sheet + Weapon + Glow_96
+  - first:
+      213: 1577711827162357427
+    second: Combat-Sheet + Weapon + Glow_97
+  - first:
+      213: 4282731801684015987
+    second: Combat-Sheet + Weapon + Glow_98
+  - first:
+      213: -2187459502068240957
+    second: Combat-Sheet + Weapon + Glow_99
+  - first:
+      213: -7562749371084277414
+    second: Combat-Sheet + Weapon + Glow_100
+  - first:
+      213: 5748161946265628529
+    second: Combat-Sheet + Weapon + Glow_101
+  - first:
+      213: -2853155853936062323
+    second: Combat-Sheet + Weapon + Glow_102
+  - first:
+      213: -4320803327886342232
+    second: Combat-Sheet + Weapon + Glow_103
+  - first:
+      213: -2642583431834644955
+    second: Combat-Sheet + Weapon + Glow_104
+  - first:
+      213: -6810194516393077268
+    second: Combat-Sheet + Weapon + Glow_105
+  - first:
+      213: -6013296703869437806
+    second: Combat-Sheet + Weapon + Glow_106
+  - first:
+      213: -7476318788487280501
+    second: Combat-Sheet + Weapon + Glow_107
+  - first:
+      213: -8429486895421705225
+    second: Combat-Sheet + Weapon + Glow_108
+  - first:
+      213: 845006295245647840
+    second: Combat-Sheet + Weapon + Glow_109
+  - first:
+      213: 6782824839771335587
+    second: Combat-Sheet + Weapon + Glow_110
+  - first:
+      213: 4412690984021246606
+    second: Combat-Sheet + Weapon + Glow_111
+  - first:
+      213: -3787419405262693427
+    second: Combat-Sheet + Weapon + Glow_112
+  - first:
+      213: 3995141072603666307
+    second: Combat-Sheet + Weapon + Glow_113
+  - first:
+      213: -5838482838487600995
+    second: Combat-Sheet + Weapon + Glow_114
+  - first:
+      213: -1613988243833855983
+    second: Combat-Sheet + Weapon + Glow_115
+  - first:
+      213: -1818727175631838461
+    second: Combat-Sheet + Weapon + Glow_116
+  - first:
+      213: 5319025711747997296
+    second: Combat-Sheet + Weapon + Glow_117
+  - first:
+      213: 6379521634463205555
+    second: Combat-Sheet + Weapon + Glow_118
+  - first:
+      213: -6582312420705878297
+    second: Combat-Sheet + Weapon + Glow_119
+  - first:
+      213: 4995405791208512841
+    second: Combat-Sheet + Weapon + Glow_120
+  - first:
+      213: 8492301850058479824
+    second: Combat-Sheet + Weapon + Glow_121
+  - first:
+      213: -2116074900920048899
+    second: Combat-Sheet + Weapon + Glow_122
+  - first:
+      213: -7683390199351126187
+    second: Combat-Sheet + Weapon + Glow_123
+  - first:
+      213: 8220704876251564355
+    second: Combat-Sheet + Weapon + Glow_124
+  - first:
+      213: -2807225479583827342
+    second: Combat-Sheet + Weapon + Glow_125
+  - first:
+      213: -2255242124714674061
+    second: Combat-Sheet + Weapon + Glow_126
+  - first:
+      213: 5147410818917279468
+    second: Combat-Sheet + Weapon + Glow_127
+  - first:
+      213: 4059776821982363912
+    second: Combat-Sheet + Weapon + Glow_128
+  - first:
+      213: 3396499096484527831
+    second: Combat-Sheet + Weapon + Glow_129
+  - first:
+      213: 932641835758905643
+    second: Combat-Sheet + Weapon + Glow_130
+  - first:
+      213: 4474699364422683300
+    second: Combat-Sheet + Weapon + Glow_131
+  - first:
+      213: -379272743242753735
+    second: Combat-Sheet + Weapon + Glow_132
+  - first:
+      213: 3909212872277297762
+    second: Combat-Sheet + Weapon + Glow_133
+  - first:
+      213: 216882288505752799
+    second: Combat-Sheet + Weapon + Glow_134
+  - first:
+      213: 192326883378971293
+    second: Combat-Sheet + Weapon + Glow_135
+  - first:
+      213: 8104323456917078254
+    second: Combat-Sheet + Weapon + Glow_136
+  - first:
+      213: 5439573011776266669
+    second: Combat-Sheet + Weapon + Glow_137
+  - first:
+      213: -4591008670940906256
+    second: Combat-Sheet + Weapon + Glow_138
+  - first:
+      213: -6493506675017937883
+    second: Combat-Sheet + Weapon + Glow_139
+  - first:
+      213: -4493965132188157916
+    second: Combat-Sheet + Weapon + Glow_140
+  - first:
+      213: -8552608737321304566
+    second: Combat-Sheet + Weapon + Glow_141
+  - first:
+      213: 5218580826873219674
+    second: Combat-Sheet + Weapon + Glow_142
+  - first:
+      213: -9024045548105529650
+    second: Combat-Sheet + Weapon + Glow_143
+  - first:
+      213: 1845236561964160848
+    second: Combat-Sheet + Weapon + Glow_144
+  - first:
+      213: 4499556340348360463
+    second: Combat-Sheet + Weapon + Glow_145
+  - first:
+      213: -8236997008136921811
+    second: Combat-Sheet + Weapon + Glow_146
+  - first:
+      213: 1056547088864553791
+    second: Combat-Sheet + Weapon + Glow_147
+  - first:
+      213: 730715151328140773
+    second: Combat-Sheet + Weapon + Glow_148
+  - first:
+      213: -7449172282016530559
+    second: Combat-Sheet + Weapon + Glow_149
+  - first:
+      213: -4245381928520680448
+    second: Combat-Sheet + Weapon + Glow_150
+  - first:
+      213: 4787778669608730965
+    second: Combat-Sheet + Weapon + Glow_151
+  - first:
+      213: -5009012846183214819
+    second: Combat-Sheet + Weapon + Glow_152
+  - first:
+      213: 1025922976352671505
+    second: Combat-Sheet + Weapon + Glow_153
+  - first:
+      213: 8097047739179257101
+    second: Combat-Sheet + Weapon + Glow_154
+  - first:
+      213: 2799375042406009675
+    second: Combat-Sheet + Weapon + Glow_155
+  - first:
+      213: 6618353637523365693
+    second: Combat-Sheet + Weapon + Glow_156
+  - first:
+      213: -4420383711097204891
+    second: Combat-Sheet + Weapon + Glow_157
+  - first:
+      213: -7614368015515855387
+    second: Combat-Sheet + Weapon + Glow_158
+  - first:
+      213: 5736518411064235253
+    second: Combat-Sheet + Weapon + Glow_159
+  - first:
+      213: 8111663231713406370
+    second: Combat-Sheet + Weapon + Glow_160
+  - first:
+      213: 401565698126693703
+    second: Combat-Sheet + Weapon + Glow_161
+  - first:
+      213: -5974845864660748628
+    second: Combat-Sheet + Weapon + Glow_162
+  - first:
+      213: 1588731150237175651
+    second: Combat-Sheet + Weapon + Glow_163
+  - first:
+      213: -6585208387410711250
+    second: Combat-Sheet + Weapon + Glow_164
+  - first:
+      213: -2558545266904725136
+    second: Combat-Sheet + Weapon + Glow_165
+  - first:
+      213: -5559020906895210650
+    second: Combat-Sheet + Weapon + Glow_166
+  - first:
+      213: -6152708403303711665
+    second: Combat-Sheet + Weapon + Glow_167
+  - first:
+      213: 8175983205524093017
+    second: Combat-Sheet + Weapon + Glow_168
+  - first:
+      213: -8966122674838744954
+    second: Combat-Sheet + Weapon + Glow_169
+  - first:
+      213: 3118376318209408862
+    second: Combat-Sheet + Weapon + Glow_170
+  - first:
+      213: 259743909666131871
+    second: Combat-Sheet + Weapon + Glow_171
+  - first:
+      213: 6298254029071014565
+    second: Combat-Sheet + Weapon + Glow_172
+  - first:
+      213: -4390197345447134114
+    second: Combat-Sheet + Weapon + Glow_173
+  - first:
+      213: -79541437959033784
+    second: Combat-Sheet + Weapon + Glow_174
+  - first:
+      213: 318774995999154595
+    second: Combat-Sheet + Weapon + Glow_175
+  - first:
+      213: -6658131263103441121
+    second: Combat-Sheet + Weapon + Glow_176
+  - first:
+      213: -9100929980626115228
+    second: Combat-Sheet + Weapon + Glow_177
+  - first:
+      213: -5472932910047433502
+    second: Combat-Sheet + Weapon + Glow_178
+  - first:
+      213: -4698930536108826176
+    second: Combat-Sheet + Weapon + Glow_179
+  - first:
+      213: 8974451956044673270
+    second: Combat-Sheet + Weapon + Glow_180
+  - first:
+      213: 645949737183143009
+    second: Combat-Sheet + Weapon + Glow_181
+  - first:
+      213: 1001733406805095537
+    second: Combat-Sheet + Weapon + Glow_182
+  - first:
+      213: -2469973727994305319
+    second: Combat-Sheet + Weapon + Glow_183
+  - first:
+      213: -5062421015456480306
+    second: Combat-Sheet + Weapon + Glow_184
+  - first:
+      213: -8117119185918881103
+    second: Combat-Sheet + Weapon + Glow_185
+  - first:
+      213: -4048865837575692983
+    second: Combat-Sheet + Weapon + Glow_186
+  - first:
+      213: 1674785961030064234
+    second: Combat-Sheet + Weapon + Glow_187
+  - first:
+      213: 642547791394978680
+    second: Combat-Sheet + Weapon + Glow_188
+  - first:
+      213: 1774634346382514627
+    second: Combat-Sheet + Weapon + Glow_189
+  - first:
+      213: 6075021647625275058
+    second: Combat-Sheet + Weapon + Glow_190
+  - first:
+      213: -6509258224040344946
+    second: Combat-Sheet + Weapon + Glow_191
+  - first:
+      213: -8114511312896806898
+    second: Combat-Sheet + Weapon + Glow_192
+  - first:
+      213: 1053610346675818131
+    second: Combat-Sheet + Weapon + Glow_193
+  - first:
+      213: -2617908187318401189
+    second: Combat-Sheet + Weapon + Glow_194
+  - first:
+      213: -6553973298593733454
+    second: Combat-Sheet + Weapon + Glow_195
+  - first:
+      213: -2509822860936193075
+    second: Combat-Sheet + Weapon + Glow_196
+  - first:
+      213: 6416038699170407217
+    second: Combat-Sheet + Weapon + Glow_197
+  - first:
+      213: 4871058412745798991
+    second: Combat-Sheet + Weapon + Glow_198
+  - first:
+      213: -1152025208476494611
+    second: Combat-Sheet + Weapon + Glow_199
+  - first:
+      213: -1283942473293276381
+    second: Combat-Sheet + Weapon + Glow_200
+  - first:
+      213: 6034473612760366814
+    second: Combat-Sheet + Weapon + Glow_201
+  - first:
+      213: -1769331008620039438
+    second: Combat-Sheet + Weapon + Glow_202
+  - first:
+      213: -9198944032668909522
+    second: Combat-Sheet + Weapon + Glow_203
+  - first:
+      213: -2374742521740855752
+    second: Combat-Sheet + Weapon + Glow_204
+  - first:
+      213: 9045984721209026136
+    second: Combat-Sheet + Weapon + Glow_205
+  - first:
+      213: -7053720689438567341
+    second: Combat-Sheet + Weapon + Glow_206
+  - first:
+      213: -3693348994956354408
+    second: Combat-Sheet + Weapon + Glow_207
+  - first:
+      213: -3140978907009930515
+    second: Combat-Sheet + Weapon + Glow_208
+  - first:
+      213: 1596701649657360299
+    second: Combat-Sheet + Weapon + Glow_209
+  - first:
+      213: -3389071296216259103
+    second: Combat-Sheet + Weapon + Glow_210
+  - first:
+      213: -5478746513618730198
+    second: Combat-Sheet + Weapon + Glow_211
+  - first:
+      213: 5785036332400460116
+    second: Combat-Sheet + Weapon + Glow_212
+  - first:
+      213: 7545558433244086583
+    second: Combat-Sheet + Weapon + Glow_213
+  - first:
+      213: -233023013393720807
+    second: Combat-Sheet + Weapon + Glow_214
+  - first:
+      213: 6126542877236096306
+    second: Combat-Sheet + Weapon + Glow_215
+  - first:
+      213: -1273857031630730048
+    second: Combat-Sheet + Weapon + Glow_216
+  - first:
+      213: -1396926881760760792
+    second: Combat-Sheet + Weapon + Glow_217
+  - first:
+      213: -1452693862815853856
+    second: Combat-Sheet + Weapon + Glow_218
+  - first:
+      213: -6552672849042617988
+    second: Combat-Sheet + Weapon + Glow_219
+  - first:
+      213: 6037809403037752222
+    second: Combat-Sheet + Weapon + Glow_220
+  - first:
+      213: -9172517661982992983
+    second: Combat-Sheet + Weapon + Glow_221
+  - first:
+      213: -8317415781528112754
+    second: Combat-Sheet + Weapon + Glow_222
+  - first:
+      213: 912933349702171021
+    second: Combat-Sheet + Weapon + Glow_223
+  - first:
+      213: -7742380622731219042
+    second: Combat-Sheet + Weapon + Glow_224
+  - first:
+      213: 2523832387441572141
+    second: Combat-Sheet + Weapon + Glow_225
+  - first:
+      213: -2852727304934672592
+    second: Combat-Sheet + Weapon + Glow_226
+  - first:
+      213: 5077450339141981240
+    second: Combat-Sheet + Weapon + Glow_227
+  - first:
+      213: 7479594679446652627
+    second: Combat-Sheet + Weapon + Glow_228
+  - first:
+      213: -13157547566238942
+    second: Combat-Sheet + Weapon + Glow_229
+  - first:
+      213: 2180778923705232814
+    second: Combat-Sheet + Weapon + Glow_230
+  - first:
+      213: -5682834338389344954
+    second: Combat-Sheet + Weapon + Glow_231
+  - first:
+      213: 7060000264456054654
+    second: Combat-Sheet + Weapon + Glow_232
+  - first:
+      213: -4997193710738571563
+    second: Combat-Sheet + Weapon + Glow_233
+  - first:
+      213: 6930927819310125933
+    second: Combat-Sheet + Weapon + Glow_234
+  - first:
+      213: -4950698949071637174
+    second: Combat-Sheet + Weapon + Glow_235
+  - first:
+      213: -8465165424307775229
+    second: Combat-Sheet + Weapon + Glow_236
+  - first:
+      213: -1418927499088077375
+    second: Combat-Sheet + Weapon + Glow_237
+  - first:
+      213: 4173615507569162225
+    second: Combat-Sheet + Weapon + Glow_238
+  - first:
+      213: 3892699963559942250
+    second: Combat-Sheet + Weapon + Glow_239
+  - first:
+      213: 57889628083027767
+    second: Combat-Sheet + Weapon + Glow_240
+  - first:
+      213: 7637468397404998522
+    second: Combat-Sheet + Weapon + Glow_241
+  - first:
+      213: -6890655787658595914
+    second: Combat-Sheet + Weapon + Glow_242
+  - first:
+      213: -4175358174279094164
+    second: Combat-Sheet + Weapon + Glow_243
+  - first:
+      213: -3215639859151966089
+    second: Combat-Sheet + Weapon + Glow_244
+  - first:
+      213: -4902174637667086693
+    second: Combat-Sheet + Weapon + Glow_245
+  - first:
+      213: 8899972116945701859
+    second: Combat-Sheet + Weapon + Glow_246
+  - first:
+      213: -3337914321598308669
+    second: Combat-Sheet + Weapon + Glow_247
+  - first:
+      213: 2802302624084157203
+    second: Combat-Sheet + Weapon + Glow_248
+  - first:
+      213: 4510769348564365888
+    second: Combat-Sheet + Weapon + Glow_249
+  - first:
+      213: -5717535984616775475
+    second: Combat-Sheet + Weapon + Glow_250
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1846
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 019d2d06c8655b9d0800000000000000
+      internalID: -2759204035774719728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1843
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538fb03d9cb338890800000000000000
+      internalID: -7457050819980167115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1796
+        width: 49
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b52e345d2d59e3e0800000000000000
+      internalID: -2023984108258056779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1797
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d7d989ba34a02680800000000000000
+      internalID: -8781838701244590128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_4
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 1811
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e731532f463271c0800000000000000
+      internalID: -4507480563521603612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_5
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1807
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7adb6d67a0b18c110800000000000000
+      internalID: 1281303825744313767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_6
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1797
+        width: 92
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc9db2509a1962940800000000000000
+      internalID: 5271060569006004683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_7
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1767
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4388b147571649200800000000000000
+      internalID: 185880641716062260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_8
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1738
+        width: 25
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76062fe8b0076f8a0800000000000000
+      internalID: -6271702236121636761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_9
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1735
+        width: 20
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cec559bb7192cbd30800000000000000
+      internalID: 4448475713843322092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_10
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1734
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eec871f99c2af7d0800000000000000
+      internalID: -2883943571684536607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1667
+        width: 36
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f8a019214e2c390800000000000000
+      internalID: -7799420836258345140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_12
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1673
+        width: 34
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b877f5bf60f7d000800000000000000
+      internalID: 60781482577721529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_13
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 1702
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb8d538911a1e4960800000000000000
+      internalID: 7588031085036296382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_14
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 1721
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e28b54fe52055c450800000000000000
+      internalID: 6108376593456281646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_15
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1706
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e79b5e9cf38c4940800000000000000
+      internalID: 5281741584010549222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_16
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1712
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e5b2236f5fca18b0800000000000000
+      internalID: -5180600412744272408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_17
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1687
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecbfc91e042a011b0800000000000000
+      internalID: -5687867929822168114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_18
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1697
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeecb0d14a3817830800000000000000
+      internalID: 4067176679377456874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_19
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 1695
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 096fab32738396740800000000000000
+      internalID: 5145705858721314448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_20
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1698
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c35dc3b2af499620800000000000000
+      internalID: 2781341805097866184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_21
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1683
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f689dd26f21c2fd0800000000000000
+      internalID: -2365494855735867661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_22
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 1683
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c94447ad05ee0a20800000000000000
+      internalID: 3030611446070528448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_23
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1687
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2348c2cca479dae0800000000000000
+      internalID: -1524058713537101012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_24
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1670
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729c3dce1d0815fa0800000000000000
+      internalID: -5813724004848776921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_25
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1674
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45ff99d0524540c10800000000000000
+      internalID: 2018831051087544148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_26
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1674
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd9b2db85d824cf0800000000000000
+      internalID: -269497615418417732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_27
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1609
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5cc629ab00af2b10800000000000000
+      internalID: 1958960334872431710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_28
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1611
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9c691b5b8d87ac50800000000000000
+      internalID: 6676460602268413082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_29
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1617
+        width: 13
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3542737f85934920800000000000000
+      internalID: 2973384622344389946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_30
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1627
+        width: 34
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4f0c15fa306bcb0800000000000000
+      internalID: -4848683897292000035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_31
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1626
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1ed87d5dc2c9d80800000000000000
+      internalID: -8242663921038794336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_32
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1625
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34eca0a5adf3b6ff0800000000000000
+      internalID: -41869564483809725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_33
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1625
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8692849bdd139840800000000000000
+      internalID: 5229556421233907340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_34
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1623
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 568e324f8a9a4a120800000000000000
+      internalID: 2424249042547763301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_35
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1554
+        width: 12
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a232a5f7066ba0910800000000000000
+      internalID: 1804455126285034282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_36
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 1552
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94cb8d7f508c9a8b0800000000000000
+      internalID: -5140357571708142519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_37
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1548
+        width: 46
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7594238987cfec510800000000000000
+      internalID: 1571470914878589271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_38
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1565
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eba1807bfb3bab9c0800000000000000
+      internalID: -3910615690426967362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_39
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 1548
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29505aef23addbed0800000000000000
+      internalID: -2396519514135788142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_40
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1482
+        width: 52
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d3a8f41f98cca240800000000000000
+      internalID: 4804435488074671062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_41
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1481
+        width: 46
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af330f3533383ee00800000000000000
+      internalID: 1072845392719131642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_42
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 1557
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0667238a94ba8c170800000000000000
+      internalID: 8198991454470829664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_43
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1489
+        width: 50
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3597bf0e8fa4beef0800000000000000
+      internalID: -77886135761929901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_44
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1488
+        width: 50
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a7a445aefe3a2960800000000000000
+      internalID: 7577938586419636131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_45
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1484
+        width: 54
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54dc86e775be40910800000000000000
+      internalID: 1802824511870520645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_46
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1508
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca21c8227e39d5c0800000000000000
+      internalID: -4190249318260593979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_47
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1510
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2477fe0be99208bc0800000000000000
+      internalID: -3782977925441161406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_48
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1508
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03cdf55309e2b56a0800000000000000
+      internalID: -6459518043627201488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_49
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1483
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab6ed33bf43c7aad0800000000000000
+      internalID: -2690967505253570886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_50
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1510
+        width: 33
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518360423d661c910800000000000000
+      internalID: 1855877578481874965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_51
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 1486
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04a25f5479ebf2840800000000000000
+      internalID: 5201585651559246400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_52
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1494
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26e57f43d21be5bf0800000000000000
+      internalID: -333634514658566558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_53
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 1499
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df5c83b571f22bb60800000000000000
+      internalID: 7760316885273986557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_54
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1422
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10b0833aa66f2ed0800000000000000
+      internalID: -2436615992189603809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_55
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1438
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09ef558e1a4ea6390800000000000000
+      internalID: -7824190018563998064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_56
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1436
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 940e7db976994fd60800000000000000
+      internalID: 7923126314726842441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_57
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1445
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b241d655466387dc0800000000000000
+      internalID: -3641100494171204565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_58
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1453
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9230908cf5602b50800000000000000
+      internalID: 6566360391869280926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_59
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1453
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fa59d8690d605550800000000000000
+      internalID: 6147533378541935351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_60
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1437
+        width: 17
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f1c10fa7de5b8e70800000000000000
+      internalID: 9118486150988808693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_61
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1438
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d81ec78b317c1330800000000000000
+      internalID: 3682943095777663187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_62
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1417
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1030136a7809749e0800000000000000
+      internalID: -1637181027242671359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_63
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1414
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea5a8eb16075acf40800000000000000
+      internalID: 5749503558041511342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_64
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1387
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf9317f4df4c4f390800000000000000
+      internalID: -7785381263578154500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_65
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1369
+        width: 25
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54c28ef7be3838270800000000000000
+      internalID: 8251583989759355973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_66
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1300
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d8fe5eb7c062c620800000000000000
+      internalID: 2792901129931782358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_67
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 1369
+        width: 49
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 020352f106f8c7580800000000000000
+      internalID: -8828023526550851552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_68
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1298
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e30feec58a0a528a0800000000000000
+      internalID: -6330477056225251266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_69
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1308
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8d10fc7136696b40800000000000000
+      internalID: 5433986788134755722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_70
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 1362
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe642d9fb9640cbd0800000000000000
+      internalID: -2612010148149704977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_71
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 1297
+        width: 30
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdc82e832c95e99a0800000000000000
+      internalID: -6224438944266548004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_72
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1313
+        width: 80
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5177cdce28741740800000000000000
+      internalID: 5121850818643325275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_73
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1362
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9408f200398dccca0800000000000000
+      internalID: -5995178878062067639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_74
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1371
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a77404c4d6c4038f0800000000000000
+      internalID: -562865921106884742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_75
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1356
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba67871223ee7ac0800000000000000
+      internalID: -3855394495419422028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_76
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1299
+        width: 29
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f5854df6667a84d0800000000000000
+      internalID: -3131560406174824969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_77
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 1297
+        width: 30
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91063ad6a1813ca00800000000000000
+      internalID: 775490062625497113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_78
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1229
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e491ca5ba8f7ae90800000000000000
+      internalID: -7014364479760526103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_79
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 1229
+        width: 26
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4674272ccedadea0800000000000000
+      internalID: -5847116197775772082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_80
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1229
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7887df16ced5cec70800000000000000
+      internalID: 9001673025044445319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_81
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1229
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dd9100a80d6412b0800000000000000
+      internalID: -5614742951612539431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_82
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 1228
+        width: 16
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc4a6ebdbed2908d0800000000000000
+      internalID: -2879719995696831281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_83
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1176
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f136cb21a7d1e0ca0800000000000000
+      internalID: -6048864839374445793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_84
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 1172
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45c3fcef37afc740800000000000000
+      internalID: 5174538389872166223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_85
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 1160
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f9b1914b8873fb0800000000000000
+      internalID: -4668112181649498337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_86
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1160
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f5f4d86858946b20800000000000000
+      internalID: 3126791546785297912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_87
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1161
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8e5842f8905b0a10800000000000000
+      internalID: 1876682287560023695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_88
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1186
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daae94c7373b023b0800000000000000
+      internalID: -5539230233077880147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_89
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1170
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ce406acbe1ebe050800000000000000
+      internalID: 5831002545390112451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_90
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1117
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d661a113c3f88bdf0800000000000000
+      internalID: -164223897714420115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_91
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1097
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a54bb2816df0ae3e0800000000000000
+      internalID: -2023787670346681254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_92
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 1097
+        width: 49
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd560ef256b3d40d0800000000000000
+      internalID: -3437025634832849441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_93
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1100
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f4912ce6ef575b90800000000000000
+      internalID: -7253223229448153871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_94
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1100
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ad6efd9b4f889870800000000000000
+      internalID: 8689853035947388320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_95
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1097
+        width: 22
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed97004e4dc6c420800000000000000
+      internalID: 2650031166719499753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_96
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 1053
+        width: 61
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f01bc08ecb8864160800000000000000
+      internalID: 7009440214977130767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_97
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1100
+        width: 46
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bed1f73c8825e510800000000000000
+      internalID: 1577711827162357427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_98
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1105
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37bf4abf1e15f6b30800000000000000
+      internalID: 4282731801684015987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_99
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 977
+        width: 37
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cd6baa2c2594a1e0800000000000000
+      internalID: -2187459502068240957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_100
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1046
+        width: 55
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5976332487bb0790800000000000000
+      internalID: -7562749371084277414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_101
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 1049
+        width: 56
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17fa496c5d295cf40800000000000000
+      internalID: 5748161946265628529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_102
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 1052
+        width: 60
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8090551edd8768d0800000000000000
+      internalID: -2853155853936062323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_103
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 977
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a74201144c6904c0800000000000000
+      internalID: -4320803327886342232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_104
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 977
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ec928ae58a35bd0800000000000000
+      internalID: -2642583431834644955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_105
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 977
+        width: 96
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce5d3175b245d71a0800000000000000
+      internalID: -6810194516393077268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_106
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 986
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 298b5d4f18a7c8ca0800000000000000
+      internalID: -6013296703869437806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_107
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 978
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8803a05ca7ce3890800000000000000
+      internalID: -7476318788487280501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_108
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 914
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f334977452740b80800000000000000
+      internalID: -8429486895421705225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_109
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 913
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0efe51d9fb01abb00800000000000000
+      internalID: 845006295245647840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_110
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 912
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ab244c314f612e50800000000000000
+      internalID: 6782824839771335587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_111
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 909
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e82c72e02170d3d30800000000000000
+      internalID: 4412690984021246606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_112
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 908
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcb55e51e12607bc0800000000000000
+      internalID: -3787419405262693427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_113
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 915
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3875d1c63a7917730800000000000000
+      internalID: 3995141072603666307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_114
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 908
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d907bb0caca89fea0800000000000000
+      internalID: -5838482838487600995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_115
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 857
+        width: 42
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11060a65e36f999e0800000000000000
+      internalID: -1613988243833855983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_116
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 805
+        width: 58
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3036d11154592c6e0800000000000000
+      internalID: -1818727175631838461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_117
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 848
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07e98e314b9f0d940800000000000000
+      internalID: 5319025711747997296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_118
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 845
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b8491b502d988850800000000000000
+      internalID: 6379521634463205555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_119
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 882
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ee3f2b5abde6a4a0800000000000000
+      internalID: -6582312420705878297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_120
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 887
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94d99eda91f335540800000000000000
+      internalID: 4995405791208512841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_121
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 887
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d8d02ad987bad570800000000000000
+      internalID: 8492301850058479824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_122
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 889
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df26a8cc61132a2e0800000000000000
+      internalID: -2116074900920048899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_123
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 879
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55755f0725d1f5590800000000000000
+      internalID: -7683390199351126187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_124
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 858
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349cb40a78fc51270800000000000000
+      internalID: 8220704876251564355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_125
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 877
+        width: 28
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27afaf4bc4bba09d0800000000000000
+      internalID: -2807225479583827342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_126
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 868
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37872e18c35c3b0e0800000000000000
+      internalID: -2255242124714674061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_127
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 859
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce6219e1ed64f6740800000000000000
+      internalID: 5147410818917279468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_128
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 872
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8018f9d8289375830800000000000000
+      internalID: 4059776821982363912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_129
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 850
+        width: 12
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7de35edcee9c22f20800000000000000
+      internalID: 3396499096484527831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_130
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 845
+        width: 28
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b29e31beec861fc00800000000000000
+      internalID: 932641835758905643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_131
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 845
+        width: 28
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aa841d2d53591e30800000000000000
+      internalID: 4474699364422683300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_132
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 770
+        width: 22
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9391702137d8cbaf0800000000000000
+      internalID: -379272743242753735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_133
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 774
+        width: 51
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a097b3560504630800000000000000
+      internalID: 3909212872277297762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_134
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 808
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdc8574da45820300800000000000000
+      internalID: 216882288505752799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_135
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 769
+        width: 73
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d92cf8c08484ba200800000000000000
+      internalID: 192326883378971293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_136
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 770
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee0886ade37587070800000000000000
+      internalID: 8104323456917078254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_137
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 713
+        width: 18
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da1e9b885de3d7b40800000000000000
+      internalID: 5439573011776266669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_138
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 751
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc34df10f57940c0800000000000000
+      internalID: -4591008670940906256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_139
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 718
+        width: 21
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52c8de8451e62e5a0800000000000000
+      internalID: -6493506675017937883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_140
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 723
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428fee6b58a32a1c0800000000000000
+      internalID: -4493965132188157916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_141
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 714
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0ebf05caa70f4980800000000000000
+      internalID: -8552608737321304566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_142
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 726
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a4171ec9f1c6840800000000000000
+      internalID: 5218580826873219674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_143
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 717
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec6893ca26624c280800000000000000
+      internalID: -9024045548105529650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_144
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 709
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057df6a60e89b9910800000000000000
+      internalID: 1845236561964160848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_145
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 678
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f071251e6a2a17e30800000000000000
+      internalID: 4499556340348360463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_146
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 684
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2d1b02dcde40bd80800000000000000
+      internalID: -8236997008136921811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_147
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 681
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3bae30cafb99ae00800000000000000
+      internalID: 1056547088864553791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_148
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 654
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5edd8e20f85042a00800000000000000
+      internalID: 730715151328140773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_149
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 648
+        width: 15
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18ff7b3e6493f9890800000000000000
+      internalID: -7449172282016530559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_150
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 655
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00c79a601af5515c0800000000000000
+      internalID: -4245381928520680448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_151
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 646
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5518831555b917240800000000000000
+      internalID: 4787778669608730965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_152
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 563
+        width: 60
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1191e3fa596c7ab0800000000000000
+      internalID: -5009012846183214819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_153
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 603
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 117996ce28fcc3e00800000000000000
+      internalID: 1025922976352671505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_154
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 601
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0dc82fc40e7e5070800000000000000
+      internalID: 8097047739179257101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_155
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 604
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4b44b3f4c069d620800000000000000
+      internalID: 2799375042406009675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_156
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 603
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f9e7a519d19db50800000000000000
+      internalID: 6618353637523365693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_157
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 605
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56fc0295f64a7a2c0800000000000000
+      internalID: -4420383711097204891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_158
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 607
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e5d41ee1a4545690800000000000000
+      internalID: -7614368015515855387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_159
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 592
+        width: 31
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f4d8faf9153c9f40800000000000000
+      internalID: 5736518411064235253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_160
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 587
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2adefd75bba629070800000000000000
+      internalID: 8111663231713406370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_161
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 617
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 745c2d6ffd5a29500800000000000000
+      internalID: 401565698126693703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_162
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 586
+        width: 20
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca63f299755151da0800000000000000
+      internalID: -5974845864660748628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_163
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 581
+        width: 85
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36f0c7d409e4c0610800000000000000
+      internalID: 1588731150237175651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_164
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 530
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2d26709cd3ac94a0800000000000000
+      internalID: -6585208387410711250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_165
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 524
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0790360b2a83e7cd0800000000000000
+      internalID: -2558545266904725136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_166
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 539
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6678a8920f36ad2b0800000000000000
+      internalID: -5559020906895210650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_167
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 523
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4c758e3e403d9aa0800000000000000
+      internalID: -6152708403303711665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_168
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 517
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 958b2de386de67170800000000000000
+      internalID: 8175983205524093017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_169
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 522
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68059a98eeee19380800000000000000
+      internalID: -8966122674838744954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_170
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 517
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5fbcd25db2b64b20800000000000000
+      internalID: 3118376318209408862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_171
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 518
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9f883ca5bbca9300800000000000000
+      internalID: 259743909666131871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_172
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 465
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aa53fb7ba4e76750800000000000000
+      internalID: 6298254029071014565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_173
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 460
+        width: 46
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5cb2ca46c2e213c0800000000000000
+      internalID: -4390197345447134114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_174
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 497
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84c278dcb7965eef0800000000000000
+      internalID: -79541437959033784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_175
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 457
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a16ecf7b248c6400800000000000000
+      internalID: 318774995999154595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_176
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 455
+        width: 51
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f17ebca74e09993a0800000000000000
+      internalID: -6658131263103441121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_177
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 453
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 465e313c66003b180800000000000000
+      internalID: -9100929980626115228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_178
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 472
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ece311e38c3c04b0800000000000000
+      internalID: -5472932910047433502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_179
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 386
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c16ffac29b0aceb0800000000000000
+      internalID: -4698930536108826176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_180
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 386
+        width: 24
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f03add5188ab8c70800000000000000
+      internalID: 8974451956044673270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_181
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 384
+        width: 29
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 164ee831ddfd6f800800000000000000
+      internalID: 645949737183143009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_182
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 385
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1747240e93fd6ed00800000000000000
+      internalID: 1001733406805095537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_183
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 386
+        width: 25
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d42a5a1bf3e8bdd0800000000000000
+      internalID: -2469973727994305319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_184
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 394
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec38e3688eaaeb9b0800000000000000
+      internalID: -5062421015456480306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_185
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 389
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b21cc35b133a5f80800000000000000
+      internalID: -8117119185918881103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_186
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 387
+        width: 31
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94d1618f8f98fc7c0800000000000000
+      internalID: -4048865837575692983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_187
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 388
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a68120a45f80e3710800000000000000
+      internalID: 1674785961030064234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_188
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 393
+        width: 15
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b3f49dfc9cae800800000000000000
+      internalID: 642547791394978680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_189
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 391
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9565e1984c0a810800000000000000
+      internalID: 1774634346382514627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_190
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 341
+        width: 54
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b6438d6000de4450800000000000000
+      internalID: 6075021647625275058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_191
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 341
+        width: 53
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8209ccf1287aa5a0800000000000000
+      internalID: -6509258224040344946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_192
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 342
+        width: 54
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e00b5e414f6736f80800000000000000
+      internalID: -8114511312896806898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_193
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 342
+        width: 53
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ec94d270d2f9e00800000000000000
+      internalID: 1053610346675818131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b57cc48bf525babd0800000000000000
+      internalID: -2617908187318401189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4ece5620c9b05a0800000000000000
+      internalID: -6553973298593733454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe6
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcb5eb4d7615b2dd0800000000000000
+      internalID: -2509822860936193075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 133263904395a0950800000000000000
+      internalID: 6416038699170407217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe8
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4534e381d9799340800000000000000
+      internalID: 4871058412745798991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de496743d2f2300f0800000000000000
+      internalID: -1152025208476494611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32b51578f158e2ee0800000000000000
+      internalID: -1283942473293276381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edebc0f57c1ceb350800000000000000
+      internalID: 6034473612760366814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_202
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 218
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f27e1d62d21277e0800000000000000
+      internalID: -1769331008620039438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_203
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 215
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e200210f329c65080800000000000000
+      internalID: -9198944032668909522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_204
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 210
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836fe9622483b0fd0800000000000000
+      internalID: -2374742521740855752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_205
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 214
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 856664f1d2bc98d70800000000000000
+      internalID: 9045984721209026136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_206
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 214
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 354d039b7662c1e90800000000000000
+      internalID: -7053720689438567341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_207
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 226
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c941448a69ebcc0800000000000000
+      internalID: -3693348994956354408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_208
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 223
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deaada063500964d0800000000000000
+      internalID: -3140978907009930515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_209
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 214
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baf6b10d0bf982610800000000000000
+      internalID: 1596701649657360299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_210
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 229
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e5ae86bc9997f0d0800000000000000
+      internalID: -3389071296216259103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_211
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 217
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a238851d21597f3b0800000000000000
+      internalID: -5478746513618730198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_212
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 145
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4514575d4e3984050800000000000000
+      internalID: 5785036332400460116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_213
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 155
+        width: 42
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731877dba6537b860800000000000000
+      internalID: 7545558433244086583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_214
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 165
+        width: 37
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a1d2ecdc224ccf0800000000000000
+      internalID: -233023013393720807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_215
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 157
+        width: 41
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d6bda794ad50550800000000000000
+      internalID: 6126542877236096306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_216
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 160
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc440767c9525ee0800000000000000
+      internalID: -1273857031630730048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_217
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 143
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82ca47bf66e1d9ce0800000000000000
+      internalID: -1396926881760760792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_218
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 88
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e29873e0aef6dbe0800000000000000
+      internalID: -1452693862815853856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_219
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 83
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c79c777e2ca3015a0800000000000000
+      internalID: -6552672849042617988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_220
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 80
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9b149199ab9ac350800000000000000
+      internalID: 6037809403037752222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_221
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 80
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a5d185d8cba4b080800000000000000
+      internalID: -9172517661982992983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_222
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 79
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e81f9cc0a6a929c80800000000000000
+      internalID: -8317415781528112754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_223
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 77
+        width: 43
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d89fa9c6b046bac00800000000000000
+      internalID: 912933349702171021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_224
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 82
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9fec3238d98d8490800000000000000
+      internalID: -7742380622731219042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_225
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 101
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d29b41e3f24760320800000000000000
+      internalID: 2523832387441572141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_226
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 96
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 037bf4c61a31968d0800000000000000
+      internalID: -2852727304934672592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_227
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 87
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8349e359e2ab67640800000000000000
+      internalID: 5077450339141981240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_228
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 83
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d6c15c7bbbdcc760800000000000000
+      internalID: 7479594679446652627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_229
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 80
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 223f23bb74141dff0800000000000000
+      internalID: -13157547566238942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_230
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 38
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eadeb1970eea34e10800000000000000
+      internalID: 2180778923705232814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_231
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 39
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d39e637448221b0800000000000000
+      internalID: -5682834338389344954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_232
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 36
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e772115c5d82af160800000000000000
+      internalID: 7060000264456054654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_233
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 40
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5de7c9ddbc666aab0800000000000000
+      internalID: -4997193710738571563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_234
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 45
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d635ad9412a9f2060800000000000000
+      internalID: 6930927819310125933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_235
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 35
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a457fa629859b4bb0800000000000000
+      internalID: -4950698949071637174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_236
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 25
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 309573f95e0b58a80800000000000000
+      internalID: -8465165424307775229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_237
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 36
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cd52d615f4fe4ce0800000000000000
+      internalID: -1418927499088077375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_238
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 25
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7b8bdf039abe930800000000000000
+      internalID: 4173615507569162225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_239
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 26
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a689a211ef5a50630800000000000000
+      internalID: 3892699963559942250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_240
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 31
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73f711e5f4aadc000800000000000000
+      internalID: 57889628083027767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_241
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 27
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7bc89ada0dbdf960800000000000000
+      internalID: 7637468397404998522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_242
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 31
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b1be13c1197f50a0800000000000000
+      internalID: -6890655787658595914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_243
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 22
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c60321cccd52e06c0800000000000000
+      internalID: -4175358174279094164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_244
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 12
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 770f8a5d590cf53d0800000000000000
+      internalID: -3215639859151966089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_245
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 19
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9e8ceec32af7fbb0800000000000000
+      internalID: -4902174637667086693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_246
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 17
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eb0e6d7c7d038b70800000000000000
+      internalID: 8899972116945701859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_247
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 21
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ce917a0c985da1d0800000000000000
+      internalID: -3337914321598308669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_248
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 16
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3136eada367c3e620800000000000000
+      internalID: 2802302624084157203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_249
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 19
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04236ecc2d8799e30800000000000000
+      internalID: 4510769348564365888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combat-Sheet + Weapon + Glow_250
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc06766905b37a0b0800000000000000
+      internalID: -5717535984616775475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scythe9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe48244c87eff34ab301c81a918a51a
+      internalID: 393330920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 011bb5f1df96ac24fbe7a92dd07882f6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Combat-Sheet + Weapon + Glow_0: -2759204035774719728
+      Combat-Sheet + Weapon + Glow_1: -7457050819980167115
+      Combat-Sheet + Weapon + Glow_10: -2883943571684536607
+      Combat-Sheet + Weapon + Glow_100: -7562749371084277414
+      Combat-Sheet + Weapon + Glow_101: 5748161946265628529
+      Combat-Sheet + Weapon + Glow_102: -2853155853936062323
+      Combat-Sheet + Weapon + Glow_103: -4320803327886342232
+      Combat-Sheet + Weapon + Glow_104: -2642583431834644955
+      Combat-Sheet + Weapon + Glow_105: -6810194516393077268
+      Combat-Sheet + Weapon + Glow_106: -6013296703869437806
+      Combat-Sheet + Weapon + Glow_107: -7476318788487280501
+      Combat-Sheet + Weapon + Glow_108: -8429486895421705225
+      Combat-Sheet + Weapon + Glow_109: 845006295245647840
+      Combat-Sheet + Weapon + Glow_11: -7799420836258345140
+      Combat-Sheet + Weapon + Glow_110: 6782824839771335587
+      Combat-Sheet + Weapon + Glow_111: 4412690984021246606
+      Combat-Sheet + Weapon + Glow_112: -3787419405262693427
+      Combat-Sheet + Weapon + Glow_113: 3995141072603666307
+      Combat-Sheet + Weapon + Glow_114: -5838482838487600995
+      Combat-Sheet + Weapon + Glow_115: -1613988243833855983
+      Combat-Sheet + Weapon + Glow_116: -1818727175631838461
+      Combat-Sheet + Weapon + Glow_117: 5319025711747997296
+      Combat-Sheet + Weapon + Glow_118: 6379521634463205555
+      Combat-Sheet + Weapon + Glow_119: -6582312420705878297
+      Combat-Sheet + Weapon + Glow_12: 60781482577721529
+      Combat-Sheet + Weapon + Glow_120: 4995405791208512841
+      Combat-Sheet + Weapon + Glow_121: 8492301850058479824
+      Combat-Sheet + Weapon + Glow_122: -2116074900920048899
+      Combat-Sheet + Weapon + Glow_123: -7683390199351126187
+      Combat-Sheet + Weapon + Glow_124: 8220704876251564355
+      Combat-Sheet + Weapon + Glow_125: -2807225479583827342
+      Combat-Sheet + Weapon + Glow_126: -2255242124714674061
+      Combat-Sheet + Weapon + Glow_127: 5147410818917279468
+      Combat-Sheet + Weapon + Glow_128: 4059776821982363912
+      Combat-Sheet + Weapon + Glow_129: 3396499096484527831
+      Combat-Sheet + Weapon + Glow_13: 7588031085036296382
+      Combat-Sheet + Weapon + Glow_130: 932641835758905643
+      Combat-Sheet + Weapon + Glow_131: 4474699364422683300
+      Combat-Sheet + Weapon + Glow_132: -379272743242753735
+      Combat-Sheet + Weapon + Glow_133: 3909212872277297762
+      Combat-Sheet + Weapon + Glow_134: 216882288505752799
+      Combat-Sheet + Weapon + Glow_135: 192326883378971293
+      Combat-Sheet + Weapon + Glow_136: 8104323456917078254
+      Combat-Sheet + Weapon + Glow_137: 5439573011776266669
+      Combat-Sheet + Weapon + Glow_138: -4591008670940906256
+      Combat-Sheet + Weapon + Glow_139: -6493506675017937883
+      Combat-Sheet + Weapon + Glow_14: 6108376593456281646
+      Combat-Sheet + Weapon + Glow_140: -4493965132188157916
+      Combat-Sheet + Weapon + Glow_141: -8552608737321304566
+      Combat-Sheet + Weapon + Glow_142: 5218580826873219674
+      Combat-Sheet + Weapon + Glow_143: -9024045548105529650
+      Combat-Sheet + Weapon + Glow_144: 1845236561964160848
+      Combat-Sheet + Weapon + Glow_145: 4499556340348360463
+      Combat-Sheet + Weapon + Glow_146: -8236997008136921811
+      Combat-Sheet + Weapon + Glow_147: 1056547088864553791
+      Combat-Sheet + Weapon + Glow_148: 730715151328140773
+      Combat-Sheet + Weapon + Glow_149: -7449172282016530559
+      Combat-Sheet + Weapon + Glow_15: 5281741584010549222
+      Combat-Sheet + Weapon + Glow_150: -4245381928520680448
+      Combat-Sheet + Weapon + Glow_151: 4787778669608730965
+      Combat-Sheet + Weapon + Glow_152: -5009012846183214819
+      Combat-Sheet + Weapon + Glow_153: 1025922976352671505
+      Combat-Sheet + Weapon + Glow_154: 8097047739179257101
+      Combat-Sheet + Weapon + Glow_155: 2799375042406009675
+      Combat-Sheet + Weapon + Glow_156: 6618353637523365693
+      Combat-Sheet + Weapon + Glow_157: -4420383711097204891
+      Combat-Sheet + Weapon + Glow_158: -7614368015515855387
+      Combat-Sheet + Weapon + Glow_159: 5736518411064235253
+      Combat-Sheet + Weapon + Glow_16: -5180600412744272408
+      Combat-Sheet + Weapon + Glow_160: 8111663231713406370
+      Combat-Sheet + Weapon + Glow_161: 401565698126693703
+      Combat-Sheet + Weapon + Glow_162: -5974845864660748628
+      Combat-Sheet + Weapon + Glow_163: 1588731150237175651
+      Combat-Sheet + Weapon + Glow_164: -6585208387410711250
+      Combat-Sheet + Weapon + Glow_165: -2558545266904725136
+      Combat-Sheet + Weapon + Glow_166: -5559020906895210650
+      Combat-Sheet + Weapon + Glow_167: -6152708403303711665
+      Combat-Sheet + Weapon + Glow_168: 8175983205524093017
+      Combat-Sheet + Weapon + Glow_169: -8966122674838744954
+      Combat-Sheet + Weapon + Glow_17: -5687867929822168114
+      Combat-Sheet + Weapon + Glow_170: 3118376318209408862
+      Combat-Sheet + Weapon + Glow_171: 259743909666131871
+      Combat-Sheet + Weapon + Glow_172: 6298254029071014565
+      Combat-Sheet + Weapon + Glow_173: -4390197345447134114
+      Combat-Sheet + Weapon + Glow_174: -79541437959033784
+      Combat-Sheet + Weapon + Glow_175: 318774995999154595
+      Combat-Sheet + Weapon + Glow_176: -6658131263103441121
+      Combat-Sheet + Weapon + Glow_177: -9100929980626115228
+      Combat-Sheet + Weapon + Glow_178: -5472932910047433502
+      Combat-Sheet + Weapon + Glow_179: -4698930536108826176
+      Combat-Sheet + Weapon + Glow_18: 4067176679377456874
+      Combat-Sheet + Weapon + Glow_180: 8974451956044673270
+      Combat-Sheet + Weapon + Glow_181: 645949737183143009
+      Combat-Sheet + Weapon + Glow_182: 1001733406805095537
+      Combat-Sheet + Weapon + Glow_183: -2469973727994305319
+      Combat-Sheet + Weapon + Glow_184: -5062421015456480306
+      Combat-Sheet + Weapon + Glow_185: -8117119185918881103
+      Combat-Sheet + Weapon + Glow_186: -4048865837575692983
+      Combat-Sheet + Weapon + Glow_187: 1674785961030064234
+      Combat-Sheet + Weapon + Glow_188: 642547791394978680
+      Combat-Sheet + Weapon + Glow_189: 1774634346382514627
+      Combat-Sheet + Weapon + Glow_19: 5145705858721314448
+      Combat-Sheet + Weapon + Glow_190: 6075021647625275058
+      Combat-Sheet + Weapon + Glow_191: -6509258224040344946
+      Combat-Sheet + Weapon + Glow_192: -8114511312896806898
+      Combat-Sheet + Weapon + Glow_193: 1053610346675818131
+      Combat-Sheet + Weapon + Glow_2: -2023984108258056779
+      Combat-Sheet + Weapon + Glow_20: 2781341805097866184
+      Combat-Sheet + Weapon + Glow_202: -1769331008620039438
+      Combat-Sheet + Weapon + Glow_203: -9198944032668909522
+      Combat-Sheet + Weapon + Glow_204: -2374742521740855752
+      Combat-Sheet + Weapon + Glow_205: 9045984721209026136
+      Combat-Sheet + Weapon + Glow_206: -7053720689438567341
+      Combat-Sheet + Weapon + Glow_207: -3693348994956354408
+      Combat-Sheet + Weapon + Glow_208: -3140978907009930515
+      Combat-Sheet + Weapon + Glow_209: 1596701649657360299
+      Combat-Sheet + Weapon + Glow_21: -2365494855735867661
+      Combat-Sheet + Weapon + Glow_210: -3389071296216259103
+      Combat-Sheet + Weapon + Glow_211: -5478746513618730198
+      Combat-Sheet + Weapon + Glow_212: 5785036332400460116
+      Combat-Sheet + Weapon + Glow_213: 7545558433244086583
+      Combat-Sheet + Weapon + Glow_214: -233023013393720807
+      Combat-Sheet + Weapon + Glow_215: 6126542877236096306
+      Combat-Sheet + Weapon + Glow_216: -1273857031630730048
+      Combat-Sheet + Weapon + Glow_217: -1396926881760760792
+      Combat-Sheet + Weapon + Glow_218: -1452693862815853856
+      Combat-Sheet + Weapon + Glow_219: -6552672849042617988
+      Combat-Sheet + Weapon + Glow_22: 3030611446070528448
+      Combat-Sheet + Weapon + Glow_220: 6037809403037752222
+      Combat-Sheet + Weapon + Glow_221: -9172517661982992983
+      Combat-Sheet + Weapon + Glow_222: -8317415781528112754
+      Combat-Sheet + Weapon + Glow_223: 912933349702171021
+      Combat-Sheet + Weapon + Glow_224: -7742380622731219042
+      Combat-Sheet + Weapon + Glow_225: 2523832387441572141
+      Combat-Sheet + Weapon + Glow_226: -2852727304934672592
+      Combat-Sheet + Weapon + Glow_227: 5077450339141981240
+      Combat-Sheet + Weapon + Glow_228: 7479594679446652627
+      Combat-Sheet + Weapon + Glow_229: -13157547566238942
+      Combat-Sheet + Weapon + Glow_23: -1524058713537101012
+      Combat-Sheet + Weapon + Glow_230: 2180778923705232814
+      Combat-Sheet + Weapon + Glow_231: -5682834338389344954
+      Combat-Sheet + Weapon + Glow_232: 7060000264456054654
+      Combat-Sheet + Weapon + Glow_233: -4997193710738571563
+      Combat-Sheet + Weapon + Glow_234: 6930927819310125933
+      Combat-Sheet + Weapon + Glow_235: -4950698949071637174
+      Combat-Sheet + Weapon + Glow_236: -8465165424307775229
+      Combat-Sheet + Weapon + Glow_237: -1418927499088077375
+      Combat-Sheet + Weapon + Glow_238: 4173615507569162225
+      Combat-Sheet + Weapon + Glow_239: 3892699963559942250
+      Combat-Sheet + Weapon + Glow_24: -5813724004848776921
+      Combat-Sheet + Weapon + Glow_240: 57889628083027767
+      Combat-Sheet + Weapon + Glow_241: 7637468397404998522
+      Combat-Sheet + Weapon + Glow_242: -6890655787658595914
+      Combat-Sheet + Weapon + Glow_243: -4175358174279094164
+      Combat-Sheet + Weapon + Glow_244: -3215639859151966089
+      Combat-Sheet + Weapon + Glow_245: -4902174637667086693
+      Combat-Sheet + Weapon + Glow_246: 8899972116945701859
+      Combat-Sheet + Weapon + Glow_247: -3337914321598308669
+      Combat-Sheet + Weapon + Glow_248: 2802302624084157203
+      Combat-Sheet + Weapon + Glow_249: 4510769348564365888
+      Combat-Sheet + Weapon + Glow_25: 2018831051087544148
+      Combat-Sheet + Weapon + Glow_250: -5717535984616775475
+      Combat-Sheet + Weapon + Glow_251: 1958557178
+      Combat-Sheet + Weapon + Glow_26: -269497615418417732
+      Combat-Sheet + Weapon + Glow_27: 1958960334872431710
+      Combat-Sheet + Weapon + Glow_28: 6676460602268413082
+      Combat-Sheet + Weapon + Glow_29: 2973384622344389946
+      Combat-Sheet + Weapon + Glow_3: -8781838701244590128
+      Combat-Sheet + Weapon + Glow_30: -4848683897292000035
+      Combat-Sheet + Weapon + Glow_31: -8242663921038794336
+      Combat-Sheet + Weapon + Glow_32: -41869564483809725
+      Combat-Sheet + Weapon + Glow_33: 5229556421233907340
+      Combat-Sheet + Weapon + Glow_34: 2424249042547763301
+      Combat-Sheet + Weapon + Glow_35: 1804455126285034282
+      Combat-Sheet + Weapon + Glow_36: -5140357571708142519
+      Combat-Sheet + Weapon + Glow_37: 1571470914878589271
+      Combat-Sheet + Weapon + Glow_38: -3910615690426967362
+      Combat-Sheet + Weapon + Glow_39: -2396519514135788142
+      Combat-Sheet + Weapon + Glow_4: -4507480563521603612
+      Combat-Sheet + Weapon + Glow_40: 4804435488074671062
+      Combat-Sheet + Weapon + Glow_41: 1072845392719131642
+      Combat-Sheet + Weapon + Glow_42: 8198991454470829664
+      Combat-Sheet + Weapon + Glow_43: -77886135761929901
+      Combat-Sheet + Weapon + Glow_44: 7577938586419636131
+      Combat-Sheet + Weapon + Glow_45: 1802824511870520645
+      Combat-Sheet + Weapon + Glow_46: -4190249318260593979
+      Combat-Sheet + Weapon + Glow_47: -3782977925441161406
+      Combat-Sheet + Weapon + Glow_48: -6459518043627201488
+      Combat-Sheet + Weapon + Glow_49: -2690967505253570886
+      Combat-Sheet + Weapon + Glow_5: 1281303825744313767
+      Combat-Sheet + Weapon + Glow_50: 1855877578481874965
+      Combat-Sheet + Weapon + Glow_51: 5201585651559246400
+      Combat-Sheet + Weapon + Glow_52: -333634514658566558
+      Combat-Sheet + Weapon + Glow_53: 7760316885273986557
+      Combat-Sheet + Weapon + Glow_54: -2436615992189603809
+      Combat-Sheet + Weapon + Glow_55: -7824190018563998064
+      Combat-Sheet + Weapon + Glow_56: 7923126314726842441
+      Combat-Sheet + Weapon + Glow_57: -3641100494171204565
+      Combat-Sheet + Weapon + Glow_58: 6566360391869280926
+      Combat-Sheet + Weapon + Glow_59: 6147533378541935351
+      Combat-Sheet + Weapon + Glow_6: 5271060569006004683
+      Combat-Sheet + Weapon + Glow_60: 9118486150988808693
+      Combat-Sheet + Weapon + Glow_61: 3682943095777663187
+      Combat-Sheet + Weapon + Glow_62: -1637181027242671359
+      Combat-Sheet + Weapon + Glow_63: 5749503558041511342
+      Combat-Sheet + Weapon + Glow_64: -7785381263578154500
+      Combat-Sheet + Weapon + Glow_65: 8251583989759355973
+      Combat-Sheet + Weapon + Glow_66: 2792901129931782358
+      Combat-Sheet + Weapon + Glow_67: -8828023526550851552
+      Combat-Sheet + Weapon + Glow_68: -6330477056225251266
+      Combat-Sheet + Weapon + Glow_69: 5433986788134755722
+      Combat-Sheet + Weapon + Glow_7: 185880641716062260
+      Combat-Sheet + Weapon + Glow_70: -2612010148149704977
+      Combat-Sheet + Weapon + Glow_71: -6224438944266548004
+      Combat-Sheet + Weapon + Glow_72: 5121850818643325275
+      Combat-Sheet + Weapon + Glow_73: -5995178878062067639
+      Combat-Sheet + Weapon + Glow_74: -562865921106884742
+      Combat-Sheet + Weapon + Glow_75: -3855394495419422028
+      Combat-Sheet + Weapon + Glow_76: -3131560406174824969
+      Combat-Sheet + Weapon + Glow_77: 775490062625497113
+      Combat-Sheet + Weapon + Glow_78: -7014364479760526103
+      Combat-Sheet + Weapon + Glow_79: -5847116197775772082
+      Combat-Sheet + Weapon + Glow_8: -6271702236121636761
+      Combat-Sheet + Weapon + Glow_80: 9001673025044445319
+      Combat-Sheet + Weapon + Glow_81: -5614742951612539431
+      Combat-Sheet + Weapon + Glow_82: -2879719995696831281
+      Combat-Sheet + Weapon + Glow_83: -6048864839374445793
+      Combat-Sheet + Weapon + Glow_84: 5174538389872166223
+      Combat-Sheet + Weapon + Glow_85: -4668112181649498337
+      Combat-Sheet + Weapon + Glow_86: 3126791546785297912
+      Combat-Sheet + Weapon + Glow_87: 1876682287560023695
+      Combat-Sheet + Weapon + Glow_88: -5539230233077880147
+      Combat-Sheet + Weapon + Glow_89: 5831002545390112451
+      Combat-Sheet + Weapon + Glow_9: 4448475713843322092
+      Combat-Sheet + Weapon + Glow_90: -164223897714420115
+      Combat-Sheet + Weapon + Glow_91: -2023787670346681254
+      Combat-Sheet + Weapon + Glow_92: -3437025634832849441
+      Combat-Sheet + Weapon + Glow_93: -7253223229448153871
+      Combat-Sheet + Weapon + Glow_94: 8689853035947388320
+      Combat-Sheet + Weapon + Glow_95: 2650031166719499753
+      Combat-Sheet + Weapon + Glow_96: 7009440214977130767
+      Combat-Sheet + Weapon + Glow_97: 1577711827162357427
+      Combat-Sheet + Weapon + Glow_98: 4282731801684015987
+      Combat-Sheet + Weapon + Glow_99: -2187459502068240957
+      Scythe1: -1152025208476494611
+      Scythe2: -1283942473293276381
+      Scythe3: 6034473612760366814
+      Scythe4: -2617908187318401189
+      Scythe5: -6553973298593733454
+      Scythe6: -2509822860936193075
+      Scythe7: 6416038699170407217
+      Scythe8: 4871058412745798991
+      Scythe9: 393330920
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
