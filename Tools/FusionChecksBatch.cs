@@ -9,7 +9,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 
 // Temporarily stage in Assets/Game/Editor. No -quit: the runner exits after real Play frames.
-// -fusionSuite Fusion | Cleanup | Regression | Timing | Transition. External process bound: 120 seconds.
+// -fusionSuite Merge | Fusion | Cleanup | Regression | Timing | Transition. External process bound: 120 seconds.
 [InitializeOnLoad]
 public static class FusionChecksBatch
 {
@@ -47,7 +47,7 @@ public static class FusionChecksBatch
         started = true; mode = SessionState.GetString(Key + ".Mode", "Fusion");
         try
         {
-            var files = new[] { "Tools/FusionChecks.cs", "Tools/WeaponBuffChecks.cs", "Tools/DualWorldChecks.cs", "Tools/BowDaggerIntegrationChecks.cs", "Tools/DualWorldTimingChecks.cs", "Tools/WorldTransitionChecks.cs" };
+            var files = new[] { "Tools/FusionChecks.cs", "Tools/WeaponBuffChecks.cs", "Tools/DualWorldChecks.cs", "Tools/BowDaggerIntegrationChecks.cs", "Tools/DualWorldTimingChecks.cs", "Tools/WorldTransitionChecks.cs", "Tools/ScytheTitanChecks.cs" };
             var options = new CompilerParameters { GenerateInMemory = true, GenerateExecutable = false, CompilerOptions = "-nostdlib+" };
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
                 if (!assembly.IsDynamic && !string.IsNullOrEmpty(assembly.Location)) options.ReferencedAssemblies.Add(assembly.Location);
@@ -63,10 +63,10 @@ public static class FusionChecksBatch
                     try { Debug.Log("FUSION_BATCH EXISTING " + name + ": " + compiled.GetType(name).GetMethod("Run").Invoke(null, null)); }
                     catch (Exception e) { failures++; Debug.LogError("FUSION_BATCH EXISTING " + name + " FAILED: " + e); }
                 }
-            var type = compiled.GetType(mode == "Transition" ? "WorldTransitionChecks" : mode == "Regression" ? "BowDaggerIntegrationChecks" : "FusionChecks");
+            var type = compiled.GetType(mode == "Merge" ? "ScytheTitanChecks" : mode == "Transition" ? "WorldTransitionChecks" : mode == "Regression" ? "BowDaggerIntegrationChecks" : "FusionChecks");
             if (mode != "Regression")
             {
-                fusionType = mode == "Transition" ? null : type;
+                fusionType = mode == "Transition" || mode == "Merge" ? null : type;
                 Application.logMessageReceived += ObserveLog;
             }
             var routine = (IEnumerator)type.GetMethod(mode == "Cleanup" ? "RunCleanup" : "Run").Invoke(null, null);

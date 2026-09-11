@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('Fusion', 'Cleanup', 'Regression', 'Timing', 'Transition')]
+    [ValidateSet('Merge', 'Fusion', 'Cleanup', 'Regression', 'Timing', 'Transition')]
     [string[]]$Suites = @('Fusion', 'Cleanup', 'Regression', 'Timing', 'Transition'),
     [Parameter(Mandatory = $true)]
     [string]$Unity
@@ -27,7 +27,7 @@ try {
             if ($process.ExitCode -ne 0) { $failed++ }
         }
         if (Test-Path $log) {
-            Select-String -Path $log -Pattern 'FUSION_BATCH|WorldTransitionChecks|FusionChecks FAIL|BowDaggerIntegrationChecks:|error CS|Exception' | ForEach-Object { $_.Line }
+            Select-String -Path $log -Pattern 'FUSION_BATCH|ScytheTitanChecks|WorldTransitionChecks|FusionChecks FAIL|BowDaggerIntegrationChecks:|error CS|Exception' | ForEach-Object { $_.Line }
             if (-not (Select-String -Path $log -Pattern 'FUSION_BATCH RESULT' -Quiet)) { $failed++; Write-Output 'Missing completion marker' }
         } else { $failed++; Write-Output 'Missing Unity log' }
     }

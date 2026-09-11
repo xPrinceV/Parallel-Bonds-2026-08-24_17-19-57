@@ -2,7 +2,7 @@
 
 A Unity 2D survival prototype built around two alternating worlds, independent heroes, and composable weapon buffs.
 
-The current playable scene includes five configured automatic weapons, experience-based upgrades, and a five-hit buff activation sample. Pistol, Lantern, and Lightning are the starting weapons; Bow and Dagger are available in each hero's unassigned weapon list.
+The current playable scene includes six configured automatic weapons, experience-based upgrades, and a five-hit buff activation sample. Pistol, Lantern, and Lightning are the starting weapons; Bow, Dagger, and Scythe are available in each hero's unassigned weapon list.
 
 ## Getting started
 
@@ -76,12 +76,19 @@ The current presentation uses the entry hero's sprite. Fusion entry and exit use
 | Lightning | Strikes randomly selected live targets |
 | Bow | Fires piercing arrows in the hero's last movement direction, with a spread for multiple arrows |
 | Dagger | Homes toward enemies, bounces between targets, and applies poison |
+| Scythe | Sweeps a melee hitbox with its visual; additional swings spread around the hero |
 
-All five weapons consume buff-modified **damage** and **projectile count**. For Lightning, projectile count controls the number of strikes. Attack speed, range, projectile speed, and duration still use the existing weapon upgrade logic rather than general buff evaluation.
+All six weapons consume buff-modified **damage** and **projectile count**. For Lightning, projectile count controls the number of strikes. Attack speed, range, projectile speed, and duration still use the existing weapon upgrade logic rather than general buff evaluation.
 
 Damage and count are snapshotted for each volley or burst. A buff activated by a hit affects future attacks, not projectiles already in flight.
 
 Bow and Dagger are configured separately for both heroes but do not replace the three starting weapons. Their projectiles belong to the firing world and pause while it sleeps. Dagger supports Bounces upgrades; poison stacks damage and refreshes duration without delaying the next tick. Poison is currently an enemy-local status effect, not a general buff atom, and its ticks do not report additional weapon hits.
+
+Scythe uses one base swing, with extra swings provided by projectile-count buffs. Each swing damages an enemy once, including enemies with multiple colliders. Its scene tuning starts at 10 damage and one attack per second, derived from existing weapon defaults because upstream did not provide a scene configuration. Area scaling and its upgrade UI are supported, but Area upgrades are not yet offered by the scene's Scythe configuration. Swing motion is procedural; the upstream empty animation assets are not required for attacks.
+
+## Titan enemy
+
+Titan joins the final configured wave in both worlds. It approaches the current interaction hero, channels an attack, and creates a delayed ground strike under its source world. Channeling, telegraph and strike lifetimes pause during world sleep. Fusion permits cross-world hits without changing attack ownership; each attack damages a given hero at most once.
 
 ## Buff composition
 

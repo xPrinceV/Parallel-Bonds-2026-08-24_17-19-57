@@ -59,6 +59,10 @@ public class LevelUpSelectionButton : MonoBehaviour
         {
             upgradeDescText.text = "+" + selectedUpgrade + " Bounces";
         }
+        else if (selectedUpgradeType == UpgradeType.Area)
+        {
+            upgradeDescText.text = "+" + (selectedUpgrade * 100) + "% Area Size";
+        }
 
     }
 
@@ -96,6 +100,10 @@ public class LevelUpSelectionButton : MonoBehaviour
             else if (selectedUpgradeType == UpgradeType.Bounces)
             {
                 assignedWeapon.stats.bounces += selectedUpgrade;
+            }
+            else if (selectedUpgradeType == UpgradeType.Area)
+            {
+                assignedWeapon.stats.area += selectedUpgrade;
             }
 
             //Close level up screen and unpause time
@@ -152,6 +160,11 @@ public class LevelUpSelectionButton : MonoBehaviour
         {
             int randomChoice = Random.Range(0, assignedWeapon.stats.bouncesUpgrades.Length);
             selectedUpgrade = assignedWeapon.stats.bouncesUpgrades[randomChoice];
+        }
+        else if (selectedUpgradeType == UpgradeType.Area)
+        {
+            int randomChoice = Random.Range(0, assignedWeapon.stats.areaUpgrades.Length);
+            selectedUpgrade = assignedWeapon.stats.areaUpgrades[randomChoice];
         }
     }
 

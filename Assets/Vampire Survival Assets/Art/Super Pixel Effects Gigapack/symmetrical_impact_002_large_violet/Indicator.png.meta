@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: f515dea91edd1104e9d62e157cc66d4e
+guid: e0c89f8aa11ec3d439aeb5d87ef0690a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3700810548614518524
-    second: scythe_0
-  - first:
-      213: 4299880391440808856
-    second: scythe_1
-  - first:
-      213: -1185441839583656306
-    second: scythe_2
-  - first:
-      213: 1067703830162180063
-    second: scythe_3
+      213: -980095317097466160
+    second: Indicator_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,11 +46,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.2, y: 0.35}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -122,89 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scythe_0
+      name: Indicator_0
       rect:
         serializedVersion: 2
-        x: 419
-        y: 502
-        width: 10
-        height: 10
+        x: 20
+        y: 20
+        width: 56
+        height: 56
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf6df23169beb5330800000000000000
-      internalID: 3700810548614518524
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scythe_1
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 233
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 89b3f7c2f6e3cab30800000000000000
-      internalID: 4299880391440808856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scythe_2
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 187
-        width: 362
-        height: 314
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e860bb97de67c8fe0800000000000000
-      internalID: -1185441839583656306
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scythe_3
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 172
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd704220afe31de00800000000000000
-      internalID: 1067703830162180063
+      spriteID: 0d6b16a70800662f0800000000000000
+      internalID: -980095317097466160
       vertices: []
       indices: 
       edges: []
@@ -213,8 +138,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      scythe_0: 3700810548614518524
-      scythe_1: 4299880391440808856
-      scythe_2: -1185441839583656306
-      scythe_3: 1067703830162180063
+      Indicator_0: -980095317097466160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
