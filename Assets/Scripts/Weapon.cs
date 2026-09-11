@@ -19,6 +19,10 @@ public class Weapon : MonoBehaviour
     public Sprite icon;
     public string weaponName;
     public UpgradeType[] availableUpgrades;
+
+    // For the Inventory Slots = weapon icons
+    public Sprite weaponIcon;
+
 }
 
 //Weapons that are created should inherit WeaponStats
