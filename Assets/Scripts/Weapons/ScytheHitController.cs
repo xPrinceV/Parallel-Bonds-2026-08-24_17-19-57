@@ -8,10 +8,10 @@ public class ScytheHitController : MonoBehaviour
     [SerializeField] private float swingDuration = 0.4f;
     [SerializeField] private float swingAngle = -225f;
     [SerializeField] private Transform animationTransform;
-    private PlayerController player;
+    [HideInInspector] public PlayerController player;
 
-    private float damage;
-    private float area;
+    [HideInInspector] public float damage;
+    [HideInInspector] public float area;
     private float swingTimer;
 
     private float startAngle;
@@ -19,14 +19,11 @@ public class ScytheHitController : MonoBehaviour
 
     private Animator animator;
 
-    void Awake()
-    {
+    void Awake() {
         animator = GetComponentInChildren<Animator>();
     }
 
-    void Start()
-    {
-        player = PlayerController.instance;
+    void Start() {
         animator.SetTrigger("Swing");
 
         //Set size
@@ -36,8 +33,7 @@ public class ScytheHitController : MonoBehaviour
         Destroy(gameObject, swingDuration);
     }
 
-    void Update()
-    {
+    void Update() {
         swingTimer += Time.deltaTime;
 
         float progress = Mathf.Clamp01(swingTimer / swingDuration);
@@ -76,14 +72,4 @@ public class ScytheHitController : MonoBehaviour
             }
         }
     }
-
-    public void SetDamage(float newDamage)
-    {
-        damage = newDamage;
-    }
-
-    public void SetArea(float newArea)
-    {
-        area = newArea;
-    }    
 }

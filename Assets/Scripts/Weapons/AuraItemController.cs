@@ -17,7 +17,7 @@ public class AuraItemController : MonoBehaviour {
 
     void LateUpdate() {
         Quaternion rotation = Quaternion.AngleAxis(speed * Time.deltaTime, Vector3.forward);
-        off = rotation * off;
+        off = rotation * off; // Dumbass operator is overloaded in Quarternion but not in Vector3 so you HAVE to multiply in this specific order
 
         transform.position = player.transform.position + off;
     }
