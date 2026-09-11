@@ -76,8 +76,8 @@ public static class DualWorldChecks
                 check(filter != null && ReferenceEquals(Get(filter, "worldManager"), manager), "actual shared world filter");
                 Invoke(filter, "LateUpdate");
                 var image = (Image)Get(filter, "overlay");
-                check(image != null && image.isActiveAndEnabled && !image.raycastTarget && image.color == awake.AmbientColor &&
-                    Mathf.Approximately(image.color.a, awake.AmbientColor.a), "actual overlay matches configured RGBA");
+                check(image != null && image.isActiveAndEnabled && !image.raycastTarget && filter.TargetColor == awake.AmbientColor,
+                    "actual overlay targets configured RGBA; temporal settling covered by frame checks");
             };
             state(a, b);
             check(ah.Health.HasInitialized && bh.Health.HasInitialized && ah.Health.maxHealth > 7 && bh.Health.maxHealth > 9,

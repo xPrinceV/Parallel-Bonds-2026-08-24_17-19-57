@@ -23,6 +23,7 @@ public class RangedEnemyController : EnemyController
         if (IsDead)
             return;
 
+        RefreshTarget();
         if (target == null || !target.gameObject.activeInHierarchy)
         {
             RB.linearVelocity = Vector2.zero;
@@ -64,6 +65,7 @@ public class RangedEnemyController : EnemyController
 
     public void ShootProjectile()
     {
+        RefreshTarget();
         if (!isActiveAndEnabled || target == null || !target.gameObject.activeInHierarchy)
             return;
 

@@ -73,7 +73,7 @@ public class PistolController : Weapon
         {
             EnemyController foundEnemy = enemy.GetComponent<EnemyController>();
             if (foundEnemy != null && foundEnemy.gameObject.activeInHierarchy && foundEnemy.health > 0f
-                && World.GetFor(this) == World.GetFor(foundEnemy))
+                && World.CanInteract(this, foundEnemy))
             {
                 //Get the distance from that particular enemy
                 float distance = Vector3.Distance(transform.position, foundEnemy.transform.position);

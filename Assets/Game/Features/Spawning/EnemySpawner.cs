@@ -21,22 +21,31 @@ public class EnemySpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        World world = World.GetFor(this);
-        PlayerHealth playerHealth = world != null
-            ? (world.Player != null ? world.Player.GetComponent<PlayerHealth>() : null)
-            : PlayerHealth.instance;
-        target = playerHealth != null ? playerHealth.transform : null;
+        RefreshTarget();
         despawnDistance = Vector3.Distance(transform.position, maxSpawn.position) + 5f;
         currentWave = -1;
         GoToNextWave();
     }
 
+    private void RefreshTarget()
+    {
+        World world = World.GetFor(this);
+        PlayerController player = world != null ? world.InteractionPlayer : null;
+        PlayerHealth playerHealth = world != null
+            ? (player != null ? player.GetComponent<PlayerHealth>() : null)
+            : PlayerHealth.instance;
+        target = playerHealth != null ? playerHealth.transform : null;
+    }
+
     // Update is called once per frame
     void Update()
     {
-
+        RefreshTarget();
         if (target == null || !target.gameObject.activeInHierarchy)
             return;
+
+        //Make the spawner follow the player
+        transform.position = target.position;
 
         if(target.gameObject.activeInHierarchy)
         {
@@ -62,9 +71,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
 
-
-        //Make the spawner follow the player
-        transform.position = target.position;
 
         //Enemy to check is the position, check per frame is the amount of enemies checked per frame
         int checkTarget = enemyToCheck + checkPerFrame;

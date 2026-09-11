@@ -45,7 +45,7 @@ public class LanternProjController : MonoBehaviour
 
         EnemyController enemy = collision.GetComponentInParent<EnemyController>();
         if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f
-            || World.GetFor(this) != World.GetFor(enemy))
+            || !World.CanInteract(this, enemy))
             return;
 
         // Consume the impact before other colliders can trigger it.

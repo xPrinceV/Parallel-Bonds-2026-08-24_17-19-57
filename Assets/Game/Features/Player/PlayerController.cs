@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[DefaultExecutionOrder(-50)]
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
@@ -24,7 +25,9 @@ public class PlayerController : MonoBehaviour
 
     public void BindAsCurrent()
     {
-        if (!isActiveAndEnabled)
+        World world = World.GetFor(this);
+        if (!isActiveAndEnabled || (world != null && world.Manager != null
+            && world.Manager.IsFused && world.Manager.FusionPlayer != this))
         {
             return;
         }
@@ -38,8 +41,16 @@ public class PlayerController : MonoBehaviour
     public List<Weapon> unassignedWeapons, assignedWeapons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool starterWeaponsInitialized;
+
     void Start()
     {
+        if (starterWeaponsInitialized)
+            return;
+        starterWeaponsInitialized = true;
+        if (assignedWeapons != null && assignedWeapons.Count > 0)
+            return;
+
         //Temporary for now until weapon chest implemented
         AddWeapon(0);
         AddWeapon(0);
@@ -49,6 +60,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        World world = World.GetFor(this);
+        WorldManager manager = world == null ? null : world.Manager;
+        if (manager != null && manager.IsFused && manager.FusionPlayer != this)
+            return;
+
         Vector3 moveInput = new Vector3(0f, 0f, 0f);
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
@@ -63,11 +79,14 @@ public class PlayerController : MonoBehaviour
         moveInput.Normalize();
 
         transform.position += moveInput * moveSpeed * Time.deltaTime;
+        if (manager != null && manager.IsFused)
+            manager.SyncFusionPlayer();
     }
 
     public void AddWeapon(int weaponNumber)
     {
-        if(weaponNumber < unassignedWeapons.Count)
+        if(unassignedWeapons != null && assignedWeapons != null
+            && weaponNumber >= 0 && weaponNumber < unassignedWeapons.Count)
         {
             assignedWeapons.Add(unassignedWeapons[weaponNumber]);
             unassignedWeapons[weaponNumber].gameObject.SetActive(true);

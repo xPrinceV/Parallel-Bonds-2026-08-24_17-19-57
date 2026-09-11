@@ -42,7 +42,7 @@ public class HollowProjectile : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            if (hasHit || !isActiveAndEnabled || World.GetFor(this) != World.GetFor(collision))
+            if (hasHit || !isActiveAndEnabled || !World.CanInteract(this, collision))
                 return;
 
             PlayerHealth playerHealth = collision.GetComponentInParent<PlayerHealth>();

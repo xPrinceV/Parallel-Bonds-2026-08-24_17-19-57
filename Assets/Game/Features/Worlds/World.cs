@@ -14,6 +14,9 @@ public class World : MonoBehaviour
     // allow other classes to read the world settings without changing them
     public WorldId WorldId => worldId;
     public PlayerController Player => player;
+    public WorldManager Manager { get; internal set; }
+    public PlayerController InteractionPlayer => Manager != null && Manager.IsInitialized && Manager.IsFused
+        ? Manager.FusionPlayer : Player;
     public bool IsSuspended { get; private set; }
     public Transform ContentRoot => contentRoot == null ? null : contentRoot.transform;
 
@@ -21,6 +24,20 @@ public class World : MonoBehaviour
     public static World GetFor(Component source)
     {
         return source == null ? null : source.GetComponentInParent<World>();
+    }
+
+    public static bool CanInteract(Component a, Component b)
+    {
+        World first = GetFor(a);
+        World second = GetFor(b);
+        // preserve unscoped legacy interactions, including null-null
+        if (first == second)
+            return true;
+
+        return first != null && second != null && first.Manager != null
+            && first.Manager == second.Manager && first.Manager.IsInitialized
+            && first.Manager.isActiveAndEnabled && first.Manager.IsFused
+            && first.IsActive && second.IsActive;
     }
 
     public static Transform GetContentRoot(Component source)
@@ -39,7 +56,8 @@ public class World : MonoBehaviour
         && contentRoot != null
         && contentRoot != gameObject
         && contentRoot.transform.parent == transform
-        && (player == null || player.transform.IsChildOf(contentRoot.transform));
+        && (player == null || (player.transform.IsChildOf(contentRoot.transform)
+            && GetFor(player) == this));
 
     // prevent shared managers or other worlds from being disabled with this content
     public bool ContainsContent(Transform target)
@@ -73,7 +91,8 @@ public class World : MonoBehaviour
         foreach (BuffController holder in contentRoot.GetComponentsInChildren<BuffController>(true))
             holder.SetWorldSuspended(!active);
         contentRoot.SetActive(active);
-        if (active && player != null)
+        if (active && player != null && (Manager == null || !Manager.IsFused
+            || Manager.FusionPlayer == player))
             player.BindAsCurrent();
         return IsActive == active;
     }

@@ -5,6 +5,7 @@ public class WorldManager : MonoBehaviour
 {
     [SerializeField] private WorldId initialWorldId;
     [SerializeField] private World[] worlds;
+    [SerializeField] private KeyCode fusionKey = KeyCode.F;
 
     // ensure the world id only can be set internally
     public WorldId CurrentWorldId { get; private set; }
@@ -14,7 +15,27 @@ public class WorldManager : MonoBehaviour
     public bool IsInitialized => isInitialized;
     public World CurrentWorld => FindWorld(CurrentWorldId);
 
+    public bool IsFused { get; private set; }
+    public PlayerController FusionPlayer { get; private set; }
+
     private bool isInitialized;
+    private bool hasDied;
+    private World secondaryWorld;
+    private GameObject secondaryContentRoot;
+    private PlayerController secondaryPlayer;
+    private bool isEndingFusion;
+    private Vector3 secondaryPosition;
+    private Quaternion secondaryRotation;
+    private Vector3 secondaryScale;
+    private Vector2 secondaryFacing;
+    private Renderer[] secondaryRenderers;
+    private bool[] rendererStates;
+    private Collider2D[] secondaryColliders;
+    private bool[] colliderStates;
+    private Rigidbody2D secondaryBody;
+    private RigidbodyConstraints2D secondaryConstraints;
+    private Vector2 secondaryVelocity;
+    private float secondaryAngularVelocity;
 
     // validate all worlds before changing the initial content state
     private void Awake()
@@ -26,6 +47,9 @@ public class WorldManager : MonoBehaviour
             enabled = false;
             return;
         }
+
+        foreach (World world in worlds)
+            world.Manager = this;
 
         IsSwitching = true;
         try
@@ -82,6 +106,7 @@ public class WorldManager : MonoBehaviour
             World world = worlds[i];
             if (world == null || !world.IsConfigured || !world.gameObject.activeInHierarchy
                 || world.ContainsContent(transform)
+                || (world.Manager != null && world.Manager != this)
                 || (world.Player == null) != (worlds[0].Player == null)
                 || (world.Player != null && world.Player.GetComponent<PlayerHealth>() == null))
                 return false;
@@ -129,10 +154,266 @@ public class WorldManager : MonoBehaviour
         return true;
     }
 
+    private bool CanToggleFusion()
+    {
+        return isInitialized && isActiveAndEnabled && !IsSwitching && !hasDied
+            && Time.timeScale > 0f && (UIController.instance == null
+                || UIController.instance.levelUpPanel == null
+                || !UIController.instance.levelUpPanel.activeSelf);
+    }
+
+    private void Update()
+    {
+        if (IsFused && (FusionPlayer == null || !FusionPlayer.isActiveAndEnabled
+            || FusionPlayer.GetComponent<PlayerHealth>().currentHealth <= 0f
+            || secondaryWorld == null || !secondaryWorld.IsActive
+            || secondaryWorld.Player == null || !secondaryWorld.Player.isActiveAndEnabled
+            || CurrentWorld == null || !CurrentWorld.IsActive))
+        {
+            if (FusionPlayer != null && FusionPlayer.GetComponent<PlayerHealth>().currentHealth <= 0f)
+                HandlePlayerDeath();
+            else
+                EndFusion();
+        }
+
+        if (Input.GetKeyDown(fusionKey))
+        {
+            if (IsFused)
+                TryExitFusion();
+            else
+                TryEnterFusion();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        SyncFusionPlayer();
+    }
+
+    private void LateUpdate()
+    {
+        SyncFusionPlayer();
+    }
+
+    // weapons stay on their original hero; only the secondary body follows the entry hero
+    internal void SyncFusionPlayer()
+    {
+        if (!IsFused || FusionPlayer == null || secondaryWorld == null || secondaryWorld.Player == null)
+            return;
+
+        Transform secondary = secondaryWorld.Player.transform;
+        secondary.SetPositionAndRotation(FusionPlayer.transform.position, FusionPlayer.transform.rotation);
+        if (secondaryBody != null)
+        {
+            secondaryBody.position = FusionPlayer.transform.position;
+            secondaryBody.rotation = FusionPlayer.transform.eulerAngles.z;
+        }
+        secondaryWorld.Player.facingDirection = FusionPlayer.facingDirection;
+    }
+
+    public bool TryEnterFusion()
+    {
+        if (!CanToggleFusion() || IsFused || !ValidateWorlds() || worlds.Length != 2)
+            return false;
+
+        World entry = CurrentWorld;
+        World secondary = worlds[0] == entry ? worlds[1] : worlds[0];
+        if (entry == null || !entry.IsActive || secondary.IsActive
+            || entry.Player == null || secondary.Player == null
+            || !entry.Player.isActiveAndEnabled || !secondary.Player.enabled
+            || !secondary.Player.gameObject.activeSelf
+            || entry.Player.GetComponent<PlayerHealth>().currentHealth <= 0f
+            || secondary.Player.GetComponent<PlayerHealth>().currentHealth <= 0f)
+            return false;
+
+        IsSwitching = true;
+        bool succeeded = false;
+        try
+        {
+            secondaryWorld = secondary;
+            secondaryContentRoot = secondary.ContentRoot.gameObject;
+            secondaryPlayer = secondary.Player;
+            Transform secondaryTransform = secondary.Player.transform;
+            secondaryPosition = secondaryTransform.position;
+            secondaryRotation = secondaryTransform.rotation;
+            secondaryScale = secondaryTransform.localScale;
+            secondaryFacing = secondary.Player.facingDirection;
+            secondaryRenderers = secondary.Player.GetComponentsInChildren<Renderer>(true);
+            rendererStates = new bool[secondaryRenderers.Length];
+            secondaryColliders = secondary.Player.GetComponentsInChildren<Collider2D>(true);
+            colliderStates = new bool[secondaryColliders.Length];
+            secondaryBody = secondary.Player.GetComponent<Rigidbody2D>();
+            if (secondaryBody != null)
+            {
+                secondaryConstraints = secondaryBody.constraints;
+                secondaryVelocity = secondaryBody.linearVelocity;
+                secondaryAngularVelocity = secondaryBody.angularVelocity;
+            }
+            for (int i = 0; i < secondaryRenderers.Length; i++)
+                rendererStates[i] = secondaryRenderers[i].enabled;
+            for (int i = 0; i < secondaryColliders.Length; i++)
+                colliderStates[i] = secondaryColliders[i].enabled;
+
+            // publish ownership before OnEnable can bind the secondary hero's aliases
+            FusionPlayer = entry.Player;
+            IsFused = true;
+            SyncFusionPlayer();
+            for (int i = 0; i < secondaryRenderers.Length; i++)
+            {
+                if (secondaryRenderers[i].GetComponentInParent<Weapon>() == null)
+                    secondaryRenderers[i].enabled = false;
+            }
+            for (int i = 0; i < secondaryColliders.Length; i++)
+            {
+                if (secondaryColliders[i].GetComponentInParent<Weapon>() == null)
+                    secondaryColliders[i].enabled = false;
+            }
+            if (secondaryBody != null)
+            {
+                // keep weapon child colliders simulated while preventing secondary movement
+                secondaryBody.linearVelocity = Vector2.zero;
+                secondaryBody.angularVelocity = 0f;
+                secondaryBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+
+            succeeded = secondary.SetWorldActive(true) && isInitialized && isActiveAndEnabled
+                && IsFused && FusionPlayer == entry.Player && secondary.Player.isActiveAndEnabled && entry.IsActive;
+            if (succeeded)
+                FusionPlayer.BindAsCurrent();
+            return succeeded;
+        }
+        finally
+        {
+            if (!succeeded)
+                EndFusion();
+            IsSwitching = false;
+        }
+    }
+
+    public bool TryExitFusion()
+    {
+        if (!CanToggleFusion() || !IsFused)
+            return false;
+
+        IsSwitching = true;
+        try
+        {
+            return EndFusion();
+        }
+        finally
+        {
+            IsSwitching = false;
+        }
+    }
+
+    // forced cleanup also runs during pause, death and manager disable
+    private bool EndFusion()
+    {
+        if (isEndingFusion)
+            return false;
+        if (!IsFused)
+            return true;
+
+        isEndingFusion = true;
+        try
+        {
+            PlayerController entry = FusionPlayer;
+            bool restored = secondaryWorld != null && secondaryContentRoot != null
+                && secondaryWorld.ContentRoot == secondaryContentRoot.transform
+                && secondaryWorld.SetWorldActive(false);
+            bool secondaryAsleep = (secondaryContentRoot == null || !secondaryContentRoot.activeSelf)
+                && (secondaryPlayer == null || !secondaryPlayer.gameObject.activeInHierarchy);
+            if (!restored || !secondaryAsleep)
+            {
+                restored = false;
+                isInitialized = false;
+                // use the captured root even if the world configuration changed during fusion
+                if (secondaryContentRoot != null)
+                {
+                    foreach (BuffController holder in secondaryContentRoot.GetComponentsInChildren<BuffController>(true))
+                        holder.SetWorldSuspended(true);
+                    secondaryContentRoot.SetActive(false);
+                }
+                secondaryAsleep = (secondaryContentRoot == null || !secondaryContentRoot.activeSelf)
+                    && (secondaryPlayer == null || !secondaryPlayer.gameObject.activeInHierarchy);
+                // OnDisable must not reenter cleanup while the fallback is in progress
+                enabled = false;
+                if (!secondaryAsleep)
+                {
+                    if (secondaryPlayer != null)
+                        secondaryPlayer.gameObject.SetActive(false);
+                    Debug.LogError("Fusion cleanup failed to sleep the secondary content; suppression retained and manager disabled.", this);
+                    return false;
+                }
+                Debug.LogError("Fusion cleanup required the captured content root fallback; manager disabled.", this);
+            }
+
+            // restore the secondary body only after its content is safely asleep
+            if (secondaryPlayer != null)
+            {
+                Transform secondary = secondaryPlayer.transform;
+                secondary.SetPositionAndRotation(secondaryPosition, secondaryRotation);
+                secondary.localScale = secondaryScale;
+                secondaryPlayer.facingDirection = secondaryFacing;
+            }
+            for (int i = 0; secondaryRenderers != null && i < secondaryRenderers.Length; i++)
+            {
+                if (secondaryRenderers[i] != null && secondaryRenderers[i].GetComponentInParent<Weapon>() == null)
+                    secondaryRenderers[i].enabled = rendererStates[i];
+            }
+            for (int i = 0; secondaryColliders != null && i < secondaryColliders.Length; i++)
+            {
+                if (secondaryColliders[i] != null && secondaryColliders[i].GetComponentInParent<Weapon>() == null)
+                    secondaryColliders[i].enabled = colliderStates[i];
+            }
+            if (secondaryBody != null)
+            {
+                secondaryBody.position = secondaryPosition;
+                secondaryBody.rotation = secondaryRotation.eulerAngles.z;
+                secondaryBody.constraints = secondaryConstraints;
+                secondaryBody.linearVelocity = secondaryVelocity;
+                secondaryBody.angularVelocity = secondaryAngularVelocity;
+            }
+            IsFused = false;
+            FusionPlayer = null;
+            secondaryWorld = null;
+            secondaryContentRoot = null;
+            secondaryPlayer = null;
+            secondaryRenderers = null;
+            rendererStates = null;
+            secondaryColliders = null;
+            colliderStates = null;
+            secondaryBody = null;
+            if (!hasDied && entry != null)
+                entry.BindAsCurrent();
+            return restored;
+        }
+        finally
+        {
+            isEndingFusion = false;
+        }
+    }
+
+    internal void HandlePlayerDeath()
+    {
+        PlayerController player = IsFused ? FusionPlayer : CurrentWorld == null ? null : CurrentWorld.Player;
+        hasDied = true;
+        EndFusion();
+        //Trigger Lost Condition (SetActive to false is temporary)
+        if (player != null)
+            player.gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        if (!isEndingFusion)
+            EndFusion();
+    }
+
     // use this function to switch to a new world
     public bool SwitchWorld(WorldId targetWorldId)
     {
-        if (!isInitialized || !isActiveAndEnabled || IsSwitching)
+        if (!isInitialized || !isActiveAndEnabled || IsSwitching || IsFused || hasDied)
             return false;
         if (!IsWorldValid(targetWorldId) || targetWorldId == CurrentWorldId)
             return false;

@@ -30,7 +30,7 @@ public class BowController : Weapon
     // Update is called once per frame
     void Update()
     {
-        if (player == null || !player.isActiveAndEnabled || World.GetFor(this) != World.GetFor(player))
+        if (player == null || !player.isActiveAndEnabled || !World.CanInteract(this, player))
             return;
 
         //Sets facingDirection to the player's facing direction, so that the arrow will shoot in the direction the player is facing

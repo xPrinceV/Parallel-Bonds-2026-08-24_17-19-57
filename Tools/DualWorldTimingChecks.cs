@@ -136,10 +136,19 @@ public static class DualWorldTimingChecks
                             && ExperienceLevelController.instance == PlayerController.instance.GetComponent<ExperienceLevelController>(), "active hero aliases");
                         Require(vfx == null && projectile == null && orb != null && enemy != null, "resumed expiry and retained nonexpiring resources");
                         Require(handle.IsActive && instance.RemainingDuration > 0f && instance.RemainingDuration < buffTime - 14f, "Buff counts only active time");
+                        log.Add("automatic switch after " + elapsed + "s; aliases correct, resources retained, active lifetimes resumed");
+                        phase = 4; phaseStart = Time.time;
+                    }
+                    else if (phase == 4)
+                    {
                         var filter = Object.FindFirstObjectByType<WorldFilter>();
                         var image = (Image)Get(filter, "overlay");
-                        Require(image.color == manager.CurrentWorld.AmbientColor, "real LateUpdate applied Echo filter");
-                        log.Add("automatic switch after " + elapsed + "s; aliases/filter correct, resources retained, active lifetimes resumed");
+                        float elapsed = Time.time - phaseStart;
+                        float tolerance = Mathf.Max(0.1f, 2f * Time.deltaTime);
+                        Require(elapsed <= (float)Get(filter, "worldTransitionDuration") + tolerance, "natural switch overlay settles within duration plus frame tolerance");
+                        if (filter.IsTransitioning || image.color != manager.CurrentWorld.AmbientColor) return;
+                        Require(filter.TargetColor == manager.CurrentWorld.AmbientColor, "settled Echo target");
+                        log.Add("actual LateUpdate Echo overlay settled after " + elapsed + "s from captured natural switch");
                         SessionState.SetString(ResultKey, "PASS\n" + string.Join("\n", log));
                         finish();
                     }

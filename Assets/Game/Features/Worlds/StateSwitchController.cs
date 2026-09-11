@@ -26,7 +26,7 @@ public class StateSwitchController : MonoBehaviour
     {
         // pause the countdown while the manager is unavailable or game time is paused
         if (worldManager == null || !worldManager.IsInitialized
-            || !worldManager.isActiveAndEnabled || worldManager.IsSwitching
+            || !worldManager.isActiveAndEnabled || worldManager.IsSwitching || worldManager.IsFused
             || Time.deltaTime <= 0f)
             return;
 

@@ -30,7 +30,9 @@ public class ExperienceLevelController : MonoBehaviour
 
     public void BindAsCurrent()
     {
-        if (!isActiveAndEnabled)
+        World world = World.GetFor(this);
+        if (!isActiveAndEnabled || (world != null && world.Manager != null
+            && world.Manager.IsFused && world.InteractionPlayer != GetComponent<PlayerController>()))
         {
             return;
         }
@@ -94,6 +96,14 @@ public class ExperienceLevelController : MonoBehaviour
 
     public void GetExp(int amountToGet)
     {
+        World world = World.GetFor(this);
+        if (world != null && world.Manager != null && world.Manager.IsFused
+            && world.InteractionPlayer != null && world.InteractionPlayer != GetComponent<PlayerController>())
+        {
+            world.InteractionPlayer.GetComponent<ExperienceLevelController>()?.GetExp(amountToGet);
+            return;
+        }
+
         if (!IsCurrentHero())
         {
             return;

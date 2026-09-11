@@ -40,7 +40,7 @@ public class ArrowController : MonoBehaviour
 
         EnemyController enemy = collision.GetComponentInParent<EnemyController>();
         if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f
-            || World.GetFor(this) != World.GetFor(enemy) || !hitEnemies.Add(enemy))
+            || !World.CanInteract(this, enemy) || !hitEnemies.Add(enemy))
             return;
 
         // Pierce distinct enemies, but do not count multiple colliders as extra hits.

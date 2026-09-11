@@ -33,7 +33,8 @@ The Main scene is already configured for a dual-world run; no scene migration is
 | Move | WASD or arrow keys |
 | Attack | Automatic |
 | Select an upgrade | Click an upgrade button |
-| Switch worlds | Automatic, every 15 seconds of gameplay time |
+| Switch worlds | Automatic, every 15 seconds outside fusion |
+| Toggle fusion | F (while the Game view has focus) |
 
 ## Dual-world gameplay
 
@@ -47,11 +48,24 @@ The Main scene is already configured for a dual-world run; no scene migration is
 - Upgrade selection and a zero time scale block switching. A dead or disabled hero cannot switch to bypass the loss flow.
 - Attacks, enemy targeting, and experience collection respect world ownership.
 
-Material currently has no screen tint; Echo uses a temporary blue overlay below the HUD. The heroes have different sprites, but both maps still share the same layout.
+Material has no screen tint; Echo uses a blue overlay below the HUD. World changes ease between those colors over 0.45 seconds. The heroes have different sprites, but both maps still share the same layout.
 
 State retention lasts **only for the current run**. Restarting the scene does not restore the previous run from disk.
 
 See [dual-world rules and runtime boundaries](Assets/Game/Features/Worlds/README.md) for details.
+
+## Character fusion
+
+Press **F** to enter or leave the debug fusion mode. It has no energy cost, duration, or cooldown yet.
+
+- The entry hero remains the only visible, controllable player body. Both worlds become active: enemies, spawners, pickups, and active-time lifetimes run in both.
+- Both heroes' equipped weapons fire from the fusion position. Weapons retain their original stats, buffs, hit stacks, and source-world ownership; no equipment is copied and no buff pools are merged.
+- Attacks can hit enemies from either world. Both worlds' enemies target the entry hero, and collected experience goes to that hero alone.
+- Current and maximum health remain shared. Fusion does not heal or permit revival.
+- The automatic world-switch countdown pauses and resumes from its remaining time after exit. Manual world switching is blocked during fusion.
+- Exit keeps the entry world active and returns the other world to sleep, restoring its hero's pre-fusion body state. Upgrade selection and paused time block voluntary fusion toggles.
+
+The current presentation uses the entry hero's sprite. Fusion entry and exit use a subtle 0.6-second blue-gray tint pulse; the sustained fusion tint is clear. Transitions follow game time, never block input, and do not alter combat timing. There is no camera shake, blackout, dedicated fusion model, or map blending. Both maps and their physics content coexist; enemy populations and simulation cost can therefore increase during fusion.
 
 ## Weapons
 

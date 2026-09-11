@@ -7,6 +7,7 @@ public class ExpPickup : MonoBehaviour
     public float moveSpeed;
     public float timeBetweenChecks = .2f;
     private float checkCounter;
+    private float attractionSpeedBonus;
 
     private PlayerController player;
     public bool IsCollected { get; private set; }
@@ -14,14 +15,29 @@ public class ExpPickup : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        RefreshPlayer();
+    }
+
+    private void RefreshPlayer()
+    {
         World world = World.GetFor(this);
-        player = world != null ? world.Player
+        PlayerController interactionPlayer = world != null ? world.InteractionPlayer
             : (PlayerHealth.instance != null ? PlayerHealth.instance.GetComponent<PlayerController>() : null);
+        if (player == interactionPlayer)
+            return;
+
+        player = interactionPlayer;
+        // Recheck the new hero's pickup range without accumulating attraction speed bonuses.
+        moveSpeed -= attractionSpeedBonus;
+        attractionSpeedBonus = 0f;
+        isMoving = false;
+        checkCounter = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        RefreshPlayer();
         if (IsCollected || player == null || !player.gameObject.activeInHierarchy)
             return;
 
@@ -47,7 +63,8 @@ public class ExpPickup : MonoBehaviour
                     isMoving = true;
 
                     //Add the player's moveSpeed to exp orb, this is incase the player runs fast and ends up outrunning the orb
-                    moveSpeed += player.moveSpeed;
+                    attractionSpeedBonus = player.moveSpeed;
+                    moveSpeed += attractionSpeedBonus;
                 }
             }
         }
@@ -59,11 +76,11 @@ public class ExpPickup : MonoBehaviour
         //When the orb collides with the player
         if(collision.tag == "Player")
         {
-            if (IsCollected || !isActiveAndEnabled || World.GetFor(this) != World.GetFor(collision))
+            if (IsCollected || !isActiveAndEnabled || !World.CanInteract(this, collision))
                 return;
 
             World world = World.GetFor(this);
-            PlayerController owner = world != null ? world.Player : PlayerController.instance;
+            PlayerController owner = world != null ? world.InteractionPlayer : PlayerController.instance;
             if (owner == null || collision.GetComponentInParent<PlayerController>() != owner)
                 return;
 

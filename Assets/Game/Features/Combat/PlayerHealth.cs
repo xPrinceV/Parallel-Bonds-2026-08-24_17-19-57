@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private bool healthInitialized;
+    private bool isDead;
+    public bool IsDead => HealthOwner.isDead;
     private PlayerHealth sharedHealth;
     private PlayerHealth HealthOwner => sharedHealth != null ? sharedHealth : this;
     public bool HasInitialized => HealthOwner.healthInitialized;
@@ -33,8 +35,19 @@ public class PlayerHealth : MonoBehaviour
         get => HealthOwner.storedCurrentHealth;
         set
         {
-            HealthOwner.storedCurrentHealth = value;
+            if (IsDead)
+                return;
+            HealthOwner.storedCurrentHealth = Mathf.Max(0f, value);
             RefreshSharedPresentation();
+            if (HealthOwner.healthInitialized && currentHealth <= 0f)
+            {
+                HealthOwner.isDead = true;
+                World world = World.GetFor(this);
+                if (world != null && world.Manager != null && world.Manager.IsInitialized)
+                    world.Manager.HandlePlayerDeath();
+                else
+                    gameObject.SetActive(false);
+            }
         }
     }
 
@@ -70,7 +83,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void BindAsCurrent()
     {
-        if (!isActiveAndEnabled)
+        World world = World.GetFor(this);
+        if (!isActiveAndEnabled || IsDead || (world != null && world.Manager != null
+            && world.Manager.IsFused && world.InteractionPlayer != GetComponent<PlayerController>()))
         {
             return;
         }
@@ -106,15 +121,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void DamageHandler(float damageTaken)
     {
-        if (!isActiveAndEnabled || currentHealth <= 0f)
+        if (!isActiveAndEnabled || IsDead || currentHealth <= 0f)
             return;
 
         currentHealth = Mathf.Max(0f, currentHealth - damageTaken);
-        if(currentHealth <= 0)
-        {
-            //Trigger Lost Condition (SetActive to false is temporary)
-            gameObject.SetActive(false);
-        }
+
 
     }
 

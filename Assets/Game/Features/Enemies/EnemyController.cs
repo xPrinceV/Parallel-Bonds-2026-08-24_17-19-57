@@ -28,10 +28,16 @@ public class EnemyController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        RefreshTarget();
+    }
+
+    protected void RefreshTarget()
+    {
         //Sets target to the transform location of the player
         World world = World.GetFor(this);
+        PlayerController player = world != null ? world.InteractionPlayer : null;
         playerHealth = world != null
-            ? (world.Player != null ? world.Player.GetComponent<PlayerHealth>() : null)
+            ? (player != null ? player.GetComponent<PlayerHealth>() : null)
             : PlayerHealth.instance;
         target = playerHealth != null ? playerHealth.transform : null;
     }
@@ -42,6 +48,8 @@ public class EnemyController : MonoBehaviour
         UpdatePoison();
         if (isDead)
             return;
+
+        RefreshTarget();
 
         /**
         Handle knockback. Knockback Time is a public field where you can customise the knockback time.
@@ -121,7 +129,8 @@ public class EnemyController : MonoBehaviour
         //Check if collision is done with a player
         if(collision.gameObject.tag == "Player" && hitCounter <= 0f)
         {
-            if (!isActiveAndEnabled || World.GetFor(this) != World.GetFor(collision.transform)
+            RefreshTarget();
+            if (!isActiveAndEnabled || !World.CanInteract(this, collision.transform)
                 || playerHealth == null || collision.gameObject.GetComponentInParent<PlayerHealth>() != playerHealth)
                 return;
 

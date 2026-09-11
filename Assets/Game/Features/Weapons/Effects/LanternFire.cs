@@ -101,7 +101,7 @@ public class LanternFire : MonoBehaviour
     {
         // Recheck ownership for both entry hits and retained burn targets.
         return isActiveAndEnabled && enemy != null && enemy.gameObject.activeInHierarchy && enemy.health > 0f
-            && World.GetFor(this) == World.GetFor(enemy);
+            && World.CanInteract(this, enemy);
     }
 
     private void ApplyDamage(EnemyController enemy)
