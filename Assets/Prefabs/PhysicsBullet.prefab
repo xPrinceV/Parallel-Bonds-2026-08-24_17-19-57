@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1655113331345444983}
   - component: {fileID: 1490300717298804359}
   - component: {fileID: -5488635937900321809}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: PhysicsBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

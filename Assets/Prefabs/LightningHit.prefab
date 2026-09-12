@@ -124,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284086729697726851}
   - component: {fileID: 651457192343824087}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: LightningHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
