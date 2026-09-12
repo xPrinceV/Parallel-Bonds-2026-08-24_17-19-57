@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 2125029153973404393}
   - component: {fileID: -2568978971229081961}
   - component: {fileID: 3598541276041657420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5015,6 +5015,7 @@ MonoBehaviour:
   speed: 6
   damage: 0
   shouldKnockback: 0
+  playerCollider: {fileID: 0}
 --- !u!50 &3598541276041657420
 Rigidbody2D:
   serializedVersion: 5

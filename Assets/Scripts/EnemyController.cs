@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public Rigidbody2D RB;
     public float moveSpeed;
     protected Transform target;
 
@@ -53,7 +52,7 @@ public class EnemyController : MonoBehaviour
         }
 
         //Sets the Rigidbody velocity to be moving towards the player
-        RB.linearVelocity = (target.position - transform.position).normalized * moveSpeed;
+        GetComponent<Rigidbody2D>().linearVelocity = (target.position - transform.position).normalized * moveSpeed;
 
         if (hitCounter > 0f)
         {

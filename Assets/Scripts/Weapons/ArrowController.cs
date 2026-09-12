@@ -27,6 +27,7 @@ public class ArrowController : MonoBehaviour {
         EnemyController enemy = collision.collider.GetComponent<EnemyController>();
         if (enemy != null) {
             enemy.TakeDamage(damage);
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
         }
     }
     

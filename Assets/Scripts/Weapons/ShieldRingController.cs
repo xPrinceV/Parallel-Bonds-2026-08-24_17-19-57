@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class AuraController : Weapon {
+public class ShieldRingController : Weapon {
 
     public GameObject template;
 
@@ -10,11 +10,11 @@ public class AuraController : Weapon {
     public float amount; // This should really be a uint but the weapon system isn't set up in a way that allows this easily
     public float revolveSpeed;
 
-    private List<AuraItemController> items = new List<AuraItemController>();
+    private List<ShieldController> items = new List<ShieldController>();
 
     void Start() {
         GameObject individual = Instantiate(template, transform.position + new Vector3(0F, 5F, 0F), transform.rotation);
-        AuraItemController aura = individual.GetComponent<AuraItemController>();
+        ShieldController aura = individual.GetComponent<ShieldController>();
 
         aura.damage = damage * stats.damage;
         aura.speed = revolveSpeed * stats.speed;
@@ -26,7 +26,7 @@ public class AuraController : Weapon {
     void Update() {
         uint num = (uint) Mathf.Floor(amount * stats.amount);
         if (num != items.Count) {
-            foreach (AuraItemController individual in items) {
+            foreach (ShieldController individual in items) {
                 Destroy(individual.gameObject);
             }
             
@@ -36,7 +36,7 @@ public class AuraController : Weapon {
                 float y = Mathf.Sin(angle) * 5F;
 
                 GameObject individual = Instantiate(template, transform.position + new Vector3(x, y, 0F), Quaternion.identity);
-                AuraItemController aura = individual.GetComponent<AuraItemController>();
+                ShieldController aura = individual.GetComponent<ShieldController>();
                 aura.damage = damage * stats.damage;
                 aura.speed = revolveSpeed * stats.speed;
                 aura.player = player;
