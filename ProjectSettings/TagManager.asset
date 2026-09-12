@@ -12,8 +12,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Collision (Test)
   - 
   - 
   - 
