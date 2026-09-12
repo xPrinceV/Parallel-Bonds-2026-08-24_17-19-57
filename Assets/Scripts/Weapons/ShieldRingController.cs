@@ -28,20 +28,33 @@ public class ShieldRingController : Weapon {
         if (num != items.Count) {
             foreach (ShieldController individual in items) {
                 Destroy(individual.gameObject);
+                items.Remove(individual);
             }
-            
+
             for (uint i = 0; i < num; i += 1) {
                 float angle = i * Mathf.PI * 2 / num;
                 float x = Mathf.Cos(angle) * 5F;
                 float y = Mathf.Sin(angle) * 5F;
 
                 GameObject individual = Instantiate(template, transform.position + new Vector3(x, y, 0F), Quaternion.identity);
-                ShieldController aura = individual.GetComponent<ShieldController>();
-                aura.damage = damage * stats.damage;
-                aura.speed = revolveSpeed * stats.speed;
-                aura.player = player;
-                items.Add(aura);
+                ShieldController shield = individual.GetComponent<ShieldController>();
+                shield.damage = damage * stats.damage;
+                shield.speed = revolveSpeed * stats.speed;
+                shield.player = player;
+                items.Add(shield);
             }
+        } else {
+            foreach (ShieldController individual in items) {
+                float speed = revolveSpeed * stats.speed;
+                if (individual.speed != speed) individual.speed = speed;
+            }
+        }
+    }
+
+    private void OnDisable() {
+        foreach (ShieldController individual in items) {
+            Destroy(individual.gameObject);
+            items.Remove(individual);
         }
     }
 }
