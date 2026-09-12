@@ -6,7 +6,7 @@ public class ScytheHitController : MonoBehaviour
 
     [SerializeField] private float offset = 0f;
     [SerializeField] private float swingDuration = 0.4f;
-    [SerializeField] private float swingAngle = -225f;
+    [SerializeField] private float swingAngle = 225f;
     [SerializeField] private Transform animationTransform;
     [HideInInspector] public PlayerController player;
 
