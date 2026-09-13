@@ -1080,8 +1080,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   weaponName: Sniper Rifle
   availableUpgrades: 0000000003000000
   weaponIcon: {fileID: 3351058555426389599, guid: a9c03bf3990ce9a44b7cf70d226fe649, type: 3}
-  attackSpeed: 0.2
+  attackSpeed: 0.25
   attackDamage: 20
   attackRange: 15
   bullet: {fileID: 9132437147970937572, guid: e44e30c026ba5234b90ca6115ba14481, type: 3}
@@ -1575,20 +1575,20 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
-    - 0.07
+    - 0.08
     - 0.11
     - 0.15
     - 0.2
     rangeUpgrades:
-    - 0.05
-    - 0.08
-    - 0.12
+    - 0.04
+    - 0.07
+    - 0.1
+    - 0.125
     - 0.15
-    - 0.2
     attackSpeedUpgrades:
     - 0.08
     - 0.12
@@ -1607,6 +1607,7 @@ MonoBehaviour:
     - 0.6
     - 0.8
     - 1
+    - 1.25
     - 1.5
     areaUpgrades: []
     UpgradeText: 
@@ -68558,11 +68559,11 @@ MonoBehaviour:
     - 0.3
     - 0.4
     speedUpgrades:
-    - 0.1
+    - 0.05
+    - 0.08
+    - 0.11
+    - 0.15
     - 0.2
-    - 0.3
-    - 0.4
-    - 0.5
     rangeUpgrades: []
     attackSpeedUpgrades: []
     amountUpgrades:
@@ -68584,7 +68585,7 @@ MonoBehaviour:
   shieldPivot: {fileID: 0}
   orbitDistance: 2.5
   orbitSpeed: 180
-  damage: 11
+  damage: 12
   duration: 7
   cooldown: 2.5
 --- !u!1 &508784821
@@ -68642,18 +68643,14 @@ MonoBehaviour:
     bounces: 1
     area: 1
     damageUpgrades:
-    - 0.05
-    - 0.15
-    - 0.2
-    - 0.35
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
-    - 0.07
+    - 0.08
     - 0.11
     - 0.15
     - 0.2
@@ -84658,7 +84655,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
@@ -84676,6 +84674,8 @@ MonoBehaviour:
     - 0.2
     - 0.25
     - 0.3
+    - 0.35
+    - 0.4
     UpgradeText: 
   weaponLevel: 0
   icon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
@@ -84683,7 +84683,7 @@ MonoBehaviour:
   availableUpgrades: 000000000700000003000000
   weaponIcon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
   attackSpeed: 0.25
-  attackDamage: 17
+  attackDamage: 16
   area: 1
   scythe: {fileID: 8707379270009512402, guid: d785e792ba634c7449d299cf4073bfa8, type: 3}
 --- !u!1 &1177454780
@@ -85595,10 +85595,10 @@ MonoBehaviour:
     - 0.15
     - 0.2
     rangeUpgrades:
-    - 0.03
-    - 0.05
+    - 0.04
     - 0.07
     - 0.1
+    - 0.125
     - 0.15
     attackSpeedUpgrades:
     - 0.08
@@ -100945,12 +100945,24 @@ MonoBehaviour:
     area: 1
     damageUpgrades:
     - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
-    - 0.1
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
     amountUpgrades:
     - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
     durationUpgrades: []
     bouncesUpgrades: []
     areaUpgrades: []
