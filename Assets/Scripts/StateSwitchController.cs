@@ -10,7 +10,7 @@ public class StateSwitchController : MonoBehaviour
 
     public bool isChar1;
 
-    private float timer = 15f;
+    public float timer = 15f;
     private float timerCounter;
     public PlayerController player;
     public InventoryUI inventoryUI;

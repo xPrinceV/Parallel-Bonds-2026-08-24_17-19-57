@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 603911552348257303}
   - component: {fileID: 4847576798497539526}
   - component: {fileID: 2560309825328567322}
-  - component: {fileID: 7383852360429633189}
-  - component: {fileID: 6547192051492541758}
+  - component: {fileID: 2745076361700162884}
   m_Layer: 8
   m_Name: Shield
   m_TagString: Untagged
@@ -124,7 +123,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -140,34 +139,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.12, y: 1.58}
   m_EdgeRadius: 0
---- !u!50 &7383852360429633189
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825500607332492713}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!114 &6547192051492541758
+--- !u!114 &2745076361700162884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,9 +148,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1825500607332492713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e42513f263d434f844addfd7eb21c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a953f777e20a9e14897d0a283fc174da, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShieldController
-  damage: 0
-  speed: 0
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldOrbitController
   player: {fileID: 0}
+  orbitDistance: 0
+  orbitSpeed: 0
+  angle: 0
+  damage: 0
