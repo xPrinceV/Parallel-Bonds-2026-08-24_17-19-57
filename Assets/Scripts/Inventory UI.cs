@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     public void UpdateInventory()
     {
         List<Weapon> currentWeapons;
+        Debug.Log("Updating Inventory");
 
         if (stateSwitchController.isChar1)
         {

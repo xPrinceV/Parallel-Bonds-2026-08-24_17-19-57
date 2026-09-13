@@ -174,6 +174,7 @@ MonoBehaviour:
   pickupRange: 2
   facingDirection: {x: 1, y: 0}
   stateSwitchController: {fileID: 100271641}
+  inventoryUI: {fileID: 179380107}
   unassignedWeapons:
   - {fileID: 1591325561}
   - {fileID: 123630154}
@@ -790,8 +791,9 @@ MonoBehaviour:
   char2: {fileID: 81002988}
   world1: {fileID: 51126211}
   world2: {fileID: 1249588891}
-  isChar1: 1
+  isChar1: 0
   player: {fileID: 5576025}
+  inventoryUI: {fileID: 179380107}
 --- !u!4 &100271642
 Transform:
   m_ObjectHideFlags: 0
@@ -1197,6 +1199,7 @@ GameObject:
   - component: {fileID: 179380103}
   - component: {fileID: 179380102}
   - component: {fileID: 179380106}
+  - component: {fileID: 179380107}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -1312,6 +1315,25 @@ MonoBehaviour:
   timeText: {fileID: 977536253}
   expLvlSlider: {fileID: 416809140}
   expLvlText: {fileID: 597923388}
+--- !u!114 &179380107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179380101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323dea301fe40e4468eccaedab0e9b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
+  player: {fileID: 5576025}
+  stateSwitchController: {fileID: 100271641}
+  weaponIcons:
+  - {fileID: 558673425}
+  - {fileID: 1974101963}
+  - {fileID: 943245635}
+  - {fileID: 2142785265}
 --- !u!1 &194161584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1521,112 @@ MonoBehaviour:
   nameLevelText: {fileID: 34628382}
   weaponIcon: {fileID: 1035782525}
   ui: {fileID: 179380106}
+--- !u!1 &273773925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273773927}
+  - component: {fileID: 273773926}
+  m_Layer: 3
+  m_Name: Dagger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &273773926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273773925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cb96ba1a742a443a512719a5964d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DaggerController
+  player: {fileID: 5576025}
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    bounces: 1
+    area: 1
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.35
+    - 0.5
+    speedUpgrades:
+    - 0.05
+    - 0.07
+    - 0.11
+    - 0.15
+    - 0.2
+    rangeUpgrades:
+    - 0.05
+    - 0.08
+    - 0.12
+    - 0.15
+    - 0.2
+    attackSpeedUpgrades:
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
+    amountUpgrades: []
+    durationUpgrades:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    bouncesUpgrades:
+    - 0.4
+    - 0.6
+    - 0.8
+    - 1
+    - 1.5
+    areaUpgrades: []
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: 21300000, guid: f0d40344c344f6f4d9b1797825d7a46d, type: 3}
+  weaponName: Poison Dagger
+  availableUpgrades: 000000000100000002000000030000000600000005000000
+  weaponIcon: {fileID: 0}
+  attackDamage: 7
+  attackSpeed: 0.6
+  duration: 5
+  amount: 1
+  attackRange: 5
+  projectileSpeed: 6
+  bounces: 3
+  dagger: {fileID: 5184616330106527083, guid: a2e8aaf1d4fd97d4c9f8cf274094245d, type: 3}
+--- !u!4 &273773927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273773925}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 367653038}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &289579736
 GameObject:
   m_ObjectHideFlags: 0
@@ -67817,112 +67945,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &273773925
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 273773927}
-  - component: {fileID: 273773926}
-  m_Layer: 3
-  m_Name: Dagger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &273773926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273773925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0cb96ba1a742a443a512719a5964d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DaggerController
-  player: {fileID: 5576025}
-  stats:
-    speed: 1
-    damage: 1
-    range: 1
-    attackSpeed: 1
-    amount: 1
-    duration: 1
-    bounces: 1
-    area: 1
-    damageUpgrades:
-    - 0.1
-    - 0.15
-    - 0.22
-    - 0.35
-    - 0.5
-    speedUpgrades:
-    - 0.05
-    - 0.07
-    - 0.11
-    - 0.15
-    - 0.2
-    rangeUpgrades:
-    - 0.05
-    - 0.08
-    - 0.12
-    - 0.15
-    - 0.2
-    attackSpeedUpgrades:
-    - 0.08
-    - 0.12
-    - 0.17
-    - 0.22
-    - 0.3
-    amountUpgrades: []
-    durationUpgrades:
-    - 0.1
-    - 0.2
-    - 0.3
-    - 0.4
-    - 0.5
-    bouncesUpgrades:
-    - 0.4
-    - 0.6
-    - 0.8
-    - 1
-    - 1.5
-    areaUpgrades: []
-    UpgradeText: 
-  weaponLevel: 0
-  icon: {fileID: 21300000, guid: f0d40344c344f6f4d9b1797825d7a46d, type: 3}
-  weaponName: Poison Dagger
-  availableUpgrades: 000000000100000002000000030000000600000005000000
-  weaponIcon: {fileID: 0}
-  attackDamage: 7
-  attackSpeed: 0.6
-  duration: 5
-  amount: 1
-  attackRange: 5
-  projectileSpeed: 6
-  bounces: 3
-  dagger: {fileID: 5184616330106527083, guid: a2e8aaf1d4fd97d4c9f8cf274094245d, type: 3}
---- !u!4 &273773927
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273773925}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 367653038}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &316909897
 GameObject:
   m_ObjectHideFlags: 0
@@ -68590,11 +68612,35 @@ MonoBehaviour:
     duration: 1
     bounces: 1
     area: 1
-    damageUpgrades: [0.05, 0.15, 0.2, 0.35, 0.1, 0.15, 0.22, 0.35, 0.5]
-    speedUpgrades: [0.05, 0.07, 0.11, 0.15, 0.2]
+    damageUpgrades:
+    - 0.05
+    - 0.15
+    - 0.2
+    - 0.35
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.35
+    - 0.5
+    speedUpgrades:
+    - 0.05
+    - 0.07
+    - 0.11
+    - 0.15
+    - 0.2
     rangeUpgrades: []
-    attackSpeedUpgrades: [0.08, 0.12, 0.17, 0.22, 0.3]
-    amountUpgrades: [0.2, 0.3, 0.4, 0.55, 0.75]
+    attackSpeedUpgrades:
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
+    amountUpgrades:
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
     durationUpgrades: []
     bouncesUpgrades: []
     areaUpgrades: []
