@@ -108,7 +108,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         waveCounter = waves[currentWave].waveLength;
-        spawnCounter = waves[currentWave].timeBetweenSpawns;
+        //Set to 0 so next wave spawns instantly
+        spawnCounter = 0;
     }
     public Vector3 SelectSpawnPoint()
     {
