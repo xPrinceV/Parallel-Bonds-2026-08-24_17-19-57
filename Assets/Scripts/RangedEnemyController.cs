@@ -32,7 +32,7 @@ public class RangedEnemyController : EnemyController
         if (startAttack)
         {
             // Stop moving
-            RB.linearVelocity = Vector2.zero;
+            GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
 
             // Countdown channel time
             attackChannelCounter -= Time.deltaTime;
@@ -46,7 +46,7 @@ public class RangedEnemyController : EnemyController
         // Move toward player
         else
         {
-            RB.linearVelocity = (target.position - transform.position).normalized * moveSpeed;
+            GetComponent<Rigidbody2D>().linearVelocity = (target.position - transform.position).normalized * moveSpeed;
         }
 
         UpdatePoison();

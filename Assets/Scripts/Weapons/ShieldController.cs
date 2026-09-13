@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AuraItemController : MonoBehaviour {
+public class ShieldController : MonoBehaviour {
 
     [HideInInspector] public float damage;
     [HideInInspector] public float speed;

@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
     public List<Weapon> char2AssignedWeapons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    void Start() {
         //Temporary for now until weapon chest implemented
         AddWeapon(0, true);
         AddWeapon(0, true);
@@ -40,8 +39,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         Vector3 moveInput = new Vector3(0f, 0f, 0f);
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");

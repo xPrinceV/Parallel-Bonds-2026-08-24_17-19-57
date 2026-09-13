@@ -18,7 +18,7 @@ public class SniperController : Weapon {
                 bulletHandle.dir = (target.transform.position - transform.position).normalized;
                 bulletHandle.damage = attackDamage * stats.damage;
                 bulletHandle.player = player;
-                bulletHandle.muzzleVelocity = 50F /* 973F */;
+                bulletHandle.muzzleVelocity = 973F;
                 attackCounter = 1F / (attackSpeed * stats.attackSpeed);
             }
         } else {
