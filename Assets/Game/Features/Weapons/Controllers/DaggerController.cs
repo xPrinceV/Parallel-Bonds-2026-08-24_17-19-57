@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DaggerController : Weapon
 {
@@ -12,6 +13,8 @@ public class DaggerController : Weapon
     [SerializeField] private GameObject dagger;
     [SerializeField] private BuffController buffHolder;
     private float attackCounter;
+    private readonly List<Collider2D> enemiesInRange = new List<Collider2D>(32);
+    private readonly List<Collider2D> queryScratch = new List<Collider2D>();
     void Start()
     {
         attackCounter = 0;
@@ -65,7 +68,7 @@ public class DaggerController : Weapon
         float closestDistance = Mathf.Infinity;
 
         //Find all collider hitboxes within the radius of attackRange
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, attackRange*stats.range);
+        WeaponQuery.OverlapCircle(transform.position, attackRange * stats.range, enemiesInRange, queryScratch);
 
         foreach (Collider2D enemy in enemiesInRange)
         {

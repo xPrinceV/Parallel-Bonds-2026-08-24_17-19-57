@@ -16,31 +16,16 @@ public class DamageCalculator
         float totalPostfix = 0f;
 
         // group modifiers by stage so postfix never receives an attack multiplier
-        foreach (StatModifier modifier in modifiers)
+        // cached arrays and lists need no boxed interface enumerator on the attack path
+        if (modifiers is IReadOnlyList<StatModifier> indexed)
         {
-            // player stat ids must never be interpreted as weapon damage ids
-            if (modifier.Target != ModifierTarget.Weapon || modifier.Stat != WeaponStatId.Damage)
-                continue;
-            if (!IsFinite(modifier.Value))
-                throw new ArgumentException("Damage modifier values must be finite.", nameof(modifiers));
-
-            switch (modifier.Type)
-            {
-                case ModifierType.Prefix:
-                    totalPrefix += modifier.Value;
-                    break;
-                case ModifierType.Multiplier:
-                    combinedMultiplier *= modifier.Value;
-                    break;
-                case ModifierType.Postfix:
-                    totalPostfix += modifier.Value;
-                    break;
-                default:
-                    throw new ArgumentException("Unknown damage modifier type.", nameof(modifiers));
-            }
-
-            if (!IsFinite(totalPrefix) || !IsFinite(combinedMultiplier) || !IsFinite(totalPostfix))
-                throw new OverflowException("Damage modifiers exceed the supported numeric range.");
+            for (int i = 0; i < indexed.Count; i++)
+                Accumulate(indexed[i], ref totalPrefix, ref combinedMultiplier, ref totalPostfix);
+        }
+        else
+        {
+            foreach (StatModifier modifier in modifiers)
+                Accumulate(modifier, ref totalPrefix, ref combinedMultiplier, ref totalPostfix);
         }
 
         // apply the requested formula without clamping or target defense calculation
@@ -49,6 +34,32 @@ public class DamageCalculator
             throw new OverflowException("Calculated damage exceeds the supported numeric range.");
 
         return finalDamage;
+    }
+
+    private static void Accumulate(StatModifier modifier, ref float prefix, ref float multiplier, ref float postfix)
+    {
+        // player stat ids must never be interpreted as weapon damage ids
+        if (modifier.Target != ModifierTarget.Weapon || modifier.Stat != WeaponStatId.Damage)
+            return;
+        if (!IsFinite(modifier.Value))
+            throw new ArgumentException("Damage modifier values must be finite.", "modifiers");
+
+        switch (modifier.Type)
+        {
+            case ModifierType.Prefix:
+                prefix += modifier.Value;
+                break;
+            case ModifierType.Multiplier:
+                multiplier *= modifier.Value;
+                break;
+            case ModifierType.Postfix:
+                postfix += modifier.Value;
+                break;
+            default:
+                throw new ArgumentException("Unknown damage modifier type.", "modifiers");
+        }
+        if (!IsFinite(prefix) || !IsFinite(multiplier) || !IsFinite(postfix))
+            throw new OverflowException("Damage modifiers exceed the supported numeric range.");
     }
 
     private static bool IsFinite(float value)

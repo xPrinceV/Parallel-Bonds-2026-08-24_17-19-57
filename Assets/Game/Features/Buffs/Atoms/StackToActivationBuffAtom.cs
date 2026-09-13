@@ -28,7 +28,10 @@ public class StackToActivationBuffAtom : BuffAtom
         && activation != null
         && condition.isValid
         && activation.isValid
-        && Enum.IsDefined(typeof(StackConsumeMode), consumeMode);
+        // validate without boxing the enum on every stack event
+        && (consumeMode == StackConsumeMode.ConsumeRequiredStacks
+            || consumeMode == StackConsumeMode.ConsumeAllStacks
+            || consumeMode == StackConsumeMode.TriggerOnce);
 
     public override StatModifier[] CreateModifiers()
     {

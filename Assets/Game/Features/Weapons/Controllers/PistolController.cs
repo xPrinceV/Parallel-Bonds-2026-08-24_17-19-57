@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PistolController : Weapon
 {
@@ -12,6 +13,8 @@ public class PistolController : Weapon
 
 
     private float attackCounter;
+    private readonly List<Collider2D> enemiesInRange = new List<Collider2D>(32);
+    private readonly List<Collider2D> queryScratch = new List<Collider2D>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,7 +70,7 @@ public class PistolController : Weapon
         float closestDistance = Mathf.Infinity;
 
         //Find all collider hitboxes within the radius of attackRange
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, attackRange*stats.range);
+        WeaponQuery.OverlapCircle(transform.position, attackRange * stats.range, enemiesInRange, queryScratch);
 
         foreach (Collider2D enemy in enemiesInRange)
         {

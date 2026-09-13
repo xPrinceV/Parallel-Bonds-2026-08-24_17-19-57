@@ -17,6 +17,7 @@ public sealed class BuffInstance
     public bool IsActive { get; private set; } = true;
     public IReadOnlyList<StatModifier> Modifiers { get; }
     public IReadOnlyList<StackBuffInstance> StackInstances { get; }
+    internal event Action ModifiersChanged;
 
     public BuffInstance(BuffDefinition definition, IBuffReceiver receiver)
     {
@@ -96,6 +97,7 @@ public sealed class BuffInstance
         modifiers.Clear();
         modifiers.AddRange(resolved);
         activatedEffects.Add(activation);
+        ModifiersChanged?.Invoke();
         return true;
     }
 
@@ -134,11 +136,14 @@ public sealed class BuffInstance
     // removal stops both stat contribution and event processing
     public void Remove()
     {
+        if (!IsActive)
+            return;
         IsActive = false;
         contributions.Clear();
         modifiers.Clear();
         activatedEffects.Clear();
         foreach (StackBuffInstance stack in stacks)
             stack.Remove();
+        ModifiersChanged?.Invoke();
     }
 }

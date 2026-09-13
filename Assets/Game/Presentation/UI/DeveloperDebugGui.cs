@@ -18,6 +18,13 @@ public sealed class DeveloperDebugGui : MonoBehaviour
 
     private TMP_Text switchButtonLabel;
     private TMP_Text automaticSwitchButtonLabel;
+    private RunStagePanel[] runStagePanels;
+    private bool displayValid;
+    private bool displayedFlow, displayedAutomatic;
+    private float displayedInterval;
+    private bool displayedWorld, displayedFusion, displayedHealth;
+    private WorldId displayedWorldId;
+    private float displayedCurrentHealth, displayedMaxHealth;
 
     public bool IsOpen { get; private set; }
     public bool IsAvailable
@@ -41,6 +48,7 @@ public sealed class DeveloperDebugGui : MonoBehaviour
         echoButton.onClick.AddListener(ToggleAutomaticSwitching);
         // child visibility and layout are authored in the scene, not changed on entry
         closeButton.onClick.AddListener(Close);
+        runStagePanels = GetComponentsInChildren<RunStagePanel>(true);
         SetOpen(false);
     }
 
@@ -57,6 +65,17 @@ public sealed class DeveloperDebugGui : MonoBehaviour
         if (!IsOpen)
             return;
 
+        RefreshDisplay();
+    }
+
+    private void RefreshDisplay(bool force = false)
+    {
+        if (!IsAvailable || !IsOpen || canvas == null || !canvas.isActiveAndEnabled)
+        {
+            displayValid = false;
+            return;
+        }
+
         bool ready = worldManager != null && worldManager.IsInitialized && worldManager.isActiveAndEnabled;
         World world = ready ? worldManager.CurrentWorld : null;
         PlayerHealth health = world != null && world.Player != null ? world.Player.GetComponent<PlayerHealth>() : null;
@@ -65,17 +84,53 @@ public sealed class DeveloperDebugGui : MonoBehaviour
             && (UIController.instance == null || UIController.instance.levelUpPanel == null
                 || !UIController.instance.levelUpPanel.activeInHierarchy);
         var switchFlow = worldManager != null ? worldManager.SwitchFlow : null;
-        materialButton.interactable = canAct && !worldManager.IsFused && switchFlow != null;
+        bool canSwitch = canAct && !worldManager.IsFused && switchFlow != null;
+        if (materialButton.interactable != canSwitch)
+            materialButton.interactable = canSwitch;
         // scheduling can be toggled while paused; this never resumes or commits a transition
-        echoButton.interactable = ready && switchFlow != null && switchFlow.isActiveAndEnabled
+        bool canToggleAutomatic = ready && switchFlow != null && switchFlow.isActiveAndEnabled
             && !worldManager.IsFused && !worldManager.IsFinalFusion;
-        if (automaticSwitchButtonLabel != null)
-            automaticSwitchButtonLabel.text = switchFlow == null ? "Auto switch: Unavailable"
-                : switchFlow.AutomaticSwitchingEnabled ? "Auto switch: On" : "Auto switch: Off";
-        if (switchButtonLabel != null)
-            switchButtonLabel.text = switchFlow != null ? $"{switchFlow.SwitchInterval:0.#}s Switch" : "Switch";
-        worldStatus.text = world == null ? "World unavailable" : $"World: {world.WorldId} | Fusion: {(worldManager.IsFused ? "On" : "Off")}"
-            + (health == null ? "" : $"\nShared HP: {health.currentHealth:0.#} / {health.maxHealth:0.#}");
+        if (echoButton.interactable != canToggleAutomatic)
+            echoButton.interactable = canToggleAutomatic;
+
+        bool hasFlow = switchFlow != null;
+        bool automatic = hasFlow && switchFlow.AutomaticSwitchingEnabled;
+        float interval = hasFlow ? switchFlow.SwitchInterval : 0f;
+        if (force || !displayValid || displayedFlow != hasFlow || displayedAutomatic != automatic)
+        {
+            if (automaticSwitchButtonLabel != null)
+                automaticSwitchButtonLabel.text = !hasFlow ? "Auto switch: Unavailable"
+                    : automatic ? "Auto switch: On" : "Auto switch: Off";
+        }
+        if (force || !displayValid || displayedFlow != hasFlow || displayedInterval != interval)
+        {
+            if (switchButtonLabel != null)
+                switchButtonLabel.text = hasFlow ? $"{interval:0.#}s Switch" : "Switch";
+        }
+        displayedFlow = hasFlow;
+        displayedAutomatic = automatic;
+        displayedInterval = interval;
+
+        bool hasWorld = world != null;
+        WorldId worldId = hasWorld ? world.WorldId : default(WorldId);
+        bool fused = hasWorld && worldManager.IsFused;
+        bool hasHealth = health != null;
+        float currentHealth = hasHealth ? health.currentHealth : 0f;
+        float maxHealth = hasHealth ? health.maxHealth : 0f;
+        if (force || !displayValid || displayedWorld != hasWorld || displayedWorldId != worldId
+            || displayedFusion != fused || displayedHealth != hasHealth
+            || displayedCurrentHealth != currentHealth || displayedMaxHealth != maxHealth)
+        {
+            worldStatus.text = !hasWorld ? "World unavailable" : $"World: {worldId} | Fusion: {(fused ? "On" : "Off")}"
+                + (!hasHealth ? "" : $"\nShared HP: {currentHealth:0.#} / {maxHealth:0.#}");
+            displayedWorld = hasWorld;
+            displayedWorldId = worldId;
+            displayedFusion = fused;
+            displayedHealth = hasHealth;
+            displayedCurrentHealth = currentHealth;
+            displayedMaxHealth = maxHealth;
+        }
+        displayValid = true;
     }
 
     public void Toggle()
@@ -85,6 +140,7 @@ public sealed class DeveloperDebugGui : MonoBehaviour
 
     public void SetOpen(bool open)
     {
+        bool wasOpen = IsOpen;
         IsOpen = open && IsAvailable && isActiveAndEnabled;
         if (!IsOpen && EventSystem.current != null)
         {
@@ -96,6 +152,13 @@ public sealed class DeveloperDebugGui : MonoBehaviour
             canvas.enabled = IsOpen;
         if (raycaster != null)
             raycaster.enabled = IsOpen;
+        if (IsOpen && !wasOpen)
+        {
+            RefreshDisplay(true);
+            if (runStagePanels != null)
+                foreach (var panel in runStagePanels)
+                    if (panel != null) panel.RefreshDisplay(true);
+        }
     }
 
     // the same runtime entry points own validation for shortcuts, buttons and gameplay

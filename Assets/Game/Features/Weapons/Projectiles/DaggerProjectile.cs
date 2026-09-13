@@ -32,6 +32,8 @@ public class DaggerProjectile : MonoBehaviour, IWorldProjectile
     private float lifetimeRemaining = 7f;
     private BuffController buffSource;
     private EnemyController lastHit;
+    private readonly List<Collider2D> enemiesInRange = new List<Collider2D>(32);
+    private readonly List<Collider2D> queryScratch = new List<Collider2D>();
     private readonly HashSet<EnemyController> hitList = new HashSet<EnemyController>();
     private readonly Dictionary<Collider2D, EnemyController> contacts = new Dictionary<Collider2D, EnemyController>();
 
@@ -135,7 +137,7 @@ public class DaggerProjectile : MonoBehaviour, IWorldProjectile
         float closestDistance = Mathf.Infinity;
         
         //Look for all colliders within the range of the projectile
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, range);
+        WeaponQuery.OverlapCircle(transform.position, range, enemiesInRange, queryScratch);
 
         //Prioritize finding the closest enemy that is not the targetToIgnore and has not been hit yet
         foreach (Collider2D enemy in enemiesInRange)

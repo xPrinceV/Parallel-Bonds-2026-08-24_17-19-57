@@ -12,6 +12,20 @@ public class RunStagePanel : MonoBehaviour
     [SerializeField] private Button restartButton;
 
     private TMP_Text finaleButtonLabel;
+    private Canvas displayCanvas;
+    private DeveloperDebugGui developerGui;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    private bool displayValid;
+    private bool displayedController;
+    private float displayedFinaleTime;
+    private StageDisplay displayedStage;
+    private StateDisplay displayedState;
+    private int displayedWave, displayedCountdown, displayedBosses;
+    private bool displayedFinale;
+
+    private enum StageDisplay { Unavailable, Complete, Boss, Fusion, NotStarted, Survival, Wave }
+    private enum StateDisplay { Defeated, Complete, Stopped, Paused, Running }
+#endif
 
     private bool CanStartFinale => runController != null && runController.IsRunning
         && !runController.IsCompleted && !runController.IsDefeated && !runController.IsFinaleStarted
@@ -22,6 +36,8 @@ public class RunStagePanel : MonoBehaviour
 
     private void Awake()
     {
+        displayCanvas = GetComponentInParent<Canvas>();
+        developerGui = GetComponentInParent<DeveloperDebugGui>();
         // keep the authored controls unchanged between Edit Mode and Play Mode
         if (stageButtons.Length > 3 && stageButtons[3] != null)
         {
@@ -33,30 +49,83 @@ public class RunStagePanel : MonoBehaviour
 
     private void Update()
     {
-        if (stageButtons.Length > 3 && stageButtons[3] != null)
-            stageButtons[3].interactable = CanStartFinale;
-        // Restart must remain reachable while an upgrade or death has stopped scaled time.
-        restartButton.interactable = runController != null;
-        if (finaleButtonLabel != null)
-            finaleButtonLabel.text = runController != null ? $"{runController.FinaleStartTime:0.#}s Finale" : "Finale";
+        RefreshDisplay();
+    }
 
-        if (runController == null)
+    // Canvas.enabled does not stop Update on its children. SetOpen also calls this
+    // synchronously so opening never exposes the previous hidden snapshot.
+    public void RefreshDisplay(bool force = false)
+    {
+#if !UNITY_EDITOR && !DEVELOPMENT_BUILD
+        return;
+#else
+        if (!isActiveAndEnabled || displayCanvas == null || !displayCanvas.isActiveAndEnabled
+            || (developerGui != null && (!developerGui.IsAvailable || !developerGui.IsOpen)))
         {
-            statusText.text = "Run controller unavailable";
+            displayValid = false;
             return;
         }
 
-        string stage = runController.IsCompleted ? "Complete"
-            : runController.IsBossPhase ? "Rift Lord" : runController.IsFinaleStarted ? "Fusion"
-            : runController.CurrentStageIndex < 0 ? "Not started"
-            : !runController.UsesSharedWaves ? "Survival" : "Wave " + (runController.CurrentStageIndex + 1);
+        bool hasController = runController != null;
+        bool canStartFinale = CanStartFinale;
+        if (stageButtons.Length > 3 && stageButtons[3] != null
+            && stageButtons[3].interactable != canStartFinale)
+            stageButtons[3].interactable = canStartFinale;
+        // Guards are evaluated every visible frame, independently of text caching.
+        // Restart must remain reachable while an upgrade or death has stopped scaled time.
+        if (restartButton.interactable != hasController)
+            restartButton.interactable = hasController;
+
+        float finaleTime = hasController ? runController.FinaleStartTime : 0f;
+        if (force || !displayValid || displayedController != hasController || displayedFinaleTime != finaleTime)
+        {
+            if (finaleButtonLabel != null)
+                finaleButtonLabel.text = hasController ? $"{finaleTime:0.#}s Finale" : "Finale";
+            displayedController = hasController;
+            displayedFinaleTime = finaleTime;
+        }
+
+        StageDisplay stage = !hasController ? StageDisplay.Unavailable
+            : runController.IsCompleted ? StageDisplay.Complete
+            : runController.IsBossPhase ? StageDisplay.Boss
+            : runController.IsFinaleStarted ? StageDisplay.Fusion
+            : runController.CurrentStageIndex < 0 ? StageDisplay.NotStarted
+            : !runController.UsesSharedWaves ? StageDisplay.Survival : StageDisplay.Wave;
         bool paused = Time.timeScale <= 0f || (uiController != null && uiController.levelUpPanel != null
             && uiController.levelUpPanel.activeInHierarchy);
-        string state = runController.IsDefeated ? "Defeated" : runController.IsCompleted ? "Complete"
-            : !runController.IsRunning ? "Stopped" : paused ? "Paused" : "Running";
-        string countdown = runController.IsFinaleStarted ? "Final fusion locked"
-            : $"Fusion in: {Mathf.CeilToInt(runController.RemainingUntilFinale)}s";
-        statusText.text = $"{stage} | {state}\n{countdown} | Bosses: {runController.RemainingBosses}";
+        StateDisplay state = !hasController ? StateDisplay.Stopped
+            : runController.IsDefeated ? StateDisplay.Defeated : runController.IsCompleted ? StateDisplay.Complete
+            : !runController.IsRunning ? StateDisplay.Stopped : paused ? StateDisplay.Paused : StateDisplay.Running;
+        int wave = stage == StageDisplay.Wave ? runController.CurrentStageIndex + 1 : 0;
+        bool finale = hasController && runController.IsFinaleStarted;
+        int countdown = hasController && !finale ? Mathf.CeilToInt(runController.RemainingUntilFinale) : 0;
+        int bosses = hasController ? runController.RemainingBosses : 0;
+        if (force || !displayValid || displayedStage != stage || displayedState != state
+            || displayedWave != wave || displayedFinale != finale
+            || displayedCountdown != countdown || displayedBosses != bosses)
+        {
+            if (!hasController)
+                statusText.text = "Run controller unavailable";
+            else
+            {
+                string stageText = stage == StageDisplay.Complete ? "Complete"
+                    : stage == StageDisplay.Boss ? "Rift Lord" : stage == StageDisplay.Fusion ? "Fusion"
+                    : stage == StageDisplay.NotStarted ? "Not started" : stage == StageDisplay.Survival ? "Survival"
+                    : "Wave " + wave;
+                string stateText = state == StateDisplay.Defeated ? "Defeated" : state == StateDisplay.Complete ? "Complete"
+                    : state == StateDisplay.Stopped ? "Stopped" : state == StateDisplay.Paused ? "Paused" : "Running";
+                string countdownText = finale ? "Final fusion locked" : $"Fusion in: {countdown}s";
+                statusText.text = $"{stageText} | {stateText}\n{countdownText} | Bosses: {bosses}";
+            }
+            displayedStage = stage;
+            displayedState = state;
+            displayedWave = wave;
+            displayedFinale = finale;
+            displayedCountdown = countdown;
+            displayedBosses = bosses;
+        }
+        displayValid = true;
+#endif
     }
 
     private void StartFinale()

@@ -14,6 +14,10 @@ public class LightningController : Weapon
     private float strikeCounter;
     private float strikeInterval;
     private float strikes;
+    private readonly List<Collider2D> enemiesInRange = new List<Collider2D>(32);
+    private readonly List<Collider2D> queryScratch = new List<Collider2D>();
+    private readonly List<EnemyController> availableEnemies = new List<EnemyController>(32);
+    private readonly HashSet<EnemyController> seenEnemies = new HashSet<EnemyController>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -76,10 +80,11 @@ public class LightningController : Weapon
 
     private EnemyController FindRandomEnemy()
     {
-        List<EnemyController> availableEnemies = new List<EnemyController>();
+        availableEnemies.Clear();
+        seenEnemies.Clear();
 
         //Find all collider hitboxes within the radius of attackRange
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, attackRange * stats.range);
+        WeaponQuery.OverlapCircle(transform.position, attackRange * stats.range, enemiesInRange, queryScratch);
 
         foreach (Collider2D enemy in enemiesInRange)
         {
@@ -88,7 +93,7 @@ public class LightningController : Weapon
 
             if (enemyController != null && enemyController.gameObject.activeInHierarchy
                 && enemyController.health > 0f && World.CanInteract(this, enemyController)
-                && !availableEnemies.Contains(enemyController))
+                && seenEnemies.Add(enemyController))
             {
                 availableEnemies.Add(enemyController);
             }

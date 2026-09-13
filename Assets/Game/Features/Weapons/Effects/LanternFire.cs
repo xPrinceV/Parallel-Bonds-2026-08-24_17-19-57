@@ -8,6 +8,7 @@ public class LanternFire : MonoBehaviour
     private BuffController buffSource;
     private readonly Dictionary<EnemyController, HashSet<Collider2D>> burningColliders =
         new Dictionary<EnemyController, HashSet<Collider2D>>();
+    private readonly List<Collider2D> staleColliders = new List<Collider2D>();
     //How frequent in seconds, the enemy will take damage from the fire
     public float tickRate = 0.5f;
     public float tickCounter = 0;
@@ -128,9 +129,16 @@ public class LanternFire : MonoBehaviour
                 continue;
             }
 
-            // Disabled or destroyed colliders may never send an exit.
-            colliders.RemoveWhere(collider => collider == null || !collider.enabled ||
-                !collider.gameObject.activeInHierarchy || collider.GetComponentInParent<EnemyController>() != enemy);
+            // Collect first to avoid mutating the set during enumeration or allocating a predicate.
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider == null || !collider.enabled || !collider.gameObject.activeInHierarchy ||
+                    collider.GetComponentInParent<EnemyController>() != enemy)
+                    staleColliders.Add(collider);
+            }
+            for (int j = 0; j < staleColliders.Count; j++)
+                colliders.Remove(staleColliders[j]);
+            staleColliders.Clear();
             if (colliders.Count == 0)
                 RemoveEnemyAt(i);
         }

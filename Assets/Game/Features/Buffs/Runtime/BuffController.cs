@@ -10,6 +10,10 @@ public class BuffController : MonoBehaviour, IBuffReceiver
 
     private readonly List<BuffInstance> instances = new List<BuffInstance>();
     private readonly Dictionary<BuffInstance, BuffHandle> grants = new Dictionary<BuffInstance, BuffHandle>();
+    private readonly List<BuffInstance> eventSnapshot = new List<BuffInstance>();
+    private readonly List<StatModifier> modifierBuffer = new List<StatModifier>();
+    private StatModifier[] cachedModifiers = Array.Empty<StatModifier>();
+    private bool modifiersDirty = true;
     private bool isDispatching;
     public bool IsWorldSuspended { get; private set; }
 
@@ -88,6 +92,7 @@ public class BuffController : MonoBehaviour, IBuffReceiver
 
         bool wasActive = handle.IsActive;
         handle.Instance.Remove();
+        handle.Instance.ModifiersChanged -= InvalidateModifiers;
         instances.Remove(handle.Instance);
         grants.Remove(handle.Instance);
         return wasActive;
@@ -108,6 +113,8 @@ public class BuffController : MonoBehaviour, IBuffReceiver
         }
 
         instances.Add(instance);
+        instance.ModifiersChanged += InvalidateModifiers;
+        InvalidateModifiers();
         return instance;
     }
 
@@ -130,6 +137,7 @@ public class BuffController : MonoBehaviour, IBuffReceiver
             return false;
 
         instance.Remove();
+        instance.ModifiersChanged -= InvalidateModifiers;
         instances.Remove(instance);
         return true;
     }
@@ -147,6 +155,7 @@ public class BuffController : MonoBehaviour, IBuffReceiver
             instance.Tick(deltaTime);
             if (!instance.IsActive)
             {
+                instance.ModifiersChanged -= InvalidateModifiers;
                 grants.Remove(instance);
                 instances.RemoveAt(i);
             }
@@ -168,12 +177,13 @@ public class BuffController : MonoBehaviour, IBuffReceiver
         try
         {
             // newly granted buffs cannot consume the event that created them
-            BuffInstance[] snapshot = instances.ToArray();
-            foreach (BuffInstance instance in snapshot)
-                instance.ProcessEvent(context);
+            eventSnapshot.AddRange(instances);
+            for (int i = 0; i < eventSnapshot.Count; i++)
+                eventSnapshot[i].ProcessEvent(context);
         }
         finally
         {
+            eventSnapshot.Clear();
             isDispatching = false;
         }
     }
@@ -181,7 +191,7 @@ public class BuffController : MonoBehaviour, IBuffReceiver
     // callers provide damage before buffs; the calculator still owns the formula
     public float CalculateWeaponDamage(float weaponDamage)
     {
-        return DamageCalculator.CalculateDamage(weaponDamage, GetModifiers());
+        return DamageCalculator.CalculateDamage(weaponDamage, GetModifierSnapshot());
     }
 
     public int CalculateProjectileCount(int baseCount)
@@ -192,7 +202,7 @@ public class BuffController : MonoBehaviour, IBuffReceiver
         double prefix = 0d;
         double multiplier = 1d;
         double postfix = 0d;
-        foreach (StatModifier modifier in GetModifiers())
+        foreach (StatModifier modifier in GetModifierSnapshot())
         {
             if (modifier.Target != ModifierTarget.Weapon || modifier.Stat != WeaponStatId.ProjectileCount)
                 continue;
@@ -231,17 +241,35 @@ public class BuffController : MonoBehaviour, IBuffReceiver
     // consumers read current modifiers rather than applying and reversing raw values
     public StatModifier[] GetModifiers()
     {
-        var result = new List<StatModifier>();
-        if (!isActiveAndEnabled)
-            return result.ToArray();
+        // preserve caller-owned arrays; weapon calculations read the private snapshot directly
+        StatModifier[] snapshot = GetModifierSnapshot();
+        return snapshot.Length == 0 ? Array.Empty<StatModifier>() : (StatModifier[])snapshot.Clone();
+    }
 
+    private void InvalidateModifiers()
+    {
+        modifiersDirty = true;
+    }
+
+    private StatModifier[] GetModifierSnapshot()
+    {
+        if (!isActiveAndEnabled)
+            return Array.Empty<StatModifier>();
+        if (!modifiersDirty)
+            return cachedModifiers;
+
+        modifierBuffer.Clear();
         foreach (BuffInstance instance in instances)
         {
-            if (instance.IsActive)
-                result.AddRange(instance.Modifiers);
+            if (!instance.IsActive)
+                continue;
+            for (int i = 0; i < instance.Modifiers.Count; i++)
+                modifierBuffer.Add(instance.Modifiers[i]);
         }
-
-        return result.ToArray();
+        cachedModifiers = modifierBuffer.ToArray();
+        modifierBuffer.Clear();
+        modifiersDirty = false;
+        return cachedModifiers;
     }
 
     private void OnDisable()
@@ -260,8 +288,14 @@ public class BuffController : MonoBehaviour, IBuffReceiver
     {
         // this first version ends buffs when their holder is disabled
         foreach (BuffInstance instance in instances)
+        {
+            instance.ModifiersChanged -= InvalidateModifiers;
             instance.Remove();
+        }
         instances.Clear();
         grants.Clear();
+        cachedModifiers = Array.Empty<StatModifier>();
+        modifierBuffer.Clear();
+        InvalidateModifiers();
     }
 }

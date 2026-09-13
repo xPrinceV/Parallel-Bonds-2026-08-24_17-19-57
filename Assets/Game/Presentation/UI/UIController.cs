@@ -8,6 +8,8 @@ public class UIController : MonoBehaviour
     public LevelUpSelectionButton[] levelUpButtons;
     public GameObject levelUpPanel;
     public TMP_Text timeText;
+    private TMP_Text displayedTimeText;
+    private int displayedMinutes, displayedSeconds;
     void Awake()
     {
         instance = this;
@@ -38,9 +40,21 @@ public class UIController : MonoBehaviour
     //Function for adding a game timer
     public void UpdateTimer(float time)
     {
-        float minutes = Mathf.FloorToInt (time / 60f);
-        float seconds = Mathf.FloorToInt(time % 60); 
+        if (timeText == null)
+        {
+            displayedTimeText = null;
+            return;
+        }
+
+        int minutes = Mathf.FloorToInt(time / 60f);
+        int seconds = Mathf.FloorToInt(time % 60);
+        // The same displayed second must still initialize a newly bound scene text.
+        if (displayedTimeText == timeText && displayedMinutes == minutes && displayedSeconds == seconds)
+            return;
 
         timeText.text = minutes + ":" + seconds.ToString("00");
+        displayedTimeText = timeText;
+        displayedMinutes = minutes;
+        displayedSeconds = seconds;
     }
 }
