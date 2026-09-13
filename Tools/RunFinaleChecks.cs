@@ -200,8 +200,8 @@ public sealed class RunFinaleChecks : IDisposable
         Require(stages != null && stages.Length == 4 && stages[3] != null,
             "four stage buttons including finale are bound");
         var finaleLabel = stages[3].GetComponentInChildren<TMPro.TMP_Text>(true);
-        Check(finaleLabel != null && finaleLabel.text.Trim() == "Finale",
-            "finale label identifies the final stage");
+        Check(finaleLabel != null && finaleLabel.text.Trim() == $"{run.FinaleStartTime:0.#}s Finale",
+            "finale label matches configured event time");
         return panel;
     }
 

@@ -7,6 +7,7 @@ public class StateSwitchController : MonoBehaviour
 {
     [SerializeField] private WorldManager worldManager;
     [SerializeField, Min(0.1f)] private float timer = 15f;
+    [SerializeField] private bool automaticSwitchingEnabled = true;
     [SerializeField, Min(0f)] private float warningDuration = 5f;
     [SerializeField, Min(0.1f)] private float flipDuration = 0.8f;
 
@@ -14,6 +15,19 @@ public class StateSwitchController : MonoBehaviour
     public float FlipProgress { get; private set; }
     public bool IsFlipping { get; private set; }
     public float RemainingTime => timerCounter;
+    public float SwitchInterval => timer;
+
+    // only automatic scheduling is disabled; accepted requests and flips finish normally
+    public bool AutomaticSwitchingEnabled
+    {
+        get => automaticSwitchingEnabled;
+        set
+        {
+            automaticSwitchingEnabled = value;
+            if (!value && !requested && !IsFlipping)
+                CancelTransition();
+        }
+    }
     // observers see the committed world at the narrowest rendered frame
     public event Action TransitionMidpoint;
 
@@ -48,6 +62,13 @@ public class StateSwitchController : MonoBehaviour
     {
         return value > 0f && !float.IsNaN(value) && !float.IsInfinity(value);
     }
+
+    public bool RequestNextWorldSwitch()
+    {
+        return worldManager != null && RequestSwitch(NextWorldId);
+    }
+
+    private WorldId NextWorldId => worldManager.CurrentWorldId == WorldId.Material ? WorldId.Echo : WorldId.Material;
 
     // true means accepted, not committed; manual requests use the same warning and midpoint
     public bool RequestSwitch(WorldId target)
@@ -90,6 +111,12 @@ public class StateSwitchController : MonoBehaviour
             WarningProgress = 0f;
             return;
         }
+        // clear an automatic warning without interrupting a requested or already started flip
+        if (!automaticSwitchingEnabled && !requested && !IsFlipping)
+        {
+            CancelTransition();
+            return;
+        }
         if (!CanAdvance())
             return;
 
@@ -101,7 +128,7 @@ public class StateSwitchController : MonoBehaviour
             if (timerCounter > half)
                 return;
             if (!requested)
-                targetWorldId = worldManager.CurrentWorldId == WorldId.Material ? WorldId.Echo : WorldId.Material;
+                targetWorldId = NextWorldId;
             IsFlipping = true;
             midpointCommitted = false;
             flipElapsed = Mathf.Max(0f, half - timerCounter);

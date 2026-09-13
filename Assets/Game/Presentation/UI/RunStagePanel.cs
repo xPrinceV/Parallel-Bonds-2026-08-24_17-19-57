@@ -11,7 +11,9 @@ public class RunStagePanel : MonoBehaviour
     [SerializeField] private Button nextButton;
     [SerializeField] private Button restartButton;
 
-    private bool CanChangeStage => runController != null && runController.IsRunning
+    private TMP_Text finaleButtonLabel;
+
+    private bool CanStartFinale => runController != null && runController.IsRunning
         && !runController.IsCompleted && !runController.IsDefeated && !runController.IsFinaleStarted
         && Time.timeScale > 0f
         && (PlayerHealth.instance == null || !PlayerHealth.instance.IsDead)
@@ -20,26 +22,23 @@ public class RunStagePanel : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 0; i < stageButtons.Length; i++)
+        // keep the authored controls unchanged between Edit Mode and Play Mode
+        if (stageButtons.Length > 3 && stageButtons[3] != null)
         {
-            int stage = i;
-            stageButtons[i].onClick.AddListener(() => EnterStage(stage));
-            if (i == 3)
-                stageButtons[i].GetComponentInChildren<TMP_Text>(true).text = "Finale";
+            finaleButtonLabel = stageButtons[3].GetComponentInChildren<TMP_Text>(true);
+            stageButtons[3].onClick.AddListener(StartFinale);
         }
-        nextButton.onClick.AddListener(AdvanceStage);
         restartButton.onClick.AddListener(Restart);
     }
 
     private void Update()
     {
-        bool available = CanChangeStage;
-        for (int i = 0; i < stageButtons.Length; i++)
-            stageButtons[i].interactable = available && (i == 3 || runController.UsesSharedWaves)
-                && runController.CurrentStageIndex != i;
-        nextButton.interactable = available && runController.UsesSharedWaves && runController.CurrentStageIndex < 3;
+        if (stageButtons.Length > 3 && stageButtons[3] != null)
+            stageButtons[3].interactable = CanStartFinale;
         // Restart must remain reachable while an upgrade or death has stopped scaled time.
         restartButton.interactable = runController != null;
+        if (finaleButtonLabel != null)
+            finaleButtonLabel.text = runController != null ? $"{runController.FinaleStartTime:0.#}s Finale" : "Finale";
 
         if (runController == null)
         {
@@ -60,22 +59,23 @@ public class RunStagePanel : MonoBehaviour
         statusText.text = $"{stage} | {state}\n{countdown} | Bosses: {runController.RemainingBosses}";
     }
 
-    private void EnterStage(int stage)
+    private void StartFinale()
     {
-        if (CanChangeStage && (stage == 3 || runController.UsesSharedWaves)
-            && runController.CurrentStageIndex != stage)
-            runController.TryEnterStage(stage);
-    }
-
-    private void AdvanceStage()
-    {
-        if (CanChangeStage && runController.UsesSharedWaves && runController.CurrentStageIndex < 3)
-            runController.TryAdvanceStage();
+        if (CanStartFinale)
+            runController.TryStartFinale();
     }
 
     private void Restart()
     {
         if (runController != null)
             runController.RestartRun();
+    }
+
+    private void OnDestroy()
+    {
+        if (stageButtons != null && stageButtons.Length > 3 && stageButtons[3] != null)
+            stageButtons[3].onClick.RemoveListener(StartFinale);
+        if (restartButton != null)
+            restartButton.onClick.RemoveListener(Restart);
     }
 }

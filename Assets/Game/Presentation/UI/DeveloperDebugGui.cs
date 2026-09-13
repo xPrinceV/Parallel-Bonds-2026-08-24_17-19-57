@@ -16,6 +16,9 @@ public sealed class DeveloperDebugGui : MonoBehaviour
     [SerializeField] private Button closeButton;
     [SerializeField] private KeyCode toggleKey = KeyCode.BackQuote;
 
+    private TMP_Text switchButtonLabel;
+    private TMP_Text automaticSwitchButtonLabel;
+
     public bool IsOpen { get; private set; }
     public bool IsAvailable
     {
@@ -31,9 +34,12 @@ public sealed class DeveloperDebugGui : MonoBehaviour
 
     private void Awake()
     {
-        materialButton.onClick.AddListener(SelectMaterial);
-        echoButton.onClick.AddListener(SelectEcho);
-        fusionButton.onClick.AddListener(ToggleFusion);
+        switchButtonLabel = materialButton.GetComponentInChildren<TMP_Text>(true);
+        materialButton.onClick.AddListener(RequestWorldSwitch);
+        // reuse the serialized button reference without replacing the scene object
+        automaticSwitchButtonLabel = echoButton.GetComponentInChildren<TMP_Text>(true);
+        echoButton.onClick.AddListener(ToggleAutomaticSwitching);
+        // child visibility and layout are authored in the scene, not changed on entry
         closeButton.onClick.AddListener(Close);
         SetOpen(false);
     }
@@ -54,16 +60,20 @@ public sealed class DeveloperDebugGui : MonoBehaviour
         bool ready = worldManager != null && worldManager.IsInitialized && worldManager.isActiveAndEnabled;
         World world = ready ? worldManager.CurrentWorld : null;
         PlayerHealth health = world != null && world.Player != null ? world.Player.GetComponent<PlayerHealth>() : null;
-        bool canAct = ready && !worldManager.IsFinalFusion && !worldManager.IsSwitching
-            && !worldManager.IsWorldTransitioning && !worldManager.IsFusionTransitioning && Time.timeScale > 0f
+        bool canAct = ready && !worldManager.IsFinalFusion && !worldManager.IsSwitching && !worldManager.IsWorldTransitioning && !worldManager.IsFusionTransitioning && Time.timeScale > 0f
             && health != null && !health.IsDead && health.isActiveAndEnabled
             && (UIController.instance == null || UIController.instance.levelUpPanel == null
                 || !UIController.instance.levelUpPanel.activeInHierarchy);
-        materialButton.gameObject.SetActive(!ready || !worldManager.IsFused);
-        echoButton.gameObject.SetActive(!ready || !worldManager.IsFused);
-        materialButton.interactable = canAct && !worldManager.IsFused && worldManager.CurrentWorldId != WorldId.Material;
-        echoButton.interactable = canAct && !worldManager.IsFused && worldManager.CurrentWorldId != WorldId.Echo;
-        fusionButton.interactable = canAct;
+        var switchFlow = worldManager != null ? worldManager.SwitchFlow : null;
+        materialButton.interactable = canAct && !worldManager.IsFused && switchFlow != null;
+        // scheduling can be toggled while paused; this never resumes or commits a transition
+        echoButton.interactable = ready && switchFlow != null && switchFlow.isActiveAndEnabled
+            && !worldManager.IsFused && !worldManager.IsFinalFusion;
+        if (automaticSwitchButtonLabel != null)
+            automaticSwitchButtonLabel.text = switchFlow == null ? "Auto switch: Unavailable"
+                : switchFlow.AutomaticSwitchingEnabled ? "Auto switch: On" : "Auto switch: Off";
+        if (switchButtonLabel != null)
+            switchButtonLabel.text = switchFlow != null ? $"{switchFlow.SwitchInterval:0.#}s Switch" : "Switch";
         worldStatus.text = world == null ? "World unavailable" : $"World: {world.WorldId} | Fusion: {(worldManager.IsFused ? "On" : "Off")}"
             + (health == null ? "" : $"\nShared HP: {health.currentHealth:0.#} / {health.maxHealth:0.#}");
     }
@@ -89,26 +99,19 @@ public sealed class DeveloperDebugGui : MonoBehaviour
     }
 
     // the same runtime entry points own validation for shortcuts, buttons and gameplay
-    private void SelectMaterial()
+    private void RequestWorldSwitch()
     {
-        if (IsOpen && worldManager != null)
-            worldManager.SwitchWorld(WorldId.Material);
+        if (IsOpen && worldManager != null && worldManager.SwitchFlow != null)
+            worldManager.SwitchFlow.RequestNextWorldSwitch();
     }
 
-    private void SelectEcho()
+    private void ToggleAutomaticSwitching()
     {
-        if (IsOpen && worldManager != null)
-            worldManager.SwitchWorld(WorldId.Echo);
-    }
-
-    private void ToggleFusion()
-    {
-        if (!IsOpen || worldManager == null || worldManager.IsFinalFusion)
+        if (!IsOpen || worldManager == null || worldManager.IsFused || worldManager.IsFinalFusion)
             return;
-        if (worldManager.IsFused)
-            worldManager.TryExitFusion();
-        else
-            worldManager.TryEnterFusion();
+        var flow = worldManager.SwitchFlow;
+        if (flow != null && flow.isActiveAndEnabled)
+            flow.AutomaticSwitchingEnabled = !flow.AutomaticSwitchingEnabled;
     }
 
     private void Close()
@@ -123,9 +126,8 @@ public sealed class DeveloperDebugGui : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (materialButton != null) materialButton.onClick.RemoveListener(SelectMaterial);
-        if (echoButton != null) echoButton.onClick.RemoveListener(SelectEcho);
-        if (fusionButton != null) fusionButton.onClick.RemoveListener(ToggleFusion);
+        if (materialButton != null) materialButton.onClick.RemoveListener(RequestWorldSwitch);
+        if (echoButton != null) echoButton.onClick.RemoveListener(ToggleAutomaticSwitching);
         if (closeButton != null) closeButton.onClick.RemoveListener(Close);
     }
 }

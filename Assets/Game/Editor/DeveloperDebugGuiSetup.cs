@@ -46,23 +46,37 @@ public static class DeveloperDebugGuiSetup
         canvas.enabled = true;
         CanvasScaler scaler = GetOrAdd<CanvasScaler>(root);
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        scaler.referenceResolution = new Vector2(1920, 1080);
+        // keep developer text legible in a docked Game view as well as a full-size window
+        scaler.referenceResolution = new Vector2(1280, 720);
         scaler.matchWidthOrHeight = .5f;
         GraphicRaycaster raycaster = GetOrAdd<GraphicRaycaster>(root);
         raycaster.enabled = true;
 
-        RectTransform panel = Rect("Developer World Panel", root.transform, new Vector2(440, 160), new Vector2(-16, -16));
+        RectTransform panel = Rect("Developer World Panel", root.transform, new Vector2(440, 232), new Vector2(-16, -16));
         GetOrAdd<Image>(panel.gameObject).color = new Color(.04f, .05f, .08f, .94f);
-        Label("Title", panel, font, "` / ~ Developer | Esc close", new Vector2(416, 30), new Vector2(-12, -10), 22);
-        TMP_Text status = Label("World Status", panel, font, "World: Material | Fusion: Off",
-            new Vector2(416, 52), new Vector2(-12, -48), 20);
+        Label("Title", panel, font, "` / ~ Developer | Esc close", new Vector2(416, 30), new Vector2(-12, -10), 24);
+        TMP_Text status = Label("World Status", panel, font, "World: -- | Fusion: --\nShared HP: -- / --",
+            new Vector2(416, 64), new Vector2(-12, -48), 22);
         Button material = Button("Material", panel, font, new Vector2(-336, -114));
         Button echo = Button("Echo", panel, font, new Vector2(-228, -114));
         Button fusion = Button("Fusion", panel, font, new Vector2(-120, -114));
         Button close = Button("Close", panel, font, new Vector2(-12, -114));
+        // Store the same event controls in the scene that players see in the developer window.
+        StateSwitchController flow = manager.GetComponent<StateSwitchController>();
+        ConfigureButton(material, flow != null ? $"{flow.SwitchInterval:0.#}s Switch" : "Switch",
+            new Vector2(-224, -132));
+        ConfigureButton(close, "Close", new Vector2(-12, -132));
+        ConfigureButton(echo, flow == null ? "Auto switch: Unavailable"
+            : $"Auto switch: {(flow.AutomaticSwitchingEnabled ? "On" : "Off")}", new Vector2(-12, -180));
+        ((RectTransform)echo.transform).sizeDelta = new Vector2(416, 40);
+        echo.GetComponentInChildren<TMP_Text>(true).rectTransform.sizeDelta = new Vector2(416, 40);
+        fusion.gameObject.SetActive(false);
         Transform stage = root.transform.Find("Run Stage Panel");
         if (stage != null)
-            ((RectTransform)stage).anchoredPosition = new Vector2(-16, -188);
+        {
+            ((RectTransform)stage).anchoredPosition = new Vector2(-16, -260);
+            ConfigureEventPanel(stage.GetComponent<RunStagePanel>());
+        }
 
         DeveloperDebugGui gui = GetOrAdd<DeveloperDebugGui>(root);
         gui.enabled = true;
@@ -78,6 +92,75 @@ public static class DeveloperDebugGuiSetup
         Property(data, "toggleKey").intValue = (int)KeyCode.BackQuote;
         data.ApplyModifiedPropertiesWithoutUndo();
         EditorSceneManager.MarkSceneDirty(scene);
+    }
+
+    private static void ConfigureEventPanel(RunStagePanel panel)
+    {
+        if (panel == null)
+            return;
+        var data = new SerializedObject(panel);
+        var run = Property(data, "runController").objectReferenceValue as RunStageController;
+        SerializedProperty stages = Property(data, "stageButtons");
+        for (int i = 0; i < stages.arraySize; i++)
+        {
+            var button = stages.GetArrayElementAtIndex(i).objectReferenceValue as Button;
+            if (button == null)
+                continue;
+            button.gameObject.SetActive(i == 3);
+            if (i == 3)
+                ConfigureButton(button, run != null ? $"{run.FinaleStartTime:0.#}s Finale" : "Finale",
+                    new Vector2(-224, -132));
+        }
+        var next = Property(data, "nextButton").objectReferenceValue as Button;
+        if (next != null)
+            next.gameObject.SetActive(false);
+        var restart = Property(data, "restartButton").objectReferenceValue as Button;
+        if (restart != null)
+            ConfigureButton(restart, "Restart", new Vector2(-12, -132));
+        ((RectTransform)panel.transform).sizeDelta = new Vector2(440, 184);
+        var status = Property(data, "statusText").objectReferenceValue as TMP_Text;
+        if (status != null)
+        {
+            status.text = "Run: -- | State: --\nFusion in: --s | Bosses: --";
+            status.rectTransform.sizeDelta = new Vector2(416, 64);
+            status.rectTransform.anchoredPosition = new Vector2(-12, -12);
+            ConfigureText(status, 22);
+        }
+        Transform hint = panel.transform.Find("Hint");
+        if (hint != null && hint.TryGetComponent(out TMP_Text text))
+        {
+            text.text = "Trigger only; no clock jump";
+            text.rectTransform.sizeDelta = new Vector2(416, 28);
+            text.rectTransform.anchoredPosition = new Vector2(-12, -84);
+            ConfigureText(text, 20);
+        }
+    }
+
+    private static void ConfigureButton(Button button, string label, Vector2 position)
+    {
+        button.gameObject.SetActive(true);
+        var rect = (RectTransform)button.transform;
+        rect.sizeDelta = new Vector2(204, 40);
+        rect.anchoredPosition = position;
+        TMP_Text text = button.GetComponentInChildren<TMP_Text>(true);
+        if (text != null)
+        {
+            text.text = label;
+            text.rectTransform.sizeDelta = rect.sizeDelta;
+            ConfigureText(text, 22);
+            text.alignment = TextAlignmentOptions.Center;
+        }
+    }
+
+    private static void ConfigureText(TMP_Text text, float size)
+    {
+        text.fontSize = size;
+        text.enableAutoSizing = false;
+        text.textWrappingMode = TextWrappingModes.NoWrap;
+        text.overflowMode = TextOverflowModes.Ellipsis;
+        text.alignment = TextAlignmentOptions.TopLeft;
+        text.margin = Vector4.zero;
+        text.raycastTarget = false;
     }
 
     private static T GetOrAdd<T>(GameObject target) where T : Component
@@ -111,10 +194,9 @@ public static class DeveloperDebugGuiSetup
     {
         TMP_Text text = GetOrAdd<TextMeshProUGUI>(Rect(name, parent, size, position).gameObject);
         text.font = font;
-        text.fontSize = fontSize;
+        ConfigureText(text, fontSize);
         text.text = value;
         text.color = Color.white;
-        text.raycastTarget = false;
         return text;
     }
 

@@ -34,7 +34,36 @@ The Main scene is already configured for a dual-world run; no scene migration is
 | Attack | Automatic |
 | Select an upgrade | Click an upgrade button |
 | Switch worlds | Automatic, every 15 seconds outside fusion |
-| Toggle fusion | F (while the Game view has focus) |
+| Start finale early | F (Editor or Development Build only; Game view focused) |
+| Developer GUI | Backquote / tilde key to toggle; Esc to close |
+
+## Developer GUI
+
+In the Unity editor or a **Development Build**, focus the Game view and press the backquote/tilde key (usually below Esc) to open the developer window. Shift is not required. Press the same key, Esc, or **Close** to hide it.
+
+The window starts hidden in both Main and DebugRun. Opening it does not pause gameplay; closing it disables its canvas and raycaster and clears only its own UI selection. The shortcut remains available during pause and after defeat. Ordinary release builds disable the window.
+
+Both scenes show five buttons: **15s Switch**, **Auto switch: On/Off**, **480s Finale**, **Restart**, and **Close**, plus world/fusion/shared-HP/run status. The former Echo button is reused for Auto switch; the old Fusion button and Wave 1/2/3/Next controls remain hidden, not merely disabled. Main's `RunStagePanel` stays bound to Main's own run controller and UI. Underlying waves are unchanged: Main uses `useSharedWaves=false`; DebugRun uses `useSharedWaves=true`.
+
+**Auto switch: On/Off** calls `DeveloperDebugGui.ToggleAutomaticSwitching()` to invert `flow.AutomaticSwitchingEnabled`. It works while paused and controls only the 15-second automatic cycle, not manual switching or the 480-second finale. Fused states reject the callback, even when invoked directly.
+
+## Run stages and finale
+
+Open `Assets/Scenes/DebugRun.unity` and press Play for shared waves and a stage panel. Both scenes start the finale at 480 accumulated scaled game seconds; paused time, including upgrade selection, does not count.
+
+| Phase | Automatic progression |
+| --- | --- |
+| Wave 1 | First 20 active game seconds |
+| Wave 2 | Next 20 active game seconds |
+| Wave 3 | Continues until 480 accumulated active game seconds |
+| Finale | Irreversible character and world fusion, then one 300-HP RiftLord |
+| Win / Lose | Boss death wins; player death loses; Restart restores a fresh run |
+
+**15s Switch** calls `StateSwitchController.RequestNextWorldSwitch()` through the same warning/flip flow (up to 5 seconds of warning; an existing warning is not restarted), with a 0.8-second flip, not an instant switch. **480s Finale** calls `TryStartFinale()` directly, as does the automatic 480-second trigger. These buttons only trigger events early: they never jump `ElapsedTime` or grant catch-up growth. Existing pause, upgrade, death, and irreversible-finale guards still apply; Restart remains available.
+
+At 480 seconds, `TryStartFinale()` starts irreversible fusion. On the frame after the fusion animation reports `Completed`, one RiftLord spawns with 300 HP at a distance of 6 units from the player. The dedicated `RiftLordBoss` prefab uses `Rift Lord.png` and Titan's delayed-strike behavior, not a unique boss moveset; ordinary Titan enemies remain unchanged. Only actual boss death wins; unloading or clearing objects does not count.
+
+See [run-stage setup and verification](Assets/Game/Features/GameFlow/README.md) for API and configuration details.
 
 ## Dual-world gameplay
 
@@ -48,7 +77,7 @@ The Main scene is already configured for a dual-world run; no scene migration is
 - Upgrade selection and a zero time scale block switching. A dead or disabled hero cannot switch to bypass the loss flow.
 - Attacks, enemy targeting, and experience collection respect world ownership.
 
-Material has no screen tint; Echo uses a blue overlay below the HUD. World changes ease between those colors over 0.45 seconds. The heroes have different sprites, but both maps still share the same layout.
+Normal world switching defaults to every 15 seconds, with a 5-second warning and a 0.8-second flip. `StateSwitchController.AutomaticSwitchingEnabled` controls only this automatic cycle, not manual requests or the eight-minute finale timer; see the [switching API](Assets/Game/Features/Worlds/README.md#warning-and-horizontal-flip). Material has no screen tint; Echo uses a blue overlay below the HUD. The heroes have different sprites, but both maps still share the same layout.
 
 State retention lasts **only for the current run**. Restarting the scene does not restore the previous run from disk.
 
@@ -56,16 +85,16 @@ See [dual-world rules and runtime boundaries](Assets/Game/Features/Worlds/README
 
 ## Character fusion
 
-Press **F** to enter or leave the debug fusion mode. It has no energy cost, duration, or cooldown yet.
+The finale fuses the characters and worlds irreversibly for the rest of the run. **F** is an Editor/Development Build shortcut to start it early through the same `TryStartFinale()` path, subject to its guards; it no longer toggles fusion off.
 
-- The entry hero remains the only visible, controllable player body. Both worlds become active: enemies, spawners, pickups, and active-time lifetimes run in both.
+- The entry hero remains the only visible, controllable player body. Both existing world roots coexist; this is not a new third map.
 - Both heroes' equipped weapons fire from the fusion position. Weapons retain their original stats, buffs, hit stacks, and source-world ownership; no equipment is copied and no buff pools are merged.
 - Attacks can hit enemies from either world. Both worlds' enemies target the entry hero, and collected experience goes to that hero alone.
 - Current and maximum health remain shared. Fusion does not heal or permit revival.
-- The automatic world-switch countdown pauses and resumes from its remaining time after exit. Manual world switching is blocked during fusion.
-- Exit keeps the entry world active and returns the other world to sleep, restoring its hero's pre-fusion body state. Upgrade selection and paused time block voluntary fusion toggles.
+- Automatic and manual world switching stop for the finale; there is no voluntary exit or countdown resumption.
+- Restart restores normal character and world state for a fresh run.
 
-The current presentation uses the entry hero's sprite. Fusion entry and exit use a subtle 0.6-second blue-gray tint pulse; the sustained fusion tint is clear. Transitions follow game time, never block input, and do not alter combat timing. There is no camera shake, blackout, dedicated fusion model, or map blending. Both maps and their physics content coexist; enemy populations and simulation cost can therefore increase during fusion.
+Fusion reuses the 3-second, four-flip animation, with a centered white portrait transitioning to the fusion sprite. The single boss spawns only on the frame after `Completed`, not during the animation. Both existing maps and their physics content coexist rather than being replaced by a third map.
 
 ## Weapons
 
@@ -185,6 +214,8 @@ dotnet run --project Tools/DamageFormulaChecks/DamageFormulaChecks.csproj
 This exercises the production damage formula without launching Unity.
 
 ### Unity runtime checks
+
+The 82-check legacy boundary suite has passed; additional finale tests are being added. `Tools/TimedEventChecks` previously recorded 86 passes and 0 failures in Live checks across Main and DebugRun. The new Auto switch button checks have not been run in Unity. Fixtures start near timer boundaries with high HP and weapons disabled; this is not a full 15-second or eight-minute soak. Legacy results do not establish complete finale coverage.
 
 The runners under `Tools/` are custom verification entry points, **not automatically discovered Unity Test Runner tests**.
 
