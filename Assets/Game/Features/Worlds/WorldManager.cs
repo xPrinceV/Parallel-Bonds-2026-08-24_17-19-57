@@ -13,10 +13,20 @@ public class WorldManager : MonoBehaviour
     // security check for world id validity and switching state
     public bool IsSwitching { get; private set; }
     public bool IsInitialized => isInitialized;
+        internal StateSwitchController SwitchFlow { get; set; }
+        public bool IsWorldTransitioning => SwitchFlow != null && SwitchFlow.IsFlipping;
     public World CurrentWorld => FindWorld(CurrentWorldId);
 
+    internal RunStageController RunController { get; set; }
+    internal FusionTransitionController FusionTransition { get; set; }
+    public bool IsFusionTransitioning => FusionTransition != null && FusionTransition.IsPlaying;
     public bool IsFused { get; private set; }
+    public bool IsFinalFusion { get; private set; }
     public PlayerController FusionPlayer { get; private set; }
+
+    // Synchronous committed-state notification; observers must not initiate world transitions.
+    public event System.Action FusionStateChanged;
+        public event System.Action WorldChanged;
 
     private bool isInitialized;
     private bool hasDied;
@@ -156,7 +166,7 @@ public class WorldManager : MonoBehaviour
 
     private bool CanToggleFusion()
     {
-        return isInitialized && isActiveAndEnabled && !IsSwitching && !hasDied
+        return isInitialized && isActiveAndEnabled && !IsSwitching && !IsWorldTransitioning && !IsFusionTransitioning && !hasDied
             && Time.timeScale > 0f && (UIController.instance == null
                 || UIController.instance.levelUpPanel == null
                 || !UIController.instance.levelUpPanel.activeSelf);
@@ -176,13 +186,15 @@ public class WorldManager : MonoBehaviour
                 EndFusion();
         }
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (Input.GetKeyDown(fusionKey))
         {
-            if (IsFused)
-                TryExitFusion();
-            else
+            if (RunController != null || !IsFused)
                 TryEnterFusion();
+            else
+                TryExitFusion();
         }
+#endif
     }
 
     private void FixedUpdate()
@@ -213,7 +225,29 @@ public class WorldManager : MonoBehaviour
 
     public bool TryEnterFusion()
     {
-        if (!CanToggleFusion() || IsFused || !ValidateWorlds() || worlds.Length != 2)
+        return RunController != null ? RunController.TryStartFinale() : TryEnterFusionCore();
+    }
+
+    internal bool BeginFinalFusion()
+    {
+        if (IsFinalFusion)
+            return false;
+
+        // The finale takes priority over the normal 480-second flip.
+        if (SwitchFlow != null)
+            SwitchFlow.CancelTransition();
+        if (!TryEnterFusionCore())
+            return false;
+
+        IsFinalFusion = true;
+        if (SwitchFlow != null)
+            SwitchFlow.enabled = false;
+        return true;
+    }
+
+    private bool TryEnterFusionCore()
+    {
+        if (IsFinalFusion || !CanToggleFusion() || IsFused || !ValidateWorlds() || worlds.Length != 2)
             return false;
 
         World entry = CurrentWorld;
@@ -279,7 +313,10 @@ public class WorldManager : MonoBehaviour
             succeeded = secondary.SetWorldActive(true) && isInitialized && isActiveAndEnabled
                 && IsFused && FusionPlayer == entry.Player && secondary.Player.isActiveAndEnabled && entry.IsActive;
             if (succeeded)
+            {
                 FusionPlayer.BindAsCurrent();
+                FusionStateChanged?.Invoke();
+            }
             return succeeded;
         }
         finally
@@ -292,7 +329,7 @@ public class WorldManager : MonoBehaviour
 
     public bool TryExitFusion()
     {
-        if (!CanToggleFusion() || !IsFused)
+        if (IsFinalFusion || !CanToggleFusion() || !IsFused)
             return false;
 
         IsSwitching = true;
@@ -386,6 +423,8 @@ public class WorldManager : MonoBehaviour
             secondaryBody = null;
             if (!hasDied && entry != null)
                 entry.BindAsCurrent();
+            // Restore the entry visual before another fusion can snapshot it as secondary.
+            FusionStateChanged?.Invoke();
             return restored;
         }
         finally
@@ -413,7 +452,13 @@ public class WorldManager : MonoBehaviour
     // use this function to switch to a new world
     public bool SwitchWorld(WorldId targetWorldId)
     {
-        if (!isInitialized || !isActiveAndEnabled || IsSwitching || IsFused || hasDied)
+        // configured game scenes accept a request; only the flow commits at its midpoint
+        return SwitchFlow != null ? SwitchFlow.RequestSwitch(targetWorldId) : CommitWorldSwitch(targetWorldId);
+    }
+
+    internal bool CommitWorldSwitch(WorldId targetWorldId)
+    {
+        if (!isInitialized || !isActiveAndEnabled || IsSwitching || IsFused || IsFinalFusion || hasDied)
             return false;
         if (!IsWorldValid(targetWorldId) || targetWorldId == CurrentWorldId)
             return false;
@@ -467,6 +512,13 @@ public class WorldManager : MonoBehaviour
             // target activation callbacks should observe the target world id
             CurrentWorldId = targetWorldId;
             succeeded = targetWorld.SetWorldActive(true) && !currentWorld.IsActive;
+            // notify presentation only after the target world has become active
+            if (succeeded)
+            {
+                // cancel outgoing flight through its lifecycle; do not clear enemies or persistent attacks
+                currentWorld.ClearProjectiles();
+                WorldChanged?.Invoke();
+            }
             return succeeded;
         }
         finally

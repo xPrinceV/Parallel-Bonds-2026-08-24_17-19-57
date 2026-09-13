@@ -16,15 +16,19 @@ public class EnemySpawner : MonoBehaviour
     private int enemyToCheck;
 
     public List<WaveInfo> waves;
-    private int currentWave;
+    private int currentWave = -1;
+    private bool externalStages;
+    private bool isSpawning;
+    public bool UsesExternalStages => externalStages;
     private float waveCounter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         RefreshTarget();
-        despawnDistance = Vector3.Distance(transform.position, maxSpawn.position) + 5f;
-        currentWave = -1;
-        GoToNextWave();
+        despawnDistance = maxSpawn != null
+            ? Vector3.Distance(transform.position, maxSpawn.position) + 5f : 0f;
+        if (!externalStages)
+            GoToNextWave();
     }
 
     private void RefreshTarget()
@@ -40,6 +44,9 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isSpawning || Time.deltaTime <= 0f)
+            return;
+
         RefreshTarget();
         if (target == null || !target.gameObject.activeInHierarchy)
             return;
@@ -49,10 +56,11 @@ public class EnemySpawner : MonoBehaviour
 
         if(target.gameObject.activeInHierarchy)
         {
-            if(currentWave < waves.Count)
+            if(currentWave >= 0 && currentWave < waves.Count)
             {
-                waveCounter -= Time.deltaTime;
-                if(waveCounter <= 0)
+                if (!externalStages)
+                    waveCounter -= Time.deltaTime;
+                if(!externalStages && waveCounter <= 0)
                 {
                     GoToNextWave();
                 }
@@ -112,16 +120,69 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    // May be called before Start, including while the source world sleeps.
+    public void ConfigureExternalStages()
+    {
+        externalStages = true;
+        StopSpawning(false);
+    }
+
+    public bool CanStartWave(int index)
+    {
+        if (minSpawn == null || maxSpawn == null || waves == null
+            || index < 0 || index >= waves.Count || waves[index] == null)
+            return false;
+
+        WaveInfo wave = waves[index];
+        if (wave.timeBetweenSpawns <= 0f || float.IsNaN(wave.timeBetweenSpawns)
+            || float.IsInfinity(wave.timeBetweenSpawns)
+            || wave.enemiesToSpawn == null || wave.enemiesToSpawn.Count == 0)
+            return false;
+        foreach (GameObject prefab in wave.enemiesToSpawn)
+            if (prefab == null || prefab.GetComponent<EnemyController>() == null)
+                return false;
+        return true;
+    }
+
+    public bool TryStartWave(int index)
+    {
+        if (!CanStartWave(index) || (isSpawning && currentWave == index))
+            return false;
+
+        currentWave = index;
+        waveCounter = waves[index].waveLength;
+        spawnCounter = waves[index].timeBetweenSpawns;
+        isSpawning = true;
+        return true;
+    }
+
+    public void StopSpawning(bool clearSpawned)
+    {
+        isSpawning = false;
+        if (!clearSpawned)
+            return;
+
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy == null)
+                continue;
+            enemy.SetActive(false);
+            Destroy(enemy);
+        }
+        spawnedEnemies.Clear();
+        enemyToCheck = 0;
+    }
+
     public void GoToNextWave()
     {
-        currentWave++;
-        if(currentWave >= waves.Count)
-        {
-            currentWave = waves.Count - 1;
-        }
+        if (externalStages || waves == null || waves.Count == 0)
+            return;
 
+        // Legacy mode repeats its final wave indefinitely.
+        currentWave = Mathf.Min(currentWave + 1, waves.Count - 1);
         waveCounter = waves[currentWave].waveLength;
         spawnCounter = waves[currentWave].timeBetweenSpawns;
+        isSpawning = true;
     }
     public Vector3 SelectSpawnPoint()
     {

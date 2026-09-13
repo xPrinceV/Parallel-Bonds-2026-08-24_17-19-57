@@ -1,8 +1,25 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ArrowController : MonoBehaviour
+public class ArrowController : MonoBehaviour, IWorldProjectile
 {
+    private bool hasDespawned;
+
+    void OnEnable()
+    {
+        hasDespawned = false;
+    }
+
+    public void Despawn()
+    {
+        if (hasDespawned)
+            return;
+
+        hasDespawned = true;
+        gameObject.SetActive(false);
+        // No projectile pool yet; replace destruction here with pool return when available.
+        Destroy(gameObject);
+    }
     public float projectileSpeed;
     public float damage;
     private Vector2 direction;
@@ -24,7 +41,7 @@ public class ArrowController : MonoBehaviour
         lifetimeRemaining -= Time.deltaTime;
         if (lifetimeRemaining <= 0f)
         {
-            Destroy(gameObject);
+            Despawn();
             return;
         }
 

@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     private float knockbackCounter;
 
     public int expDrop = 1;
+    public event System.Action<EnemyController> Died;
     private bool isDead;
     protected bool IsDead => isDead;
     private PlayerHealth playerHealth;
@@ -165,7 +166,13 @@ public class EnemyController : MonoBehaviour
         }
 
         //Spawn the damage number
-        DamageNumberController.instance.SpawnDamage(damageTaken, transform.position, World.GetFor(this));
+        if (DamageNumberController.instance != null)
+            DamageNumberController.instance.SpawnDamage(damageTaken, transform.position, World.GetFor(this));
+
+        // Publish only an actual lethal hit, after source-world XP and presentation.
+        // Subscribers must defer encounter cleanup until the damage call stack has returned.
+        if (isDead)
+            Died?.Invoke(this);
     }
 
     //This function is the same as the above, but it takes in an extra argument to account for knockback

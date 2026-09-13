@@ -1,8 +1,25 @@
 using UnityEngine;
 
 //Called when the Hollow enemy uses their projectile
-public class HollowProjectile : MonoBehaviour
+public class HollowProjectile : MonoBehaviour, IWorldProjectile
 {
+    private bool hasDespawned;
+
+    void OnEnable()
+    {
+        hasDespawned = false;
+    }
+
+    public void Despawn()
+    {
+        if (hasDespawned)
+            return;
+
+        hasDespawned = true;
+        gameObject.SetActive(false);
+        // No projectile pool yet; replace destruction here with pool return when available.
+        Destroy(gameObject);
+    }
     private Vector3 direction;
     private float damage;
     private float speed;
@@ -25,7 +42,7 @@ public class HollowProjectile : MonoBehaviour
         lifetimeRemaining -= Time.deltaTime;
         if (lifetimeRemaining <= 0f)
         {
-            Destroy(gameObject);
+            Despawn();
             return;
         }
 
@@ -51,7 +68,7 @@ public class HollowProjectile : MonoBehaviour
 
             hasHit = true;
             playerHealth.DamageHandler(damage);
-            Destroy(gameObject);
+            Despawn();
         }
     }
 

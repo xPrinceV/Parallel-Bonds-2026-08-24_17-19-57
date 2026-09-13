@@ -1,7 +1,24 @@
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class BulletController : MonoBehaviour, IWorldProjectile
 {
+    private bool hasDespawned;
+
+    void OnEnable()
+    {
+        hasDespawned = false;
+    }
+
+    public void Despawn()
+    {
+        if (hasDespawned)
+            return;
+
+        hasDespawned = true;
+        gameObject.SetActive(false);
+        // No projectile pool yet; replace destruction here with pool return when available.
+        Destroy(gameObject);
+    }
     private EnemyController target;
     private BuffController buffSource;
     private bool hasHit;
@@ -20,7 +37,7 @@ public class BulletController : MonoBehaviour
         //If the target gets lost, destroy the gameObject (Might change behaviour soon)
         if(target == null || !target.gameObject.activeInHierarchy || !World.CanInteract(this, target))
         {
-            Destroy(gameObject);
+            Despawn();
             return;
         }
 
@@ -56,7 +73,7 @@ public class BulletController : MonoBehaviour
         }
         finally
         {
-            Destroy(gameObject);
+            Despawn();
         }
     }
 

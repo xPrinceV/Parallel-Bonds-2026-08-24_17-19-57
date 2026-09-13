@@ -66,6 +66,18 @@ public class World : MonoBehaviour
             && target.IsChildOf(contentRoot.transform);
     }
 
+    // ownership stays with the source world, even when fusion allowed a cross-world target
+    public void ClearProjectiles()
+    {
+        if (contentRoot == null)
+            return;
+        foreach (MonoBehaviour behaviour in contentRoot.GetComponentsInChildren<MonoBehaviour>(true))
+        {
+            if (behaviour != null && behaviour is IWorldProjectile projectile && GetFor(behaviour) == this)
+                projectile.Despawn();
+        }
+    }
+
     // use this function to switch world content without disabling the controller
     // return false if the configuration or parent state prevents the request
     public bool SetWorldActive(bool active)

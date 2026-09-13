@@ -1,7 +1,24 @@
 using UnityEngine;
 
-public class LanternProjController : MonoBehaviour
+public class LanternProjController : MonoBehaviour, IWorldProjectile
 {
+    private bool hasDespawned;
+
+    void OnEnable()
+    {
+        hasDespawned = false;
+    }
+
+    public void Despawn()
+    {
+        if (hasDespawned)
+            return;
+
+        hasDespawned = true;
+        gameObject.SetActive(false);
+        // No projectile pool yet; replace destruction here with pool return when available.
+        Destroy(gameObject);
+    }
     public Rigidbody2D RB;
     public float lifetime = 3f;
     public float minForce = 5f;
@@ -35,7 +52,7 @@ public class LanternProjController : MonoBehaviour
     {
         lifetimeRemaining -= Time.deltaTime;
         if (lifetimeRemaining <= 0f)
-            Destroy(gameObject);
+            Despawn();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -68,7 +85,7 @@ public class LanternProjController : MonoBehaviour
         }
         finally
         {
-            Destroy(gameObject);
+            Despawn();
         }
     }
 

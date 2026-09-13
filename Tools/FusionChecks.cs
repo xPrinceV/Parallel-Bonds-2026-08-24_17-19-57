@@ -115,7 +115,10 @@ public static class FusionChecks
         Check(PlayerController.instance == hero && PlayerHealth.instance == hero.GetComponent<PlayerHealth>() && ExperienceLevelController.instance == hero.GetComponent<ExperienceLevelController>(), label + "secondary cannot steal aliases");
         Check(secondary.GetComponentsInChildren<Renderer>(true).Where(r => r.GetComponentInParent<Weapon>() == null).All(r => !r.enabled)
             && secondary.GetComponentsInChildren<Collider2D>(true).Where(c => c.GetComponentInParent<Weapon>() == null).All(c => !c.enabled), label + "secondary body invisible and noncolliding");
-        Check(entryBefore.VisualsSame() && hero.GetComponentsInChildren<Renderer>().Any(r => r.enabled) && hero.GetComponentsInChildren<Collider2D>().Any(c => c.enabled), label + "entry visible/physical states untouched");
+        var visual = hero.GetComponent<PlayerFusionVisual>();
+                var fusionRenderer = (SpriteRenderer)Get(visual, "fusionRenderer");
+                var bodies = (SpriteRenderer[])Get(visual, "bodyRenderers");
+                Check(fusionRenderer.enabled && fusionRenderer.gameObject.activeInHierarchy && bodies.All(r => !r.enabled) && entryBefore.CollidersSame(), label + "synchronous dedicated fusion sprite active, bodies hidden, colliders unchanged");
         Check(secondary.enabled && secondary.GetComponent<Rigidbody2D>().constraints == RigidbodyConstraints2D.FreezeAll, label + "secondary weapon host active but body frozen");
         hero.transform.position += Vector3.right * 2; hero.facingDirection = Vector2.up;
         yield return new WaitForSeconds(0.2f);
@@ -187,7 +190,7 @@ public static class FusionChecks
         var outgoing = holders.Select(h => h.CalculateWeaponDamage(10)).ToArray();
         Check(manager.TryExitFusion(), label + "exit");
         Check(before.Same(), label + "exact secondary transform/facing/body/render/collider/weapon-list restoration");
-        Check(entryBefore.ListsSame(), label + "entry weapon lists unchanged");
+        Check(entryBefore.ListsSame() && entryBefore.VisualsSame(), label + "entry weapon lists and exact visual/collider states restored");
         Check(!manager.IsFused && manager.FusionPlayer == null && entry.IsActive && !other.IsActive && !World.CanInteract(hero, secondary), label + "exit restores exclusive world and interaction policy");
         Equal((float)Get(timer, "timerCounter"), 8, label + "exit preserves timer remainder");
         float asleepTime = Instance(handles[1]).RemainingDuration;
@@ -204,7 +207,7 @@ public static class FusionChecks
                 Check(((IEnumerable<BuffInstance>)Get(holders[i], "instances")).SequenceEqual(buffLists[i]) && Mathf.Approximately(holders[i].CalculateWeaponDamage(10), outgoing[i]),
                     label + "no transient buff merge while fused " + cycle + "/" + i);
             Check(manager.TryExitFusion(), label + "repeat exit " + cycle);
-            Check(before.Same() && entryBefore.ListsSame(), label + "repeat exact restoration " + cycle);
+            Check(before.Same() && entryBefore.ListsSame() && entryBefore.VisualsSame(), label + "repeat exact restoration " + cycle);
             for (int i = 0; i < 2; i++)
                 Check(((IEnumerable<BuffInstance>)Get(holders[i], "instances")).SequenceEqual(buffLists[i]) && handles[i].IsActive,
                     label + "no duplicate/replaced buff instances " + cycle + "/" + i);
@@ -451,6 +454,7 @@ public static class FusionChecks
             assigned = assignedList.ToArray(); unassigned = unassignedList.ToArray(); all = p.GetComponentsInChildren<Weapon>(true);
         }
         public bool ListsSame() { return ReferenceEquals(assignedList, p.assignedWeapons) && ReferenceEquals(unassignedList, p.unassignedWeapons) && assigned.SequenceEqual(p.assignedWeapons) && unassigned.SequenceEqual(p.unassignedWeapons) && all.SequenceEqual(p.GetComponentsInChildren<Weapon>(true)); }
+        public bool CollidersSame() { return colliders.SequenceEqual(p.GetComponentsInChildren<Collider2D>(true)) && collision.SequenceEqual(colliders.Select(c => c.enabled)); }
         public bool VisualsSame() { return renderers.SequenceEqual(p.GetComponentsInChildren<Renderer>(true)) && rendering.SequenceEqual(renderers.Select(r => r.enabled)) && colliders.SequenceEqual(p.GetComponentsInChildren<Collider2D>(true)) && collision.SequenceEqual(colliders.Select(c => c.enabled)); }
         public bool Same()
         {

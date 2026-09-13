@@ -1,8 +1,25 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DaggerProjectile : MonoBehaviour
+public class DaggerProjectile : MonoBehaviour, IWorldProjectile
 {
+    private bool hasDespawned;
+
+    void OnEnable()
+    {
+        hasDespawned = false;
+    }
+
+    public void Despawn()
+    {
+        if (hasDespawned)
+            return;
+
+        hasDespawned = true;
+        gameObject.SetActive(false);
+        // No projectile pool yet; replace destruction here with pool return when available.
+        Destroy(gameObject);
+    }
     private EnemyController target;
     public float speed;
     public float damage;
@@ -34,7 +51,7 @@ public class DaggerProjectile : MonoBehaviour
         if (isFinished || lifetimeRemaining <= 0f)
         {
             isFinished = true;
-            Destroy(gameObject);
+            Despawn();
             return;
         }
         if (!IsValidEnemy(target))
@@ -43,7 +60,7 @@ public class DaggerProjectile : MonoBehaviour
             if (target == null)
             {
                 isFinished = true;
-                Destroy(gameObject);
+                Despawn();
                 return;
             }
         }
@@ -96,7 +113,7 @@ public class DaggerProjectile : MonoBehaviour
         else
         {
             isFinished = true;
-            Destroy(gameObject);
+            Despawn();
         }
     }
 

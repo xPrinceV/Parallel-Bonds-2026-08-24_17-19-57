@@ -59,6 +59,8 @@ public static class WorldTransitionChecks
             {
                 Color start = image.color;
                 Check(manager.SwitchWorld(id), "commit " + id);
+                                Check(filter.IsTransitioning && filter.TargetColor == manager.CurrentWorld.AmbientColor,
+                                    "committed world event starts presentation synchronously");
                 Check(Near(image.color, start), "switch commits gameplay without synchronous overlay mutation");
                 var run = Animation(start, manager.CurrentWorld.AmbientColor, 0.45f, false, id.ToString());
                 while (run.MoveNext()) yield return run.Current;
@@ -166,16 +168,20 @@ public static class WorldTransitionChecks
             active |= filter.IsTransitioning;
             midpoint |= p >= 0.35f && p <= 0.65f;
             Color expected = Color.Lerp(start, target, p * p * (3f - 2f * p));
-            float pulse = fusion ? 0.045f * 16f * p * p * (1f - p) * (1f - p) : 0;
+            float strength = fusion ? 0.045f : 0.06f;
+                        float pulse = strength * 16f * p * p * (1f - p) * (1f - p);
             float baseAlpha = expected.a * (1 - pulse), alpha = baseAlpha + pulse;
             if (pulse > 0 && alpha > 0)
             {
-                Color cool = (Color)Get(filter, "fusionTint");
+                var manager = Object.FindFirstObjectByType<WorldManager>();
+                                Color cool = manager.IsFused ? (Color)Get(filter, "fusionTint")
+                                    : manager.CurrentWorldId == WorldId.Material ? (Color)Get(filter, "materialTransitionTint")
+                                    : manager.CurrentWorld.AmbientColor;
                 expected = new Color((expected.r * baseAlpha + cool.r * pulse) / alpha,
                     (expected.g * baseAlpha + cool.g * pulse) / alpha, (expected.b * baseAlpha + cool.b * pulse) / alpha, alpha);
             }
             colors &= Near(image.color, expected);
-            bounds &= image.color.a >= 0 && image.color.a <= Mathf.Max(start.a, target.a) + (fusion ? 0.045f : 0) + 0.0001f;
+            bounds &= image.color.a >= 0 && image.color.a <= Mathf.Max(start.a, target.a) + strength + 0.0001f;
             maxAlpha = Mathf.Max(maxAlpha, image.color.a);
             if (!filter.IsTransitioning) { settled = Time.time - began; break; }
         } while (Time.time - began < duration + Mathf.Max(0.1f, 3 * Time.deltaTime));
