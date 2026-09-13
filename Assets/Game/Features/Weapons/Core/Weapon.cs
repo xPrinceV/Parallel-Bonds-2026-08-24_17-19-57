@@ -15,12 +15,27 @@ public enum UpgradeType
 }
 public class Weapon : MonoBehaviour
 {
+    public PlayerController player;
+
     public WeaponStats stats;
     public int weaponLevel;
 
     public Sprite icon;
     public string weaponName;
     public UpgradeType[] availableUpgrades;
+
+    // For the Inventory Slots = weapon icons
+    public Sprite weaponIcon;
+
+    protected void ResolveOwner()
+    {
+        World world = World.GetFor(this);
+        PlayerController parentPlayer = GetComponentInParent<PlayerController>();
+        if (parentPlayer != null)
+            player = parentPlayer;
+        else if (player == null || World.GetFor(player) != world)
+            player = world != null ? world.Player : null;
+    }
 }
 
 //Weapons that are created should inherit WeaponStats

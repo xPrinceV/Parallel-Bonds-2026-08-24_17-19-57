@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5556163938856258735}
   - component: {fileID: 7861397099211746268}
   - component: {fileID: 3922050654986794908}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PoisonEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6410494549515484228}
   - component: {fileID: 3853654098815959017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 4438969266772780636}
   - component: {fileID: 3359570191515382226}
   - component: {fileID: 8768273617125904329}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hollow
   m_TagString: Enemy
   m_Icon: {fileID: 0}

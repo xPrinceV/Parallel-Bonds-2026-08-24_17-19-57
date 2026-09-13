@@ -7,7 +7,7 @@ public class BowController : Weapon
     [SerializeField] private float amount;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private GameObject arrow;
-    private PlayerController player;
+
     [SerializeField] private BuffController buffHolder;
     private Vector2 facingDirection = Vector2.right;
     private float attackCounter;
@@ -17,10 +17,7 @@ public class BowController : Weapon
     void Start()
     {
         attackCounter = 0;
-        World world = World.GetFor(this);
-        player = GetComponentInParent<PlayerController>();
-        if (player == null && world != null)
-            player = world.Player;
+        ResolveOwner();
         if (buffHolder == null && player != null)
             buffHolder = player.GetComponent<BuffController>();
         if (buffHolder == null)

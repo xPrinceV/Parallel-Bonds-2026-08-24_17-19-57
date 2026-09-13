@@ -52,10 +52,10 @@ public class BulletController : MonoBehaviour, IWorldProjectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hasHit || !isActiveAndEnabled || !collision.CompareTag("Enemy"))
+        if (hasHit || !isActiveAndEnabled || !World.CanInteract(this, collision))
             return;
 
-        EnemyController enemy = collision.GetComponent<EnemyController>();
+        EnemyController enemy = collision.GetComponentInParent<EnemyController>();
         if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f
             || !World.CanInteract(this, enemy))
             return;

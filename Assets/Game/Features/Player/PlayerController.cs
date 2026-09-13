@@ -88,8 +88,13 @@ public class PlayerController : MonoBehaviour
         if(unassignedWeapons != null && assignedWeapons != null
             && weaponNumber >= 0 && weaponNumber < unassignedWeapons.Count)
         {
-            assignedWeapons.Add(unassignedWeapons[weaponNumber]);
-            unassignedWeapons[weaponNumber].gameObject.SetActive(true);
+            Weapon newWeapon = unassignedWeapons[weaponNumber];
+
+            if (newWeapon == null)
+                return;
+
+            assignedWeapons.Add(newWeapon);
+            newWeapon.gameObject.SetActive(true);
             unassignedWeapons.RemoveAt(weaponNumber);
         }
     }

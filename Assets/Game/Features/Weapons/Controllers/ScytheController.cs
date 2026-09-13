@@ -6,14 +6,14 @@ public class ScytheController : Weapon
     [SerializeField] private float attackDamage;
     [SerializeField] private float area;
     [SerializeField] private GameObject scythe;
-    private PlayerController player;
+
     private BuffController buffHolder;
     private float attackCounter;
 
     void Start()
     {
         attackCounter = 0f;
-        player = GetComponentInParent<PlayerController>();
+        ResolveOwner();
         if (player != null)
             buffHolder = player.GetComponent<BuffController>();
     }

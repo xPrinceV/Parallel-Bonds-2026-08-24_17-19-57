@@ -21,6 +21,10 @@ public class ScytheHitController : MonoBehaviour
 
     void Awake()
     {
+        // The code-driven visual and hitbox share one active-time clock, including world sleep.
+        Animator animator = GetComponentInChildren<Animator>();
+        if (animator != null)
+            animator.enabled = false;
         if (animationTransform != null)
             visualBaseRotation = animationTransform.localRotation;
     }

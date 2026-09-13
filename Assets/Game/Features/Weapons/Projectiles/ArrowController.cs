@@ -52,7 +52,7 @@ public class ArrowController : MonoBehaviour, IWorldProjectile
     //Deal damage to the enemy when the arrow collides with it
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isActiveAndEnabled || lifetimeRemaining <= 0f || !collision.CompareTag("Enemy"))
+        if (!isActiveAndEnabled || lifetimeRemaining <= 0f || !World.CanInteract(this, collision))
             return;
 
         EnemyController enemy = collision.GetComponentInParent<EnemyController>();

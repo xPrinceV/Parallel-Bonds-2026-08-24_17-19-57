@@ -19,6 +19,9 @@ public class PistolController : Weapon
     void Start()
     {
         attackCounter = 0;
+        ResolveOwner();
+        if (buffHolder == null && player != null)
+            buffHolder = player.GetComponent<BuffController>();
         if (buffHolder == null)
             buffHolder = GetComponentInParent<BuffController>();
     }
@@ -26,6 +29,9 @@ public class PistolController : Weapon
     // Update is called once per frame
     void Update()
     {
+        if (player == null || !player.isActiveAndEnabled || !World.CanInteract(this, player))
+            return;
+
         //Attack Timer
         attackCounter -= Time.deltaTime;
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4089214446684740888}
   - component: {fileID: 8657215591373052539}
   - component: {fileID: 2687639535073317510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PoisonEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 829479374027779761}
   - component: {fileID: 3638552600087146272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Monster_3_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 5997994076804334773}
   - component: {fileID: 2851790983300251343}
   - component: {fileID: 3806599139381506063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Titan
   m_TagString: Enemy
   m_Icon: {fileID: 0}
