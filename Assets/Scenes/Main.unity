@@ -68539,7 +68539,7 @@ MonoBehaviour:
   weaponName: 
   availableUpgrades: 
   weaponIcon: {fileID: 0}
-  template: {fileID: 8554036995527919995, guid: a3c98bc721cf8cf4fa97ff71f0178653, type: 3}
+  template: {fileID: 1825500607332492713, guid: f330b57cd9192a743981b2c473504d13, type: 3}
   damage: 11
   amount: 1
   revolveSpeed: 60
