@@ -180,7 +180,7 @@ MonoBehaviour:
   - {fileID: 123630154}
   - {fileID: 1881042334}
   - {fileID: 508784823}
-  - {fileID: 441805111}
+  - {fileID: 441805113}
   - {fileID: 143472809}
   - {fileID: 273773926}
   - {fileID: 1115258393}
@@ -792,7 +792,8 @@ MonoBehaviour:
   char2: {fileID: 81002988}
   world1: {fileID: 51126211}
   world2: {fileID: 1249588891}
-  isChar1: 0
+  isChar1: 1
+  timer: 30
   player: {fileID: 5576025}
   inventoryUI: {fileID: 179380107}
 --- !u!4 &100271642
@@ -1109,7 +1110,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b9c3ce7b3be1873448a0987b64b2379e, type: 3}
   weaponName: Lantern
   availableUpgrades: 00000000030000000500000004000000
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: b9c3ce7b3be1873448a0987b64b2379e, type: 3}
   attackDamage: 10
   attackSpeed: 1
   duration: 10
@@ -1169,20 +1170,30 @@ MonoBehaviour:
     duration: 1
     bounces: 1
     area: 1
-    damageUpgrades: []
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
-    attackSpeedUpgrades: []
+    attackSpeedUpgrades:
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
     amountUpgrades: []
     durationUpgrades: []
     bouncesUpgrades: []
     areaUpgrades: []
     UpgradeText: 
   weaponLevel: 0
-  icon: {fileID: 0}
-  weaponName: 
-  availableUpgrades: 
-  weaponIcon: {fileID: 0}
+  icon: {fileID: 3351058555426389599, guid: a9c03bf3990ce9a44b7cf70d226fe649, type: 3}
+  weaponName: Sniper Rifle
+  availableUpgrades: 0000000003000000
+  weaponIcon: {fileID: 3351058555426389599, guid: a9c03bf3990ce9a44b7cf70d226fe649, type: 3}
   attackSpeed: 0.2
   attackDamage: 20
   attackRange: 15
@@ -1605,7 +1616,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f0d40344c344f6f4d9b1797825d7a46d, type: 3}
   weaponName: Poison Dagger
   availableUpgrades: 000000000100000002000000030000000600000005000000
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: f0d40344c344f6f4d9b1797825d7a46d, type: 3}
   attackDamage: 7
   attackSpeed: 0.6
   duration: 5
@@ -68679,7 +68690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 441805112}
-  - component: {fileID: 441805111}
+  - component: {fileID: 441805113}
   m_Layer: 3
   m_Name: Shields
   m_TagString: Untagged
@@ -68687,46 +68698,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &441805111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441805110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6ecbab4237428e43b0cca23d11f9563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AuraController
-  player: {fileID: 5576025}
-  stats:
-    speed: 1
-    damage: 1
-    range: 1
-    attackSpeed: 1
-    amount: 1
-    duration: 1
-    bounces: 1
-    area: 1
-    damageUpgrades: []
-    speedUpgrades: []
-    rangeUpgrades: []
-    attackSpeedUpgrades: []
-    amountUpgrades: []
-    durationUpgrades: []
-    bouncesUpgrades: []
-    areaUpgrades: []
-    UpgradeText: 
-  weaponLevel: 0
-  icon: {fileID: 0}
-  weaponName: 
-  availableUpgrades: 
-  weaponIcon: {fileID: 0}
-  template: {fileID: 1825500607332492713, guid: f330b57cd9192a743981b2c473504d13, type: 3}
-  damage: 11
-  amount: 1
-  revolveSpeed: 60
 --- !u!4 &441805112
 Transform:
   m_ObjectHideFlags: 0
@@ -68742,6 +68713,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 367653038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &441805113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441805110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e42513f263d434f844addfd7eb21c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldController
+  player: {fileID: 5576025}
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    bounces: 1
+    area: 1
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
+    speedUpgrades:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    rangeUpgrades: []
+    attackSpeedUpgrades: []
+    amountUpgrades:
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
+    durationUpgrades: []
+    bouncesUpgrades: []
+    areaUpgrades: []
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: -4178046375966092550, guid: 1b88d48cbfd3d83488e65bb1d97778ec, type: 3}
+  weaponName: Orbiting Shields
+  availableUpgrades: 000000000400000001000000
+  weaponIcon: {fileID: -4178046375966092550, guid: 1b88d48cbfd3d83488e65bb1d97778ec, type: 3}
+  shieldPrefab: {fileID: 1825500607332492713, guid: f330b57cd9192a743981b2c473504d13, type: 3}
+  shieldPivot: {fileID: 0}
+  orbitDistance: 2.5
+  orbitSpeed: 180
+  damage: 11
+  duration: 7
+  cooldown: 2.5
 --- !u!1 &508784821
 GameObject:
   m_ObjectHideFlags: 0
@@ -68833,7 +68862,7 @@ MonoBehaviour:
   icon: {fileID: 1208040086343421634, guid: 4d74bfd68161d314cbcdfa49228dfb30, type: 3}
   weaponName: Crimson Bow
   availableUpgrades: 00000000030000000400000001000000
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 1208040086343421634, guid: 4d74bfd68161d314cbcdfa49228dfb30, type: 3}
   attackSpeed: 1
   attackDamage: 10
   amount: 1
@@ -85586,7 +85615,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
   weaponName: Scythe
   availableUpgrades: 000000000700000003000000
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
   attackSpeed: 0.25
   attackDamage: 17
   area: 1
@@ -86491,8 +86520,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
     - 0.08
@@ -86520,11 +86549,11 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
   weaponName: Jeff's Pistol
   availableUpgrades: 00000000030000000200000001000000
-  weaponIcon: {fileID: 0}
-  attackSpeed: 1.2
+  weaponIcon: {fileID: 21300000, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
+  attackSpeed: 1.5
   attackDamage: 8
-  attackRange: 6
-  projectileSpeed: 6
+  attackRange: 7.5
+  projectileSpeed: 7.5
   bullet: {fileID: 8317864461979714340, guid: 464db4f813d6c3a4197fea2ffab31090, type: 3}
 --- !u!1 &1598031463
 GameObject:
@@ -101999,10 +102028,10 @@ MonoBehaviour:
     areaUpgrades: []
     UpgradeText: 
   weaponLevel: 0
-  icon: {fileID: 8573549099317436776, guid: a70d854d34af7864fbb7e6c140fa81cb, type: 3}
+  icon: {fileID: 21300000, guid: a70d854d34af7864fbb7e6c140fa81cb, type: 3}
   weaponName: Lightning Staff
   availableUpgrades: 000000000300000004000000
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: a70d854d34af7864fbb7e6c140fa81cb, type: 3}
   attackDamage: 15
   attackSpeed: 0.33
   attackRange: 10

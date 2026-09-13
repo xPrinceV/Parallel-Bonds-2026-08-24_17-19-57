@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
         AddWeapon(0, true);
         AddWeapon(0, true);
         // AddWeapon(0, false);
-        AddWeapon(3, false);
+        AddWeapon(1, false);
+        AddWeapon(1, false);
         // AddWeapon(2, false);
         stateSwitchController.SwitchWeapon();
         inventoryUI.UpdateInventory();
