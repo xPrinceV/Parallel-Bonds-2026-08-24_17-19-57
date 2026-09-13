@@ -65,7 +65,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArrowController
   projectileSpeed: 0
   damage: 0
+  playerCollider: {fileID: 0}
 --- !u!50 &-2523748073997283971
 Rigidbody2D:
   serializedVersion: 5

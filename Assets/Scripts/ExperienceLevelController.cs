@@ -70,17 +70,29 @@ public class ExperienceLevelController : MonoBehaviour
         //Freezes Time
         Time.timeScale = 0f;
 
-        
+
         //This portion is to call the upgrade screen, that triggers when the player levels up
         //For now its hardcoded to 3 since there is only plans for 3 buttons on a page
-        for (uint i = 0; i < 3; i += 1) {
-            int randomIndex = Random.Range(0, playerController.assignedWeapons.Count);
-            Weapon weapon = playerController.assignedWeapons[randomIndex];
-            Debug.Log("Button " + i + " got weapon: " + weapon);
-            ui.levelUpButtons[i].UpdateButtonDisplay(playerController.assignedWeapons[randomIndex]);
+        // Choose the weapon list belonging to the currently active character
+        List<Weapon> currentWeapons;
+
+        if (playerController.stateSwitchController.isChar1)
+        {
+            currentWeapons = playerController.char1AssignedWeapons;
+        }
+        else
+        {
+            currentWeapons = playerController.char2AssignedWeapons;
         }
 
-        // ui.levelUpButtons[0].UpdateButtonDisplay(PlayerController.instance.activeWeapon);
+        // Generate the 3 upgrade buttons
+        for (uint i = 0; i < 3; i += 1)
+        {
+            int randomIndex = Random.Range(0, currentWeapons.Count);
+            Weapon weapon = currentWeapons[randomIndex];
+
+            ui.levelUpButtons[i].UpdateButtonDisplay(weapon);
+        }
 
     }
 }

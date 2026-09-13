@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float pickupRange = 2f;
     public Vector2 facingDirection = Vector2.right;
     public static PlayerController instance;
+    public StateSwitchController stateSwitchController;
+    public InventoryUI inventoryUI;
 
     void Awake()
     {
@@ -15,18 +17,26 @@ public class PlayerController : MonoBehaviour
     }
 
     // public Weapon activeWeapon;
-    public List<Weapon> unassignedWeapons, assignedWeapons;
+    public List<Weapon> unassignedWeapons;
+
+    //Separate list for each character
+    public List<Weapon> char1AssignedWeapons;
+    public List<Weapon> char2AssignedWeapons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Temporary for now until weapon chest implemented
-        // AddWeapon(0);
-        // AddWeapon(0);
-        // AddWeapon(0);
-        // AddWeapon(0);
-        // AddWeapon(0);
-        AddWeapon(7);
+        AddWeapon(0, true);
+        AddWeapon(0, true);
+        AddWeapon(0, true);
+        AddWeapon(0, false);
+        AddWeapon(2, false);
+        AddWeapon(2, false);
+        stateSwitchController.SwitchWeapon();
+        inventoryUI.UpdateInventory();
+
+
     }
 
     // Update is called once per frame
@@ -37,7 +47,7 @@ public class PlayerController : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
 
         //Condition to check if the player is moving, if so, update the facing direction to the direction of movement
-        if(moveInput != Vector3.zero)
+        if (moveInput != Vector3.zero)
         {
             facingDirection = moveInput.normalized;
         }
@@ -48,12 +58,22 @@ public class PlayerController : MonoBehaviour
         transform.position += moveInput * moveSpeed * Time.deltaTime;
     }
 
-    public void AddWeapon(int weaponNumber)
+    public void AddWeapon(int weaponNumber, bool giveToChar1)
     {
-        if(weaponNumber < unassignedWeapons.Count)
+        if (weaponNumber < unassignedWeapons.Count)
         {
-            assignedWeapons.Add(unassignedWeapons[weaponNumber]);
-            unassignedWeapons[weaponNumber].gameObject.SetActive(true);
+            Weapon newWeapon = unassignedWeapons[weaponNumber];
+
+            if (giveToChar1)
+            {
+                char1AssignedWeapons.Add(newWeapon);
+            }
+            else
+            {
+                char2AssignedWeapons.Add(newWeapon);
+            }
+
+            newWeapon.gameObject.SetActive(true);
             unassignedWeapons.RemoveAt(weaponNumber);
         }
     }

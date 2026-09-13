@@ -4,72 +4,34 @@ using System.Collections.Generic;
 
 public class InventoryUI : MonoBehaviour
 {
-    public InventorySystem inventory;
+    public PlayerController player;
+    public StateSwitchController stateSwitchController;
 
-    // Main Weapon Icon
-    public Image mainWeaponIcon;
-    // Slot 2 Icon
-    public Image slot2Icon;
-    // Slot 3 Icon
-    public Image slot3Icon;
-    // Slot 4 Icon
-    public Image slot4Icon;
+    public Image[] weaponIcons;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void UpdateInventory()
     {
-        RefreshInventory();
-    }
-
-    public void RefreshInventory()
-    {
-        Weapon mainWeapon;
         List<Weapon> currentWeapons;
 
-        if (inventory.bobActive)
+        if (stateSwitchController.isChar1)
         {
-            mainWeapon = inventory.bobMainWeapon;
-            currentWeapons = inventory.bobWeapons;
+            currentWeapons = player.char1AssignedWeapons;
         }
         else
         {
-            mainWeapon = inventory.jeffMainWeapon;
-            currentWeapons = inventory.jeffWeapons;
+            currentWeapons = player.char2AssignedWeapons;
         }
 
-        // Main Weapon Icon
-        SetWeaponIcon(mainWeaponIcon, mainWeapon);
-
-        // Obtained Weapons
-        SetWeaponIcon(
-            slot2Icon,
-            currentWeapons.Count > 0 ? currentWeapons[0] : null);
-
-        SetWeaponIcon(
-            slot3Icon,
-            currentWeapons.Count > 1 ? currentWeapons[1] : null);
-
-        SetWeaponIcon(
-            slot4Icon,
-            currentWeapons.Count > 2 ? currentWeapons[2] : null);
-    }
-
-    private void SetWeaponIcon(Image image, Weapon weapon)
-    {
-        if (weapon != null && weapon.weaponIcon != null)
+        for (int i = 0; i < weaponIcons.Length; i++)
         {
-            image.sprite = weapon.weaponIcon;
-            image.enabled = true;
+            if (i < currentWeapons.Count)
+            {
+                weaponIcons[i].sprite = currentWeapons[i].weaponIcon;
+            }
+            else
+            {
+                weaponIcons[i].sprite = null;
+            }
         }
-        else
-        {
-            image.sprite = null;
-            image.enabled = false;
-        }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
