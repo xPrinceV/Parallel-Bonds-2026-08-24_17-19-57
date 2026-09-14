@@ -11,14 +11,6 @@ public class LanternProjController : MonoBehaviour
     public float duration;
     public GameObject explosion;
     public GameObject fire;
-
-    /*AudioManager audioManager;              //GetComponent<AudioManager>() is not recognised
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectsWithTag("Audio").GetComponent<AudioManager>();
-    }
-    */
-
     void Start()
     {
         //50% chance to choose -1 or 1 (throw left, throw right)
@@ -40,11 +32,6 @@ public class LanternProjController : MonoBehaviour
         if(collision.tag == "Enemy")
         {
             collision.GetComponent<EnemyController>().TakeDamage(damage);
-            
-            /*              //Add lantern SFX here
-            audioManager.PlaySFX(audioManager.lantern);
-            */
-
             GameObject newFire = Instantiate(fire, transform.position, Quaternion.identity);
             newFire.GetComponent<LanternFire>().SetDamage(damage);
             newFire.GetComponent<LanternFire>().SetDuration(duration);
