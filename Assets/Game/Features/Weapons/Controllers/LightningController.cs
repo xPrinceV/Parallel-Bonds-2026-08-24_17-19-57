@@ -30,6 +30,9 @@ public class LightningController : Weapon
     // Update is called once per frame
     void Update()
     {
+        if (IsFiringSuspended)
+            return;
+
         //Attack Timer
         attackCounter -= Time.deltaTime;
         if (attackCounter <= 0)

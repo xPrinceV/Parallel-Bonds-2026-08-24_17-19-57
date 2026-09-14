@@ -4291,7 +4291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "15s Switch"
+  m_text: "30s Switch"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fa71b087cd1e24740b10e253dbb30e69, type: 2}
   m_sharedMaterial: {fileID: 8376728651533316954, guid: fa71b087cd1e24740b10e253dbb30e69, type: 2}
@@ -8419,7 +8419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateSwitchController
   worldManager: {fileID: 1787880878}
-  timer: 15
+  timer: 30
   warningDuration: 5
   flipDuration: 0.8
 --- !u!114 &1787880878
@@ -8514,7 +8514,7 @@ MonoBehaviour:
   finaleStartTime: 480
   useSharedWaves: 0
   bossPrefab: {fileID: 4992070417546822389, guid: 1de7b3996fd2f2f4eb0b4c0fd00e7623, type: 3}
-  bossHealth: 300
+  bossHealth: 600
   bossDistance: 6
 --- !u!1 &1810344699
 GameObject:

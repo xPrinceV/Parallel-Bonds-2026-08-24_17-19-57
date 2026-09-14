@@ -41,6 +41,10 @@ WORLDS = (1546997187, 1627129257)
 CONTENTS = (2027904951, 1068728230)
 OLD_GRIDS = (1898056173, 1550107300)
 ROOT_ID = 9223372036854775807
+ACTIVE_SWITCH, SWITCH_MANAGER = 1787880877, 1787880878
+LEGACY_SWITCHES = (1664862857, 1985488289)
+SWITCH_LABELS = {787555867: 787555865, 756469090: 756469088}
+SWITCH_GUID = "6951560efd6bb0a47bed9289a27408a1"
 PREFABS = ("UpstreamRealWorldMap", "UpstreamMirrorWorldMap", "UpstreamMapBoundaries")
 HEADER = re.compile(r"^--- !u!(\d+) &(-?\d+)(?: stripped)?\r?\n", re.M)
 LOCAL_REF = re.compile(r"\{fileID: (-?\d+)\}")
@@ -301,20 +305,75 @@ def build(before, source, ids, contract):
     return result
 
 
-def timings(scene, name):
-    switches = [d for d in scene.docs.values()
-                if re.search(r"^  m_EditorClassIdentifier: Assembly-CSharp::StateSwitchController\r?$", d, re.M)]
-    require(bool(switches), "Missing local switch controller")
-    for doc in switches:
-        for key, value in (("timer", "15"), ("warningDuration", "5"), ("flipDuration", "0.8")):
-            require(field(doc, key) == value, f"Changed local timing: {key}")
+def replace_timing_field(doc, key, value):
+    field(doc, key)  # Reject missing/duplicate fields, preserving all other bytes.
+    return re.sub(r"^(  " + re.escape(key) + r": )[^\r\n]*",
+                  lambda m: m[1] + value, doc, flags=re.M)
+
+
+def switch_controllers(scene):
+    switches = {i for i, d in scene.docs.items()
+                if "Assembly-CSharp::StateSwitchController" in d or f"guid: {SWITCH_GUID}," in d}
+    require(switches == {ACTIVE_SWITCH, *LEGACY_SWITCHES}, "Changed switch controller identities")
+    for ident in switches:
+        doc = scene.docs[ident]
+        require(scene.types[ident] == 114
+                and field(doc, "m_EditorClassIdentifier") == "Assembly-CSharp::StateSwitchController"
+                and field(doc, "m_Script") == f"{{fileID: 11500000, guid: {SWITCH_GUID}, type: 3}}",
+                f"Switch GUID/class mismatch: {ident}")
+        active = ident == ACTIVE_SWITCH
+        require(field(doc, "m_Enabled") == ("1" if active else "0")
+                and ref(doc, "worldManager") == (SWITCH_MANAGER if active else 0),
+                f"Changed active/legacy switch binding: {ident}")
+    manager = scene.docs[SWITCH_MANAGER]
+    require(scene.types[SWITCH_MANAGER] == 114 and field(manager, "m_Enabled") == "1"
+            and field(manager, "m_EditorClassIdentifier") == "Assembly-CSharp::WorldManager"
+            and field(manager, "m_Script") == "{fileID: 11500000, guid: be0dea2d226413541af95dd2ba11b1a9, type: 3}"
+            and ref(manager, "m_GameObject") == ref(scene.docs[ACTIVE_SWITCH], "m_GameObject"),
+            "Active switch must belong to its enabled WorldManager")
+    return switches
+
+
+def switch_label(scene):
+    found = set(SWITCH_LABELS) & set(scene.docs)
+    require(len(found) == 1, "Expected exactly one scene-specific switch label")
+    ident = found.pop()
+    doc = scene.docs[ident]
+    require(scene.types[ident] == 114 and ref(doc, "m_GameObject") == SWITCH_LABELS[ident]
+            and field(doc, "m_EditorClassIdentifier") == "Unity.TextMeshPro::TMPro.TextMeshProUGUI",
+            "Switch label TMP identity changed")
+    return ident
+
+
+def project_switch_interval(scene):
+    """Exact historical 15 -> 30 active timer/label only; never skip whole documents."""
+    switch_controllers(scene)
+    require(field(scene.docs[ACTIVE_SWITCH], "timer") == "15", "Historical active timer must be exactly 15")
+    label = switch_label(scene)
+    require(field(scene.docs[label], "m_text") == '"15s Switch"', "Historical switch label must be exactly 15s Switch")
+    result = Scene.parse(scene.text())
+    result.docs[ACTIVE_SWITCH] = replace_timing_field(result.docs[ACTIVE_SWITCH], "timer", "30")
+    result.docs[label] = replace_timing_field(result.docs[label], "m_text", '"30s Switch"')
+    return result
+
+
+def timings(scene, name, active_interval="30"):
+    # Explicit historical mode is only for the old map migration/backup workflow.
+    require(active_interval in ("15", "30"), "Unsupported timing contract")
+    for ident in switch_controllers(scene):
+        doc = scene.docs[ident]
+        interval = active_interval if ident == ACTIVE_SWITCH else "15"
+        for key, value in (("timer", interval), ("warningDuration", "5"), ("flipDuration", "0.8")):
+            require(field(doc, key) == value, f"Changed local timing: {ident}.{key}")
+    if active_interval == "30":
+        require(field(scene.docs[switch_label(scene)], "m_text") == '"30s Switch"', "Changed switch label")
     finales = [d for d in scene.docs.values() if re.search(r"^  finaleStartTime:", d, re.M)]
     require(len(finales) == 1 and field(finales[0], "finaleStartTime") == "480", "Changed local finale")
     require(field(finales[0], "useSharedWaves") == ("1" if name == "DebugRun" else "0"),
             "Changed per-scene shared waves setting")
 
 
-def validate_migrated(actual, source, ids, contract, name, report=True):
+def validate_migrated(actual, source, ids, contract, name, report=True, active_interval="30"):
     """Checkout-safe acceptance without pretending to prove historical preservation."""
     actual.validate()
     expected = {i: source.docs[i] for i in ids}
@@ -355,7 +414,7 @@ def validate_migrated(actual, source, ids, contract, name, report=True):
             require(ref(world_doc, "map") == mono, f"{name}: wrong World.map binding on {world}")
         else:
             require(not re.search(r"^  map:", world_doc, re.M), f"{name}: unexpected staged map wiring")
-    timings(actual, name)
+    timings(actual, name, active_interval)
     if report:
         print(f"{name}: {len(actual.docs)} docs; structural/map/wiring checks PASS; "
               f"{len(ids) - (2 if contract else 0)}/{len(ids)} upstream docs unchanged "
@@ -372,7 +431,7 @@ def compare(actual, expected, before, source, ids, contract, name, report=True):
     require(not changed, f"{name}: unexpected document content: {changed}")
     exact = [i for i in ids if actual.docs[i] == source.docs[i]]
     require(len(exact) == len(ids) - (2 if contract else 0), "Unexpected upstream map document changes")
-    timings(actual, name)
+    timings(actual, name, field(expected.docs[ACTIVE_SWITCH], "timer"))
     if report:
         old, new = set(before.docs), set(actual.docs)
         altered = sorted(i for i in old & new if before.docs[i] != actual.docs[i])
@@ -381,7 +440,7 @@ def compare(actual, expected, before, source, ids, contract, name, report=True):
               f"changed {len(altered)}; exact upstream {len(exact)}/{len(ids)}")
         print(f"  changed IDs: {altered}; retained nonmap changes: {nonmap}")
         print("  identities, local refs, component ownership, hierarchy, roots, map bytes, "
-              "unrelated docs and 15/5/0.8/480 tuning: PASS")
+              "unrelated docs and exact expected active/legacy timing: PASS")
 
 
 def self_test(before, source, ids, expected, contract):
@@ -414,7 +473,29 @@ def self_test(before, source, ids, expected, contract):
     print("Self-tests: 9 rejection cases PASS (no writes)")
 
 
-def structural_self_test(actual, source, ids, contract):
+def timing_mutations(scene):
+    mutations = []
+    for value in ("15", "29", "31"):
+        mutations.append((ACTIVE_SWITCH, lambda d, v=value: replace_timing_field(d, "timer", v), "active interval " + value))
+    mutations.extend([
+        (ACTIVE_SWITCH, lambda d: d + "  timer: 30\n", "duplicate active interval"),
+        (ACTIVE_SWITCH, lambda d: replace_timing_field(d, "worldManager", "{fileID: 0}"), "active manager binding"),
+        (ACTIVE_SWITCH, lambda d: replace_timing_field(d, "m_Enabled", "0"), "active disabled"),
+        (ACTIVE_SWITCH, lambda d: replace_timing_field(d, "m_EditorClassIdentifier", "Assembly-CSharp::OtherController"), "active class"),
+    ])
+    for ident in LEGACY_SWITCHES:
+        mutations.append((ident, lambda d: replace_timing_field(d, "timer", "30"), "legacy interval"))
+    for ident in (ACTIVE_SWITCH, *LEGACY_SWITCHES):
+        for key, value in (("warningDuration", "6"), ("flipDuration", "0.9")):
+            mutations.append((ident, lambda d, k=key, v=value: replace_timing_field(d, k, v), key))
+    finale = next(i for i, d in scene.docs.items() if re.search(r"^  finaleStartTime:", d, re.M))
+    mutations.append((finale, lambda d: replace_timing_field(d, "finaleStartTime", "481"), "finale"))
+    for value in ('"15s Switch"', '"31s Switch"'):
+        mutations.append((switch_label(scene), lambda d, v=value: replace_timing_field(d, "m_text", v), "switch label"))
+    return mutations
+
+
+def structural_self_test(actual, source, ids, contract, active_interval="30"):
     actual = Scene.parse(actual.text().replace("\r\n", "\n"))
     mutations = [
         (1982272475, lambda d: d + "  unexpected: 1\n", "tile data"),
@@ -431,17 +512,19 @@ def structural_self_test(actual, source, ids, contract):
                                          f"{contract[1]}: {{fileID: {MAP_ROOTS[0]}}}"), "boundary binding"),
             (MONOS[0], lambda d: d.replace(contract[0], "1" * 32), "script GUID"),
         ])
+    if active_interval == "30":
+        mutations.extend(timing_mutations(actual))
     for ident, mutate, label in mutations:
         broken = Scene.parse(actual.text())
         broken.docs[ident] = mutate(broken.docs[ident])
         require(broken.docs[ident] != actual.docs[ident], f"Self-test mutation ineffective: {label}")
         try:
-            validate_migrated(broken, source, ids, contract, "Main", False)
+            validate_migrated(broken, source, ids, contract, "Main", False, active_interval)
         except ValueError:
             continue
         raise ValueError(f"Structural self-test did not reject: {label}")
     crlf = Scene.parse(actual.text().replace("\r\n", "\n").replace("\n", "\r\n"))
-    validate_migrated(crlf, source, ids, contract, "Main", False)
+    validate_migrated(crlf, source, ids, contract, "Main", False, active_interval)
     print(f"Structural self-tests: {len(mutations)} rejection cases + CRLF checkout PASS (no writes)")
 
 
@@ -513,12 +596,13 @@ def main():
             else:
                 compare(actual, expected, before, source, ids, contract, name)
         candidate = expected if writing else actual
-        validate_migrated(candidate, source, ids, contract, name)
+        active_interval = field(expected.docs[ACTIVE_SWITCH], "timer") if writing else "30"
+        validate_migrated(candidate, source, ids, contract, name, active_interval=active_interval)
         if writing:
             compare(candidate, expected, before, source, ids, contract, name)
             originals[path], outputs[path] = original, candidate.text().encode("utf-8")
         if args.self_test and name == "Main":
-            structural_self_test(candidate, source, ids, contract)
+            structural_self_test(candidate, source, ids, contract, active_interval)
             if before is not None:
                 self_test(before, source, ids, expected, contract)
     # Validate both complete candidates BEFORE writing either. Recheck all input

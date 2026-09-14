@@ -99,7 +99,7 @@ public static class WorldFlipChecks
 
         public IEnumerator Execute()
         {
-            deadline = Time.realtimeSinceStartup + 65f;
+            deadline = Time.realtimeSinceStartup + 95f;
             for (int i = 0; i < 3; i++) yield return null;
             manager = Object.FindFirstObjectByType<WorldManager>();
             flow = Object.FindFirstObjectByType<StateSwitchController>();
@@ -108,11 +108,11 @@ public static class WorldFlipChecks
                 manager != null && manager.IsInitialized && !manager.IsFused && flow != null &&
                 flow.isActiveAndEnabled && view != null && view.isActiveAndEnabled && Time.timeScale == 1f,
                 "fresh initialized Main after three frames, normal speed");
-            Require((bool)Get(flow, "initialized") && flow.RemainingTime > 14f && !flow.IsFlipping,
+            Require((bool)Get(flow, "initialized") && flow.RemainingTime > 29f && !flow.IsFlipping,
                 "start near beginning of untouched first interval");
-            Require((float)Get(flow, "timer") == 15f && (float)Get(flow, "warningDuration") == 5f &&
+            Require((float)Get(flow, "timer") == 30f && (float)Get(flow, "warningDuration") == 5f &&
                 (float)Get(flow, "flipDuration") == 0.8f && (float)Get(view, "blurMaxPixels") == 2f,
-                "production timer=15 warning=5 flip=.8 blur=2 (read only)");
+                "production timer=30 warning=5 flip=.8 blur=2 (read only)");
             Require(Get(view, "stateSwitchController") == flow, "presentation observes tested flow");
             camera = (Camera)Get(view, "worldCamera");
             Require(camera != null && camera.GetComponent<CameraController>() != null, "source follow camera exists");
@@ -141,15 +141,15 @@ public static class WorldFlipChecks
                     if (world.Manager == manager && world != outgoingWorld) incoming = Probe(world);
                 Require(incoming != null, "outgoing and incoming probe fixtures");
                 lastWorld = manager.CurrentWorldId;
-                origin = Time.time - (15f - flow.RemainingTime);
+                origin = Time.time - (30f - flow.RemainingTime);
                 manager.WorldChanged += Changed;
                 flow.TransitionMidpoint += Midpoint;
                 natural = true;
-                while (Time.time - origin < 30.6f) yield return Frame();
+                while (Time.time - origin < 60.6f) yield return Frame();
                 natural = false;
                 Check(commits == 2 && midpoints == 2 && commitTimes.Count == 2, "two automatic commits/events only");
                 for (int i = 0; i < commitTimes.Count; i++)
-                    Check(Mathf.Abs(commitTimes[i] - 15f * (i + 1)) <= 0.1f + commitFrames[i],
+                    Check(Mathf.Abs(commitTimes[i] - 30f * (i + 1)) <= 0.1f + commitFrames[i],
                         "automatic commit " + (i + 1) + " at " + commitTimes[i].ToString("F4") + "s (0.1s + one frame)");
                 Check(clearFrames > 0 && warningFrames > 0 && contractFrames > 0 && expandFrames > 0 && edgeFrames == 2,
                     "sample coverage: clear/warning/contract/expand and exactly two rendered midpoints");
@@ -175,9 +175,9 @@ public static class WorldFlipChecks
                 Check(commits == before && midpoints == before && !flow.IsFlipping, "disable flow before midpoint cancels without commit");
                 Restored("flow disable next frame");
                 flow.enabled = true;
-                Check(flow.RemainingTime == 15f, "reenable resets full 15-second interval");
+                Check(flow.RemainingTime == 30f, "reenable resets full 30-second interval");
                 yield return Frame();
-                Check(flow.RemainingTime <= 15f && flow.RemainingTime >= 15f - Time.deltaTime - 0.001f,
+                Check(flow.RemainingTime <= 30f && flow.RemainingTime >= 30f - Time.deltaTime - 0.001f,
                     "reenabled clock resumes normally");
 
                 Require(flow.RequestSwitch(Other()), "renderer-disable manual request accepted");
@@ -194,10 +194,10 @@ public static class WorldFlipChecks
                 yield return Frame();
                 Restored("renderer reenable");
                 Check(commits == before + 1, "renderer reenable does not replay commit");
-                Check((float)Get(flow, "timer") == 15f && (float)Get(flow, "warningDuration") == 5f &&
+                Check((float)Get(flow, "timer") == 30f && (float)Get(flow, "warningDuration") == 5f &&
                     (float)Get(flow, "flipDuration") == 0.8f, "production time parameters remain unchanged");
                 foreach (var pair in evidence) Check(pair.Value, pair.Key);
-                Check(Time.realtimeSinceStartup < deadline, "completed within 65 real seconds");
+                Check(Time.realtimeSinceStartup < deadline, "completed within 95 real seconds");
             }
             finally
             {
@@ -242,7 +242,7 @@ public static class WorldFlipChecks
         {
             // Must be nested-yielded, never busy-drained: reads same-frame state AFTER LateUpdate/render.
             yield return new WaitForEndOfFrame();
-            if (Time.realtimeSinceStartup >= deadline) throw new TimeoutException("65-second rendered-frame deadline");
+            if (Time.realtimeSinceStartup >= deadline) throw new TimeoutException("95-second rendered-frame deadline");
             Sample();
         }
         IEnumerator Until(Func<bool> done, float seconds)
@@ -309,16 +309,16 @@ public static class WorldFlipChecks
             }
             if (!natural) return;
             float elapsed = Time.time - origin;
-            if (elapsed < 10f)
+            if (elapsed < 25f)
             {
                 clearFrames++;
-                Record("first ten seconds no blur/capture/contraction", view.BlurPixels == 0f && view.HorizontalScale == 1f && camera.targetTexture == target);
+                Record("first 25 seconds no blur/capture/contraction", view.BlurPixels == 0f && view.HorizontalScale == 1f && camera.targetTexture == target);
             }
             if (commits == 0 && flow.RemainingTime <= 5f)
             {
                 warningFrames++;
-                Record("10-15s blur=2*(5-RemainingTime)/5", Mathf.Abs(view.BlurPixels - 2f * (5f - flow.RemainingTime) / 5f) < 0.001f);
-                if (flow.RemainingTime > 0.4f) Record("no contraction before 14.6s", !flow.IsFlipping && view.HorizontalScale == 1f);
+                Record("25-30s blur=2*(5-RemainingTime)/5", Mathf.Abs(view.BlurPixels - 2f * (5f - flow.RemainingTime) / 5f) < 0.001f);
+                if (flow.RemainingTime > 0.4f) Record("no contraction before 29.6s", !flow.IsFlipping && view.HorizontalScale == 1f);
                 if (flow.WarningProgress > 0.45f && !flow.IsFlipping) Shot("warning");
             }
             if (flow.IsFlipping)
@@ -330,7 +330,7 @@ public static class WorldFlipChecks
                 if (p < 0.5f)
                 {
                     contractFrames++;
-                    if (!previousFlip) Record("contraction begins at 14.6s each cycle", Mathf.Abs(elapsed - (commits * 15f + 14.6f)) <= 0.1f + Time.deltaTime);
+                    if (!previousFlip) Record("contraction begins at 29.6s each cycle", Mathf.Abs(elapsed - (commits * 30f + 29.6f)) <= 0.1f + Time.deltaTime);
                     if (previousFlip && previousProgress < 0.5f) Record("contraction is monotonic", view.HorizontalScale <= previousScale + 0.0001f);
                     if (p > 0.1f) Shot("contract");
                 }

@@ -29,6 +29,9 @@ public class PistolController : Weapon
     // Update is called once per frame
     void Update()
     {
+        if (IsFiringSuspended)
+            return;
+
         if (player == null || !player.isActiveAndEnabled || !World.CanInteract(this, player))
             return;
 

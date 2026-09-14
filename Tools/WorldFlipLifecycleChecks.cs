@@ -247,9 +247,9 @@ public sealed class WorldFlipLifecycleChecks : IDisposable
 
     void CheckFresh(string label)
     {
-        Check((float)Get(flow, "timer") == 15f && (float)Get(flow, "warningDuration") == 5f
-            && (float)Get(flow, "flipDuration") == .8f && flow.RemainingTime > 14f && flow.RemainingTime <= 15f,
-            label + " untouched timer=15/warning=5/flip=.8, remaining=" + flow.RemainingTime.ToString("F4"));
+        Check((float)Get(flow, "timer") == 30f && (float)Get(flow, "warningDuration") == 5f
+            && (float)Get(flow, "flipDuration") == .8f && flow.RemainingTime > 29f && flow.RemainingTime <= 30f,
+            label + " untouched timer=30/warning=5/flip=.8, remaining=" + flow.RemainingTime.ToString("F4"));
         Check(run.IsRunning && run.CurrentStageIndex == 0 && !run.IsDefeated && !run.IsCompleted
             && !manager.IsFused && !flow.IsFlipping && flow.FlipProgress == 0f && flow.WarningProgress == 0f
             && Time.timeScale == 1f, label + " fresh stage and transition state");

@@ -2,11 +2,13 @@ using System;
 using UnityEngine;
 
 // the clock owns transition progress; presentation never decides when a world commits
+// Publish the flip state before weapon Updates can launch this frame's shots.
+[DefaultExecutionOrder(-50)]
 [DisallowMultipleComponent]
 public class StateSwitchController : MonoBehaviour
 {
     [SerializeField] private WorldManager worldManager;
-    [SerializeField, Min(0.1f)] private float timer = 15f;
+    [SerializeField, Min(0.1f)] private float timer = 30f;
     [SerializeField] private bool automaticSwitchingEnabled = true;
     [SerializeField, Min(0f)] private float warningDuration = 5f;
     [SerializeField, Min(0.1f)] private float flipDuration = 0.8f;

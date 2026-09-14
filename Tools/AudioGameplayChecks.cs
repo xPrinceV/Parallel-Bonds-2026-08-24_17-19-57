@@ -186,8 +186,8 @@ public static class AudioGameplayChecks
     static IEnumerator WorldClock()
     {
         var timer = manager.GetComponent<StateSwitchController>();
-        Require(timer != null && timer.enabled && timer.SwitchInterval == 15, "serialized enabled 15s world clock");
-        Note("FIXTURE full 15s interval reset via CancelTransition; automatic enabled in memory (DebugRun may serialize automatic off); timeScale=1");
+        Require(timer != null && timer.enabled && timer.SwitchInterval == 30, "serialized enabled 30s world clock");
+        Note("FIXTURE full 30s interval reset via CancelTransition; automatic enabled in memory (DebugRun may serialize automatic off); timeScale=1");
         timer.CancelTransition(); timer.AutomaticSwitchingEnabled = true;
         var before = MusicId(); var target = MusicTarget(); var clip = target.clip;
         var entry = manager.CurrentWorldId;
@@ -199,10 +199,10 @@ public static class AudioGameplayChecks
         manager.WorldChanged += changed; timer.TransitionMidpoint += midpoint;
         try
         {
-            float deadline = Time.realtimeSinceStartup + 20;
+            float deadline = Time.realtimeSinceStartup + 35;
             while (worldChanges == 0)
             {
-                Require(Time.realtimeSinceStartup < deadline, "natural full world interval completed within 20 real seconds");
+                Require(Time.realtimeSinceStartup < deadline, "natural full world interval completed within 35 real seconds");
                 if (timer.WarningProgress > 0) warningFrames++;
                 if (timer.IsFlipping && timer.FlipProgress < .5f) preMidFrames++;
                 if (MusicId() != before || MusicTarget() != target || target.clip != clip) earlyMusicChanges++;
@@ -212,8 +212,8 @@ public static class AudioGameplayChecks
             Check(warningFrames > 0 && preMidFrames > 0 && earlyMusicChanges == 0,
                 "warning and pre-midpoint flip never change music; warningFrames=" + warningFrames + ", preMidFrames=" + preMidFrames);
             Check(worldChanges == 1 && midpoints == 1 && midpointProgress == .5f && callbackMusic
-                && manager.CurrentWorldId != entry && commitTime >= 14.95f && commitTime < 15.5f,
-                "one committed world change at 15s midpoint; elapsed=" + commitTime + ", progress=" + midpointProgress + ", synchronous game-hook music=" + callbackMusic);
+                && manager.CurrentWorldId != entry && commitTime >= 29.95f && commitTime < 30.5f,
+                "one committed world change at 30s midpoint; elapsed=" + commitTime + ", progress=" + midpointProgress + ", synchronous game-hook music=" + callbackMusic);
             yield return Wait(.7f);
             CheckMusic(before == SoundId.MusicMaterial ? SoundId.MusicEcho : SoundId.MusicMaterial, true, "post-midpoint incoming native track");
         }

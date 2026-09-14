@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-// Live frames, with explicitly injected automatic/finale boundaries; NOT a 15s/8min soak.
+// Live frames, with explicitly injected automatic/finale boundaries; NOT a 30s/8min soak.
 public sealed class TimedEventChecks : IDisposable
 {
     public static int Passed { get; private set; }
@@ -45,7 +45,7 @@ public sealed class TimedEventChecks : IDisposable
     IEnumerator Execute()
     {
         Require(Application.isPlaying, "Live Play Mode required");
-        Note("FIXTURE: timerCounter near boundary and ElapsedTime=479.99 injected via reflection; configuration 15/5/0.8/480 unchanged. Manual warning runs live. HP=1000000; weapons disabled; spawners NEVER disabled by test. Not full 15s/8min soak; GameView focus belongs to main agent.");
+        Note("FIXTURE: timerCounter near boundary and ElapsedTime=479.99 injected via reflection; configuration 30/5/0.8/480 unchanged. Manual warning runs live. HP=1000000; weapons disabled; spawners NEVER disabled by test. Not full 30s/8min soak; GameView focus belongs to main agent.");
         foreach (string scene in new[] { "Main", "DebugRun" })
         {
             label = scene;
@@ -56,9 +56,9 @@ public sealed class TimedEventChecks : IDisposable
             yield return Frames(3);
             Bind();
             Check(flow.AutomaticSwitchingEnabled && Read<bool>(flow, "automaticSwitchingEnabled"), "fresh serialized auto=true");
-            Check(flow.SwitchInterval == 15 && Read<float>(flow, "warningDuration") == 5
+            Check(flow.SwitchInterval == 30 && Read<float>(flow, "warningDuration") == 5
                 && Read<float>(flow, "flipDuration") == .8f && run.FinaleStartTime == 480,
-                "production defaults remain 15/5/0.8/480");
+                "production defaults remain 30/5/0.8/480");
             Check(typeof(StateSwitchController).GetProperty("SwitchInterval").GetSetMethod(true) == null
                 && typeof(RunStageController).GetProperty("FinaleStartTime").GetSetMethod(true) == null,
                 "SwitchInterval and FinaleStartTime are readonly");
@@ -130,12 +130,12 @@ public sealed class TimedEventChecks : IDisposable
         Check(!flow.AutomaticSwitchingEnabled, "actual Auto switch button disables auto before manual request");
         var initial = manager.CurrentWorldId;
         int before = midpoints, worldBefore = changes;
-        Check(flow.RemainingTime == 15 && flow.WarningProgress == 0 && flow.FlipProgress == 0,
-            "disable idle clears transition and resets full15");
+        Check(flow.RemainingTime == 30 && flow.WarningProgress == 0 && flow.FlipProgress == 0,
+            "disable idle clears transition and resets full30");
         Inject(flow, "timerCounter", .01f);
         yield return Seconds(.2f);
         Check(manager.CurrentWorldId == initial && midpoints == before && changes == worldBefore
-            && !flow.IsFlipping && flow.WarningProgress == 0 && flow.RemainingTime == 15,
+            && !flow.IsFlipping && flow.WarningProgress == 0 && flow.RemainingTime == 30,
             "autooff crosses injected near-zero boundary without switching");
 
         expectedWorld = initial == WorldId.Material ? WorldId.Echo : WorldId.Material;
@@ -144,7 +144,7 @@ public sealed class TimedEventChecks : IDisposable
         switchButton.onClick.Invoke();
         Check(run.ElapsedTime == elapsed && Read<bool>(flow, "requested") && flow.RemainingTime == 5
             && manager.CurrentWorldId == initial && !flow.IsFlipping,
-            "actual 15s Switch listener accepts manual autooff with5s warning, no clock/world jump");
+            "actual 30s Switch listener accepts manual autooff with5s warning, no clock/world jump");
         flow.AutomaticSwitchingEnabled = false;
         Check(Read<bool>(flow, "requested") && flow.RemainingTime == 5, "setting false again preserves accepted manual request");
         Check(!flow.RequestNextWorldSwitch(), "duplicate manual request rejected");
@@ -155,9 +155,9 @@ public sealed class TimedEventChecks : IDisposable
         yield return Until(() => !flow.IsFlipping, 2, "manual flip completes");
         yield return Seconds(.2f);
         Check(midpoints == before + 1 && changes == worldBefore + 1 && manager.CurrentWorldId == expectedWorld
-            && !flow.AutomaticSwitchingEnabled && flow.RemainingTime == 15 && flow.WarningProgress == 0 && flow.FlipProgress == 0
+            && !flow.AutomaticSwitchingEnabled && flow.RemainingTime == 30 && flow.WarningProgress == 0 && flow.FlipProgress == 0
             && echoButton.GetComponentInChildren<TMPro.TMP_Text>(true).text.Trim() == "Auto switch: Off",
-            "manual autooff commits exactly once and completes/reset15, preserving Auto Off");
+            "manual autooff commits exactly once and completes/reset30, preserving Auto Off");
     }
 
     IEnumerator AutomaticWarningAndFlip()
@@ -169,15 +169,15 @@ public sealed class TimedEventChecks : IDisposable
         yield return Frames(1);
         Require(flow.WarningProgress > 0 && !flow.IsFlipping && !Read<bool>(flow, "requested"), "automatic warning active");
         flow.AutomaticSwitchingEnabled = false;
-        Check(flow.RemainingTime == 15 && flow.WarningProgress == 0 && flow.FlipProgress == 0 && !flow.IsFlipping,
-            "disable automatic warning cancels immediately and resets15");
+        Check(flow.RemainingTime == 30 && flow.WarningProgress == 0 && flow.FlipProgress == 0 && !flow.IsFlipping,
+            "disable automatic warning cancels immediately and resets30");
         yield return Seconds(.2f);
         Check(midpoints == before && changes == worldBefore && manager.CurrentWorldId == initial, "cancelled automatic warning never commits");
         flow.AutomaticSwitchingEnabled = true;
-        Check(flow.RemainingTime == 15, "reenable starts from full15, no stale warning");
+        Check(flow.RemainingTime == 30, "reenable starts from full30, no stale warning");
         yield return Seconds(.2f);
-        Check(flow.RemainingTime < 15 && flow.RemainingTime > 10 && flow.WarningProgress == 0 && midpoints == before,
-            "reenabled auto counts down fresh interval (short sample, not15s soak)");
+        Check(flow.RemainingTime < 30 && flow.RemainingTime > 25 && flow.WarningProgress == 0 && midpoints == before,
+            "reenabled auto counts down fresh interval (short sample, not30s soak)");
         expectedWorld = initial == WorldId.Material ? WorldId.Echo : WorldId.Material;
         Inject(flow, "timerCounter", .39f);
         yield return Until(() => flow.IsFlipping, 2, "automatic flip begins");
@@ -188,7 +188,7 @@ public sealed class TimedEventChecks : IDisposable
         yield return Until(() => !flow.IsFlipping, 2, "disabled-auto flip completion");
         yield return Seconds(.2f);
         Check(midpoints == before + 1 && changes == worldBefore + 1 && manager.CurrentWorldId == expectedWorld
-            && flow.RemainingTime == 15, "started automatic flip finishes exactly once after disable");
+            && flow.RemainingTime == 30, "started automatic flip finishes exactly once after disable");
     }
 
     IEnumerator PauseGuards(bool upgrade)
@@ -251,8 +251,8 @@ public sealed class TimedEventChecks : IDisposable
         Bind();
         Check(oldRun == null && oldFlow == null && Time.timeScale == 1 && run.IsRunning && !run.IsFinaleStarted
             && run.ElapsedTime < 5 && flow.AutomaticSwitchingEnabled && Read<bool>(flow, "automaticSwitchingEnabled")
-            && flow.RemainingTime > 10 && flow.RemainingTime <= 15 && !flow.IsFlipping && flow.WarningProgress == 0,
-            "actual Restart reloads serialized true and fresh15 countdown, not previous runtime false");
+            && flow.RemainingTime > 25 && flow.RemainingTime <= 30 && !flow.IsFlipping && flow.WarningProgress == 0,
+            "actual Restart reloads serialized true and fresh30 countdown, not previous runtime false");
         yield return OpenGui();
     }
 
@@ -290,11 +290,11 @@ public sealed class TimedEventChecks : IDisposable
         restartButton = Read<Button>(panel, "restartButton");
         Check(gui.IsOpen && Read<Canvas>(gui, "canvas").isActiveAndEnabled
             && Read<GraphicRaycaster>(gui, "raycaster").isActiveAndEnabled && switchButton.IsActive()
-            && switchButton.GetComponentInChildren<TMPro.TMP_Text>(true).text.Trim() == "15s Switch"
+            && switchButton.GetComponentInChildren<TMPro.TMP_Text>(true).text.Trim() == "30s Switch"
             && echoButton.IsActive() && echoButton.IsInteractable()
             && echoButton.GetComponentInChildren<TMPro.TMP_Text>(true).text.Trim()
                 == (flow.AutomaticSwitchingEnabled ? "Auto switch: On" : "Auto switch: Off")
-            && !Read<Button>(gui, "fusionButton").gameObject.activeSelf, "GUI exposes15s Switch and Auto switch; old Fusion hidden");
+            && !Read<Button>(gui, "fusionButton").gameObject.activeSelf, "GUI exposes30s Switch and Auto switch; old Fusion hidden");
         Check(stages.Take(3).All(b => !b.gameObject.activeSelf) && !Read<Button>(panel, "nextButton").gameObject.activeSelf
             && finaleButton.IsActive() && finaleButton.GetComponentInChildren<TMPro.TMP_Text>(true).text.Trim() == "480s Finale"
             && restartButton.IsActive(), "stage0..2/Next hidden; stageButtons[3] label480s Finale and Restart visible");

@@ -22,8 +22,8 @@ public static class DualWorldTimingChecks
         if (manager == null || !manager.IsInitialized || ui == null || ui.levelUpPanel.activeSelf || Time.timeScale <= 0f)
             throw new InvalidOperationException("Close upgrade selection and resume game time first.");
         var timer = manager.GetComponent<StateSwitchController>();
-        if ((float)Get(timer, "timer") != 15f)
-            throw new InvalidOperationException("This check expects the scene's 15-second interval.");
+        if ((float)Get(timer, "timer") != 30f)
+            throw new InvalidOperationException("This check expects the scene's 30-second interval.");
 
         var saved = new Dictionary<Behaviour, bool>();
         foreach (var b in Object.FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None))
@@ -56,7 +56,7 @@ public static class DualWorldTimingChecks
             World material = manager.CurrentWorld;
             holder = material.Player.GetComponent<BuffController>();
             var recipe = ScriptableObject.CreateInstance<BuffDefinition>(); created.Add(recipe);
-            Set(recipe, "duration", 20f);
+            Set(recipe, "duration", 35f);
             Set(recipe, "atoms", new List<BuffAtom> { new DamageBuffAtom() });
             handle = holder.GrantBuff(recipe, new object());
             Require(handle != null, "timed grant");
@@ -91,13 +91,13 @@ public static class DualWorldTimingChecks
             int phase = 0;
             float phaseStart = Time.time;
             float buffTime = 0, fireTime = 0, effectTime = 0;
-            double deadline = EditorApplication.timeSinceStartup + 45d;
+            double deadline = EditorApplication.timeSinceStartup + 60d;
             observer = () =>
             {
                 try
                 {
                     Require(Application.isPlaying, "Play Mode remained active");
-                    Require(EditorApplication.timeSinceStartup < deadline, "45-second deadline");
+                    Require(EditorApplication.timeSinceStartup < deadline, "60-second deadline");
                     if (phase == 0)
                     {
                         if (fire.burningList.Count == 0) return;
@@ -122,20 +122,20 @@ public static class DualWorldTimingChecks
                     else if (phase == 2 && Time.time - phaseStart >= 0.1f)
                     {
                         Require(enemy.health == 9999f && fire.burningList.Count == 1, "wake does not repeat fire entry damage");
-                        Set(timer, "timerCounter", 15f);
+                        Set(timer, "timerCounter", 30f);
                         timer.enabled = true;
                         phase = 3; phaseStart = Time.time;
-                        log.Add("wake physics preserved fire contact; started full 15s automatic interval");
+                        log.Add("wake physics preserved fire contact; started full 30s automatic interval");
                     }
                     else if (phase == 3 && manager.CurrentWorldId == WorldId.Echo)
                     {
                         float elapsed = Time.time - phaseStart;
-                        Require(elapsed >= 14.95f && elapsed < 16f, "natural 15-second switch");
+                        Require(elapsed >= 29.95f && elapsed < 31f, "natural 30-second switch");
                         Require(!material.IsActive && manager.CurrentWorld.IsActive && !manager.IsSwitching, "exclusive content and released switch guard");
                         Require(PlayerController.instance == manager.CurrentWorld.Player && PlayerHealth.instance == PlayerController.instance.GetComponent<PlayerHealth>()
                             && ExperienceLevelController.instance == PlayerController.instance.GetComponent<ExperienceLevelController>(), "active hero aliases");
                         Require(vfx == null && projectile == null && orb != null && enemy != null, "resumed expiry and retained nonexpiring resources");
-                        Require(handle.IsActive && instance.RemainingDuration > 0f && instance.RemainingDuration < buffTime - 14f, "Buff counts only active time");
+                        Require(handle.IsActive && instance.RemainingDuration > 0f && instance.RemainingDuration < buffTime - 29f, "Buff counts only active time");
                         log.Add("automatic switch after " + elapsed + "s; aliases correct, resources retained, active lifetimes resumed");
                         phase = 4; phaseStart = Time.time;
                     }

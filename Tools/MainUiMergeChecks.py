@@ -2,8 +2,10 @@
 """Read-only UI merge gate; Python stdlib, no Unity/index/refs or file writes.
 
 119208b supplies visuals; 41ff8e2 supplies gameplay and shared-HUD bindings.
-Raw document comparisons normalize checkout line endings only. Run --self-test;
---require-runtime additionally gates contracts owned by the runtime agent.
+Raw comparisons normalize checkout line endings only; the gameplay projection
+also permits exactly RunStageController.bossHealth 300 -> 600 for Rift Lord,
+the active world timer 15 -> 30 and its 15s Switch -> 30s Switch label.
+Run --self-test; --require-runtime additionally gates runtime declarations.
 """
 import argparse
 from pathlib import Path
@@ -50,8 +52,21 @@ def replace_field(doc, key, value):
     return doc
 
 
+def run_stage_controller(scene):
+    found = []
+    for ident, doc in scene.docs.items():
+        by_guid = "  m_Script: {fileID: 11500000, guid: 6c50b95882b322b4f9f75359ba3ebc05, type: 3}\n" in doc
+        by_class = "  m_EditorClassIdentifier: Assembly-CSharp::RunStageController\n" in doc
+        if by_guid or by_class:
+            require(by_guid and by_class and scene.types[ident] == 114,
+                    f"RunStageController: GUID/class mismatch on {ident}")
+            found.append(ident)
+    require(len(found) == 1, "Expected exactly one RunStageController document")
+    return found[0]
+
+
 def expected_game(local, visual):
-    """In-memory projection only; retain every non-HUD local document verbatim."""
+    """Project HUD, bossHealth and active interval/label; preserve all other bytes."""
     result = maps.Scene.parse(local.text())
     old, incoming = local.subtree(HUD), visual.subtree(HUD)
     require(old - incoming == {MANAGER}, "Unexpected local-only HUD documents")
@@ -70,8 +85,13 @@ def expected_game(local, visual):
                              result.docs[ident], flags=re.M)
         require(count == 1, f"Unexpected Victory event count: {ident}")
         result.docs[ident] = doc
+    run = run_stage_controller(local)
+    doc = local.docs[run]
+    require(maps.field(doc, "bossHealth") == "300" and "  bossHealth: 300\n" in doc,
+            "Historical RunStageController.bossHealth must be exactly 300")
+    result.docs[run] = replace_field(doc, "bossHealth", "600")
     result.docs[maps.ROOT_ID] = result.docs.pop(maps.ROOT_ID)
-    return result
+    return maps.project_switch_interval(result)
 
 
 def decorative_images(scene):
@@ -146,10 +166,12 @@ def game_checks(actual, local, visual, name):
             doc = doc.replace(f"  - component: {{fileID: {mono}}}\n", "")
         require(doc == visual.docs[ident], f"Main map visual data changed: {ident}")
     non_ui = set(local.docs) - local.subtree(HUD)
-    require(all(actual.docs[i] == local.docs[i] for i in non_ui), "Non-UI document changed")
+    require(all(actual.docs[i] == expected.docs[i] for i in non_ui),
+            "Non-UI document changed beyond exact bossHealth 300 -> 600 and active timer/label 15 -> 30")
     require("SELECT UPGRADE" in "".join(actual.docs[i] for i in actual.subtree(UPGRADE)), "Upgrade title missing")
     print(f"{name}: {len(actual.docs)} docs; {len(non_ui)} non-UI docs exact to 41ff8e2 "
-          "(balance/Buff/audio/sorting/loadouts included); 51 map docs preserved; 15/5/.8/480 PASS")
+          "except RunStageController.bossHealth 300 -> 600 and active timer/label 15 -> 30 "
+          "(balance/Buff/audio/sorting/loadouts included); 51 map docs preserved; 30/5/.8/480; legacy timers 15 PASS")
 
 
 def build_checks():
@@ -207,7 +229,15 @@ def runtime_contracts(strict):
 
 
 def self_test(game, menu, expected_game_scene, expected_menu_scene):
+    run = run_stage_controller(expected_game_scene)
     mutations = [
+        (game, expected_game_scene, run, lambda d: replace_field(d, "bossHealth", "300")),
+        (game, expected_game_scene, run, lambda d: replace_field(d, "bossHealth", "599")),
+        (game, expected_game_scene, run, lambda d: replace_field(d, "bossHealth", "601")),
+        (game, expected_game_scene, run, lambda d: d + "  bossHealth: 600\n"),
+        (game, expected_game_scene, run, lambda d: replace_field(d, "bossDistance", "7")),
+        (game, expected_game_scene, run, lambda d: replace_field(d, "m_EditorClassIdentifier", "Assembly-CSharp::OtherController")),
+        (game, expected_game_scene, MANAGER, lambda d: d + "  bossHealth: 600\n"),
         (game, expected_game_scene, HOST, lambda d: d.replace("  m_Layer:", f"  - component: {{fileID: {MANAGER}}}\n  m_Layer:")),
         (game, expected_game_scene, MANAGER, lambda d: d.replace("fileID: 2065265773", "fileID: 999999999999")),
         (game, expected_game_scene, 1854232803, lambda d: d.replace("m_MethodName: Restart", "m_MethodName:")),
@@ -217,6 +247,8 @@ def self_test(game, menu, expected_game_scene, expected_menu_scene):
         (menu, expected_menu_scene, MENU_INSTRUCTIONS_TMP, lambda d: replace_field(d, "m_RaycastTarget", "1")),
         (menu, expected_menu_scene, 1468259094, lambda d: d.replace("  m_Pivot:", "  changedLayout: 1\n  m_Pivot:")),
     ]
+    mutations.extend((game, expected_game_scene, ident, mutate)
+                     for ident, mutate, _ in maps.timing_mutations(expected_game_scene))
     for scene, expected, ident, mutate in mutations:
         broken = maps.Scene.parse(scene.text())
         broken.docs[ident] = mutate(broken.docs[ident])
@@ -226,7 +258,7 @@ def self_test(game, menu, expected_game_scene, expected_menu_scene):
         except ValueError:
             continue
         raise ValueError(f"Self-test accepted mutation {ident}")
-    print(f"Self-tests: {len(mutations)} ownership/ref/event/balance/stale-field/image+TMP-raycast/layout rejections PASS")
+    print(f"Self-tests: {len(mutations)} timing/label/boss-health/scope/ownership/ref/event/balance/stale-field/image+TMP-raycast/layout rejections PASS")
 
 
 def main():

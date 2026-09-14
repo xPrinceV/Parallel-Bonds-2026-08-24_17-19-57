@@ -105,9 +105,9 @@ public static class MainBaselinePlayChecksBatch
             var run = all.OfType<RunStageController>().Single();
             var timer = all.OfType<StateSwitchController>().Single(t => t.isActiveAndEnabled
                 && MainBaselinePlayChecks.Get<WorldManager>(t, "worldManager") == manager);
-            MainBaselinePlayChecks.Check(timer.SwitchInterval == 15 && MainBaselinePlayChecks.Get<float>(timer, "warningDuration") == 5
+            MainBaselinePlayChecks.Check(timer.SwitchInterval == 30 && MainBaselinePlayChecks.Get<float>(timer, "warningDuration") == 5
                 && MainBaselinePlayChecks.Get<float>(timer, "flipDuration") == .8f && run.FinaleStartTime == 480,
-                scene.name + " imported 15/5/.8/480");
+                scene.name + " imported 30/5/.8/480");
             MainBaselinePlayChecks.Require(EditorBuildSettings.scenes.Any(s => s.enabled && s.path == path), scene.name + " registered for production restart");
             MainBaselinePlayChecks.Note("PREFLIGHT " + scene.name + " loaded natively; missing scripts=0; components=" + all.Length);
         }

@@ -82,8 +82,8 @@ public static class MainUiPlayChecksBatch
                     && worlds.Select(w => w.WorldId).Distinct().Count() == 2, scene.name + " imported two configured worlds");
                 var run = all.OfType<RunStageController>().Single();
                 var timer = all.OfType<StateSwitchController>().Single(t => t.isActiveAndEnabled && MainUiPlayChecks.Get<WorldManager>(t, "worldManager") == manager);
-                MainUiPlayChecks.Check(timer.SwitchInterval == 15 && MainUiPlayChecks.Get<float>(timer, "warningDuration") == 5
-                    && MainUiPlayChecks.Get<float>(timer, "flipDuration") == .8f && run.FinaleStartTime == 480, scene.name + " native imported 15/5/.8/480");
+                MainUiPlayChecks.Check(timer.SwitchInterval == 30 && MainUiPlayChecks.Get<float>(timer, "warningDuration") == 5
+                    && MainUiPlayChecks.Get<float>(timer, "flipDuration") == .8f && run.FinaleStartTime == 480, scene.name + " native imported 30/5/.8/480");
                 var over = all.OfType<GameOverManager>().Single(); MainUiPlayChecks.ResultButtons(over);
                 MainUiPlayChecks.Check(MainUiPlayChecks.Get<RunStageController>(over, "runController") == run && !over.gameOverUI.activeSelf
                     && !MainUiPlayChecks.Get<GameObject>(over, "victoryUI").activeSelf && World.GetFor(over) == null, scene.name + " shared UI hook and initially hidden results");

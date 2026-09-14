@@ -209,7 +209,7 @@ public static class WorldMapChecksBatch
         Quiet();
         var m = Object.FindFirstObjectByType<WorldManager>(); var worlds = Worlds(m);
         var flow = m.GetComponent<StateSwitchController>(); var run = Object.FindFirstObjectByType<RunStageController>();
-        Require(flow.SwitchInterval == 15 && flow.AutomaticSwitchingEnabled, "authored natural 15s clock enabled; no timer injection");
+        Require(flow.SwitchInterval == 30 && flow.AutomaticSwitchingEnabled, "authored natural 30s clock enabled; no timer injection");
         int events = 0, midpoint = 0, samples = 0, bad = 0;
         float start = Time.time, remaining = flow.RemainingTime, commitElapsed = 0;
         Action changed = () => { events++; commitElapsed = Time.time - start; Check(Exclusive(m), "WorldChanged observes exactly one content/map and correct alias"); };

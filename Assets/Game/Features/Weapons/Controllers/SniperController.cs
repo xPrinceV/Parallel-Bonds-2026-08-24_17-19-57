@@ -31,6 +31,9 @@ public class SniperController : Weapon
 
     void Update()
     {
+        if (IsFiringSuspended)
+            return;
+
         if (player == null || !player.isActiveAndEnabled || !World.CanInteract(this, player))
             return;
 

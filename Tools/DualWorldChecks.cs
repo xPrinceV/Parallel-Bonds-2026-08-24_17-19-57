@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 // Compile outside Assets against current Assembly-CSharp and Unity runtime assemblies (including UI).
 // Call Run on Unity's main thread after Main's UI/Start initialization, in a throwaway Play session.
 // No frames are yielded: trigger callbacks are manual, targeting uses a synchronous physics query.
-// This does NOT test physics callback delivery, real elapsed timers, or the automatic 15-second switch.
+// This does NOT test physics callback delivery, real elapsed timers, or the automatic 30-second switch.
 public static class DualWorldChecks
 {
     private const BindingFlags Flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;

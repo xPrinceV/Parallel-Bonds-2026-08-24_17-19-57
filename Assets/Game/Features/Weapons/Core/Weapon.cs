@@ -27,6 +27,16 @@ public class Weapon : MonoBehaviour
     // For the Inventory Slots = weapon icons
     public Sprite weaponIcon;
 
+    // Hold firing timers through both halves of a world flip, not during its warning.
+    protected bool IsFiringSuspended
+    {
+        get
+        {
+            World world = World.GetFor(this);
+            return world != null && world.Manager != null && world.Manager.IsWorldTransitioning;
+        }
+    }
+
     protected void ResolveOwner()
     {
         World world = World.GetFor(this);

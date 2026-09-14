@@ -206,8 +206,8 @@ public static class MainUiPlayChecks
         Begin(1); var outgoing = new Outgoing(); int previous = SceneManager.GetActiveScene().handle;
         Click(Find<MainMenu>().Single(), "PlayGame"); yield return Arrived("Main", previous); outgoing.CheckGone(); Bind();
         var timer = Find<StateSwitchController>().Single(t => t.isActiveAndEnabled && Get<WorldManager>(t, "worldManager") == manager);
-        Require(timer.SwitchInterval == 15 && Get<float>(timer, "warningDuration") == 5 && Get<float>(timer, "flipDuration") == .8f
-            && run.FinaleStartTime == 480 && timer.AutomaticSwitchingEnabled, "unchanged live automatic 15/5/.8/480 timing");
+        Require(timer.SwitchInterval == 30 && Get<float>(timer, "warningDuration") == 5 && Get<float>(timer, "flipDuration") == .8f
+            && run.FinaleStartTime == 480 && timer.AutomaticSwitchingEnabled, "live automatic 30/5/.8/480 timing");
         int changes = 0, midpoints = 0, warnings = 0; float elapsed = 0, progress = 0; float start = Time.time; float realStart = Time.realtimeSinceStartup;
         WorldId initial = manager.CurrentWorldId; string hud = UIController.instance.timeText.text;
         Mesh(UIController.instance.timeText, "initial HUD");
@@ -216,11 +216,11 @@ public static class MainUiPlayChecks
         manager.WorldChanged += changed; timer.TransitionMidpoint += midpoint;
         try
         {
-            float end = Time.realtimeSinceStartup + 22;
-            while (changes == 0) { if (Time.realtimeSinceStartup > end) throw new TimeoutException("natural 15s switch"); if (timer.WarningProgress > 0) warnings++; yield return null; }
+            float end = Time.realtimeSinceStartup + 37;
+            while (changes == 0) { if (Time.realtimeSinceStartup > end) throw new TimeoutException("natural 30s switch"); if (timer.WarningProgress > 0) warnings++; yield return null; }
             yield return Until(() => !timer.IsFlipping, 3, "natural flip settled");
-            Check(changes == 1 && midpoints == 1 && progress == .5f && warnings > 0 && elapsed >= 14.5f && elapsed < 15.5f
-                && manager.CurrentWorldId != initial, "one natural 15s world commit; scaled=" + elapsed + "; real=" + (Time.realtimeSinceStartup - realStart) + "; warningFrames=" + warnings);
+            Check(changes == 1 && midpoints == 1 && progress == .5f && warnings > 0 && elapsed >= 29.5f && elapsed < 30.5f
+                && manager.CurrentWorldId != initial, "one natural 30s world commit; scaled=" + elapsed + "; real=" + (Time.realtimeSinceStartup - realStart) + "; warningFrames=" + warnings);
         }
         finally { manager.WorldChanged -= changed; timer.TransitionMidpoint -= midpoint; }
         Check(Find<World>().Count(w => w.IsActive) == 1 && PlayerController.instance == manager.CurrentWorld.Player

@@ -98,14 +98,14 @@ public static class WorldSceneSetup
             StateSwitchController timer = Undo.AddComponent<StateSwitchController>(system);
             SerializedObject timerData = new SerializedObject(timer);
             timerData.FindProperty("worldManager").objectReferenceValue = manager;
-            timerData.FindProperty("timer").floatValue = 15f;
+            timerData.FindProperty("timer").floatValue = 30f;
             timerData.ApplyModifiedProperties();
 
             // leave scene saving to the user so the hierarchy can be reviewed first
             EditorSceneManager.MarkSceneDirty(scene);
             Selection.activeGameObject = system;
             Undo.CollapseUndoOperations(undoGroup);
-            Debug.Log("World setup complete. Review and save Main.unity. Both maps initially share the same layout; customize EchoWorld/Content separately. Automatic switching runs every 15 seconds.", system);
+            Debug.Log("World setup complete. Review and save Main.unity. Both maps initially share the same layout; customize EchoWorld/Content separately. Automatic switching runs every 30 seconds.", system);
         }
         catch (Exception exception)
         {

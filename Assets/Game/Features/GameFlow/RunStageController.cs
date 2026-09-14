@@ -12,7 +12,7 @@ public class RunStageController : MonoBehaviour
     [SerializeField] private float finaleStartTime = 480f;
     [SerializeField] private bool useSharedWaves = true;
     [SerializeField] private EnemyController bossPrefab;
-    [SerializeField] private float bossHealth = 300f;
+    [SerializeField] private float bossHealth = 600f;
     [SerializeField] private float bossDistance = 6f;
 
     public int CurrentStageIndex { get; private set; } = -1;
@@ -354,6 +354,8 @@ public class RunStageController : MonoBehaviour
         UnsubscribeTransition();
         EnemyController boss = Instantiate(bossPrefab, position, Quaternion.identity, entryWorld.ContentRoot);
         boss.health = bossHealth;
+        if (boss.TryGetComponent(out RiftLordBarrage barrage))
+            barrage.InitializeSpawnHealth(bossHealth);
         bosses.Add(boss);
         boss.Died += OnBossDied;
         IsBossPhase = true;

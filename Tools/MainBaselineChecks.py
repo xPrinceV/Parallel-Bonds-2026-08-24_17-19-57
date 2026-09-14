@@ -4,7 +4,9 @@
 Balance authority: 402fc0f; preservation authority: 463de47, not the merge index.
 HUD projection: 119208b through MainUiMergeChecks; gameplay remains independently gated.
 Match MonoScript GUID + controller class + one instance per World Content subtree.
-Only eight upgrade arrays, availableUpgrades and listed base scalars may change.
+Beyond the HUD projection, only eight upgrade arrays, availableUpgrades, listed
+base scalars, exact RunStageController.bossHealth 300 -> 600 and active world
+timer/label 15 -> 30 may change. Disabled legacy world timers remain 15.
 All runtime stats, references, loadouts, active flags and unrelated documents stay
 as committed locally. Sniper/Shield are explicitly excluded (no local instances).
 Bow amount is adapted from upstream multiplication (1 * stats.amount) to local
@@ -153,7 +155,15 @@ def runtime_contract():
 
 def self_test(expected, source):
     weapon = instances(expected, "Scythe", WEAPONS["Scythe"][0])[0]
+    run = ui.run_stage_controller(expected)
     mutations = [
+        (run, lambda d: replace_block(d, "bossHealth", 2, "  bossHealth: 300\n")),
+        (run, lambda d: replace_block(d, "bossHealth", 2, "  bossHealth: 599\n")),
+        (run, lambda d: replace_block(d, "bossHealth", 2, "  bossHealth: 601\n")),
+        (run, lambda d: d + "  bossHealth: 600\n"),
+        (run, lambda d: replace_block(d, "bossDistance", 2, "  bossDistance: 7\n")),
+        (run, lambda d: replace_block(d, "m_EditorClassIdentifier", 2, "  m_EditorClassIdentifier: Assembly-CSharp::OtherController\n")),
+        (weapon, lambda d: d + "  bossHealth: 600\n"),
         (weapon, lambda d: replace_block(d, "attackDamage", 2, "  attackDamage: 10\n")),
         (weapon, lambda d: replace_block(d, "areaUpgrades", 4, "    areaUpgrades: []\n")),
         (weapon, lambda d: replace_block(d, "availableUpgrades", 2, "  availableUpgrades: 0000000003000000\n")),
@@ -162,6 +172,7 @@ def self_test(expected, source):
         (maps.WORLDS[0], lambda d: d.replace("4300134801", "4300134802")),
         (373904104, lambda d: replace_block(d, "m_SortingLayerID", 2, "  m_SortingLayerID: 0\n")),
     ]
+    mutations.extend((ident, mutate) for ident, mutate, _ in maps.timing_mutations(expected))
     for ident, mutate in mutations:
         broken = maps.Scene.parse(expected.text())
         broken.docs[ident] = mutate(broken.docs[ident])
@@ -171,7 +182,7 @@ def self_test(expected, source):
         except ValueError:
             continue
         raise ValueError(f"Self-test accepted mutation on {ident}")
-    print(f"Self-tests: {len(mutations)} balance/state/reference/map/preservation rejection cases PASS")
+    print(f"Self-tests: {len(mutations)} timing/label/boss-health/scope/balance/state/reference/map/preservation rejection cases PASS")
 
 
 def main():
@@ -190,7 +201,8 @@ def main():
         path = ROOT / f"Assets/Scenes/{name}.unity"
         actual = maps.Scene.parse(maps.read(path).replace("\r\n", "\n"))
         verify(actual, expected, source, name)
-        print(f"{name}: 12 weapon instances; allowed balance fields and reviewed main HUD projection only")
+        print(f"{name}: 12 weapon instances; allowed balance fields, reviewed main HUD projection "
+              "and exact RunStageController.bossHealth 300 -> 600 plus active timer/label 15 -> 30 only")
         for weapon, ident, fields in changes:
             print(f"  {weapon} {ident}: {', '.join(fields) or 'already aligned'}")
         if args.self_test and name == "Main":

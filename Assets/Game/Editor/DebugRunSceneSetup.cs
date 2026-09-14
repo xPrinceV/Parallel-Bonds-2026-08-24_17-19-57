@@ -74,7 +74,7 @@ public static class DebugRunSceneSetup
             for (int i = 0; i < 3; i++)
                 durations.GetArrayElementAtIndex(i).floatValue = 20f;
             Property(data, "bossPrefab").objectReferenceValue = boss;
-            Property(data, "bossHealth").floatValue = 300f;
+            Property(data, "bossHealth").floatValue = 600f;
             Property(data, "bossDistance").floatValue = 6f;
             data.ApplyModifiedPropertiesWithoutUndo();
             CreatePanel(debug, controller, ui);
@@ -86,7 +86,7 @@ public static class DebugRunSceneSetup
             if (!EditorBuildSettings.scenes.Any(s => s.path == ScenePath))
                 EditorBuildSettings.scenes = EditorBuildSettings.scenes
                     .Concat(new[] { new EditorBuildSettingsScene(ScenePath, true) }).ToArray();
-            Debug.Log("DEBUG_RUN_SETUP PASS: " + ScenePath + "; stages=20,20,20; RiftLordBoss=300; distance=6");
+            Debug.Log("DEBUG_RUN_SETUP PASS: " + ScenePath + "; stages=20,20,20; RiftLordBoss=600; distance=6");
         }
         catch
         {
@@ -105,6 +105,9 @@ public static class DebugRunSceneSetup
     private static EnemyController EnsureBossPrefab()
     {
         const string path = "Assets/Prefabs/RiftLordBoss.prefab";
+        GameObject projectile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/RiftLordProjectile.prefab");
+        Require(projectile != null && projectile.GetComponent<RiftLordProjectile>() != null,
+            "RiftLordBoss requires the RiftLordProjectile prefab.");
         GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
         if (prefab == null)
         {
@@ -130,6 +133,17 @@ public static class DebugRunSceneSetup
                 Vector3 visualScale = body.transform.localScale;
                 body.transform.localScale = new Vector3(visualScale.x * scale, visualScale.y * scale, visualScale.z);
                 body.transform.position += Vector3.up * (reference.min.y - body.bounds.min.y);
+                // Enlarge the variant after fitting its sprite; the inherited collider scales with it.
+                instance.transform.localScale *= 2f;
+                TitanEnemyController enemy = instance.GetComponent<TitanEnemyController>();
+                enemy.health = 600f;
+                RiftLordBarrage barrage = instance.AddComponent<RiftLordBarrage>();
+                var attack = new SerializedObject(barrage);
+                Property(attack, "projectilePrefab").objectReferenceValue = projectile.GetComponent<RiftLordProjectile>();
+                Property(attack, "bodyRenderer").objectReferenceValue = body;
+                attack.ApplyModifiedPropertiesWithoutUndo();
+                PrefabUtility.RecordPrefabInstancePropertyModifications(instance.transform);
+                PrefabUtility.RecordPrefabInstancePropertyModifications(enemy);
                 PrefabUtility.RecordPrefabInstancePropertyModifications(instance);
                 PrefabUtility.RecordPrefabInstancePropertyModifications(body);
                 PrefabUtility.RecordPrefabInstancePropertyModifications(body.transform);
@@ -143,6 +157,13 @@ public static class DebugRunSceneSetup
         }
         EnemyController boss = prefab.GetComponent<EnemyController>();
         Require(boss is TitanEnemyController, "RiftLordBoss prefab must retain a TitanEnemyController.");
+        RiftLordBarrage configuredBarrage = prefab.GetComponent<RiftLordBarrage>();
+        Require(configuredBarrage != null && configuredBarrage.enabled,
+            "RiftLordBoss requires an enabled RiftLordBarrage; existing assets are not overwritten.");
+        var configured = new SerializedObject(configuredBarrage);
+        Require(Property(configured, "projectilePrefab").objectReferenceValue == projectile.GetComponent<RiftLordProjectile>()
+            && Property(configured, "bodyRenderer").objectReferenceValue != null,
+            "RiftLordBarrage requires its projectile and body renderer references.");
         return boss;
     }
 

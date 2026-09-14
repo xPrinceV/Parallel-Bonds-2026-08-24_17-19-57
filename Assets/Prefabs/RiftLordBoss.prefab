@@ -64,8 +64,63 @@ PrefabInstance:
       propertyPath: m_Name
       value: RiftLordBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 294434368533882589, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 294434368533882589, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 294434368533882589, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997994076804334773, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+      propertyPath: health
+      value: 600
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8027336863805150937, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1143906001}
   m_SourcePrefab: {fileID: 100100000, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+--- !u!1 &1143906002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8027336863805150937, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+  m_PrefabInstance: {fileID: 1619679918554908224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1143906003 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3638552600087146272, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+  m_PrefabInstance: {fileID: 1619679918554908224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1143906001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143906002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2c8372b9b146fda674c3d04980c66b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::RiftLordBarrage
+  projectilePrefab: {fileID: 5762119084977715214, guid: 8ca8a973ecb44fd1b44a440b7a76e9a7, type: 3}
+  bodyRenderer: {fileID: 1143906003}
+  ringInterval: 6
+  telegraphDuration: 0.6
+  fanInterval: 0.8
+  projectileSpeed: 3
+  projectileDamage: 10
+  projectileLifetime: 8
+  maxLiveProjectiles: 60
+  ringDirections: 12
+  ringGapDirections: 2
+  fanProjectileCount: 5
+  halfHealthRounds: 3
+  fanSpread: 60

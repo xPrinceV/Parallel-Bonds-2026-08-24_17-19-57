@@ -10,7 +10,7 @@ This version integrates GitHub `main` through `119208b`, including its menu, upg
 
 - Runtime scripts live under `Assets/Game/Features` and presentation under `Assets/Game/Presentation`. Keep their `.meta` GUIDs; do not restore duplicate classes under `Assets/Scripts` when merging upstream changes.
 - Main's balance values and upgrade tables apply to all six configured weapons in both worlds and both Main/DebugRun scenes. Sniper and Shield remain unconfigured; merging a scene must not enable them implicitly.
-- Keep the local world-flow contract: 15-second switching, 5-second warning, 0.8-second flip, and finale at 480 scaled seconds. Preserve per-world ownership, shared health, Buff calculations, audio and renderer sorting.
+- Keep the local world-flow contract: 30-second switching, 5-second warning, 0.8-second flip, and finale at 480 scaled seconds. Preserve per-world ownership, shared health, Buff calculations, audio and renderer sorting.
 - Preserve upstream map identities and hierarchy. Check merged scene references even if Unity Smart Merge reports success.
 - Kenney fonts retain main's complete atlas/table data with dynamic population, a source font and readable atlases restored for the current UI. Dynamic cache changes are expected; do not merge atlas bytes separately from glyph tables.
 
@@ -47,7 +47,7 @@ The Main scene is already configured for a dual-world run; no scene migration is
 | Move | WASD or arrow keys |
 | Attack | Automatic |
 | Select an upgrade | Click an upgrade button |
-| Switch worlds | Automatic, every 15 seconds outside fusion |
+| Switch worlds | Automatic, every 30 seconds outside fusion |
 | Start finale early | F (Editor or Development Build only; Game view focused) |
 | Developer GUI | Backquote / tilde key to toggle; Esc to close |
 
@@ -57,9 +57,9 @@ In the Unity editor or a **Development Build**, focus the Game view and press th
 
 The window starts hidden in both Main and DebugRun. Opening it does not pause gameplay; closing it disables its canvas and raycaster and clears only its own UI selection. The shortcut remains available during pause and after defeat. Ordinary release builds disable the window.
 
-Both scenes show five buttons: **15s Switch**, **Auto switch: On/Off**, **480s Finale**, **Restart**, and **Close**, plus world/fusion/shared-HP/run status. The former Echo button is reused for Auto switch; the old Fusion button and Wave 1/2/3/Next controls remain hidden, not merely disabled. Main's `RunStagePanel` stays bound to Main's own run controller and UI. Underlying waves are unchanged: Main uses `useSharedWaves=false`; DebugRun uses `useSharedWaves=true`.
+Both scenes show five buttons: **30s Switch**, **Auto switch: On/Off**, **480s Finale**, **Restart**, and **Close**, plus world/fusion/shared-HP/run status. The former Echo button is reused for Auto switch; the old Fusion button and Wave 1/2/3/Next controls remain hidden, not merely disabled. Main's `RunStagePanel` stays bound to Main's own run controller and UI. Underlying waves are unchanged: Main uses `useSharedWaves=false`; DebugRun uses `useSharedWaves=true`.
 
-**Auto switch: On/Off** calls `DeveloperDebugGui.ToggleAutomaticSwitching()` to invert `flow.AutomaticSwitchingEnabled`. It works while paused and controls only the 15-second automatic cycle, not manual switching or the 480-second finale. Fused states reject the callback, even when invoked directly.
+**Auto switch: On/Off** calls `DeveloperDebugGui.ToggleAutomaticSwitching()` to invert `flow.AutomaticSwitchingEnabled`. It works while paused and controls only the 30-second automatic cycle, not manual switching or the 480-second finale. Fused states reject the callback, even when invoked directly.
 
 ## Run stages and finale
 
@@ -70,12 +70,14 @@ Open `Assets/Scenes/DebugRun.unity` and press Play for shared waves and a stage 
 | Wave 1 | First 20 active game seconds |
 | Wave 2 | Next 20 active game seconds |
 | Wave 3 | Continues until 480 accumulated active game seconds |
-| Finale | Irreversible character and world fusion, then one 300-HP RiftLord |
+| Finale | Irreversible character and world fusion, then one 600-HP Rift Lord |
 | Win / Lose | Boss death wins; player death loses; Restart restores a fresh run |
 
-**15s Switch** calls `StateSwitchController.RequestNextWorldSwitch()` through the same warning/flip flow (up to 5 seconds of warning; an existing warning is not restarted), with a 0.8-second flip, not an instant switch. **480s Finale** calls `TryStartFinale()` directly, as does the automatic 480-second trigger. These buttons only trigger events early: they never jump `ElapsedTime` or grant catch-up growth. Existing pause, upgrade, death, and irreversible-finale guards still apply; Restart remains available.
+**30s Switch** calls `StateSwitchController.RequestNextWorldSwitch()` through the same warning/flip flow (up to 5 seconds of warning; an existing warning is not restarted), with a 0.8-second flip, not an instant switch. **480s Finale** calls `TryStartFinale()` directly, as does the automatic 480-second trigger. These buttons only trigger events early: they never jump `ElapsedTime` or grant catch-up growth. Existing pause, upgrade, death, and irreversible-finale guards still apply; Restart remains available.
 
-At 480 seconds, `TryStartFinale()` starts irreversible fusion. On the frame after the fusion animation reports `Completed`, one RiftLord spawns with 300 HP, preferring a clear point 6 units from the player. Map obstacles and boundaries can move that point to another direction or a nearby radius (3–9 units); an exhausted placement search reports failure rather than spawning inside a wall. The dedicated `RiftLordBoss` prefab uses `Rift Lord.png` and Titan's delayed-strike behavior, not a unique boss moveset; ordinary Titan enemies remain unchanged. Only actual boss death wins; unloading or clearing objects does not count.
+At 480 seconds, `TryStartFinale()` starts irreversible fusion. On the frame after the fusion animation reports `Completed`, one Rift Lord spawns with 600 HP (configured in Main, DebugRun and the `RunStageController` default), preferring a clear point 6 units from the player. Map obstacles and boundaries can move that point to another direction or a nearby radius (3–9 units); an exhausted placement search reports failure rather than spawning inside a wall. Only actual boss death wins; unloading or clearing objects does not count.
+
+The dedicated `RiftLordBoss` Titan variant retains `Rift Lord.png` and inherited Titan behavior, including delayed strikes. Its root scale increases from 0.25 to 0.5, doubling both sprite size and collider footprint; ordinary Titan enemies remain unmodified. `RiftLordBarrage` adds a ring every 6 scaled seconds with a 0.6-second warning: 12 directions with two adjacent directions left empty (10 shots). At or below half of spawn health (300 of 600 HP), a one-time burst fires three aimed rounds of five bullets across 60 degrees, with 0.8 seconds between launches and a warning for each round; rings resume afterward. `RiftLordProjectile` shots deal 10 damage, move at 3 units/second and last up to 8 scaled seconds.
 
 See [run-stage setup and verification](Assets/Game/Features/GameFlow/README.md) for API and configuration details.
 
@@ -91,7 +93,7 @@ See [run-stage setup and verification](Assets/Game/Features/GameFlow/README.md) 
 - Upgrade selection and a zero time scale block switching. A dead or disabled hero cannot switch to bypass the loss flow.
 - Attacks, enemy targeting, and experience collection respect world ownership.
 
-Normal world switching defaults to every 15 seconds, with a 5-second warning and a 0.8-second flip. `StateSwitchController.AutomaticSwitchingEnabled` controls only this automatic cycle, not manual requests or the eight-minute finale timer; see the [switching API](Assets/Game/Features/Worlds/README.md#warning-and-horizontal-flip). Material has no screen tint; Echo uses a blue overlay below the HUD. The heroes and maps differ: Main and DebugRun use upstream's Real World and Mirror World tilemaps, buildings, decorations, and shared boundary walls.
+Normal world switching defaults to every 30 seconds, with a 5-second warning and a 0.8-second flip. `StateSwitchController.AutomaticSwitchingEnabled` controls only this automatic cycle, not manual requests or the eight-minute finale timer; see the [switching API](Assets/Game/Features/Worlds/README.md#warning-and-horizontal-flip). Material has no screen tint; Echo uses a blue overlay below the HUD. The heroes and maps differ: Main and DebugRun use upstream's Real World and Mirror World tilemaps, buildings, decorations, and shared boundary walls.
 
 State retention lasts **only for the current run**. Restarting the scene does not restore the previous run from disk.
 
@@ -231,6 +233,8 @@ Run `python Tools/MapMergeChecks.py --self-test` for the pinned map-import basel
 
 ## Verification
 
+The automatic interval is now 30 seconds; earlier runtime results below predate this configuration change. Timing expectations have been updated, but Play Mode checks have not been rerun for it.
+
 ### Standalone damage checks
 
 With the .NET 10 SDK installed, run from the repository root:
@@ -241,9 +245,22 @@ dotnet run --project Tools/DamageFormulaChecks/DamageFormulaChecks.csproj
 
 This exercises the production damage formula without launching Unity.
 
+### Rift Lord static gates
+
+```sh
+python -B Tools/MainBaselineChecks.py --self-test
+python -B Tools/MainUiMergeChecks.py --self-test --require-runtime
+```
+
+These gates retain their pinned historical scene comparisons and existing balance/HUD projections. Additional scene allowances are the exact `bossHealth: 300` → `600` replacement, the active world timer's `15` → `30` interval, and its `30s Switch` label in Main and DebugRun. Disabled legacy timers remain at 15; every other field and document remains checked. Self-tests reject other health values and unrelated edits. Static acceptance does not validate the doubled footprint, barrage timing, telegraphs, projectile collisions or balance in Play Mode.
+
 ### Unity runtime checks
 
 The 82-check legacy boundary suite has passed; additional finale tests are being added. `Tools/TimedEventChecks` previously recorded 86 passes and 0 failures in Live checks across Main and DebugRun. The new Auto switch button checks have not been run in Unity. Fixtures start near timer boundaries with high HP and weapons disabled; this is not a full 15-second or eight-minute soak. Legacy results do not establish complete finale coverage.
+
+`Tools/RunFinaleChecks.cs` now expects the actual 600-HP boss and uses 599 nonlethal damage followed by 1 lethal damage. This legacy suite was updated but not rerun for the enhancement.
+
+The focused `Tools/Run-RiftLordChecks.ps1` runner recorded **235 passes, 0 assertion failures and 0 unexpected runtime errors** in native Play Mode across Main and DebugRun. It covers boss spawning, ring/fan attacks, pre-Start damage, collision, pause, ownership cleanup and four restarts. One known SearchDatabase launch exception still caused nonzero Unity/runner exits; this was not a clean-console run. Tests isolated the barrage with high player HP, weapons/spawning disabled and inherited Titan attacks/movement suppressed—not a full-run balance test. See [detailed verification and limits](Assets/Game/Features/GameFlow/README.md#verification).
 
 The runners under `Tools/` are custom verification entry points, **not automatically discovered Unity Test Runner tests**.
 
@@ -252,6 +269,7 @@ The runners under `Tools/` are custom verification entry points, **not automatic
 | `BuffRuntimeChecks.cs` and `BuffRuntimeChecks/` | Buff composition, stacks, lifetime, source grants, and stat calculations |
 | `WeaponBuffChecks.cs` | Weapon snapshots, hit reporting, and buff integration |
 | `BowDaggerIntegrationChecks.cs` | Bow/Dagger scene bindings, snapshots, hits, bounces, poison, and world suspension |
+| `RiftLordChecks.cs` | Boss prefab/scene wiring, safe placement, native barrage timing/collision, pause, owner cleanup and restart |
 | `DualWorldChecks.cs` | Independent hero state, world ownership, switching guards, and presentation |
 | `DualWorldTimingChecks.cs` | Real-frame physics, suspended lifetimes, and automatic switching |
 

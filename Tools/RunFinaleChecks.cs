@@ -226,9 +226,9 @@ public sealed class RunFinaleChecks : IDisposable
                 && status.text.Contains("Bosses: 1"), "open debug run panel displays paused single Rift Lord");
             Note("Waiting for actual EOF boss PNG; keep the rendered Game view visible (Scene view can stall WaitForEndOfFrame)");
             yield return new WaitForEndOfFrame();
-            Require(gui.IsOpen && boss != null && boss.health == 300f && run.IsBossPhase
+            Require(gui.IsOpen && boss != null && boss.health == 600f && run.IsBossPhase
                 && run.RemainingBosses == 1 && Time.timeScale == 0,
-                "EOF capture still has open debug GUI and paused living 300HP finale boss");
+                "EOF capture still has open debug GUI and paused living 600HP finale boss");
             // Capture the final framebuffer including overlay UI, never an endFrameRendering callback or Camera.Render.
             image = ScreenCapture.CaptureScreenshotAsTexture();
             Require(image != null && image.width > 0 && image.height > 0, "EOF screenshot texture is valid");
@@ -318,15 +318,15 @@ public sealed class RunFinaleChecks : IDisposable
         yield return Frames(5);
         Check(spawnEvents == 1 && run.RemainingBosses == 1 && Enemies().Length == 1
             && boss != null && boss.GetInstanceID() == bossId, "single boss persists; legacy spawners do not resume");
-        Require(boss != null && Mathf.Approximately(boss.health, 300f), "isolated boss still has 300HP before damage fixture");
+        Require(boss != null && Mathf.Approximately(boss.health, 600f), "isolated boss still has 600HP before damage fixture");
         int deaths = 0;
         Action<EnemyController> died = _ => deaths++;
         boss.Died += died;
         try
         {
-            boss.TakeDamage(299f);
+            boss.TakeDamage(599f);
             Check(Mathf.Approximately(boss.health, 1f) && deaths == 0 && run.RemainingBosses == 1 && !run.IsCompleted,
-                "299 damage is nonlethal; no premature victory");
+                "599 damage is nonlethal; no premature victory");
             boss.TakeDamage(1f);
             Check(deaths == 1 && run.RemainingBosses == 0 && !run.IsCompleted,
                 "lethal Died registers once; victory deferred out of damage stack");
@@ -408,8 +408,8 @@ public sealed class RunFinaleChecks : IDisposable
             && Property<RunStageController>(manager, "RunController") == run, "initialized runtime bindings");
         Require(run.UsesSharedWaves == (SceneManager.GetActiveScene().name == "DebugRun"),
             "configuration: Main useSharedWaves=false; DebugRun=true (never patched by fixture)");
-        Require(Read<float>(run, "finaleStartTime") == 480f && Read<float>(run, "bossHealth") == 300f,
-            "production finaleStartTime=480 and bossHealth=300 unchanged");
+        Require(Read<float>(run, "finaleStartTime") == 480f && Read<float>(run, "bossHealth") == 600f,
+            "production finaleStartTime=480 and bossHealth=600 (never patched by fixture)");
         var prefab = Read<EnemyController>(run, "bossPrefab");
         Require(prefab is TitanEnemyController && prefab.name == "RiftLordBoss", "dedicated RiftLordBoss prefab configured");
         Require(spawners.Length == 2 && spawners.All(s => s != null && s.enabled && s.gameObject.activeSelf),
@@ -441,8 +441,8 @@ public sealed class RunFinaleChecks : IDisposable
         var enemies = Enemies();
         boss = enemies.Length == 1 ? enemies[0] : null;
         Check(completedCount == 1 && boss is TitanEnemyController && boss.name.StartsWith("RiftLordBoss")
-            && boss.health == 300f && World.GetFor(boss) == manager.CurrentWorld,
-            "spawn StateChanged: one RiftLordBoss 300HP in entry world, after Completed");
+            && boss.health == 600f && World.GetFor(boss) == manager.CurrentWorld,
+            "spawn StateChanged: one RiftLordBoss 600HP in entry world, after Completed");
     }
 
     void WorldChanged() { worldChanges++; }

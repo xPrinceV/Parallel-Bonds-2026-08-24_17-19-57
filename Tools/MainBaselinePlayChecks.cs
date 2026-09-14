@@ -137,12 +137,12 @@ public static class MainBaselinePlayChecks
         foreach (var world in worlds)
         { var hp = world.Player.GetComponent<PlayerHealth>(); hp.maxHealth = hp.currentHealth = 1000000; }
         var timer = (StateSwitchController)typeof(WorldManager).GetProperty("SwitchFlow", Fields).GetValue(manager);
-        Require(timer != null && Get<WorldManager>(timer, "worldManager") == manager && timer.isActiveAndEnabled && timer.SwitchInterval == 15
+        Require(timer != null && Get<WorldManager>(timer, "worldManager") == manager && timer.isActiveAndEnabled && timer.SwitchInterval == 30
             && Get<float>(timer, "warningDuration") == 5 && Get<float>(timer, "flipDuration") == .8f && run.FinaleStartTime == 480,
-            "live 15/5/.8/480 timings");
+            "live 30/5/.8/480 timings");
         timer.AutomaticSwitchingEnabled = false; timer.CancelTransition();
         yield return Fonts();
-        yield return RunCase("Main automatic 15s switch / HUD / audio", WorldSwitch(manager, timer));
+        yield return RunCase("Main automatic 30s switch / HUD / audio", WorldSwitch(manager, timer));
         yield return RunCase("Main official finale / fusion / Boss", Finale(manager, run));
         yield return RunCase("Main pause / boss HUD", Pause(run));
         Note("FIXTURE: resume scaled time for independent Hollow observations after core cases; no stage reset or production changes");
@@ -171,16 +171,16 @@ public static class MainBaselinePlayChecks
         try
         {
             timer.CancelTransition(); timer.AutomaticSwitchingEnabled = true;
-            float limit = Time.realtimeSinceStartup + 22;
+            float limit = Time.realtimeSinceStartup + 37;
             while (changes == 0)
             {
-                if (Time.realtimeSinceStartup > limit) throw new TimeoutException("full 15s automatic switch");
+                if (Time.realtimeSinceStartup > limit) throw new TimeoutException("full 30s automatic switch");
                 if (timer.WarningProgress > 0) warningFrames++;
                 yield return null;
             }
             yield return Until(() => !timer.IsFlipping, 2, "actual flip completed");
-            Check(changes == 1 && midpoints == 1 && midpoint == .5f && warningFrames > 0 && elapsed >= 14.95f && elapsed < 15.5f
-                && manager.CurrentWorldId != before, "one natural 15s midpoint; elapsed=" + elapsed + "; warnings=" + warningFrames);
+            Check(changes == 1 && midpoints == 1 && midpoint == .5f && warningFrames > 0 && elapsed >= 29.95f && elapsed < 30.5f
+                && manager.CurrentWorldId != before, "one natural 30s midpoint; elapsed=" + elapsed + "; warnings=" + warningFrames);
         }
         finally { manager.WorldChanged -= changed; timer.TransitionMidpoint -= mid; timer.AutomaticSwitchingEnabled = false; }
         yield return Wait(.7f);
