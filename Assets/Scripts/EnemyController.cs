@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -14,6 +15,8 @@ public class EnemyController : MonoBehaviour
     private float knockbackCounter;
 
     public int expDrop = 1;
+    public bool isElite = false;
+    public GameObject chest;
     //These are for handling status effects like poison
     private float poisonDamage;
     private float poisonDuration;
@@ -110,6 +113,11 @@ public class EnemyController : MonoBehaviour
 
             //Spawn Exp Orb at the position of the enemy
             ExperienceLevelController.instance.SpawnExp(transform.position, expDrop);
+
+            if(isElite)
+            {
+                Instantiate(chest, transform.position, quaternion.identity);
+            }
         }
 
         //Spawn the damage number

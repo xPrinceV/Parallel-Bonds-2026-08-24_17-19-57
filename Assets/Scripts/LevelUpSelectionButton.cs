@@ -5,25 +5,19 @@ using TMPro;
 public class LevelUpSelectionButton : MonoBehaviour
 {
     public TMP_Text upgradeDescText, nameLevelText;
+    public TMP_Text newWeaponText;
     public Image weaponIcon;
     public UIController ui;
     private Weapon assignedWeapon;
     private float selectedUpgrade;
     private UpgradeType selectedUpgradeType;
+    private int chestWeaponIndex;
+    private PlayerController player;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        player = PlayerController.instance;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     //Update upgrade display text based on selected upgrades
     public void UpdateButtonDisplay(Weapon theWeapon)
     {
@@ -160,4 +154,42 @@ public class LevelUpSelectionButton : MonoBehaviour
         }
     }
 
+    public void UpdateChestDisplay(Weapon theWeapon)
+    {
+        weaponIcon.sprite = theWeapon.icon;
+        newWeaponText.text = theWeapon.weaponName;
+        assignedWeapon = theWeapon;
+    }
+
+
+    // Give the selected weapon to the currently active character
+    public void SelectChestWeapon()
+    {
+        if (assignedWeapon != null)
+        {
+            // Find this weapon inside the unassigned weapon list
+            int weaponIndex =
+                PlayerController.instance.unassignedWeapons.IndexOf(assignedWeapon);
+
+            if (weaponIndex >= 0)
+            {
+                // Check which character is currently active
+                bool giveToChar1 =
+                    PlayerController.instance.stateSwitchController.isChar1;
+
+                // Give the weapon to that character
+                PlayerController.instance.AddWeapon(
+                    weaponIndex,
+                    giveToChar1
+                );
+
+                // Refresh the inventory UI
+                PlayerController.instance.inventoryUI.UpdateInventory();
+
+                // Close chest screen and resume game
+                ui.chestPanel.SetActive(false);
+                Time.timeScale = 1f;
+            }
+        }
+    }
 }
