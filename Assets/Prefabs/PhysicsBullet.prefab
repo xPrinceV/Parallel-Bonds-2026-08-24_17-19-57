@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9132437147970937572}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.70425, y: -4.0532, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,14 +42,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9132437147970937572}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -91,7 +91,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -109,7 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f29fe2ef866fe64991d4bedccfd7e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsBullet
-  damage: 0
-  dir: {x: 0, y: 0}
-  player: {fileID: 0}
-  muzzleVelocity: 0
+  lifetime: 5

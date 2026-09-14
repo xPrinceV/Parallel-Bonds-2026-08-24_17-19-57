@@ -1,0 +1,127 @@
+# Dual-world run
+
+## Rules
+
+- Material and Echo each own a hero, experience/level table, weapons/upgrades, Buff runtime and enemy spawner. Both heroes share current and maximum health for the run.
+- Switching uses the outgoing hero's position if the destination map is clear, otherwise tries nearby points within 3 units. Failure cancels that midpoint before either Content changes. It does not copy or refill shared health, XP, equipment or Buffs. The incoming rigidbody velocity is cleared on success and restored on activation rollback.
+- Before activation, WorldManager binds both PlayerHealth components to the initial hero's health storage. Its serialized maximum initializes the shared pool once per run. Later health/max writes through either component affect that same pool and refresh the active HUD; inactive heroes reject damage callbacks. Existing serialized health fields migrate through FormerlySerializedAs.
+- The inactive world's Content is disabled, not destroyed or unloaded. Its enemies, XP pickups, fire and remaining active-time lifetimes stay in memory until that world resumes. A successful world-switch midpoint cancels outgoing flying projectiles through IWorldProjectile.Despawn; incoming-world projectiles and persistent attacks are not cleared. Normal gameplay expiry and distance-despawn rules still apply while active.
+- This is run-local retention, not a disk save. Restarting the scene starts a new run. Currency, inventories and save-file persistence are not introduced.
+- An upgrade selection or zero time scale blocks switching. A dead/disabled current hero cannot switch to revive through the other hero. The existing loss flow otherwise remains unchanged.
+
+## Scene
+
+`Main.unity` contains MaterialWorld/Content/MaterialPlayer and EchoWorld/Content/EchoPlayer, each with its own XP component and six weapon controllers. Pistol, Lantern and Lightning remain the starting weapons; Bow, Dagger and Scythe are configured as unassigned weapons for each hero. Titan is appended to each spawner's final wave without changing wave timing. Each Content owns its own EnemySpawner. Map geometry lives separately at upstream's shared `Grid/Real World` and `Grid/Mirror World`, preserving upstream fileIDs and internal hierarchy. `World.map` references a `WorldMap` on each geometry root; both reference the shared four-wall Bounding Box. WorldManager, the 15-second StateSwitchController, camera and HUD remain shared.
+
+The temporary World Ambient Overlay uses a noninteractive screen-space overlay Canvas at sorting order -100, below the HUD. Material is transparent; Echo has a blue tint (alpha 0.22). WorldFilter subscribes to WorldManager.WorldChanged and FusionStateChanged, then animates in LateUpdate. Successful world changes ease toward AmbientColor over 0.45 seconds with a 0.06-strength pulse: warm for Material, the world's ambient tint for Echo. Fusion entry uses a blue-gray pulse; exit uses the destination world's transition color. Both use 0.6 seconds and 0.045 peak overlay strength before compositing. Rejected requests publish no event and play no animation; observers must not initiate gameplay transitions. LateUpdate also reconciles runtime tint edits and late binding. Durations, pulse tint and strength are serialized on WorldFilter; zero duration makes a change instant. Initial loading snaps to the correct tint without an entry pulse. The maps use upstream's distinct Real/Mirror layouts, including buildings and decorations; the heroes use Jeff_0 and Jeff_1 respectively.
+
+**Tools > Parallel Bonds > Configure Dual World Run** migrates the older shared-player Main scene through Undo. It transfers serialized XP settings, clones the hero and spawner with internal references remapped, and binds each weapon to its local Buff holder. It refuses partial setups and validates a completed setup without duplicating it. The menu marks the scene dirty but does not save it automatically. The former map-only setup and single-player Buff sample setup are not migration tools for this dual-player scene.
+
+## Warning and horizontal flip
+
+`StateSwitchController` owns the game-time schedule, `WarningProgress`, `FlipProgress`, and the once-per-commit `TransitionMidpoint` event. `WorldFlipPresentation` only reads progress and renders the world camera into a temporary texture; it never changes the camera transform/projection, gameplay transforms, collision objects or world state. The manager retains activation, rollback, shared health and Buff sleep rules.
+
+Both Main and DebugRun default to a 15-second automatic commit interval. Defaults:
+
+| Parameter | Default | Meaning |
+| --- | --- | --- |
+| `automaticSwitchingEnabled` | `true` | Serialized automatic-cycle toggle; public read/write `bool AutomaticSwitchingEnabled` |
+| `timer` | 15 s | Time between automatic world commits, including the previous unfold |
+| `warningDuration` | 5 s | Linear warning, starting at second 10 |
+| `flipDuration` | 0.8 s | 0.4 s narrowing + 0.4 s unfolding; midpoint at second 15 |
+| `blurMaxPixels` | 2 px | Maximum nine-tap blur radius; warning grows linearly |
+| `shakeAmplitudePixels` | 0 px | Optional UV-only shake, off by default |
+| `minimumHorizontalScale` | 0.025 | Nonzero edge-on width; prevents singular sampling |
+
+Narrowing starts at second 14.6, overlapping the last 0.4 seconds of warning rather than delaying the 15-second commit. A long frame clamps progress to the midpoint for one rendered frame. The unfold removes blur with smooth easing. Scaled time and upgrade pauses freeze progress; fusion holds the interval and hides the warning. Fusion entry is blocked only while the flip is in progress. Disabling the flow component cancels the pending flip and resets the interval without rolling back a committed world. Disabling presentation restores the captured camera target and releases its temporary resources without causing another world commit.
+
+In configured scenes, `WorldManager.SwitchWorld(id)` now returns **request acceptance**, not immediate completion. Manual and automatic switching share the flow; duplicates are rejected. The GUI's **15s Switch** calls `StateSwitchController.RequestNextWorldSwitch()` through the same warning/flip flow (up to 5 seconds of warning; an existing warning is not restarted), with a 0.8-second flip, never an instant commit. Observe `WorldChanged` or `TransitionMidpoint` for completion. The internal `CommitWorldSwitch` remains the synchronous activation/rollback boundary; managers without a configured flow retain their legacy immediate behavior for standalone setups.
+
+`AutomaticSwitchingEnabled = false` stops only automatic 15-second switching and clears an automatic warning if its flip has not started. Already accepted manual requests and any active flip complete normally; manual requests remain available. Setting it back to `true` starts a fresh 15-second cycle without resetting an active flip. This property is not component disable and does not affect the automatic eight-minute finale timer.
+
+Hold the correct shared scene controller through an explicit reference; do not use `FindFirstObjectByType` to pick a legacy inactive controller. For example, in a caller component, assign `flow` to that shared controller in the Inspector:
+
+```csharp
+[SerializeField] private StateSwitchController flow;
+
+public void StopAutomaticSwitching() => flow.AutomaticSwitchingEnabled = false;
+public void ResumeAutomaticSwitching() => flow.AutomaticSwitchingEnabled = true;
+```
+
+Both scenes' GUI exposes five buttons: **15s Switch**, **Auto switch: On/Off**, **480s Finale**, **Restart**, and **Close**, plus status. The reused `echoButton` calls `DeveloperDebugGui.ToggleAutomaticSwitching()`, which sets `flow.AutomaticSwitchingEnabled = !flow.AutomaticSwitchingEnabled`. It works while paused and affects only the 15-second automatic cycle, not manual requests or the 480-second finale. Fused states reject even direct callback invocation. The old `fusionButton`, Wave 1/2/3 (indices 0..2), and Next remain hidden; DebugRun's underlying waves are unchanged. **480s Finale** calls `TryStartFinale()`. Event buttons never jump `ElapsedTime` or grant catch-up growth; they only trigger events early, subject to existing guards.
+
+The capture Canvas sorts at -200, below the existing world tint (-100) and sharp HUD (0 and above). Screen-space HUD is never included in the texture; world-space damage text remains part of the world. The card's outside area uses a softened, dimmed world image instead of a black clear. During capture, a temporary display camera with culling mask zero renders to the backbuffer after the world camera. This keeps Display 1 backed by an actual camera and lets URP draw overlay UI normally, without rerendering world geometry or overriding global overlay-rendering flags. The display camera is disabled when capture ends and destroyed with presentation resources. This setup assumes one full-screen orthographic world camera and one presentation instance; HDR/XR/multi-camera stacks have not been validated. The shader is explicitly referenced by each scene to avoid name-only build lookup/stripping.
+
+`IWorldProjectile.Despawn()` is an idempotent cancellation boundary for Arrow, Bullet, Dagger, Lantern and Hollow projectiles. The current project has no projectile pool: implementations immediately deactivate then retain their existing Destroy behavior. A future pool should replace that implementation, including full lease-state reset; world cleanup must not bypass it. Cancellation does not execute impact damage, Buff hits or lantern fire/explosion creation. Fire, Titan telegraphs, scythe swings, enemies and XP remain untouched.
+
+## Map placement
+
+`CameraController` keeps the orthographic viewport inside the current map's shared boundary, with `mapEdgePadding` defaulting to 0.05 world units. Near an edge the hero is no longer screen-centered; neither hero position nor camera zoom/projection is changed. This prevents camera-clear blue regions from entering the normal or fusion capture. Valid static bounds are cached per map; unavailable bounds are retried and removed maps fall back to ordinary target following. Viewport extents are recomputed for aspect/size changes. A viewport larger than the map is centered rather than zoomed, so complete coverage is not guaranteed for such a configuration.
+
+`WorldMap` accepts a static, geometry-only root outside sleeping Content and four active, axis-aligned, unrounded BoxCollider2D boundary walls. It derives the playable rectangle from their inner faces and common covered span; it does not add collision geometry or change the global physics matrix.
+
+A destination probe temporarily wakes only the map, processes pending TilemapCollider2D changes/manual composite geometry, and restores activation in `finally`. Hero circles use their actual scaled radius/offset; boxes, capsules and compound bodies use a conservative enclosing circle. Search uses 0.5-unit steps within 3 units, at most 169 lattice candidates and a 25 ms query-loop budget (geometry preparation is outside that budget). Ambiguous full query buffers and invalid configuration fail closed. This is placement safety, not pathfinding.
+
+`TryFindSafeSpawnPosition` tests the boss prefab footprint without instantiation. It prefers the configured distance (6 units), tries other directions and radii within ±3 units, then returns failure after at most 416 candidates. The candidate must clear map solids, shared boundaries and the player. A player touching a wall does not invalidate an otherwise safe boss position. `RunStageController` uses its existing failure path if no position is available; health and boss-death rules are unchanged.
+
+## Runtime boundaries
+
+- `World.GetFor(component)` finds ownership by hierarchy; `World.GetContentRoot(component)` provides the parent for new runtime objects. Spawns inherit the source world, never the currently active global world.
+- `World.Player` identifies the local hero and preserves source ownership for enemy death drops. `World.InteractionPlayer` selects that hero normally, or the fusion entry hero for targeting and pickup collection. Refresh this target when the mode changes rather than caching it only in Start.
+- `World.CanInteract(source, target)` permits same-world interactions normally. Cross-world interactions require two active worlds owned by the same initialized, enabled fusion manager. Ownership and spawn parenting never change with this permission.
+- `PlayerController.instance`, `PlayerHealth.instance` and `ExperienceLevelController.instance` remain compatibility aliases for the active hero. On activation they rebind; they are not shared state containers. Camera and HUD follow those aliases. New world-specific gameplay should use its owning World rather than cache an active-world alias.
+- `World.SetWorldActive` explicitly suspends Buff holders before disabling Content. World sleep preserves handles, stack progress, activated effects and remaining duration. Ordinary disable still clears Buffs; destruction always clears them.
+- Delayed destruction was replaced with active-time countdowns for lantern/enemy projectiles and VFX so they do not expire while asleep. Fire retains overlap contacts across world sleep to avoid an extra entry hit on wake.
+- Damage numbers retain their source world even on the shared canvas; they hide and freeze their lifetime while it sleeps. The pool remains shared presentation infrastructure.
+
+## Fusion
+
+- `WorldManager.TryEnterFusion()` and `TryExitFusion()` implement the F-key debug toggle. They return false when unavailable, paused, selecting an upgrade, or dead. `IsFused` and `FusionPlayer` expose the current mode and entry hero.
+- Both content roots run together while `CurrentWorld` remains the entry world. The normal switch timer pauses without resetting; `SwitchWorld()` rejects requests until fusion ends.
+- The secondary hero remains enabled so its existing weapons and Buff runtime can run. Its body renderers and colliders are suppressed, movement input is ignored, and its position/facing follow the entry hero. Weapon children remain live; no weapon or buff instance is copied.
+- The entry hero owns camera, HUD, level-up selection and collected XP. Both worlds' spawners and enemies follow it. Death drops stay under their source world's content, even when collected by the other hero.
+- Exit restores secondary transform, body renderer/collider states and rigidbody state, then leaves its world asleep. Weapon upgrades, stack progress and timers accumulated during fusion remain with their original hero.
+- Shared death forces cleanup and disables the entry hero; the other hero remains under sleeping content. Death is latched for the run, so direct health writes cannot revive it. Manager disable also forces cleanup, even during upgrade pause.
+- If the secondary content hierarchy becomes invalid, cleanup falls back to disabling the captured content root and invalidates the manager rather than allowing two controllable heroes in a non-fused state.
+- `PlayerFusionVisual` replaces only the entry hero's Jeff body renderers with the dedicated `fusion.png` sprite. Each hero has one preconfigured fusion renderer with matching body height, foot position, sorting and material; it starts disabled. Weapons and physical colliders remain unchanged. `WorldManager.FusionStateChanged` notifies visuals synchronously after entry and exit, preventing stale renderer snapshots during same-frame exit/switch/re-entry. Disable restores only an applied snapshot; the secondary hero's rendering remains under the manager's suppression.
+- Fusion uses a clear settled overlay and the entry map's geometry and collision. The secondary map stays asleep outside its render-only animation faces; both gameplay Content roots remain active. There is no energy or cooldown yet; the dedicated fusion appearance is a static sprite after its entrance.
+
+### Fusion entrance
+
+Main and DebugRun bind `FusionTransitionController` and `FusionTransitionPresentation` to the existing `WorldFlipPresentation`. Default duration is 3 seconds with 4 progressively slower turns; both values are serialized on the clock. About the first 80% is turning, and the last 20% reveals the finished hero. Side-on and fully white silhouette milestones are held for a rendered frame, so slow frames may slightly extend the duration instead of skipping them.
+
+- `TryEnterFusion()` still commits gameplay immediately and exactly once. `FusionStateChanged` starts presentation; no entrance turn calls `SwitchWorld`, activates/sleeps content, clears projectiles or grants Buffs. Combat remains live. `IsFusionTransitioning` rejects repeated toggles during the entrance; death/manager disable still force cleanup.
+- Both gameplay Content roots are already active from that single fusion commit. During the world camera's render callbacks, the non-displayed world's renderers (including its external map) and both hero bodies are masked using `forceRenderingOff`. Other-world faces temporarily activate that geometry-only map after disabling its body simulation and standalone collision. Native composite enable flags may remain true under an unsimulated body; their shapes do not participate in physics. Root activation is restored before physics, on render end and every cleanup path. Gameplay Content, transforms and ownership are untouched; newly spawned renderers are included in the mask.
+- The portrait sits on a noninteractive overlay at sorting order -50, below HUD and outside the compressed world texture. It stays centered and face-on during turns, alternating the Material/Echo normal sprites at the side-on frames. The original silhouette becomes fully white **before** the last sprite swap. The dedicated fusion sprite is then shown fully white, and regains its original colors after turning stops. `FusionPortrait.shader` whitens sampled RGB while preserving texture alpha, not by multiplying `Image.color`.
+- During the reveal, the 1.4x entrance portrait settles to the actual body's size and position for a direct handoff. Actual sprite colors are never whitened. The normal world tint yields to the entrance's alternating ambient colors, then returns to the fused clear view.
+- Scaled-time/upgrade pauses freeze the clock. Disabling either presentation component cancels this visual clock, restores render state and leaves any already committed fusion intact. Disable/death/restart release temporary UI, materials, render textures and display-camera resources through their existing lifecycle. Re-enabling a component does not replay an already fused hero's entrance.
+
+This remains a single orthographic URP world-camera effect. Scene View and unrelated cameras are not alternated. The existing backbuffer display camera stays active while capturing, avoiding the Game View 'No cameras rendering' condition.
+
+## Verification
+
+Map migration checks:
+
+- `python Tools/MapMergeChecks.py --self-test` validates both serialized scenes against the pinned upstream map baseline, with no Unity launch.
+- `Tools/Run-FusionMapRenderChecks.ps1` runs the focused fusion camera regression in the isolated rendered editor. `-Position RightEdge -VisualNoClear` measures actual same-frame capture pixels against a calibrated camera-clear color; `-Position Center -CameraGeometry` also covers corners, aspect ratios, oversized viewports and map-cache recovery. Captures use end-of-frame ReadPixels, not delayed screenshots labeled with an earlier animation phase.
+- `Tools/WorldMapChecks.cs` and `Tools/WorldMapPresentationChecks.cs` cover native placement, cold tile/composite changes, lifecycle/rollback, boss placement and render-only projection. Use disposable Play sessions; these fixtures mutate gameplay state.
+- `Tools/Run-WorldMapChecks.ps1 -Unity <path-to-Editor/Unity.exe> -Scenes Main -Suites Checks -Rendered` stages the batch helper in the existing isolated `Library/DebugRunValidationProject`, never source Assets. `Live` additionally observes natural switching, blocked cancellation, the normal finale API and restart. Each process is bounded to 180 seconds. The runner refuses concurrent Unity processes and existing log files. Optional editor-only exclusions must be explicit; `-SkipSync` is only for an already verified source-matching isolated copy.
+- Latest controlled Main/DebugRun runs each recorded 141 map/lifecycle assertions and 26 live-flow assertions with no failed gameplay assertions. Runs still exited nonzero because the isolated Unity editor logged a SearchDatabase startup exception; clean-console acceptance is pending. These checks do not establish a full combat run, free-movement pathfinding or human animation approval.
+
+`Tools/TimedEventChecks` previously recorded 86 passes and 0 failures in Live checks across Main and DebugRun. New coroutine checks cover actual Auto switch button round trips and labels, paused operation, manual switching with Auto Off, and fused callback rejection. These additions have not been run in Unity. Fixtures start near timer boundaries with high HP and weapons disabled; this is not a full 15-second or eight-minute soak.
+
+Run these outside Assets through in-memory compilation against the current game assembly:
+
+- `Tools/DualWorldChecks.cs`: `Run()` requires a throwaway initialized Main Play session. It checks hero/state identity, position transfer, source handles, XP ownership, manual pickup callbacks, death drops, UI guards and filter/visual selection. It mutates runtime hero data and must not be used as a nondestructive inspection of a player's live run. It does not yield frames or claim real physics/timing coverage.
+- `Tools/DualWorldTimingChecks.cs`: `Begin()` observes real frames/physics with a 45-second deadline and publishes its result in editor SessionState under `DualWorldTimingChecks.Result`. It checks fire entry, two seconds of world sleep, unchanged Buff/fire/VFX lifetimes, no duplicate entry on wake, resumed expiry, and a full natural 15-second automatic switch. Temporary test objects and observers are cleaned up on completion/failure. This also requires a throwaway Play session.
+
+- `Tools/FusionEntranceChecks.cs` runs both scenes and entry worlds through the real fusion API, verifies four display swaps without world-state events, centered portraits, white-before-swap ordering, shader parameters, pause/toggle guards, exact render-flag restoration, disable/death and DebugRun restart. PNG capture waits for `WaitForEndOfFrame`, after overlay UI rendering; pipeline end callbacks alone do not capture the final screen. Use a persistent coroutine host with a rendered Game view. Controlled high-HP/disabled-combat fixtures are not a full combat balance or manual input test.
+- `Tools/FusionVisualChecks.cs` covers both scenes and entry worlds, dedicated sprite references, sole-body rendering, size/feet alignment, GUI-driven fusion, synchronous restoration, repeated transitions, death and restart. The `Visual` group captures actual end-of-frame screenshots with the GUI hidden; run it through `Tools/Run-DebugRunChecks.ps1 -Unity <path-to-Unity.exe> -Suites Visual`.
+- `Tools/FusionChecks.cs` covers both entry worlds, real cross-world hits and pickups, source-owned weapons/buffs, cold activation, both live spawners and enemy retargeting, timer preservation, repeated toggles, shared death, manager disable and invalid-content cleanup.
+- `Tools/WorldFlipChecks.cs` verifies two natural 15-second commits, linear warning, contraction/expansion, one rendered midpoint, interface cleanup dispatch, HUD layout/material invariants, pause/resume and disabling flow/presentation. `Tools/WorldFlipLifecycleChecks.cs` verifies the five real cancellation implementations and DebugRun restarts during narrowing and pause. Run in-memory on a disposable persistent coroutine host; no batch editor exit is required. Both use controlled fixtures, not a full balance/playability run.
+- Older synchronous switch/visual suites predate request-based switching in configured scenes; they need a standalone manager or adaptation to await the midpoint before reuse. They were not treated as acceptance for this change.
+- `Tools/WorldTransitionChecks.cs` verifies real-frame transition endpoints, intermediate colors, fusion pulses, pause/resume, interruption, disable/enable cleanup and rejected transitions without changing scene objects or HUD raycasting. The batch entry also samples the first four rendered-game update frames for startup tint; checks use color/state samples rather than screenshot-based visual review.
+- `Tools/ScytheTitanChecks.cs` verifies the merged Scythe/Titan references, procedural swing motion, damage/count snapshots, hit deduplication, delayed attacks, active-time lifetimes and fusion interactions. Run it with `-Suites Merge`; Area UI coverage uses disposable runtime configuration.
+- `Tools/Run-FusionChecks.ps1 -Unity <path-to-Unity.exe>` runs the merge, transition, fusion, cleanup, existing regression and timing groups in separate disposable Play sessions. Close Unity first. The script stages a temporary editor entry, bounds each process to 120 seconds, and removes the entry and its metadata afterward. Logs are written under `Logs/FusionChecks-*.log`. F-key dispatch is checked in source; physical keyboard input is not injected.
+
+The Buff formula and source-grant regression suite remains separate. No world switch changes `(B + sum(P)) * product(M) + sum(Q)`.

@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1482152015
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4178046375966092550, guid: 1b88d48cbfd3d83488e65bb1d97778ec, type: 3}
@@ -151,8 +151,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a953f777e20a9e14897d0a283fc174da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShieldOrbitController
-  player: {fileID: 0}
-  orbitDistance: 0
-  orbitSpeed: 0
-  angle: 0
-  damage: 0

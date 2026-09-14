@@ -1,0 +1,119 @@
+using UnityEngine;
+
+// declare world class
+public class World : MonoBehaviour
+{
+    [SerializeField] private WorldId worldId;
+    // this declares the child object that the script will use to enable or disable world content
+    [SerializeField] private GameObject contentRoot;
+    [SerializeField] private PlayerController player;
+    [SerializeField] private WorldMap map;
+    // store the world color for the presentation system to apply
+    [SerializeField] private Color ambientColor = Color.white;
+
+
+    // allow other classes to read the world settings without changing them
+    public WorldId WorldId => worldId;
+    public PlayerController Player => player;
+    public WorldMap Map => map;
+    public WorldManager Manager { get; internal set; }
+    public PlayerController InteractionPlayer => Manager != null && Manager.IsInitialized && Manager.IsFused
+        ? Manager.FusionPlayer : Player;
+    public bool IsSuspended { get; private set; }
+    public Transform ContentRoot => contentRoot == null ? null : contentRoot.transform;
+
+    // runtime objects inherit their source world, never whichever world happens to be current
+    public static World GetFor(Component source)
+    {
+        return source == null ? null : source.GetComponentInParent<World>();
+    }
+
+    public static bool CanInteract(Component a, Component b)
+    {
+        World first = GetFor(a);
+        World second = GetFor(b);
+        // preserve unscoped legacy interactions, including null-null
+        if (first == second)
+            return true;
+
+        return first != null && second != null && first.Manager != null
+            && first.Manager == second.Manager && first.Manager.IsInitialized
+            && first.Manager.isActiveAndEnabled && first.Manager.IsFused
+            && first.IsActive && second.IsActive;
+    }
+
+    public static Transform GetContentRoot(Component source)
+    {
+        World world = GetFor(source);
+        return world == null ? null : world.ContentRoot;
+    }
+    public Color AmbientColor => ambientColor;
+    // check the actual active state including the parent hierarchy
+    public bool IsActive => contentRoot != null && contentRoot.activeInHierarchy;
+
+    // security check for world id validity and content ownership
+    // require a direct child so inactive intermediate parents cannot block activation
+    public bool IsConfigured =>
+        System.Enum.IsDefined(typeof(WorldId), worldId)
+        && contentRoot != null
+        && contentRoot != gameObject
+        && contentRoot.transform.parent == transform
+        && (map == null || (map.IsConfigured && !ContainsContent(map.transform)
+            && !transform.IsChildOf(map.transform)))
+        && (player == null || (player.transform.IsChildOf(contentRoot.transform)
+            && GetFor(player) == this));
+
+    // prevent shared managers or other worlds from being disabled with this content
+    public bool ContainsContent(Transform target)
+    {
+        return contentRoot != null && target != null
+            && target.IsChildOf(contentRoot.transform);
+    }
+
+    // ownership stays with the source world, even when fusion allowed a cross-world target
+    public void ClearProjectiles()
+    {
+        if (contentRoot == null)
+            return;
+        foreach (MonoBehaviour behaviour in contentRoot.GetComponentsInChildren<MonoBehaviour>(true))
+        {
+            if (behaviour != null && behaviour is IWorldProjectile projectile && GetFor(behaviour) == this)
+                projectile.Despawn();
+        }
+    }
+
+    // use this function to switch world content without disabling the controller
+    // return false if the configuration or parent state prevents the request
+    public bool SetWorldActive(bool active)
+    {
+        if (!IsConfigured)
+        {
+            Debug.LogError(
+                "Invalid world configuration: use a defined WorldId and assign a direct child object as contentRoot.",
+                this
+            );
+            return false;
+        }
+
+        // enabling content cannot activate an inactive parent hierarchy
+        if (active && !gameObject.activeInHierarchy)
+        {
+            Debug.LogError("Cannot activate world content while its parent hierarchy is inactive.", this);
+            return false;
+        }
+
+        bool mapActive = active && (Manager == null || !Manager.IsFused || Manager.CurrentWorld == this);
+        if (map != null && !map.SetMapActive(mapActive))
+            return false;
+
+        IsSuspended = !active;
+        // world sleep preserves buff instances; ordinary disable still ends them
+        foreach (BuffController holder in contentRoot.GetComponentsInChildren<BuffController>(true))
+            holder.SetWorldSuspended(!active);
+        contentRoot.SetActive(active);
+        if (active && player != null && (Manager == null || !Manager.IsFused
+            || Manager.FusionPlayer == player))
+            player.BindAsCurrent();
+        return IsActive == active && (map == null || map.IsActive == mapActive);
+    }
+}

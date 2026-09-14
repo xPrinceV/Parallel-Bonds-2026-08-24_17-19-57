@@ -1,0 +1,103 @@
+using UnityEngine;
+
+public class BulletController : MonoBehaviour, IWorldProjectile
+{
+    private bool hasDespawned;
+
+    void OnEnable()
+    {
+        hasDespawned = false;
+    }
+
+    public void Despawn()
+    {
+        if (hasDespawned)
+            return;
+
+        hasDespawned = true;
+        gameObject.SetActive(false);
+        // No projectile pool yet; replace destruction here with pool return when available.
+        Destroy(gameObject);
+    }
+    private EnemyController target;
+    private BuffController buffSource;
+    private bool hasHit;
+    public float speed;
+    public float damage;
+    public bool shouldKnockback;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //If the target gets lost, destroy the gameObject (Might change behaviour soon)
+        if(target == null || !target.gameObject.activeInHierarchy || !World.CanInteract(this, target))
+        {
+            Despawn();
+            return;
+        }
+
+        //Make bullet move towards the target
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+    }
+
+    public void SetTarget(EnemyController newTarget)
+    {
+        target = newTarget != null && World.CanInteract(this, newTarget) ? newTarget : null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (hasHit || !isActiveAndEnabled || !World.CanInteract(this, collision))
+            return;
+
+        EnemyController enemy = collision.GetComponentInParent<EnemyController>();
+        if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.health <= 0f
+            || !World.CanInteract(this, enemy))
+            return;
+
+        // one projectile reports one confirmed hit, even with multiple colliders
+        hasHit = true;
+        try
+        {
+            float healthBefore = enemy.health;
+            enemy.TakeDamage(damage, shouldKnockback);
+            float damageDealt = Mathf.Clamp(healthBefore - enemy.health, 0f, healthBefore);
+            // Impact audio originates here, independently of hit buffs.
+            if (damageDealt > 0f && !float.IsNaN(damageDealt) && !float.IsInfinity(damageDealt))
+                AudioService.Instance?.Play(SoundId.ProjectileHit);
+            // Destroy is deferred; report lethal hits before the target leaves this frame
+            if (buffSource != null && damageDealt > 0f)
+                buffSource.ReportHit(enemy.gameObject, damageDealt);
+        }
+        finally
+        {
+            Despawn();
+        }
+    }
+
+    // keep the firing holder separate from the projectile object
+    public void SetBuffSource(BuffController source)
+    {
+        buffSource = source;
+    }
+
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    public void SetKnockback(bool knockback)
+    {
+        shouldKnockback = knockback;
+    }
+}

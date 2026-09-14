@@ -49,6 +49,10 @@
 ExportedObj/
 .consulo/
 *.csproj
+# keep the standalone formula test project, but not its build output
+!/Tools/DamageFormulaChecks/DamageFormulaChecks.csproj
+/Tools/DamageFormulaChecks/bin/
+/Tools/DamageFormulaChecks/obj/
 *.unityproj
 *.sln
 *.suo
