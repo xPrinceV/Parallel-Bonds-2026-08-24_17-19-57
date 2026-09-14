@@ -11,6 +11,7 @@ public class LanternProjController : MonoBehaviour
     public float duration;
     public GameObject explosion;
     public GameObject fire;
+
     void Start()
     {
         //50% chance to choose -1 or 1 (throw left, throw right)
