@@ -1,6 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class UIController : MonoBehaviour
 
     public Slider expLvlSlider;
     public TMP_Text expLvlText;
+
+    private bool isWin;
+    public VictoryManager VictoryManager;
 
     void Start()
     {
@@ -33,7 +37,15 @@ public class UIController : MonoBehaviour
     //Function for adding a game timer
     public void UpdateTimer(float time) {
         int minutes = Mathf.FloorToInt (time / 60f);
-        int seconds = Mathf.FloorToInt(time % 60); 
+        int seconds = Mathf.FloorToInt(time % 60);
+
+        // Check if time reaches 10 minutes (600 seconds)
+        if (time >= 600f && !isWin)
+        {
+            isWin = true;
+            VictoryManager.Victory();
+            SceneManager.LoadScene("VictoryScene");
+        }
 
         timeText.text = minutes + ":" + seconds.ToString("00");
     }
