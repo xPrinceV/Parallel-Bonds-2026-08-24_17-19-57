@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)][string]$Unity,
-    [ValidatePattern('^Assets/.+\.cs$')][string[]]$ExcludedEditorScripts = @(),
+
     [ValidatePattern('^[a-zA-Z0-9_-]+$')][string]$EvidenceName = 'native-validation',
     [switch]$PrepareOnly
 )
@@ -45,41 +45,28 @@ try {
     }
     & python -B -c "import sys,pathlib; sys.path.insert(0,sys.argv[1]); import FontAssetChecks as f; mapping,_=f.source_cmap(); assert len(mapping)==209; pathlib.Path(sys.argv[2]).write_text(''.join(str(c)+'\n' for c in sorted(mapping)),encoding='utf-8')" $PSScriptRoot (Join-Path $output 'source-repertoire.txt')
     if ($LASTEXITCODE -ne 0) { throw 'Source repertoire generation failed; no native launch.' }
-    # Keep the existing isolated package manifest/lock and cache. Every retained direct
-    # dependency must match source; intentional absent integrations are recorded, not restored.
-    $sourcePackages = Get-Content (Join-Path $root 'Packages/manifest.json') -Raw | ConvertFrom-Json
-    $isolatedPackages = Get-Content (Join-Path $project 'Packages/manifest.json') -Raw | ConvertFrom-Json
-    foreach ($property in $isolatedPackages.dependencies.PSObject.Properties) {
-        $sourceProperty = $sourcePackages.dependencies.PSObject.Properties[$property.Name]
-        if (!$sourceProperty -or $sourceProperty.Value -ne $property.Value) { throw "Retained package version mismatch: $($property.Name)" }
-    }
-    $omitted = @($sourcePackages.dependencies.PSObject.Properties.Name | Where-Object { !$isolatedPackages.dependencies.PSObject.Properties[$_] })
+    Idle
+    Mirror 'Packages'
     $packageRows = foreach ($name in @('manifest.json', 'packages-lock.json')) {
         [ordered]@{ path="Packages/$name"; source=(Hash (Join-Path $root "Packages/$name")); isolated=(Hash (Join-Path $project "Packages/$name")) }
     }
-    [ordered]@{ files=$packageRows; intentionallyAbsent=$omitted } | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $output 'package-context.json')
+    [ordered]@{ files=$packageRows; mirroredSourcePackages=$true } | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $output 'package-context.json')
     Mirror 'Assets'; Mirror 'ProjectSettings'
-    foreach ($script in $ExcludedEditorScripts) {
-        $path = [IO.Path]::GetFullPath((Join-Path $project $script))
-        $assets = [IO.Path]::GetFullPath((Join-Path $project 'Assets')) + [IO.Path]::DirectorySeparatorChar
-        if (!$path.StartsWith($assets, [StringComparison]::OrdinalIgnoreCase) -or $script -notmatch '/Editor/') { throw 'Exclusion must be an Editor script inside isolated Assets.' }
-        Remove-Item -LiteralPath $path, "$path.meta" -Force -ErrorAction SilentlyContinue
-    }
-    $ExcludedEditorScripts | Set-Content (Join-Path $output 'excluded-editor-scripts.txt')
-    $rows = @(foreach ($tree in @('Assets', 'ProjectSettings')) {
+
+    $rows = @(foreach ($tree in @('Assets', 'ProjectSettings', 'Packages')) {
         foreach ($file in Get-ChildItem -LiteralPath (Join-Path $root $tree) -Recurse -File) {
             $relative = $file.FullName.Substring($root.Length + 1).Replace('\','/')
-            $excluded = $relative -in $ExcludedEditorScripts -or $relative.Replace('.cs.meta','.cs') -in $ExcludedEditorScripts
             $hash = Hash $file.FullName
-            $copy = if (!$excluded) { Hash (Join-Path $project $relative) } else { $null }
-            if (!$excluded -and $hash -ne $copy) { throw "Source/copy hash mismatch: $relative" }
-            [ordered]@{ path=$relative; source=$hash; isolated=$copy; excluded=$excluded }
+            $copy = Hash (Join-Path $project $relative)
+            if ($hash -ne $copy) { throw "Source/copy hash mismatch: $relative" }
+            [ordered]@{ path=$relative; source=$hash; isolated=$copy; excluded=$false }
         }
     })
     $rows | ConvertTo-Json -Depth 4 | Set-Content (Join-Path $output 'source-hashes.json')
-    Write-Output "Synchronized and hashed $($rows.Count) source files; isolated Packages preserved."
+    Write-Output "Synchronized and hashed $($rows.Count) source files; isolated Packages mirrored from source."
     # Reuse warm Bee references/defines, but compile the CURRENT synchronized source list,
     # never the cached Assembly-CSharp.dll or stale source entries in the response file.
+    # Offline warm references are a preflight only, not current package-resolution evidence.
     $data = Join-Path (Split-Path $Unity -Parent) 'Data'
     $dotnet = Join-Path $data 'NetCoreRuntime/dotnet.exe'
     $compiler = Join-Path $data 'DotNetSdkRoslyn/csc.dll'

@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Read-only six-weapon integration gate. Run with Python 3, optionally --self-test.
+"""Read-only weapon integration gate. Run with Python 3, optionally --self-test.
 
 Balance authority: 402fc0f; preservation authority: 463de47, not the merge index.
-HUD projection: 119208b through MainUiMergeChecks; gameplay remains independently gated.
+HUD projection: 119208b through MainUiMergeChecks, plus shared health UI from486e9f3.
+Gameplay remains independently gated.
 Match MonoScript GUID + controller class + one instance per World Content subtree.
 Beyond the HUD projection, only eight upgrade arrays, availableUpgrades, listed
 base scalars, exact RunStageController.bossHealth 300 -> 600 and active world
 timer/label 15 -> 30 may change. Disabled legacy world timers remain 15.
-All runtime stats, references, loadouts, active flags and unrelated documents stay
-as committed locally. Sniper/Shield are explicitly excluded (no local instances).
+The six existing weapons retain all runtime stats/references/active flags.
+StarterSceneChecks then projects exact Material3/Echo2 starter references, local
+Shield/Sniper catalogues and active timer/label 30 -> 90, without broad ignores.
 Bow amount is adapted from upstream multiplication (1 * stats.amount) to local
 addition (0 + stats.amount). No Config asset or controller code is modified.
 No Unity, writes, Git state changes, moving refs or Library backups are required.
@@ -23,6 +25,7 @@ import sys
 sys.dont_write_bytecode = True
 import MapMergeChecks as maps
 import MainUiMergeChecks as ui
+import StarterSceneChecks as starters
 
 ROOT = maps.ROOT
 BASE = "463de478144746f0fc484708edf728951ae2d6e8"
@@ -36,7 +39,8 @@ WEAPONS = {
     "Dagger": ("a0cb96ba1a742a443a512719a5964d2b", "attackDamage attackSpeed duration amount attackRange projectileSpeed bounces"),
     "Scythe": ("d9c6dcae6cec34642818f37685f37b49", "attackSpeed attackDamage area"),
 }
-EXCLUDED = {
+# Absent only from the historical six-weapon input, before the starter projection.
+HISTORICALLY_ABSENT = {
     "Sniper": "5f509c35341f6404fa102572d64f1a92",
     "Shield": "94e42513f263d434f844addfd7eb21c4",
 }
@@ -109,7 +113,7 @@ def expected_scene(before, source):
     expected = maps.Scene.parse(before.text())
     worlds = [before.subtree(content) for content in maps.CONTENTS]
     changes = []
-    for name, guid in EXCLUDED.items():
+    for name, guid in HISTORICALLY_ABSENT.items():
         require(not instances(before, name, guid), f"Baseline unexpectedly enables {name}")
     for name, (guid, _) in WEAPONS.items():
         incoming = instances(source, name, guid)
@@ -139,7 +143,8 @@ def verify(actual, expected, source, name, report=True):
     changed = [i for i in expected.docs if actual.docs[i] != expected.docs[i]]
     require(not changed, f"{name}: balance/preservation mismatch on documents {changed}")
     ids = source.subtree(maps.MAP_ROOTS[0]) | source.subtree(maps.MAP_ROOTS[1])
-    maps.validate_migrated(actual, source, ids, maps.runtime_contract("boundaryRoot"), name, report)
+    maps.validate_migrated(starters.historical_timing_view(actual), source, ids,
+                           maps.runtime_contract("boundaryRoot"), name, report)
 
 
 def runtime_contract():
@@ -201,14 +206,15 @@ def main():
         path = ROOT / f"Assets/Scenes/{name}.unity"
         actual = maps.Scene.parse(maps.read(path).replace("\r\n", "\n"))
         verify(actual, expected, source, name)
-        print(f"{name}: 12 weapon instances; allowed balance fields, reviewed main HUD projection "
-              "and exact RunStageController.bossHealth 300 -> 600 plus active timer/label 15 -> 30 only")
+        print(f"{name}: 12 preserved weapon instances + four local Shield/Sniper instances; "
+              "exact Material3/Echo2 starters, eight-weapon catalogues, shared health UI, "
+              "bossHealth 300 -> 600 and active timer/label 15 -> 30 -> 90")
         for weapon, ident, fields in changes:
             print(f"  {weapon} {ident}: {', '.join(fields) or 'already aligned'}")
         if args.self_test and name == "Main":
             self_test(expected, source)
-    print("PASS: all unrelated documents/runtime stats/references/loadouts/active flags preserved (LF/CRLF normalized)")
-    print("Excluded: Sniper/Shield (no scene components). Adapted: Bow amount 1 upstream -> 0 local (multiply -> add)")
+    print("PASS: all bytes beyond explicit balance/UI/starter/timer projections preserved (LF/CRLF normalized)")
+    print("Shield/Sniper: local controllers/projectiles, pinned486e9f3 data. Bow: amount 1 upstream -> 0 local (multiply -> add)")
     print("Static scene acceptance only; Config/import/Play Mode and upstream weapon behavior are not runtime-tested")
 
 

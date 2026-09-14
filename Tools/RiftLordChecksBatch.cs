@@ -100,7 +100,7 @@ public static class RiftLordChecksBatch
         bool search = type == LogType.Exception && message.StartsWith("ArgumentOutOfRangeException: Index was out of range.")
             && trace.Contains("UnityEditor.Search.SearchDatabase") && !trace.Contains("Assets/") && !trace.Contains("Assets\\");
         string counter = Key + (search ? ".search" : ".errors"); SessionState.SetInt(counter, SessionState.GetInt(counter, 0) + 1);
-        // Do not echo arbitrary Unity/MCP messages or tokens into the terminal.
+        // Keep arbitrary log payloads and potential secrets out of the terminal.
         Debug.Log("RIFT_NATIVE " + (search ? "KNOWN_SEARCH" : "UNEXPECTED_ERROR") + " (details in Unity.log)");
     }
     [Serializable] sealed class Summary

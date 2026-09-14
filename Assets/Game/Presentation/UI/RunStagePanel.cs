@@ -17,11 +17,11 @@ public class RunStagePanel : MonoBehaviour
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
     private bool displayValid;
     private bool displayedController;
-    private float displayedFinaleTime;
     private StageDisplay displayedStage;
     private StateDisplay displayedState;
     private int displayedWave, displayedCountdown, displayedBosses;
-    private bool displayedFinale;
+    private bool displayedFinale, displayedAutomatic;
+    private int displayedMaterial, displayedEcho;
 
     private enum StageDisplay { Unavailable, Complete, Boss, Fusion, NotStarted, Survival, Wave }
     private enum StateDisplay { Defeated, Complete, Stopped, Paused, Running }
@@ -76,13 +76,11 @@ public class RunStagePanel : MonoBehaviour
         if (restartButton.interactable != hasController)
             restartButton.interactable = hasController;
 
-        float finaleTime = hasController ? runController.FinaleStartTime : 0f;
-        if (force || !displayValid || displayedController != hasController || displayedFinaleTime != finaleTime)
+        if (force || !displayValid || displayedController != hasController)
         {
             if (finaleButtonLabel != null)
-                finaleButtonLabel.text = hasController ? $"{finaleTime:0.#}s Finale" : "Finale";
+                finaleButtonLabel.text = "Finale now (debug)";
             displayedController = hasController;
-            displayedFinaleTime = finaleTime;
         }
 
         StageDisplay stage = !hasController ? StageDisplay.Unavailable
@@ -100,9 +98,13 @@ public class RunStagePanel : MonoBehaviour
         bool finale = hasController && runController.IsFinaleStarted;
         int countdown = hasController && !finale ? Mathf.CeilToInt(runController.RemainingUntilFinale) : 0;
         int bosses = hasController ? runController.RemainingBosses : 0;
+        int material = hasController ? runController.CompletedMaterialResidences : 0;
+        int echo = hasController ? runController.CompletedEchoResidences : 0;
+        bool automatic = hasController && runController.AutomaticFinaleEnabled;
         if (force || !displayValid || displayedStage != stage || displayedState != state
             || displayedWave != wave || displayedFinale != finale
-            || displayedCountdown != countdown || displayedBosses != bosses)
+            || displayedCountdown != countdown || displayedBosses != bosses
+            || displayedMaterial != material || displayedEcho != echo || displayedAutomatic != automatic)
         {
             if (!hasController)
                 statusText.text = "Run controller unavailable";
@@ -114,8 +116,11 @@ public class RunStagePanel : MonoBehaviour
                     : "Wave " + wave;
                 string stateText = state == StateDisplay.Defeated ? "Defeated" : state == StateDisplay.Complete ? "Complete"
                     : state == StateDisplay.Stopped ? "Stopped" : state == StateDisplay.Paused ? "Paused" : "Running";
-                string countdownText = finale ? "Final fusion locked" : $"Fusion in: {countdown}s";
-                statusText.text = $"{stageText} | {stateText}\n{countdownText} | Bosses: {bosses}";
+                string countdownText = finale ? "Final fusion locked"
+                    : automatic ? $"Fusion: ~{countdown}s active" : "Auto fusion: Off";
+                int required = StateSwitchController.RequiredResidencesPerWorld;
+                statusText.text = $"{stageText} | {stateText} | M {material}/{required}, E {echo}/{required}"
+                    + $"\n{countdownText} | Bosses: {bosses}";
             }
             displayedStage = stage;
             displayedState = state;
@@ -123,6 +128,9 @@ public class RunStagePanel : MonoBehaviour
             displayedFinale = finale;
             displayedCountdown = countdown;
             displayedBosses = bosses;
+            displayedMaterial = material;
+            displayedEcho = echo;
+            displayedAutomatic = automatic;
         }
         displayValid = true;
 #endif

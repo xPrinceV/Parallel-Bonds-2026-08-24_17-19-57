@@ -63,7 +63,7 @@ public static class DeveloperDebugGuiSetup
         Button close = Button("Close", panel, font, new Vector2(-12, -114));
         // Store the same event controls in the scene that players see in the developer window.
         StateSwitchController flow = manager.GetComponent<StateSwitchController>();
-        ConfigureButton(material, flow != null ? $"{flow.SwitchInterval:0.#}s Switch" : "Switch",
+        ConfigureButton(material, flow != null ? "Switch now (debug)" : "Switch",
             new Vector2(-224, -132));
         ConfigureButton(close, "Close", new Vector2(-12, -132));
         ConfigureButton(echo, flow == null ? "Auto switch: Unavailable"
@@ -99,7 +99,7 @@ public static class DeveloperDebugGuiSetup
         if (panel == null)
             return;
         var data = new SerializedObject(panel);
-        var run = Property(data, "runController").objectReferenceValue as RunStageController;
+
         SerializedProperty stages = Property(data, "stageButtons");
         for (int i = 0; i < stages.arraySize; i++)
         {
@@ -108,7 +108,7 @@ public static class DeveloperDebugGuiSetup
                 continue;
             button.gameObject.SetActive(i == 3);
             if (i == 3)
-                ConfigureButton(button, run != null ? $"{run.FinaleStartTime:0.#}s Finale" : "Finale",
+                ConfigureButton(button, "Finale (debug)",
                     new Vector2(-224, -132));
         }
         var next = Property(data, "nextButton").objectReferenceValue as Button;
@@ -121,7 +121,7 @@ public static class DeveloperDebugGuiSetup
         var status = Property(data, "statusText").objectReferenceValue as TMP_Text;
         if (status != null)
         {
-            status.text = "Run: -- | State: --\nFusion in: --s | Bosses: --";
+            status.text = "Run: -- | State: -- | M --/3, E --/3\nFusion: ~--s active | Bosses: --";
             status.rectTransform.sizeDelta = new Vector2(416, 64);
             status.rectTransform.anchoredPosition = new Vector2(-12, -12);
             ConfigureText(status, 22);
@@ -129,7 +129,7 @@ public static class DeveloperDebugGuiSetup
         Transform hint = panel.transform.Find("Hint");
         if (hint != null && hint.TryGetComponent(out TMP_Text text))
         {
-            text.text = "Trigger only; no clock jump";
+            text.text = "Manual trigger; no residence credit";
             text.rectTransform.sizeDelta = new Vector2(416, 28);
             text.rectTransform.anchoredPosition = new Vector2(-12, -84);
             ConfigureText(text, 20);

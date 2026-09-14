@@ -20,7 +20,7 @@ foreach ($name in $helpers) {
 }
 # Exact source copies only in the isolated project; retain its warm Library and unrelated assets/settings.
 # Mirroring these bounded subtrees also removes stale production scripts and old helper imports.
-foreach ($folder in @('Assets/Game','Assets/Scenes','Tools')) {
+foreach ($folder in @('Assets/Game','Assets/Scenes','Tools','Packages')) {
     if (!(Test-Path "$root/$folder")) { continue }
     & robocopy "$root/$folder" "$isolated/$folder" /MIR /R:1 /W:1 /NFL /NDL /NJH /NJS /NP | Out-Null
     if ($LASTEXITCODE -ge 8) { throw "Exact copy failed: $folder, robocopy=$LASTEXITCODE" }

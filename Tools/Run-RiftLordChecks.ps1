@@ -27,7 +27,7 @@ function Hash([string]$path) {
     finally { $stream.Dispose(); $sha.Dispose() }
 }
 function Mirror([string]$name) {
-    & robocopy (Join-Path $root $name) (Join-Path $project $name) /MIR /XJ /R:1 /W:1 /NFL /NDL /NJH /NJS /NP /XF UnityMcpSetup.cs UnityMcpSetup.cs.meta | Out-Null
+    & robocopy (Join-Path $root $name) (Join-Path $project $name) /MIR /XJ /R:1 /W:1 /NFL /NDL /NJH /NJS /NP | Out-Null
     if ($LASTEXITCODE -ge 8) { throw "Mirror failed: $name ($LASTEXITCODE)" }
 }
 Idle
@@ -43,7 +43,7 @@ try {
     if ((Test-Path $stage) -or (Test-Path "$stage.meta")) { throw 'Existing check stage; refusing overwrite.' }
     [ordered]@{ source=$root; validationProject=$project; unity=$Unity; prepareOnly=[bool]$PrepareOnly; output=$attempt; utc=[DateTime]::UtcNow.ToString('o') } |
         ConvertTo-Json | Set-Content (Join-Path $attempt 'context.json')
-    $protected = @(foreach ($name in @('Packages/manifest.json','Packages/packages-lock.json','.vscode/settings.json','Assets/Game/Editor/UnityMcpSetup.cs','Assets/Game/Editor/UnityMcpSetup.cs.meta')) {
+    $protected = @(foreach ($name in @('Packages/manifest.json','Packages/packages-lock.json','.vscode/settings.json')) {
         $path = Join-Path $root $name
         if (Test-Path $path) { [ordered]@{ path=$name; sha256=(Hash $path) } }
     })
@@ -67,7 +67,7 @@ try {
     $compileCounts = @()
     foreach ($kind in @('runtime','editor')) {
         $sources = @(Get-ChildItem (Join-Path $root 'Assets') -Recurse -File -Filter '*.cs' | Where-Object {
-            if ($_.FullName -eq (Join-Path $root 'Assets/Game/Editor/UnityMcpSetup.cs')) { return $false }
+
             if ($kind -eq 'runtime') { $_.FullName -notmatch '[\\/]Editor[\\/]' } else { $_.FullName -match '[\\/]Editor[\\/]' }
         } | ForEach-Object { '"' + $_.FullName + '"' })
         $productionCount = $sources.Count
@@ -96,21 +96,19 @@ try {
         if ($LASTEXITCODE -ne 0) { throw "Offline $kind failed; no native launch." }
     }
     Idle
-    # Packages and optional MCP integrations remain as already warmed; source packages are never copied/edited.
+    # Replace isolated package configuration, not the warm Library or source files.
+    Mirror 'Packages'
     $packageRows = @(foreach ($name in @('manifest.json','packages-lock.json')) {
         [ordered]@{ path="Packages/$name"; source=(Hash (Join-Path $root "Packages/$name")); isolated=(Hash (Join-Path $project "Packages/$name")) }
     })
-    [ordered]@{ files=$packageRows; retainedWarmPackages=$true; excludedEditorHelper='Assets/Game/Editor/UnityMcpSetup.cs'; reason='Warm project omits optional MCP package. Personal menu helper excluded from focused offline/native editor compilation; source helper and settings untouched.' } |
+    [ordered]@{ files=$packageRows; retainedWarmPackages=$false; reason='Packages mirrored from source; source files untouched. Offline warm references are a preflight only, not current package-resolution evidence.' } |
         ConvertTo-Json -Depth 5 | Set-Content (Join-Path $attempt 'package-context.json')
     Mirror 'Assets'; Mirror 'ProjectSettings'
-    foreach ($name in @('Assets/Game/Editor/UnityMcpSetup.cs','Assets/Game/Editor/UnityMcpSetup.cs.meta')) {
-        $copy = Join-Path $project $name
-        if (Test-Path $copy) { Remove-Item -LiteralPath $copy -Force }
-    }
-    $rows = @(foreach ($tree in @('Assets','ProjectSettings')) {
+
+    $rows = @(foreach ($tree in @('Assets','ProjectSettings','Packages')) {
         foreach ($file in Get-ChildItem -LiteralPath (Join-Path $root $tree) -Recurse -File) {
             $relative = $file.FullName.Substring($root.Length + 1).Replace('\','/')
-            if ($relative -in @('Assets/Game/Editor/UnityMcpSetup.cs','Assets/Game/Editor/UnityMcpSetup.cs.meta')) { continue }
+
             $hash = Hash $file.FullName; $copy = Hash (Join-Path $project $relative)
             if ($hash -ne $copy) { throw "Copy hash mismatch: $relative" }
             [ordered]@{ path=$relative; source=$hash; isolated=$copy }

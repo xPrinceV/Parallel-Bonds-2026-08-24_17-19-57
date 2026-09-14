@@ -9,7 +9,6 @@ public class RunStageController : MonoBehaviour
     [SerializeField] private WorldManager worldManager;
     [SerializeField] private EnemySpawner[] spawners;
     [SerializeField] private float[] stageDurations = { 20f, 20f, 20f };
-    [SerializeField] private float finaleStartTime = 480f;
     [SerializeField] private bool useSharedWaves = true;
     [SerializeField] private EnemyController bossPrefab;
     [SerializeField] private float bossHealth = 600f;
@@ -21,8 +20,16 @@ public class RunStageController : MonoBehaviour
     public bool IsDefeated { get; private set; }
     public float RemainingStageTime { get; private set; }
     public float ElapsedTime { get; private set; }
-    public float RemainingUntilFinale => Mathf.Max(0f, finaleStartTime - ElapsedTime);
-    public float FinaleStartTime => finaleStartTime;
+    private StateSwitchController SwitchFlow => worldManager == null ? null : worldManager.SwitchFlow;
+    public float RemainingUntilFinale => IsFinaleStarted ? 0f
+        : SwitchFlow != null ? SwitchFlow.RemainingUntilFinale : FinaleStartTime;
+    // Nominal duration only; completed residences, not elapsed time, schedule fusion.
+    public float FinaleStartTime => StateSwitchController.ResidenceDuration
+        * StateSwitchController.RequiredResidencesPerWorld * 2;
+    public int CompletedMaterialResidences => SwitchFlow == null ? 0 : SwitchFlow.CompletedMaterialResidences;
+    public int CompletedEchoResidences => SwitchFlow == null ? 0 : SwitchFlow.CompletedEchoResidences;
+    public bool AutomaticFinaleEnabled => SwitchFlow != null && SwitchFlow.isActiveAndEnabled
+        && SwitchFlow.AutomaticSwitchingEnabled && !IsFinaleStarted;
     public bool IsFinaleStarted { get; private set; }
     public bool IsBossPhase { get; private set; }
     public bool UsesSharedWaves => useSharedWaves;
@@ -78,7 +85,7 @@ public class RunStageController : MonoBehaviour
     {
         if (worldManager == null || !worldManager.IsInitialized || !worldManager.isActiveAndEnabled
             || worldManager.gameObject.scene != gameObject.scene || !worldManager.IsSharedObject(transform)
-            || worldManager.RunController != this || !PositiveFinite(finaleStartTime)
+            || worldManager.RunController != this
             || spawners == null || spawners.Length != 2
             || (useSharedWaves && (stageDurations == null || stageDurations.Length != 3))
             || bossPrefab == null || !(bossPrefab is TitanEnemyController) || bossPrefab.gameObject.scene.IsValid()
@@ -225,11 +232,6 @@ public class RunStageController : MonoBehaviour
             return;
         }
 
-        if (IsRunning && ElapsedTime >= finaleStartTime)
-        {
-            TryStartFinale();
-            return;
-        }
         if (!CanProgress())
             return;
         if (!IsRunning)

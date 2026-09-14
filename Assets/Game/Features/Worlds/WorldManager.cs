@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [DefaultExecutionOrder(-100)]
 public class WorldManager : MonoBehaviour
@@ -23,6 +24,31 @@ public class WorldManager : MonoBehaviour
     public bool IsFused { get; private set; }
     public bool IsFinalFusion { get; private set; }
     public PlayerController FusionPlayer { get; private set; }
+
+    private readonly List<Weapon> fusionWeapons = new List<Weapon>();
+    private ExperienceLevelController fusionExperience;
+
+    // Reuse the equipped instances so upgrades, cooldowns and buff sources survive fusion.
+    public IReadOnlyList<Weapon> FusionWeapons => fusionWeapons;
+
+    internal void RefreshFusionWeapons()
+    {
+        fusionWeapons.Clear();
+        if (IsFused)
+        {
+            AddFusionWeapons(FusionPlayer);
+            AddFusionWeapons(secondaryPlayer);
+        }
+    }
+
+    private void AddFusionWeapons(PlayerController player)
+    {
+        if (player == null || player.assignedWeapons == null)
+            return;
+        foreach (Weapon weapon in player.assignedWeapons)
+            if (weapon != null && !fusionWeapons.Contains(weapon))
+                fusionWeapons.Add(weapon);
+    }
 
     // Synchronous committed-state notification; observers must not initiate world transitions.
     public event System.Action FusionStateChanged;
@@ -247,7 +273,7 @@ public class WorldManager : MonoBehaviour
         if (IsFinalFusion)
             return false;
 
-        // The finale takes priority over the normal 480-second flip.
+        // The finale takes priority over the next ordinary world flip.
         if (SwitchFlow != null)
             SwitchFlow.CancelTransition();
         if (!TryEnterFusionCore())
@@ -330,6 +356,11 @@ public class WorldManager : MonoBehaviour
                 && IsFused && FusionPlayer == entry.Player && secondary.Player.isActiveAndEnabled && entry.IsActive;
             if (succeeded)
             {
+                entry.Player.InitializeStartingWeapons();
+                secondary.Player.InitializeStartingWeapons();
+                RefreshFusionWeapons();
+                fusionExperience = entry.Player.GetComponent<ExperienceLevelController>();
+                fusionExperience?.BeginFusionExperience(secondary.Player.GetComponent<ExperienceLevelController>());
                 FusionPlayer.BindAsCurrent();
                 FusionStateChanged?.Invoke();
             }
@@ -427,6 +458,10 @@ public class WorldManager : MonoBehaviour
                 secondaryBody.linearVelocity = secondaryVelocity;
                 secondaryBody.angularVelocity = secondaryAngularVelocity;
             }
+            // A reversible preview or forced cleanup must not merge the same pool twice.
+            fusionExperience?.EndFusionExperience();
+            fusionExperience = null;
+            fusionWeapons.Clear();
             IsFused = false;
             FusionPlayer = null;
             secondaryWorld = null;
@@ -439,6 +474,8 @@ public class WorldManager : MonoBehaviour
             secondaryBody = null;
             if (!hasDied && entry != null)
                 entry.BindAsCurrent();
+            if (entry != null)
+                entry.GetComponent<ExperienceLevelController>()?.ReconcileUpgradeSelection(hasDied);
             // Restore the entry visual before another fusion can snapshot it as secondary.
             FusionStateChanged?.Invoke();
             return restored;

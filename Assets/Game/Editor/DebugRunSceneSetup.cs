@@ -48,9 +48,20 @@ public static class DebugRunSceneSetup
             {
                 Require(world.IsConfigured && world.Player != null, "Each world needs its local hero and content.");
                 PlayerController player = world.Player;
-                Require(player.unassignedWeapons.Count == 6 && player.unassignedWeapons.All(w => w != null)
-                    && player.unassignedWeapons.Distinct().Count() == 6 && player.assignedWeapons.Count == 0,
-                    "Preserve six configured weapons with the existing three-starter runtime selection.");
+                Require(player.unassignedWeapons != null && player.unassignedWeapons.Count == 8
+                    && player.unassignedWeapons.All(w => w != null)
+                    && player.unassignedWeapons.Distinct().Count() == 8
+                    && player.assignedWeapons != null && player.assignedWeapons.Count == 0,
+                    "Each hero needs eight distinct configured weapons and an empty assigned collection.");
+                SerializedProperty starters = Property(new SerializedObject(player), "startingWeapons");
+                int starterCount = world.WorldId == WorldId.Material ? 3 : 2;
+                Require(starters.arraySize == starterCount,
+                    "Explicit serialized starters must be Material 3 / Echo 2.");
+                var starterWeapons = Enumerable.Range(0, starters.arraySize)
+                    .Select(i => starters.GetArrayElementAtIndex(i).objectReferenceValue as Weapon).ToArray();
+                Require(starterWeapons.All(w => w != null && player.unassignedWeapons.Contains(w))
+                    && starterWeapons.Distinct().Count() == starterCount,
+                    "Each hero's starters must be distinct references within its eight-weapon catalogue.");
             }
             EnemySpawner[] spawners = Find<EnemySpawner>(debug);
             Require(spawners.Length == 2 && worlds.All(w =>

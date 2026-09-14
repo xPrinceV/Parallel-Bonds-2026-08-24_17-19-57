@@ -5,9 +5,7 @@ param(
     [string[]]$Suites = @('Checks', 'Live', 'Rollback', 'CleanupFailure', 'BossFailure', 'Regression'),
     [switch]$PrepareOnly,
     [switch]$SkipSync,
-    [switch]$Rendered,
-    [ValidatePattern('^[a-z0-9][a-z0-9.-]+$')][string[]]$ExcludedPackages = @(),
-    [ValidatePattern('^Assets/.+\.cs$')][string[]]$ExcludedEditorScripts = @()
+    [switch]$Rendered
 )
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
@@ -21,28 +19,16 @@ function Mirror([string]$name) {
     & robocopy (Join-Path $root $name) (Join-Path $project $name) /MIR /XJ /R:1 /W:1 /NFL /NDL /NJH /NJS | Out-Null
     if ($LASTEXITCODE -ge 8) { throw "robocopy failed for $name : $LASTEXITCODE" }
 }
+$foreignStages = @(Get-ChildItem (Join-Path $project 'Assets') -Recurse -Force -Filter '*_Temporary*')
+if ($foreignStages.Count) { throw 'Existing temporary validation stage; refusing mirror rather than delete staged work.' }
 if (-not $SkipSync) {
     Mirror 'Assets'
     Mirror 'ProjectSettings'
     Mirror 'Tools'
-    Mirror 'Packages'
-    # Optional editor integrations can be excluded explicitly in the disposable copy only.
-    foreach ($package in $ExcludedPackages) {
-        Remove-Item (Join-Path $project "Packages/$package") -Recurse -Force -ErrorAction SilentlyContinue
-        foreach ($name in @('manifest.json', 'packages-lock.json')) {
-            $path = Join-Path $project "Packages/$name"
-            $json = Get-Content $path -Raw | ConvertFrom-Json
-            $json.dependencies.PSObject.Properties.Remove($package)
-            [IO.File]::WriteAllText($path, ($json | ConvertTo-Json -Depth 100) + "`n")
-        }
-    }
 }
-foreach ($script in $ExcludedEditorScripts) {
-    $path = [IO.Path]::GetFullPath((Join-Path $project $script))
-    $assets = [IO.Path]::GetFullPath((Join-Path $project 'Assets')) + [IO.Path]::DirectorySeparatorChar
-    if (!$path.StartsWith($assets, [StringComparison]::OrdinalIgnoreCase)) { throw 'Excluded script must remain inside isolated Assets.' }
-    Remove-Item $path, "$path.meta" -Force -ErrorAction SilentlyContinue
-}
+# Even a snapshot run must use current packages and editor scripts, not stale dependencies.
+Mirror 'Packages'
+if ($SkipSync) { Mirror 'Assets/Game/Editor' }
 if ($PrepareOnly) { Write-Output "Prepared $project; retained warm Library; source project unchanged."; exit 0 }
 $helper = Join-Path $project 'Assets/Game/Editor/WorldMapChecksBatch_Temporary.cs'
 if ((Test-Path $helper) -or (Test-Path "$helper.meta")) { throw 'Temporary helper exists; refusing to overwrite.' }

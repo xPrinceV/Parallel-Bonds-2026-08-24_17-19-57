@@ -25,8 +25,15 @@ if ((Test-Path $helper) -or (Test-Path "$helper.meta")) { throw 'Temporary helpe
 $runtimeTools = Join-Path $project 'Assets/Game/AudioGameplayValidation_Temporary'
 if ((Test-Path $runtimeTools) -or (Test-Path "$runtimeTools.meta")) { throw 'Temporary runtime tools already exist; refusing overwrite.' }
 
-# Resolve serialized GUID dependencies from source assets before launching Unity. Copy files,
-# never mirror/delete trees; retain warm caches and existing optional Editor exclusions.
+$foreignStages = @(Get-ChildItem (Join-Path $project 'Assets/Game/Editor') -Recurse -Force -Filter '*_Temporary*')
+if ($foreignStages.Count) { throw 'Existing temporary editor stage; refusing mirror rather than delete staged work.' }
+# Refresh package configuration and editor scripts without replacing the warm Library.
+# Scene/runtime content below remains a focused serialized-dependency copy.
+foreach ($tree in @('Packages','Assets/Game/Editor')) {
+    & robocopy (Join-Path $root $tree) (Join-Path $project $tree) /MIR /XJ /R:1 /W:1 /NFL /NDL /NJH /NJS /NP | Out-Null
+    if ($LASTEXITCODE -ge 8) { throw "Mirror failed: $tree ($LASTEXITCODE)" }
+}
+# Resolve serialized GUID dependencies from source assets before launching Unity.
 $guidPaths = @{}
 Get-ChildItem -LiteralPath (Join-Path $root 'Assets') -Filter '*.meta' -File -Recurse | ForEach-Object {
     $match = [regex]::Match([IO.File]::ReadAllText($_.FullName), '(?m)^guid: ([a-fA-F0-9]{32})')
@@ -85,7 +92,7 @@ $toolRows | ConvertTo-Json | Set-Content (Join-Path $output 'tool-hashes.json')
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot $_) -Destination (Join-Path $project "Tools/$_") -Force
 }
 $packageRows = foreach ($path in @('Packages/manifest.json','Packages/packages-lock.json')) {
-    [ordered]@{ path=$path; source=(Hash (Join-Path $root $path)); isolated=(Hash (Join-Path $project $path)); note='Optional editor integrations remain excluded; not overwritten' }
+    [ordered]@{ path=$path; source=(Hash (Join-Path $root $path)); isolated=(Hash (Join-Path $project $path)); note='Packages mirrored from source; source files untouched' }
 }
 $packageRows | ConvertTo-Json | Set-Content (Join-Path $output 'package-context.json')
 $git = & git --no-pager --no-optional-locks status --short

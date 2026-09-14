@@ -31,13 +31,21 @@ $camera = 'Assets/Game/Presentation/Camera/CameraController.cs'
 $beforeCamera = Join-Path $evidence 'CameraController.before.cs'
 if (!(Test-Path $beforeCamera)) { Copy-Item (Join-Path $root $camera) $beforeCamera }
 $selectedCamera = if ($BeforeSnapshot) { $beforeCamera } else { Join-Path $root $camera }
-# Synchronize only the two selected revisions; preserve frozen before snapshots and isolated
-# optional editor integration exclusions. Never mirror or launch the source project.
+$foreignStages = @(Get-ChildItem (Join-Path $project 'Assets/Game/Editor') -Recurse -Force -Filter '*_Temporary*')
+if ($foreignStages.Count) { throw 'Existing temporary editor stage; refusing mirror rather than delete staged work.' }
+# Refresh package configuration and editor scripts, retaining frozen gameplay snapshots.
+# Never mirror or launch the source project; the warm Library remains untouched.
+foreach ($tree in @('Packages','Assets/Game/Editor')) {
+    & robocopy (Join-Path $root $tree) (Join-Path $project $tree) /MIR /XJ /R:1 /W:1 /NFL /NDL /NJH /NJS /NP | Out-Null
+    if ($LASTEXITCODE -ge 8) { throw "Mirror failed: $tree ($LASTEXITCODE)" }
+}
 Copy-Item $selected (Join-Path $project $presentation) -Force
 Copy-Item $selectedCamera (Join-Path $project $camera) -Force
 $critical = @(
     $presentation,
     $camera,
+    'Packages/manifest.json',
+    'Packages/packages-lock.json',
     'Assets/Game/Presentation/Worlds/WorldFlipPresentation.cs',
     'Assets/Game/Features/Worlds/FusionTransitionController.cs',
     'Assets/Game/Features/Worlds/WorldManager.cs',

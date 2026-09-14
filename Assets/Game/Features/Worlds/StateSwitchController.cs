@@ -8,7 +8,10 @@ using UnityEngine;
 public class StateSwitchController : MonoBehaviour
 {
     [SerializeField] private WorldManager worldManager;
-    [SerializeField, Min(0.1f)] private float timer = 30f;
+    // Scene/default contract; the serialized interval remains configurable for assets and fixtures.
+    public const float ResidenceDuration = 90f;
+    public const int RequiredResidencesPerWorld = 3;
+    [SerializeField, Min(0.1f)] private float timer = ResidenceDuration;
     [SerializeField] private bool automaticSwitchingEnabled = true;
     [SerializeField, Min(0f)] private float warningDuration = 5f;
     [SerializeField, Min(0.1f)] private float flipDuration = 0.8f;
@@ -18,6 +21,42 @@ public class StateSwitchController : MonoBehaviour
     public bool IsFlipping { get; private set; }
     public float RemainingTime => timerCounter;
     public float SwitchInterval => timer;
+    public int CompletedMaterialResidences { get; private set; }
+    public int CompletedEchoResidences { get; private set; }
+    public int RemainingResidences => RequiredResidencesPerWorld * 2
+        - CompletedMaterialResidences - CompletedEchoResidences;
+    public bool IsFinalResidence => worldManager != null && !requested && RemainingResidences == 1
+        && CompletedResidences(worldManager.CurrentWorldId) < RequiredResidencesPerWorld;
+
+    // Active-time estimate assuming automatic alternation resumes; not a wall-clock deadline.
+    public float RemainingUntilFinale
+    {
+        get
+        {
+            if (worldManager == null || RemainingResidences == 0 || worldManager.IsFinalFusion)
+                return 0f;
+            bool manualPending = requested && !midpointCommitted;
+            WorldId next = manualPending ? targetWorldId : worldManager.CurrentWorldId;
+            int here = RequiredResidencesPerWorld - CompletedResidences(next);
+            int there = RequiredResidencesPerWorld - CompletedResidences(
+                next == WorldId.Material ? WorldId.Echo : WorldId.Material);
+            int intervals = Mathf.Max(here * 2 - 1, there * 2);
+            return Mathf.Max(0f, timerCounter) + (intervals - (manualPending ? 0 : 1)) * timer;
+        }
+    }
+
+    private int CompletedResidences(WorldId world)
+    {
+        return world == WorldId.Material ? CompletedMaterialResidences : CompletedEchoResidences;
+    }
+
+    private void CompleteResidence(WorldId world)
+    {
+        if (world == WorldId.Material)
+            CompletedMaterialResidences = Mathf.Min(RequiredResidencesPerWorld, CompletedMaterialResidences + 1);
+        else
+            CompletedEchoResidences = Mathf.Min(RequiredResidencesPerWorld, CompletedEchoResidences + 1);
+    }
 
     // only automatic scheduling is disabled; accepted requests and flips finish normally
     public bool AutomaticSwitchingEnabled
@@ -87,7 +126,11 @@ public class StateSwitchController : MonoBehaviour
     private bool CanAdvance()
     {
         if (worldManager == null || !worldManager.IsInitialized || !worldManager.isActiveAndEnabled
-            || worldManager.IsSwitching || worldManager.IsFused || Time.deltaTime <= 0f)
+            || worldManager.IsSwitching || worldManager.IsFused || Time.timeScale <= 0f || Time.deltaTime <= 0f)
+            return false;
+        RunStageController run = worldManager.RunController;
+        if (run != null && (!run.isActiveAndEnabled || !run.IsRunning || run.IsFinaleStarted
+            || run.IsCompleted || run.IsDefeated))
             return false;
         World world = worldManager.CurrentWorld;
         PlayerHealth health = world == null || world.Player == null ? null : world.Player.GetComponent<PlayerHealth>();
@@ -127,6 +170,22 @@ public class StateSwitchController : MonoBehaviour
         if (!IsFlipping)
         {
             WarningProgress = Mathf.Clamp01((warningDuration - timerCounter) / warningDuration);
+            // The last residence keeps its warning, never starts an ordinary half-flip.
+            if (IsFinalResidence && worldManager.RunController != null)
+            {
+                if (timerCounter > 0f)
+                    return;
+                WorldId completedWorld = worldManager.CurrentWorldId;
+                if (worldManager.RunController.TryStartFinale())
+                    CompleteResidence(completedWorld);
+                else
+                {
+                    // A rejected fusion may cancel the flow; retain the completed boundary for retry.
+                    timerCounter = 0f;
+                    WarningProgress = 1f;
+                }
+                return;
+            }
             if (timerCounter > half)
                 return;
             if (!requested)
@@ -150,13 +209,18 @@ public class StateSwitchController : MonoBehaviour
                 FlipProgress = 0.5f;
                 midpointCommitted = true;
                 WarningProgress = 1f;
-                timerCounter += timer;
+                WorldId completedWorld = worldManager.CurrentWorldId;
+                bool automaticCommit = !requested;
+                // Manual entry starts a full residence; only automatic commits retain clock debt.
+                timerCounter = automaticCommit ? timerCounter + timer : timer;
                 if (!worldManager.CommitWorldSwitch(targetWorldId))
                 {
                     Debug.LogWarning("World switch midpoint was rejected; restoring the current view.", this);
                     CancelTransition();
                     return;
                 }
+                if (automaticCommit)
+                    CompleteResidence(completedWorld);
                 TransitionMidpoint?.Invoke();
             }
         }

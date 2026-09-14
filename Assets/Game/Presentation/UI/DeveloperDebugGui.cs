@@ -105,7 +105,7 @@ public sealed class DeveloperDebugGui : MonoBehaviour
         if (force || !displayValid || displayedFlow != hasFlow || displayedInterval != interval)
         {
             if (switchButtonLabel != null)
-                switchButtonLabel.text = hasFlow ? $"{interval:0.#}s Switch" : "Switch";
+                switchButtonLabel.text = hasFlow ? "Switch now (debug)" : "Switch";
         }
         displayedFlow = hasFlow;
         displayedAutomatic = automatic;

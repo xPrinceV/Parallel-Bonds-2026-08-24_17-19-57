@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/Game/Features/Progression/ExperienceLevelController.cs" Link="ExperienceLevelController.cs" />
+    <Compile Include="../../Assets/Game/Presentation/UI/LevelUpSelectionButton.cs" Link="LevelUpSelectionButton.cs" />
+  </ItemGroup>
+</Project>

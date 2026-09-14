@@ -45,7 +45,7 @@ public sealed class TimedEventChecks : IDisposable
     IEnumerator Execute()
     {
         Require(Application.isPlaying, "Live Play Mode required");
-        Note("FIXTURE: timerCounter near boundary and ElapsedTime=479.99 injected via reflection; configuration 30/5/0.8/480 unchanged. Manual warning runs live. HP=1000000; weapons disabled; spawners NEVER disabled by test. Not full 30s/8min soak; GameView focus belongs to main agent.");
+        Note("FIXTURE: timerCounter near boundary and ElapsedTime=479.99 injected via reflection; configuration 30/5/0.8/480 unchanged. Manual warning runs live. HP=1000000; weapons disabled; spawners NEVER disabled by test. Not full 30s/8min soak; GameView focus requires manual validation.");
         foreach (string scene in new[] { "Main", "DebugRun" })
         {
             label = scene;

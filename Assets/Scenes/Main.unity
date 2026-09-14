@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2621169
 RectTransform:
   m_ObjectHideFlags: 0
@@ -260,7 +260,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1985488288}
-  - {fileID: 2000288233}
   - {fileID: 367653038}
   m_Father: {fileID: 2027904951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -286,7 +285,13 @@ MonoBehaviour:
   - {fileID: 508784823}
   - {fileID: 273773926}
   - {fileID: 4508784823}
+  - {fileID: 5600000102}
+  - {fileID: 5600000112}
   assignedWeapons: []
+  startingWeapons:
+  - {fileID: 1591325561}
+  - {fileID: 123630154}
+  - {fileID: 1881042334}
 --- !u!58 &5576026
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1890,6 +1895,8 @@ Transform:
   - {fileID: 508784822}
   - {fileID: 273773927}
   - {fileID: 4508784822}
+  - {fileID: 5600000101}
+  - {fileID: 5600000111}
   m_Father: {fileID: 5576024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371297650
@@ -4291,7 +4298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "30s Switch"
+  m_text: "90s Switch"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fa71b087cd1e24740b10e253dbb30e69, type: 2}
   m_sharedMaterial: {fileID: 8376728651533316954, guid: fa71b087cd1e24740b10e253dbb30e69, type: 2}
@@ -6304,7 +6311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6820,7 +6827,12 @@ MonoBehaviour:
   - {fileID: 3508784823}
   - {fileID: 3273773926}
   - {fileID: 5508784823}
+  - {fileID: 5600000202}
+  - {fileID: 5600000212}
   assignedWeapons: []
+  startingWeapons:
+  - {fileID: 5600000202}
+  - {fileID: 5600000212}
 --- !u!114 &1488475396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6882,8 +6894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c7cd1c8cb4f5141af870f8435afe56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  healthSlider: {fileID: 1768936873}
-  healthText: {fileID: 317760695}
+  healthSlider: {fileID: 1945700038}
+  healthText: {fileID: 1847001157}
   storedCurrentHealth: 0
   storedMaxHealth: 100
 --- !u!50 &1488475400
@@ -8184,6 +8196,8 @@ Transform:
   - {fileID: 3508784822}
   - {fileID: 3273773927}
   - {fileID: 5508784822}
+  - {fileID: 5600000201}
+  - {fileID: 5600000211}
   m_Father: {fileID: 1488475397}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725765562
@@ -8419,7 +8433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateSwitchController
   worldManager: {fileID: 1787880878}
-  timer: 30
+  timer: 90
   warningDuration: 5
   flipDuration: 0.8
 --- !u!114 &1787880878
@@ -8989,7 +9003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1847001157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9004,7 +9018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9134,7 +9148,7 @@ RectTransform:
   m_GameObject: {fileID: 1856098900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1282045162}
@@ -9142,8 +9156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -16.5, y: -5}
+  m_SizeDelta: {x: 33, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1881042332
 GameObject:
@@ -9385,6 +9399,7 @@ RectTransform:
   m_Children:
   - {fileID: 2107953942}
   - {fileID: 1856098901}
+  - {fileID: 720703111}
   m_Father: {fileID: 2000288233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9405,7 +9420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -9618,7 +9633,7 @@ RectTransform:
   m_Children:
   - {fileID: 1945700037}
   - {fileID: 1847001159}
-  m_Father: {fileID: 5576024}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9632,7 +9647,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000288232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -10133,15 +10148,15 @@ RectTransform:
   m_GameObject: {fileID: 2107953941}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1945700037}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -16.5, y: -5}
+  m_SizeDelta: {x: 33, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2107953943
 MonoBehaviour:
@@ -10157,7 +10172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.009433985, g: 0.00057849934, b: 0.00057849934, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -229449,6 +229464,433 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065265773}
   m_CullTransparentMesh: 1
+--- !u!1 &720703110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720703111}
+  - component: {fileID: 720703113}
+  - component: {fileID: 720703112}
+  m_Layer: 3
+  m_Name: Health Bar Design
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &720703111
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720703110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1945700037}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -50, y: 0}
+  m_SizeDelta: {x: 380, y: 250}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &720703112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720703110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d8665a9e010ab704c8a5c6f1e6784dd7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &720703113
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720703110}
+  m_CullTransparentMesh: 1
+--- !u!1 &5600000100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5600000101}
+  - component: {fileID: 5600000102}
+  m_Layer: 3
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5600000101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600000100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 367653038}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5600000102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600000100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e42513f263d434f844addfd7eb21c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldController
+  player: {fileID: 5576025}
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    bounces: 1
+    area: 1
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
+    speedUpgrades:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    rangeUpgrades: []
+    attackSpeedUpgrades: []
+    amountUpgrades:
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
+    durationUpgrades: []
+    bouncesUpgrades: []
+    areaUpgrades: []
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: -4178046375966092550, guid: 1b88d48cbfd3d83488e65bb1d97778ec, type: 3}
+  weaponName: Orbiting Shields
+  availableUpgrades: 000000000400000001000000
+  weaponIcon: {fileID: -4178046375966092550, guid: 1b88d48cbfd3d83488e65bb1d97778ec, type: 3}
+  shieldPrefab: {fileID: 1825500607332492713, guid: f330b57cd9192a743981b2c473504d13, type: 3}
+  shieldPivot: {fileID: 0}
+  orbitDistance: 2.5
+  orbitSpeed: 180
+  damage: 11
+  duration: 7
+  cooldown: 2.5
+  buffHolder: {fileID: 5576029}
+--- !u!1 &5600000110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5600000111}
+  - component: {fileID: 5600000112}
+  m_Layer: 3
+  m_Name: Sniper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5600000111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600000110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 367653038}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5600000112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600000110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f509c35341f6404fa102572d64f1a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SniperController
+  player: {fileID: 5576025}
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    bounces: 1
+    area: 1
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
+    speedUpgrades: []
+    rangeUpgrades: []
+    attackSpeedUpgrades:
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
+    amountUpgrades: []
+    durationUpgrades: []
+    bouncesUpgrades: []
+    areaUpgrades: []
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: 3351058555426389599, guid: a9c03bf3990ce9a44b7cf70d226fe649, type: 3}
+  weaponName: Sniper Rifle
+  availableUpgrades: 0000000003000000
+  weaponIcon: {fileID: 3351058555426389599, guid: a9c03bf3990ce9a44b7cf70d226fe649, type: 3}
+  bullet: {fileID: 9132437147970937572, guid: e44e30c026ba5234b90ca6115ba14481, type: 3}
+  attackSpeed: 0.2
+  attackDamage: 20
+  attackRange: 15
+  projectileSpeed: 973
+  projectileSpacing: 0.15
+  buffHolder: {fileID: 5576029}
+--- !u!1 &5600000200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5600000201}
+  - component: {fileID: 5600000202}
+  m_Layer: 3
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5600000201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600000200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1709888715}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5600000202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600000200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e42513f263d434f844addfd7eb21c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldController
+  player: {fileID: 1488475395}
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    bounces: 1
+    area: 1
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
+    speedUpgrades:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    rangeUpgrades: []
+    attackSpeedUpgrades: []
+    amountUpgrades:
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
+    durationUpgrades: []
+    bouncesUpgrades: []
+    areaUpgrades: []
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: -4178046375966092550, guid: 1b88d48cbfd3d83488e65bb1d97778ec, type: 3}
+  weaponName: Orbiting Shields
+  availableUpgrades: 000000000400000001000000
+  weaponIcon: {fileID: -4178046375966092550, guid: 1b88d48cbfd3d83488e65bb1d97778ec, type: 3}
+  shieldPrefab: {fileID: 1825500607332492713, guid: f330b57cd9192a743981b2c473504d13, type: 3}
+  shieldPivot: {fileID: 0}
+  orbitDistance: 2.5
+  orbitSpeed: 180
+  damage: 11
+  duration: 7
+  cooldown: 2.5
+  buffHolder: {fileID: 1488475396}
+--- !u!1 &5600000210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5600000211}
+  - component: {fileID: 5600000212}
+  m_Layer: 3
+  m_Name: Sniper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5600000211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600000210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1709888715}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5600000212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600000210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f509c35341f6404fa102572d64f1a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SniperController
+  player: {fileID: 1488475395}
+  stats:
+    speed: 1
+    damage: 1
+    range: 1
+    attackSpeed: 1
+    amount: 1
+    duration: 1
+    bounces: 1
+    area: 1
+    damageUpgrades:
+    - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
+    speedUpgrades: []
+    rangeUpgrades: []
+    attackSpeedUpgrades:
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
+    amountUpgrades: []
+    durationUpgrades: []
+    bouncesUpgrades: []
+    areaUpgrades: []
+    UpgradeText: 
+  weaponLevel: 0
+  icon: {fileID: 3351058555426389599, guid: a9c03bf3990ce9a44b7cf70d226fe649, type: 3}
+  weaponName: Sniper Rifle
+  availableUpgrades: 0000000003000000
+  weaponIcon: {fileID: 3351058555426389599, guid: a9c03bf3990ce9a44b7cf70d226fe649, type: 3}
+  bullet: {fileID: 9132437147970937572, guid: e44e30c026ba5234b90ca6115ba14481, type: 3}
+  attackSpeed: 0.2
+  attackDamage: 20
+  attackRange: 15
+  projectileSpeed: 973
+  projectileSpacing: 0.15
+  buffHolder: {fileID: 1488475396}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -229457,6 +229899,7 @@ SceneRoots:
   - {fileID: 1542409798}
   - {fileID: 1263460333}
   - {fileID: 433243718}
+  - {fileID: 2000288233}
   - {fileID: 179380105}
   - {fileID: 404105753}
   - {fileID: 1787880876}

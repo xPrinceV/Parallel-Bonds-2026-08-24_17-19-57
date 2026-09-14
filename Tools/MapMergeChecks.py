@@ -606,7 +606,7 @@ def main():
             if before is not None:
                 self_test(before, source, ids, expected, contract)
     # Validate both complete candidates BEFORE writing either. Recheck all input
-    # bytes first to avoid overwriting concurrent scene work by another agent.
+    # bytes first to avoid overwriting concurrent scene edits.
     for path, original in originals.items():
         require(path.read_bytes() == original, f"Concurrent edit: {path.name}; no writes performed")
     for path, output in outputs.items():

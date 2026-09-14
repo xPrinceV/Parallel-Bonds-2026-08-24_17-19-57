@@ -8,6 +8,8 @@ public class LevelUpSelectionButton : MonoBehaviour
     public Image weaponIcon;
     public UIController ui;
     private Weapon assignedWeapon;
+    private ExperienceLevelController selectionOwner;
+    private int selectionVersion;
     private float selectedUpgrade;
     private UpgradeType selectedUpgradeType;
 
@@ -30,6 +32,8 @@ public class LevelUpSelectionButton : MonoBehaviour
         weaponIcon.sprite = theWeapon.icon;
         nameLevelText.text = theWeapon.weaponName;
         assignedWeapon = theWeapon;
+        selectionOwner = ExperienceLevelController.instance;
+        selectionVersion = selectionOwner == null ? 0 : selectionOwner.SelectionVersion;
         Upgrade();
 
         if (selectedUpgradeType == UpgradeType.Damage)
@@ -71,7 +75,9 @@ public class LevelUpSelectionButton : MonoBehaviour
     public void SelectUpgrade()
     {
         if (assignedWeapon != null && PlayerController.instance != null &&
-            assignedWeapon.GetComponentInParent<PlayerController>() == PlayerController.instance)
+            PlayerController.instance.HasEquippedWeapon(assignedWeapon)
+            && selectionOwner != null && selectionOwner == ExperienceLevelController.instance
+            && selectionOwner.TryConsumeUpgradeSelection(selectionVersion))
         {
             Debug.Log("Weapon: " + assignedWeapon.weaponName + " | Upgrade: " + selectedUpgradeType + " | Value: " + selectedUpgrade);
             if (selectedUpgradeType == UpgradeType.Damage)
@@ -105,6 +111,15 @@ public class LevelUpSelectionButton : MonoBehaviour
             else if (selectedUpgradeType == UpgradeType.Area)
             {
                 assignedWeapon.stats.area += selectedUpgrade;
+            }
+
+            // Consume this choice before another click can apply it again.
+            assignedWeapon = null;
+            ExperienceLevelController experience = ExperienceLevelController.instance;
+            if (experience != null)
+            {
+                experience.CompleteUpgradeSelection();
+                return;
             }
 
             //Close level up screen and unpause time

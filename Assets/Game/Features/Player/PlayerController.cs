@@ -39,11 +39,42 @@ public class PlayerController : MonoBehaviour
 
     // public Weapon activeWeapon;
     public List<Weapon> unassignedWeapons, assignedWeapons;
+    [SerializeField] private List<Weapon> startingWeapons = new List<Weapon>();
+
+    // Keep source ownership; fusion exposes both inventories without cloning weapons.
+    public IReadOnlyList<Weapon> EquippedWeapons
+    {
+        get
+        {
+            World world = World.GetFor(this);
+            WorldManager manager = world == null ? null : world.Manager;
+            if (manager != null && manager.IsFused && manager.FusionPlayer == this)
+                return manager.FusionWeapons;
+            return assignedWeapons;
+        }
+    }
+
+    public bool HasEquippedWeapon(Weapon weapon)
+    {
+        if (weapon == null)
+            return false;
+        IReadOnlyList<Weapon> weapons = EquippedWeapons;
+        for (int i = 0; weapons != null && i < weapons.Count; i++)
+            if (weapons[i] == weapon)
+                return true;
+        return false;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private bool starterWeaponsInitialized;
 
     void Start()
+    {
+        InitializeStartingWeapons();
+    }
+
+    // Fusion may start before the sleeping hero receives its first Start callback.
+    internal void InitializeStartingWeapons()
     {
         if (starterWeaponsInitialized)
             return;
@@ -51,7 +82,17 @@ public class PlayerController : MonoBehaviour
         if (assignedWeapons != null && assignedWeapons.Count > 0)
             return;
 
+        assignedWeapons ??= new List<Weapon>();
+        unassignedWeapons ??= new List<Weapon>();
+        if (startingWeapons != null && startingWeapons.Count > 0)
+        {
+            foreach (Weapon weapon in startingWeapons)
+                AddWeapon(unassignedWeapons.IndexOf(weapon));
+            return;
+        }
+
         //Temporary for now until weapon chest implemented
+        // Preserve unconfigured legacy scenes; game scenes supply explicit starters.
         AddWeapon(0);
         AddWeapon(0);
         AddWeapon(0);
@@ -90,12 +131,14 @@ public class PlayerController : MonoBehaviour
         {
             Weapon newWeapon = unassignedWeapons[weaponNumber];
 
-            if (newWeapon == null)
+            if (newWeapon == null || assignedWeapons.Contains(newWeapon)
+                || newWeapon.GetComponentInParent<PlayerController>() != this)
                 return;
 
             assignedWeapons.Add(newWeapon);
             newWeapon.gameObject.SetActive(true);
             unassignedWeapons.RemoveAt(weaponNumber);
+            World.GetFor(this)?.Manager?.RefreshFusionWeapons();
         }
     }
 }

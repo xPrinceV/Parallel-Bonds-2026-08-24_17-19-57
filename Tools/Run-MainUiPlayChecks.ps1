@@ -66,20 +66,16 @@ try {
         & python @arguments 2>&1 | Tee-Object -FilePath (Join-Path $attempt "$name.log")
         if ($LASTEXITCODE -ne 0) { throw "Static gate failed: $name; no Unity launch." }
     }
-    $sourcePackages = Get-Content (Join-Path $root 'Packages/manifest.json') -Raw | ConvertFrom-Json
-    $isolatedPackages = Get-Content (Join-Path $project 'Packages/manifest.json') -Raw | ConvertFrom-Json
-    foreach ($property in $isolatedPackages.dependencies.PSObject.Properties) {
-        $original = $sourcePackages.dependencies.PSObject.Properties[$property.Name]
-        if (!$original -or $original.Value -ne $property.Value) { throw "Retained package mismatch: $($property.Name)" }
-    }
-    $omitted = @($sourcePackages.dependencies.PSObject.Properties.Name | Where-Object { !$isolatedPackages.dependencies.PSObject.Properties[$_] })
+    Idle
+    Mirror 'Packages'
+    # Offline warm references are a preflight only, not current package-resolution evidence.
     $packageRows = @(foreach ($name in @('manifest.json','packages-lock.json')) {
         [ordered]@{ path="Packages/$name"; source=(Hash (Join-Path $root "Packages/$name")); isolated=(Hash (Join-Path $project "Packages/$name")) }
     })
-    [ordered]@{ files=$packageRows; retainedIsolatedPackages=$true; sourceOnlyOptionalIntegrations=$omitted } |
+    [ordered]@{ files=$packageRows; retainedIsolatedPackages=$false; mirroredSourcePackages=$true } |
         ConvertTo-Json -Depth 5 | Set-Content (Join-Path $attempt 'package-context.json')
     Mirror 'Assets'; Mirror 'ProjectSettings'
-    $rows = @(foreach ($tree in @('Assets','ProjectSettings')) {
+    $rows = @(foreach ($tree in @('Assets','ProjectSettings','Packages')) {
         foreach ($file in Get-ChildItem -LiteralPath (Join-Path $root $tree) -Recurse -File) {
             $relative = $file.FullName.Substring($root.Length + 1).Replace('\','/')
             $hash = Hash $file.FullName; $copy = Hash (Join-Path $project $relative)

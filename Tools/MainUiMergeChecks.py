@@ -5,6 +5,9 @@
 Raw comparisons normalize checkout line endings only; the gameplay projection
 also permits exactly RunStageController.bossHealth 300 -> 600 for Rift Lord,
 the active world timer 15 -> 30 and its 15s Switch -> 30s Switch label.
+The shared health UI is projected separately from pinned main 486e9f3, followed
+by StarterSceneChecks' exact Material3/Echo2 catalogue and 30 -> 90 timer/label
+projection. Disabled legacy timers and all other fields remain protected.
 Run --self-test; --require-runtime additionally gates runtime declarations.
 """
 import argparse
@@ -15,6 +18,8 @@ import sys
 
 sys.dont_write_bytecode = True
 import MapMergeChecks as maps
+import HealthUiMergeChecks as health
+import StarterSceneChecks as starters
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCAL = "41ff8e20424ee5e7a875da965b2809d99cea27b3"
@@ -66,7 +71,7 @@ def run_stage_controller(scene):
 
 
 def expected_game(local, visual):
-    """Project HUD, bossHealth and active interval/label; preserve all other bytes."""
+    """Compose exact HUD, health, boss, historical interval and starter projections."""
     result = maps.Scene.parse(local.text())
     old, incoming = local.subtree(HUD), visual.subtree(HUD)
     require(old - incoming == {MANAGER}, "Unexpected local-only HUD documents")
@@ -91,7 +96,10 @@ def expected_game(local, visual):
             "Historical RunStageController.bossHealth must be exactly 300")
     result.docs[run] = replace_field(doc, "bossHealth", "600")
     result.docs[maps.ROOT_ID] = result.docs.pop(maps.ROOT_ID)
-    return maps.project_switch_interval(result)
+    result = maps.project_switch_interval(result)
+    upstream = scene_at(health.UPSTREAM, "Main")
+    result = health.project_health_ui(result, upstream)
+    return starters.project_starters(result, upstream)
 
 
 def decorative_images(scene):
@@ -156,7 +164,7 @@ def game_checks(actual, local, visual, name):
         require(f"m_Target: {{fileID: {MANAGER}}}" in doc and f"m_MethodName: {method}\n" in doc
                 and "m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp\n" in doc
                 and "m_CallState: 2\n" in doc, f"Wrong Victory event {ident}")
-    maps.timings(actual, name)
+    maps.timings(starters.historical_timing_view(actual), name)
     map_ids = visual.subtree(maps.MAP_ROOTS[0]) | visual.subtree(maps.MAP_ROOTS[1])
     require(len(map_ids) == 51, "Main map authority changed")
     require(all(actual.docs[i] == local.docs[i] for i in map_ids), "Local map changed")
@@ -167,11 +175,12 @@ def game_checks(actual, local, visual, name):
         require(doc == visual.docs[ident], f"Main map visual data changed: {ident}")
     non_ui = set(local.docs) - local.subtree(HUD)
     require(all(actual.docs[i] == expected.docs[i] for i in non_ui),
-            "Non-UI document changed beyond exact bossHealth 300 -> 600 and active timer/label 15 -> 30")
+            "Non-UI document changed beyond exact health UI, bossHealth, starter and timer/label projections")
     require("SELECT UPGRADE" in "".join(actual.docs[i] for i in actual.subtree(UPGRADE)), "Upgrade title missing")
     print(f"{name}: {len(actual.docs)} docs; {len(non_ui)} non-UI docs exact to 41ff8e2 "
-          "except RunStageController.bossHealth 300 -> 600 and active timer/label 15 -> 30 "
-          "(balance/Buff/audio/sorting/loadouts included); 51 map docs preserved; 30/5/.8/480; legacy timers 15 PASS")
+          "except exact shared health UI, bossHealth 300 -> 600, Material3/Echo2 starters, "
+          "eight-weapon catalogues and active timer/label 15 -> 30 -> 90; "
+          "51 map docs preserved; 90/5/.8/480; legacy timers 15 PASS")
 
 
 def build_checks():
@@ -222,8 +231,8 @@ def runtime_contracts(strict):
     pending = [label for label, (path, pattern) in checks.items()
                if not re.search(pattern, (ROOT / path).read_text(encoding="utf-8"))]
     if pending:
-        print("PENDING runtime-agent contracts: " + "; ".join(pending))
-    require(not strict or not pending, "Runtime-agent contracts not ready")
+        print("PENDING runtime contracts: " + "; ".join(pending))
+    require(not strict or not pending, "Runtime contracts not ready")
     if not pending:
         print("Runtime contract declarations present (behavior still requires Unity validation)")
 
