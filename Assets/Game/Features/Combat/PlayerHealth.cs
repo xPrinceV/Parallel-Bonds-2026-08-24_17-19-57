@@ -42,6 +42,8 @@ public class PlayerHealth : MonoBehaviour
             if (HealthOwner.healthInitialized && currentHealth <= 0f)
             {
                 HealthOwner.isDead = true;
+                // Shared health latches death once, before either hero is disabled.
+                AudioService.Instance?.Play(SoundId.PlayerDeath);
                 World world = World.GetFor(this);
                 if (world != null && world.Manager != null && world.Manager.IsInitialized)
                     world.Manager.HandlePlayerDeath();
@@ -124,8 +126,12 @@ public class PlayerHealth : MonoBehaviour
         if (!isActiveAndEnabled || IsDead || currentHealth <= 0f)
             return;
 
+        float previousHealth = currentHealth;
         currentHealth = Mathf.Max(0f, currentHealth - damageTaken);
-
+        float lostHealth = previousHealth - currentHealth;
+        // A lethal hit uses the death cue, not a second hurt cue on the same frame.
+        if (!IsDead && lostHealth > 0f && !float.IsNaN(lostHealth) && !float.IsInfinity(lostHealth))
+            AudioService.Instance?.Play(SoundId.PlayerHurt);
 
     }
 

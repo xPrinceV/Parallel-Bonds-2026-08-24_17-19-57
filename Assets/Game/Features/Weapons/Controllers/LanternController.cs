@@ -44,6 +44,8 @@ public class LanternController : Weapon
                 projectile.SetDuration(duration * stats.duration);
                 projectile.SetBuffSource(buffHolder);
             }
+            if (count > 0)
+                AudioService.Instance?.Play(SoundId.LanternFire);
             attackCounter = 1f / (attackSpeed * stats.attackSpeed);
         }
     }

@@ -14,6 +14,7 @@ public class LightningController : Weapon
     private float strikeCounter;
     private float strikeInterval;
     private float strikes;
+    private bool strikeSoundRequested;
     private readonly List<Collider2D> enemiesInRange = new List<Collider2D>(32);
     private readonly List<Collider2D> queryScratch = new List<Collider2D>();
     private readonly List<EnemyController> availableEnemies = new List<EnemyController>(32);
@@ -43,6 +44,7 @@ public class LightningController : Weapon
                 count = buffHolder.CalculateProjectileCount(count);
             }
             strikes = count;
+            strikeSoundRequested = false;
             float strikeDuration = attackCounter * 0.5f;
 
             if (strikes > 1)
@@ -66,6 +68,12 @@ public class LightningController : Weapon
                     Instantiate(lightningPrefab, targetEnemy.transform.position, Quaternion.identity, World.GetContentRoot(this));
                     float healthBefore = targetEnemy.health;
                     targetEnemy.TakeDamage(strikeDamage);
+                    // Bound audio to the first valid strike, even if playback is declined.
+                    if (!strikeSoundRequested)
+                    {
+                        strikeSoundRequested = true;
+                        AudioService.Instance?.Play(SoundId.LightningStrike);
+                    }
                     // report actual loss before deferred destruction, including lethal strikes
                     float damageDealt = Mathf.Clamp(healthBefore - targetEnemy.health, 0f, healthBefore);
                     if (buffHolder != null && damageDealt > 0f)

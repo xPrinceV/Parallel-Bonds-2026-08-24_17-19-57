@@ -64,6 +64,9 @@ public class ArrowController : MonoBehaviour, IWorldProjectile
         float healthBefore = enemy.health;
         enemy.TakeDamage(damage);
         float damageDealt = Mathf.Clamp(healthBefore - enemy.health, 0f, healthBefore);
+        // Impact audio originates here, independently of hit buffs.
+        if (damageDealt > 0f && !float.IsNaN(damageDealt) && !float.IsInfinity(damageDealt))
+            AudioService.Instance?.Play(SoundId.ProjectileHit);
         if (buffSource != null && damageDealt > 0f)
             buffSource.ReportHit(enemy.gameObject, damageDealt);
     }

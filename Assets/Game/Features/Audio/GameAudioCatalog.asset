@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e2a6577ee84f8aa6a5dc649efc069e, type: 3}
+  m_Name: GameAudioCatalog
+  m_EditorClassIdentifier: 
+  entries:
+  - id: 100
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
+    - {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
+    volume: 0.25
+    cooldown: 0.08
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 101
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: a3e641690f752224d801b16969568587, type: 3}
+    volume: 0.35
+    cooldown: 0.12
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 102
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
+    volume: 0.5
+    cooldown: 0.1
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 103
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
+    volume: 0.6
+    cooldown: 0.08
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 104
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
+    volume: 0.25
+    cooldown: 0.2
+    maxVoices: 1
+    loop: 0
+    playWhilePaused: 0
+  - id: 105
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
+    volume: 0.25
+    cooldown: 0.15
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 106
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: d686afed845a3c64fb3deaef2543fee2, type: 3}
+    volume: 0.35
+    cooldown: 0.1
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 107
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: a2811d3b7dc55b54cb0a00316871a52d, type: 3}
+    volume: 0.45
+    cooldown: 0.1
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 200
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: a37f44cbf8c2a7443a3c361efa2f233a, type: 3}
+    volume: 0.35
+    cooldown: 0.15
+    maxVoices: 1
+    loop: 0
+    playWhilePaused: 0
+  - id: 201
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: 777d04cb3582b774382ee99a0595b30e, type: 3}
+    volume: 0.5
+    cooldown: 0.5
+    maxVoices: 1
+    loop: 0
+    playWhilePaused: 1
+  - id: 300
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: 4acb4058b052a1945b287e9b999b693d, type: 3}
+    volume: 0.35
+    cooldown: 0.1
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 301
+    channel: 1
+    clips:
+    - {fileID: 8300000, guid: d45c1575fb54df5439e0f8de02b1138a, type: 3}
+    volume: 0.4
+    cooldown: 0.15
+    maxVoices: 2
+    loop: 0
+    playWhilePaused: 0
+  - id: 400
+    channel: 0
+    clips:
+    - {fileID: 8300000, guid: 314eae84901f88a4186210c5bdac8c93, type: 3}
+    volume: 0.4
+    cooldown: 0
+    maxVoices: 1
+    loop: 1
+    playWhilePaused: 1
+  - id: 401
+    channel: 0
+    clips:
+    - {fileID: 8300000, guid: f870f407e1d8e8441be05eaa87e8345c, type: 3}
+    volume: 0.4
+    cooldown: 0
+    maxVoices: 1
+    loop: 1
+    playWhilePaused: 1
+  - id: 402
+    channel: 0
+    clips:
+    - {fileID: 8300000, guid: 70346df061647e44e9f3b1a6a78c99d0, type: 3}
+    volume: 0.4
+    cooldown: 0
+    maxVoices: 1
+    loop: 1
+    playWhilePaused: 1
+  - id: 403
+    channel: 0
+    clips:
+    - {fileID: 8300000, guid: b3ce68ecc2cbc6a4ea64fd247c6c9206, type: 3}
+    volume: 0.5
+    cooldown: 0
+    maxVoices: 1
+    loop: 0
+    playWhilePaused: 1

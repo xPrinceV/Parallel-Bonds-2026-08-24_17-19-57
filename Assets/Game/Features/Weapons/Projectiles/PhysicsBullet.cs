@@ -111,6 +111,9 @@ public class PhysicsBullet : MonoBehaviour, IWorldProjectile
             float healthBefore = enemy.health;
             enemy.TakeDamage(damage, true);
             float damageDealt = Mathf.Clamp(healthBefore - enemy.health, 0f, healthBefore);
+            // Swept and trigger impacts share this audio origin.
+            if (damageDealt > 0f && !float.IsNaN(damageDealt) && !float.IsInfinity(damageDealt))
+                AudioService.Instance?.Play(SoundId.ProjectileHit);
             if (buffSource != null && damageDealt > 0f)
                 buffSource.ReportHit(enemy.gameObject, damageDealt);
         }

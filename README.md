@@ -61,7 +61,7 @@ Open `Assets/Scenes/DebugRun.unity` and press Play for shared waves and a stage 
 
 **15s Switch** calls `StateSwitchController.RequestNextWorldSwitch()` through the same warning/flip flow (up to 5 seconds of warning; an existing warning is not restarted), with a 0.8-second flip, not an instant switch. **480s Finale** calls `TryStartFinale()` directly, as does the automatic 480-second trigger. These buttons only trigger events early: they never jump `ElapsedTime` or grant catch-up growth. Existing pause, upgrade, death, and irreversible-finale guards still apply; Restart remains available.
 
-At 480 seconds, `TryStartFinale()` starts irreversible fusion. On the frame after the fusion animation reports `Completed`, one RiftLord spawns with 300 HP at a distance of 6 units from the player. The dedicated `RiftLordBoss` prefab uses `Rift Lord.png` and Titan's delayed-strike behavior, not a unique boss moveset; ordinary Titan enemies remain unchanged. Only actual boss death wins; unloading or clearing objects does not count.
+At 480 seconds, `TryStartFinale()` starts irreversible fusion. On the frame after the fusion animation reports `Completed`, one RiftLord spawns with 300 HP, preferring a clear point 6 units from the player. Map obstacles and boundaries can move that point to another direction or a nearby radius (3–9 units); an exhausted placement search reports failure rather than spawning inside a wall. The dedicated `RiftLordBoss` prefab uses `Rift Lord.png` and Titan's delayed-strike behavior, not a unique boss moveset; ordinary Titan enemies remain unchanged. Only actual boss death wins; unloading or clearing objects does not count.
 
 See [run-stage setup and verification](Assets/Game/Features/GameFlow/README.md) for API and configuration details.
 
@@ -71,13 +71,13 @@ See [run-stage setup and verification](Assets/Game/Features/GameFlow/README.md) 
 
 - Both heroes share one current and maximum health pool. The initial world's hero supplies the starting maximum; switching does not refill health, and zero health blocks further switching.
 - Experience, levels, weapon upgrades, and buff runtime state belong to each hero independently.
-- Switching copies only the outgoing hero's position to the incoming hero and clears the incoming velocity.
+- Switching preserves the outgoing hero's position when safe, otherwise searches within 3 units on the destination map. No safe point cancels that switch. A successful transfer clears the incoming velocity.
 - The inactive world's content is disabled, not destroyed or unloaded. Its enemies, experience pickups, projectiles, and fire remain in memory.
 - World-local active-time countdowns and buffs pause while that world sleeps and resume when it becomes active again.
 - Upgrade selection and a zero time scale block switching. A dead or disabled hero cannot switch to bypass the loss flow.
 - Attacks, enemy targeting, and experience collection respect world ownership.
 
-Normal world switching defaults to every 15 seconds, with a 5-second warning and a 0.8-second flip. `StateSwitchController.AutomaticSwitchingEnabled` controls only this automatic cycle, not manual requests or the eight-minute finale timer; see the [switching API](Assets/Game/Features/Worlds/README.md#warning-and-horizontal-flip). Material has no screen tint; Echo uses a blue overlay below the HUD. The heroes have different sprites, but both maps still share the same layout.
+Normal world switching defaults to every 15 seconds, with a 5-second warning and a 0.8-second flip. `StateSwitchController.AutomaticSwitchingEnabled` controls only this automatic cycle, not manual requests or the eight-minute finale timer; see the [switching API](Assets/Game/Features/Worlds/README.md#warning-and-horizontal-flip). Material has no screen tint; Echo uses a blue overlay below the HUD. The heroes and maps differ: Main and DebugRun use upstream's Real World and Mirror World tilemaps, buildings, decorations, and shared boundary walls.
 
 State retention lasts **only for the current run**. Restarting the scene does not restore the previous run from disk.
 
@@ -94,7 +94,7 @@ The finale fuses the characters and worlds irreversibly for the rest of the run.
 - Automatic and manual world switching stop for the finale; there is no voluntary exit or countdown resumption.
 - Restart restores normal character and world state for a fresh run.
 
-Fusion reuses the 3-second, four-flip animation, with a centered white portrait transitioning to the fusion sprite. The single boss spawns only on the frame after `Completed`, not during the animation. Both existing maps and their physics content coexist rather than being replaced by a third map.
+Fusion reuses the 3-second, four-flip animation, with a centered white portrait transitioning to the fusion sprite. The single boss spawns only on the frame after `Completed`, not during the animation. The entry map owns settled rendering and collision; the other map is shown without physics only during its animation faces. Both worlds' gameplay content remains active. This is not a separately authored fused map.
 
 ## Weapons
 
@@ -201,6 +201,20 @@ Tools/              Custom verification runners outside game builds
 - Preserve the distinction between world suspension and normal disabling: world sleep retains buffs, while ordinary disable clears them.
 - Keep stat descriptions in atoms and evaluation order in calculators. Weapon callers should use the controller's calculation methods.
 
+## Scene merging
+
+Main and DebugRun retain upstream's `Grid/Real World`, `Grid/Mirror World` and shared `Bounding Box` object IDs and internal hierarchy. `World.map` controls these external geometry roots while heroes, enemies and pickups remain under their own Content roots. Keep geometry-only scripts on maps; do not recreate map objects merely to rename or reorganize them.
+
+The repository already selects `unityyamlmerge` in `.gitattributes` and uses Force Text serialization. Configure the installed Unity tool once per clone on Windows:
+
+```powershell
+./Tools/Configure-UnitySmartMerge.ps1 -Unity '<path-to-Editor/Unity.exe>'
+```
+
+This writes the machine-specific command to local `.git/config`, not a tracked file. It does not merge or select a conflict winner. Save your work before merging; review the resulting scenes, C# changes, asset references and gameplay parameters even if Smart Merge reports success. This does not change `main` or guarantee conflict-free future merges.
+
+Run `python Tools/MapMergeChecks.py --self-test` for the pinned map-import baseline. It checks both scenes and local timing without launching Unity. After merging, also run `python Tools/MapMergeChecks.py --candidate Assets/Scenes/Main.unity` for structural/reference validation. The current main's whole-scene trial still exposes an upstream Shield component pointing at a missing local object, even though Smart Merge returns success; that weapon integration remains separate. Intentional subsequent map edits need review and an updated baseline. See [map migration notes](Assets/Scenes/MergeNotes.md) for preservation details.
+
 ## Verification
 
 ### Standalone damage checks
@@ -236,7 +250,7 @@ Use a **throwaway Play Mode session** for runtime checks: they mutate gameplay s
 ## Current scope
 
 - World state is retained in memory, not saved to disk.
-- World visuals are provisional: matching map layouts, distinct hero sprites, and a temporary tint.
+- World visuals use distinct upstream maps and hero sprites, with a temporary tint. Fusion currently settles on the entry map rather than a new combined layout.
 - The source-owned buff API provides an integration point for equipment effects; it is not a complete inventory or weapon-set system.
 - Only damage and projectile count currently use the shared weapon buff calculation path.
 

@@ -58,6 +58,8 @@ public class ScytheController : Weapon
                 swing.SetArea(area * stats.area);
                 swing.SetDirection(direction);
             }
+            if (count > 0)
+                AudioService.Instance?.Play(SoundId.ScytheSwing);
 
             attackCounter = 1f / (attackSpeed * stats.attackSpeed);
         }

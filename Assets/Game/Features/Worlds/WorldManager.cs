@@ -32,6 +32,7 @@ public class WorldManager : MonoBehaviour
     private bool hasDied;
     private World secondaryWorld;
     private GameObject secondaryContentRoot;
+    private WorldMap secondaryMap;
     private PlayerController secondaryPlayer;
     private bool isEndingFusion;
     private Vector3 secondaryPosition;
@@ -118,7 +119,11 @@ public class WorldManager : MonoBehaviour
                 || world.ContainsContent(transform)
                 || (world.Manager != null && world.Manager != this)
                 || (world.Player == null) != (worlds[0].Player == null)
-                || (world.Player != null && world.Player.GetComponent<PlayerHealth>() == null))
+                || (world.Player != null && world.Player.GetComponent<PlayerHealth>() == null)
+                || (world.Map == null) != (worlds[0].Map == null)
+                || (world.Map != null && (!world.Map.IsGeometryOnly()
+                    || world.ContainsContent(world.Map.BoundaryRoot)
+                    || world.Map.transform == transform || transform.IsChildOf(world.Map.transform))))
                 return false;
 
             for (int j = 0; j < i; j++)
@@ -126,7 +131,15 @@ public class WorldManager : MonoBehaviour
                 World other = worlds[j];
                 if (world.WorldId == other.WorldId
                     || world.ContainsContent(other.transform)
-                    || other.ContainsContent(world.transform))
+                    || other.ContainsContent(world.transform)
+                    || (world.Map != null && (world.Map == other.Map
+                        || world.Map.BoundaryRoot != other.Map.BoundaryRoot
+                        || world.Map.transform.IsChildOf(other.Map.transform)
+                        || other.Map.transform.IsChildOf(world.Map.transform)
+                        || world.ContainsContent(other.Map.transform)
+                        || other.ContainsContent(world.Map.transform)
+                        || world.ContainsContent(world.Map.BoundaryRoot)
+                        || other.ContainsContent(world.Map.BoundaryRoot))))
                     return false;
             }
         }
@@ -157,7 +170,8 @@ public class WorldManager : MonoBehaviour
 
         foreach (World world in worlds)
         {
-            if (world == null || world.ContainsContent(target))
+            if (world == null || world.ContainsContent(target)
+                || (world.Map != null && target.IsChildOf(world.Map.transform)))
                 return false;
         }
 
@@ -266,6 +280,7 @@ public class WorldManager : MonoBehaviour
         {
             secondaryWorld = secondary;
             secondaryContentRoot = secondary.ContentRoot.gameObject;
+            secondaryMap = secondary.Map;
             secondaryPlayer = secondary.Player;
             Transform secondaryTransform = secondary.Player.transform;
             secondaryPosition = secondaryTransform.position;
@@ -310,7 +325,8 @@ public class WorldManager : MonoBehaviour
                 secondaryBody.constraints = RigidbodyConstraints2D.FreezeAll;
             }
 
-            succeeded = secondary.SetWorldActive(true) && isInitialized && isActiveAndEnabled
+            succeeded = (entry.Map == null || entry.Map.SetMapActive(true))
+                && secondary.SetWorldActive(true) && isInitialized && isActiveAndEnabled
                 && IsFused && FusionPlayer == entry.Player && secondary.Player.isActiveAndEnabled && entry.IsActive;
             if (succeeded)
             {
@@ -429,6 +445,11 @@ public class WorldManager : MonoBehaviour
         }
         finally
         {
+            // The captured map also survives invalid-content cleanup and changed serialized references.
+            if (secondaryMap != null)
+                secondaryMap.SetMapActive(false);
+            secondaryMap = null;
+            RestoreMaps();
             isEndingFusion = false;
         }
     }
@@ -443,10 +464,24 @@ public class WorldManager : MonoBehaviour
             player.gameObject.SetActive(false);
     }
 
+    private void RestoreMaps()
+    {
+        if (worlds == null)
+            return;
+        foreach (World world in worlds)
+        {
+            if (world != null && world.Map != null)
+                world.Map.SetMapActive(world == CurrentWorld && world.IsActive);
+        }
+    }
+
     private void OnDisable()
     {
         if (!isEndingFusion)
+        {
             EndFusion();
+            RestoreMaps();
+        }
     }
 
     // use this function to switch to a new world
@@ -481,6 +516,11 @@ public class WorldManager : MonoBehaviour
         }
 
         Vector3 previousTargetPosition = targetWorld.Player == null ? Vector3.zero : targetWorld.Player.transform.position;
+        Rigidbody2D targetBody = targetWorld.Player == null ? null : targetWorld.Player.GetComponent<Rigidbody2D>();
+        Vector2 previousBodyPosition = targetBody == null ? Vector2.zero : targetBody.position;
+        float previousBodyRotation = targetBody == null ? 0f : targetBody.rotation;
+        Vector2 previousVelocity = targetBody == null ? Vector2.zero : targetBody.linearVelocity;
+        float previousAngularVelocity = targetBody == null ? 0f : targetBody.angularVelocity;
         if (currentWorld.Player != null && targetWorld.Player != null)
         {
             PlayerHealth health = currentWorld.Player.GetComponent<PlayerHealth>();
@@ -491,13 +531,18 @@ public class WorldManager : MonoBehaviour
                 || (targetHealth != null && targetHealth.HasInitialized && targetHealth.currentHealth <= 0f))
                 return false;
 
+            Vector3 destination = currentWorld.Player.transform.position;
+            // A rejected midpoint must leave content, aliases, Buffs and both bodies untouched.
+            if (targetWorld.Map != null && !targetWorld.Map.TryFindSafePosition(
+                currentWorld.Player, targetWorld.Player, out destination))
+                return false;
+
             // transfer position only; health is shared, experience, upgrades and buffs stay with each hero
-            targetWorld.Player.transform.position = currentWorld.Player.transform.position;
-            Rigidbody2D body = targetWorld.Player.GetComponent<Rigidbody2D>();
-            if (body != null)
+            targetWorld.Player.transform.position = destination;
+            if (targetBody != null)
             {
-                body.linearVelocity = Vector2.zero;
-                body.angularVelocity = 0f;
+                targetBody.linearVelocity = Vector2.zero;
+                targetBody.angularVelocity = 0f;
             }
         }
 
@@ -530,6 +575,13 @@ public class WorldManager : MonoBehaviour
                 {
                     bool targetDisabled = targetWorld.SetWorldActive(false);
                     CurrentWorldId = previousWorldId;
+                    if (targetBody != null)
+                    {
+                        targetBody.position = previousBodyPosition;
+                        targetBody.rotation = previousBodyRotation;
+                        targetBody.linearVelocity = previousVelocity;
+                        targetBody.angularVelocity = previousAngularVelocity;
+                    }
                     if (targetWorld.Player != null)
                         targetWorld.Player.transform.position = previousTargetPosition;
                     bool previousRestored = currentWorld.SetWorldActive(true);

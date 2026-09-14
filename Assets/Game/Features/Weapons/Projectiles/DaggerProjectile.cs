@@ -101,6 +101,9 @@ public class DaggerProjectile : MonoBehaviour, IWorldProjectile
         float healthBefore = currentEnemy.health;
         currentEnemy.TakeDamage(damage, shouldKnockback);
         float damageDealt = Mathf.Clamp(healthBefore - currentEnemy.health, 0f, healthBefore);
+        // Only the dagger impact requests audio, not subsequent poison ticks.
+        if (damageDealt > 0f && !float.IsNaN(damageDealt) && !float.IsInfinity(damageDealt))
+            AudioService.Instance?.Play(SoundId.DaggerImpact);
         // Report the impact once, including lethal hits; poison ticks belong to the enemy.
         if (buffSource != null && damageDealt > 0f)
             buffSource.ReportHit(currentEnemy.gameObject, damageDealt);

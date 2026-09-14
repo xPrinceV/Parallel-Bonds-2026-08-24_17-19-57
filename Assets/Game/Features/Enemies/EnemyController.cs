@@ -153,6 +153,8 @@ public class EnemyController : MonoBehaviour
         if(health <= 0)
         {
             isDead = true;
+            // Only a lethal hit requests this cue; despawn and world suspension stay silent.
+            AudioService.Instance?.Play(SoundId.EnemyDeath);
             Destroy(gameObject);
 
             //Spawn Exp Orb at the position of the enemy

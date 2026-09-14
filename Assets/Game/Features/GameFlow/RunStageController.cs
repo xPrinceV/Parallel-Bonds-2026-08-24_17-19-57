@@ -344,9 +344,14 @@ public class RunStageController : MonoBehaviour
             FailFinale("Final fusion has no boss spawn target. Restart the run.");
             return;
         }
+        if (bossPrefab == null || entryWorld.Map == null || !entryWorld.Map.TryFindSafeSpawnPosition(
+            bossPrefab.transform, entryWorld.ContentRoot, entryWorld.InteractionPlayer, bossDistance, out Vector3 position))
+        {
+            FailFinale("No safe Rift Lord spawn position within the bounded map search. Restart the run.");
+            return;
+        }
         bossSpawned = true;
         UnsubscribeTransition();
-        Vector3 position = entryWorld.InteractionPlayer.transform.position + Vector3.right * bossDistance;
         EnemyController boss = Instantiate(bossPrefab, position, Quaternion.identity, entryWorld.ContentRoot);
         boss.health = bossHealth;
         bosses.Add(boss);
@@ -464,6 +469,24 @@ public class RunStageController : MonoBehaviour
             Debug.LogError("Register the active run scene in Build Settings before restarting.", this);
             return;
         }
+        LeaveRun(scene.path);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        if (!isActiveAndEnabled)
+            return;
+        if (!Application.CanStreamedLevelBeLoaded("Main Menu"))
+        {
+            Debug.LogError("Register Main Menu in Build Settings before leaving a run.", this);
+            return;
+        }
+        LeaveRun("Main Menu");
+    }
+
+    // restart and menu navigation share the same transition cleanup
+    private void LeaveRun(string sceneName)
+    {
         UnsubscribeTransition();
         // Release world resources before scene unload.
         if (worldManager != null)
@@ -471,7 +494,7 @@ public class RunStageController : MonoBehaviour
         // Loading completes on the next frame; the outgoing LateUpdate must not pause the new run.
         enabled = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(scene.buildIndex);
+        SceneManager.LoadScene(sceneName);
     }
 
     private void OnDestroy()

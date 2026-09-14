@@ -64,6 +64,8 @@ public class PistolController : Weapon
                     projectile.SetKnockback(true);
                     projectile.SetBuffSource(buffHolder);
                 }
+                if (count > 0)
+                    AudioService.Instance?.Play(SoundId.PistolFire);
             }
             attackCounter = 1f / (attackSpeed*stats.attackSpeed);
         }

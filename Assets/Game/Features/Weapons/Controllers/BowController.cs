@@ -70,6 +70,8 @@ public class BowController : Weapon
                 projectile.SetDirection(arrowDirection);
                 projectile.SetBuffSource(buffHolder);
             }
+            if (arrowCount > 0)
+                AudioService.Instance?.Play(SoundId.BowFire);
 
             attackCounter = 1f / (attackSpeed * stats.attackSpeed);
         }

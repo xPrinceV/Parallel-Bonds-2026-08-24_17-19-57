@@ -7,6 +7,7 @@ public class World : MonoBehaviour
     // this declares the child object that the script will use to enable or disable world content
     [SerializeField] private GameObject contentRoot;
     [SerializeField] private PlayerController player;
+    [SerializeField] private WorldMap map;
     // store the world color for the presentation system to apply
     [SerializeField] private Color ambientColor = Color.white;
 
@@ -14,6 +15,7 @@ public class World : MonoBehaviour
     // allow other classes to read the world settings without changing them
     public WorldId WorldId => worldId;
     public PlayerController Player => player;
+    public WorldMap Map => map;
     public WorldManager Manager { get; internal set; }
     public PlayerController InteractionPlayer => Manager != null && Manager.IsInitialized && Manager.IsFused
         ? Manager.FusionPlayer : Player;
@@ -56,6 +58,8 @@ public class World : MonoBehaviour
         && contentRoot != null
         && contentRoot != gameObject
         && contentRoot.transform.parent == transform
+        && (map == null || (map.IsConfigured && !ContainsContent(map.transform)
+            && !transform.IsChildOf(map.transform)))
         && (player == null || (player.transform.IsChildOf(contentRoot.transform)
             && GetFor(player) == this));
 
@@ -98,6 +102,10 @@ public class World : MonoBehaviour
             return false;
         }
 
+        bool mapActive = active && (Manager == null || !Manager.IsFused || Manager.CurrentWorld == this);
+        if (map != null && !map.SetMapActive(mapActive))
+            return false;
+
         IsSuspended = !active;
         // world sleep preserves buff instances; ordinary disable still ends them
         foreach (BuffController holder in contentRoot.GetComponentsInChildren<BuffController>(true))
@@ -106,6 +114,6 @@ public class World : MonoBehaviour
         if (active && player != null && (Manager == null || !Manager.IsFused
             || Manager.FusionPlayer == player))
             player.BindAsCurrent();
-        return IsActive == active;
+        return IsActive == active && (map == null || map.IsActive == mapActive);
     }
 }

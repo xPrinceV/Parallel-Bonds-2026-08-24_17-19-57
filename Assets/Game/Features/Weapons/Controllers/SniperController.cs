@@ -63,6 +63,8 @@ public class SniperController : Weapon
                 Quaternion.identity, World.GetContentRoot(this));
             newBullet.GetComponent<PhysicsBullet>().Initialize(direction, damage, speed, buffHolder);
         }
+        if (count > 0)
+            AudioService.Instance?.Play(SoundId.SniperFire);
         attackCounter = 1f / (attackSpeed * stats.attackSpeed);
     }
 

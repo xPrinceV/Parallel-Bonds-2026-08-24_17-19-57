@@ -16,6 +16,11 @@ public sealed class FusionTransitionPresentation : MonoBehaviour
 
     private readonly Dictionary<Renderer, bool> hidden = new Dictionary<Renderer, bool>();
     private readonly List<Renderer> renderers = new List<Renderer>();
+    private readonly Dictionary<Collider2D, bool> mapColliders = new Dictionary<Collider2D, bool>();
+    private readonly Dictionary<Rigidbody2D, bool> mapBodies = new Dictionary<Rigidbody2D, bool>();
+    private GameObject renderingMap;
+    private bool mapWasActive;
+    private bool reportedMapFailure;
     private Camera renderingCamera;
     private Canvas canvas;
     private RectTransform viewport;
@@ -30,7 +35,7 @@ public sealed class FusionTransitionPresentation : MonoBehaviour
         controller = transition;
         worldFlipPresentation = flip;
         whiteShader = shader;
-        reportedFailure = false;
+        reportedFailure = reportedMapFailure = false;
     }
 
     private bool Playing => controller != null && controller.isActiveAndEnabled && controller.IsPlaying
@@ -39,7 +44,7 @@ public sealed class FusionTransitionPresentation : MonoBehaviour
 
     private void OnEnable()
     {
-        reportedFailure = false;
+        reportedFailure = reportedMapFailure = false;
         RenderPipelineManager.beginCameraRendering += BeginCameraRendering;
         RenderPipelineManager.endCameraRendering += EndCameraRendering;
         RenderPipelineManager.endFrameRendering += EndFrameRendering;
@@ -127,7 +132,7 @@ public sealed class FusionTransitionPresentation : MonoBehaviour
                 World display = controller.DisplayWorld;
                 if (display == controller.EntryWorld)
                     HideWorld(controller.OtherWorld);
-                else if (display == controller.OtherWorld)
+                else if (display == controller.OtherWorld && ShowMapForRendering(display))
                     HideWorld(controller.EntryWorld);
             }
             HideBody(controller.EntryWorld != null ? controller.EntryWorld.Player : controller.EntryPlayer);
@@ -140,15 +145,53 @@ public sealed class FusionTransitionPresentation : MonoBehaviour
         }
     }
 
+    private bool ShowMapForRendering(World world)
+    {
+        WorldMap map = world == null ? null : world.Map;
+        if (map == null)
+            return true;
+        if (!world.IsConfigured || !map.IsGeometryOnly())
+        {
+            if (!reportedMapFailure)
+                Debug.LogWarning("Fusion map projection requires an external, configured static geometry-only WorldMap.", this);
+            reportedMapFailure = true;
+            return false;
+        }
+
+        renderingMap = map.gameObject;
+        mapWasActive = renderingMap.activeSelf;
+        foreach (Collider2D collider in map.GetComponentsInChildren<Collider2D>(true))
+            mapColliders.Add(collider, collider.enabled);
+        foreach (Rigidbody2D body in map.GetComponentsInChildren<Rigidbody2D>(true))
+            mapBodies.Add(body, body.simulated);
+        // Composite and standalone colliders must be inert before the map enters the active hierarchy.
+        foreach (Rigidbody2D body in mapBodies.Keys)
+            body.simulated = false;
+        foreach (Collider2D collider in mapColliders.Keys)
+            collider.enabled = false;
+        renderingMap.SetActive(true);
+        return true;
+    }
+
     private void HideWorld(World world)
     {
-        if (world == null || world.ContentRoot == null)
+        if (world == null)
             return;
         renderers.Clear();
         // Query each render so newly spawned enemies/projectiles are included, without caching stale roots.
-        world.ContentRoot.GetComponentsInChildren<Renderer>(true, renderers);
-        foreach (Renderer renderer in renderers)
-            Hide(renderer);
+        if (world.ContentRoot != null)
+        {
+            world.ContentRoot.GetComponentsInChildren<Renderer>(true, renderers);
+            foreach (Renderer renderer in renderers)
+                Hide(renderer);
+        }
+        if (world.Map != null)
+        {
+            renderers.Clear();
+            world.Map.GetComponentsInChildren<Renderer>(true, renderers);
+            foreach (Renderer renderer in renderers)
+                Hide(renderer);
+        }
     }
 
     private void HideBody(PlayerController player)
@@ -192,6 +235,19 @@ public sealed class FusionTransitionPresentation : MonoBehaviour
 
     private void RestoreRenderers()
     {
+        // Sleep the temporary map before restoring any physics, including composite source colliders.
+        // Use the captured root even if the world's serialized map reference changed during the capture.
+        if (renderingMap != null)
+            renderingMap.SetActive(mapWasActive);
+        renderingMap = null;
+        foreach (KeyValuePair<Collider2D, bool> pair in mapColliders)
+            if (pair.Key != null)
+                pair.Key.enabled = pair.Value;
+        mapColliders.Clear();
+        foreach (KeyValuePair<Rigidbody2D, bool> pair in mapBodies)
+            if (pair.Key != null)
+                pair.Key.simulated = pair.Value;
+        mapBodies.Clear();
         foreach (KeyValuePair<Renderer, bool> pair in hidden)
             if (pair.Key != null)
                 pair.Key.forceRenderingOff = pair.Value;

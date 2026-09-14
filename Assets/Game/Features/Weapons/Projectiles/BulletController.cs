@@ -67,6 +67,9 @@ public class BulletController : MonoBehaviour, IWorldProjectile
             float healthBefore = enemy.health;
             enemy.TakeDamage(damage, shouldKnockback);
             float damageDealt = Mathf.Clamp(healthBefore - enemy.health, 0f, healthBefore);
+            // Impact audio originates here, independently of hit buffs.
+            if (damageDealt > 0f && !float.IsNaN(damageDealt) && !float.IsInfinity(damageDealt))
+                AudioService.Instance?.Play(SoundId.ProjectileHit);
             // Destroy is deferred; report lethal hits before the target leaves this frame
             if (buffSource != null && damageDealt > 0f)
                 buffSource.ReportHit(enemy.gameObject, damageDealt);
