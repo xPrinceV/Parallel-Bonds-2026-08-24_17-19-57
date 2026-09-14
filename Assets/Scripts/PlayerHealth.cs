@@ -10,10 +10,6 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
     public TMP_Text healthText;
 
-    //Calls gameover function only once
-    private bool isDead;
-    public GameOverManager gameOverManager;
-
     //Called before start
     private void Awake()
     {
@@ -40,12 +36,8 @@ public class PlayerHealth : MonoBehaviour
     public void DamageHandler(float damageTaken)
     {
         currentHealth -= damageTaken;
-        if(currentHealth <= 0 && !isDead)
+        if(currentHealth <= 0)
         {
-            isDead = true;  
-            //Call GamgeOver function
-            gameOverManager.GameOver();
-
             //Trigger Lost Condition (SetActive to false is temporary)
             gameObject.SetActive(false);
         }
