@@ -1242,8 +1242,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
@@ -2119,20 +2119,20 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
-    - 0.07
+    - 0.08
     - 0.11
     - 0.15
     - 0.2
     rangeUpgrades:
-    - 0.05
-    - 0.08
-    - 0.12
+    - 0.04
+    - 0.07
+    - 0.1
+    - 0.125
     - 0.15
-    - 0.2
     attackSpeedUpgrades:
     - 0.08
     - 0.12
@@ -2151,6 +2151,7 @@ MonoBehaviour:
     - 0.6
     - 0.8
     - 1
+    - 1.25
     - 1.5
     areaUpgrades: []
     UpgradeText: 
@@ -3233,11 +3234,11 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
-    - 0.07
+    - 0.08
     - 0.11
     - 0.15
     - 0.2
@@ -3885,12 +3886,24 @@ MonoBehaviour:
     area: 1
     damageUpgrades:
     - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
-    - 0.1
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
     amountUpgrades:
     - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
     durationUpgrades: []
     bouncesUpgrades: []
     areaUpgrades: []
@@ -6600,8 +6613,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
@@ -7168,8 +7181,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
     - 0.08
@@ -7177,10 +7190,10 @@ MonoBehaviour:
     - 0.15
     - 0.2
     rangeUpgrades:
-    - 0.03
-    - 0.05
+    - 0.04
     - 0.07
     - 0.1
+    - 0.125
     - 0.15
     attackSpeedUpgrades:
     - 0.08
@@ -7198,10 +7211,10 @@ MonoBehaviour:
   weaponName: Jeff's Pistol
   availableUpgrades: 00000000030000000200000001000000
   weaponIcon: {fileID: 21300000, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
-  attackSpeed: 1.2
+  attackSpeed: 1.5
   attackDamage: 8
-  attackRange: 6
-  projectileSpeed: 6
+  attackRange: 7.5
+  projectileSpeed: 7.5
   bullet: {fileID: 8317864461979714340, guid: 464db4f813d6c3a4197fea2ffab31090, type: 3}
   buffHolder: {fileID: 5576029}
   projectileSpacing: 0.15
@@ -7844,8 +7857,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
     - 0.08
@@ -7853,10 +7866,10 @@ MonoBehaviour:
     - 0.15
     - 0.2
     rangeUpgrades:
-    - 0.03
-    - 0.05
+    - 0.04
     - 0.07
     - 0.1
+    - 0.125
     - 0.15
     attackSpeedUpgrades:
     - 0.08
@@ -7874,10 +7887,10 @@ MonoBehaviour:
   weaponName: Jeff's Pistol
   availableUpgrades: 00000000030000000200000001000000
   weaponIcon: {fileID: 21300000, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
-  attackSpeed: 1.2
+  attackSpeed: 1.5
   attackDamage: 8
-  attackRange: 6
-  projectileSpeed: 6
+  attackRange: 7.5
+  projectileSpeed: 7.5
   bullet: {fileID: 8317864461979714340, guid: 464db4f813d6c3a4197fea2ffab31090, type: 3}
   buffHolder: {fileID: 1488475396}
   projectileSpacing: 0.15
@@ -8958,12 +8971,24 @@ MonoBehaviour:
     area: 1
     damageUpgrades:
     - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
-    - 0.1
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
     amountUpgrades:
     - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
     durationUpgrades: []
     bouncesUpgrades: []
     areaUpgrades: []
@@ -10302,20 +10327,20 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
-    - 0.07
+    - 0.08
     - 0.11
     - 0.15
     - 0.2
     rangeUpgrades:
-    - 0.05
-    - 0.08
-    - 0.12
+    - 0.04
+    - 0.07
+    - 0.1
+    - 0.125
     - 0.15
-    - 0.2
     attackSpeedUpgrades:
     - 0.08
     - 0.12
@@ -10334,6 +10359,7 @@ MonoBehaviour:
     - 0.6
     - 0.8
     - 1
+    - 1.25
     - 1.5
     areaUpgrades: []
     UpgradeText: 
@@ -10423,11 +10449,11 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
-    - 0.07
+    - 0.08
     - 0.11
     - 0.15
     - 0.2
@@ -10516,8 +10542,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
@@ -10529,15 +10555,22 @@ MonoBehaviour:
     amountUpgrades: []
     durationUpgrades: []
     bouncesUpgrades: []
-    areaUpgrades: []
+    areaUpgrades:
+    - 0.1
+    - 0.15
+    - 0.2
+    - 0.25
+    - 0.3
+    - 0.35
+    - 0.4
     UpgradeText: 
   weaponLevel: 0
   icon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
   weaponName: Scythe
-  availableUpgrades: 0000000003000000
+  availableUpgrades: 000000000700000003000000
   weaponIcon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
-  attackSpeed: 1
-  attackDamage: 10
+  attackSpeed: 0.25
+  attackDamage: 16
   area: 1
   scythe: {fileID: 8707379270009512402, guid: d785e792ba634c7449d299cf4073bfa8, type: 3}
 --- !u!1 &5508784821
@@ -10597,8 +10630,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
@@ -10610,15 +10643,22 @@ MonoBehaviour:
     amountUpgrades: []
     durationUpgrades: []
     bouncesUpgrades: []
-    areaUpgrades: []
+    areaUpgrades:
+    - 0.1
+    - 0.15
+    - 0.2
+    - 0.25
+    - 0.3
+    - 0.35
+    - 0.4
     UpgradeText: 
   weaponLevel: 0
   icon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
   weaponName: Scythe
-  availableUpgrades: 0000000003000000
+  availableUpgrades: 000000000700000003000000
   weaponIcon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
-  attackSpeed: 1
-  attackDamage: 10
+  attackSpeed: 0.25
+  attackDamage: 16
   area: 1
   scythe: {fileID: 8707379270009512402, guid: d785e792ba634c7449d299cf4073bfa8, type: 3}
 --- !u!114 &179380107

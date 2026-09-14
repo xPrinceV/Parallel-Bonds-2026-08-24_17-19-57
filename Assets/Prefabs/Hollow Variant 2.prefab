@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8768273617125904329, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
       propertyPath: health
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8768273617125904329, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
       propertyPath: expDrop

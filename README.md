@@ -4,6 +4,18 @@ A Unity 2D survival prototype built around two alternating worlds, independent h
 
 The current playable scene includes six configured automatic weapons, experience-based upgrades, and a five-hit buff activation sample. Pistol, Lantern, and Lightning are the starting weapons; Bow, Dagger, and Scythe are available in each hero's unassigned weapon list.
 
+## Development baseline
+
+This branch integrates GitHub `main` through `402fc0f`. Use main as the upstream baseline and keep dual-world features as explicit extensions, rather than maintaining another copy of the old scripts.
+
+- Runtime scripts live under `Assets/Game/Features` and presentation under `Assets/Game/Presentation`. Keep their `.meta` GUIDs; do not restore duplicate classes under `Assets/Scripts` when merging upstream changes.
+- Main's balance values and upgrade tables apply to all six configured weapons in both worlds and both Main/DebugRun scenes. Sniper and Shield remain unconfigured; merging a scene must not enable them implicitly.
+- Keep the local world-flow contract: 15-second switching, 5-second warning, 0.8-second flip, and finale at 480 scaled seconds. Preserve per-world ownership, shared health, Buff calculations, audio and renderer sorting.
+- Preserve upstream map identities and hierarchy. Check merged scene references even if Unity Smart Merge reports success.
+- Kenney fonts retain main's complete atlas/table data with dynamic population, a source font and readable atlases restored for the current UI. Dynamic cache changes are expected; do not merge atlas bytes separately from glyph tables.
+
+Run `python -B Tools/MainBaselineChecks.py --self-test` and `python -B Tools/FontAssetChecks.py --self-test` after integration. These are static gates, not Play Mode acceptance. See [merge notes](Assets/Scenes/MergeNotes.md#main-baseline-integration-402fc0f) for deliberate compatibility differences and validation scope.
+
 ## Getting started
 
 ### Requirements
@@ -113,7 +125,7 @@ Damage and count are snapshotted for each volley or burst. A buff activated by a
 
 Bow and Dagger are configured separately for both heroes but do not replace the three starting weapons. Their projectiles belong to the firing world and pause while it sleeps. Dagger supports Bounces upgrades; poison stacks damage and refreshes duration without delaying the next tick. Poison is currently an enemy-local status effect, not a general buff atom, and its ticks do not report additional weapon hits.
 
-Scythe uses one base swing, with extra swings provided by projectile-count buffs. Each swing damages an enemy once, including enemies with multiple colliders. Its scene tuning starts at 10 damage and one attack per second, derived from existing weapon defaults because upstream did not provide a scene configuration. Area scaling and its upgrade UI are supported, but Area upgrades are not yet offered by the scene's Scythe configuration. Swing motion is procedural; the upstream empty animation assets are not required for attacks.
+Scythe uses one base swing, with extra swings provided by projectile-count buffs. Each swing damages an enemy once, including enemies with multiple colliders. Both scenes use main's tuning: 16 base damage, 0.25 attacks per second, and Damage, Area and AttackSpeed upgrades. Swing motion is procedural; the upstream empty animation assets are not required for attacks.
 
 ## Titan enemy
 

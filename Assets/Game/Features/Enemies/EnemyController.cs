@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyController : MonoBehaviour
 {
     public Rigidbody2D RB;
@@ -25,6 +26,13 @@ public class EnemyController : MonoBehaviour
     private float poisonDuration;
     private float poisonCounter;
     [SerializeField] private GameObject poisonEffect;
+
+    // Upstream prefabs may omit the serialized body reference; keep explicit assignments when present.
+    protected virtual void Awake()
+    {
+        if (RB == null)
+            RB = GetComponent<Rigidbody2D>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

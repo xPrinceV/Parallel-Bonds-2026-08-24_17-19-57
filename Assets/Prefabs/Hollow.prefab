@@ -320,11 +320,11 @@ MonoBehaviour:
   RB: {fileID: 3359570191515382226}
   moveSpeed: 2
   attack: 15
-  health: 50
+  health: 25
   hitWaitTime: 1
   hitCounter: 0
   knockbackTime: 0.25
-  expDrop: 20
+  expDrop: 15
   poisonEffect: {fileID: 2872569289930403033}
   range: 8
   projectileSpeed: 5
