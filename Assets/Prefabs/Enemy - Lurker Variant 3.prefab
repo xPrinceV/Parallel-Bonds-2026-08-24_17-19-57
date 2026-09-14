@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5333870921293157224, guid: 316a25f50cec07745bd2ebec5e9fbe76, type: 3}
       propertyPath: expDrop
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9160098680718503675, guid: 316a25f50cec07745bd2ebec5e9fbe76, type: 3}
       propertyPath: m_LocalPosition.x
