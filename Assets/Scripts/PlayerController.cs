@@ -27,11 +27,11 @@ public class PlayerController : MonoBehaviour
     void Start() {
         //Temporary for now until weapon chest implemented
         AddWeapon(0, true);
-        AddWeapon(0, true);
-        AddWeapon(0, true);
+        // AddWeapon(0, true);
+        // AddWeapon(0, true);
         // AddWeapon(0, false);
         AddWeapon(1, false);
-        AddWeapon(1, false);
+        // AddWeapon(1, false);
         // AddWeapon(2, false);
         stateSwitchController.SwitchWeapon();
         inventoryUI.UpdateInventory();
