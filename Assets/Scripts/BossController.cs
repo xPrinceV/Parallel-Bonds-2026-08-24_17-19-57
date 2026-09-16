@@ -73,6 +73,19 @@ public class BossController : EnemyController
 
     private void chooseAttack()
     {
-        Debug.Log("Boss choose a form of attack");
+        bossAttack.OrbAttack();
+       /* //Choose between 2 attacks
+        int attackChoice = Random.Range(0, 2);
+
+        //0 is orb attack
+        //1 is lightning attack
+        if (attackChoice == 0)
+        {
+            bossAttack.OrbAttack();
+        }
+        else
+        {
+            bossAttack.LightningAttack();
+        } */
     }
 }
