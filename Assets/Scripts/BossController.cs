@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BossController : EnemyController
 {
+    public BossHealthBar bossHealthBar;
     public float range = 8f;
 
     public float attackChannelTime = 1f;
@@ -22,12 +23,18 @@ public class BossController : EnemyController
     void Awake()
     {
         bossAttack = GetComponent<BossAttack>();
+
+        //Boss's health bar
+        if (bossHealthBar != null)
+        {
+            bossHealthBar.SetBoss(this);
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    /*void Start()
+    /* void Start()
     {
-        
+
     } */
 
     // Update is called once per frame
