@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 81002989}
   - component: {fileID: 81002991}
   m_Layer: 3
-  m_Name: Jeff_1
+  m_Name: Jeff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1043,7 +1043,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b9c3ce7b3be1873448a0987b64b2379e, type: 3}
   weaponName: Lantern
   availableUpgrades: 00000000030000000500000004000000
-  WeaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 0}
   attackDamage: 10
   attackSpeed: 1
   duration: 10
@@ -1186,6 +1186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 194161585}
+  - component: {fileID: 194161586}
   m_Layer: 0
   m_Name: Inventory Slots
   m_TagString: Untagged
@@ -1212,6 +1213,23 @@ Transform:
   - {fileID: 1178443685}
   m_Father: {fileID: 179380105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194161586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194161584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323dea301fe40e4468eccaedab0e9b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
+  inventory: {fileID: 1740798625}
+  mainWeaponIcon: {fileID: 558673425}
+  slot2Icon: {fileID: 1974101963}
+  slot3Icon: {fileID: 943245635}
+  slot4Icon: {fileID: 2142785265}
 --- !u!1 &221654006
 GameObject:
   m_ObjectHideFlags: 0
@@ -68266,7 +68284,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   weaponName: 
   availableUpgrades: 00000000
-  WeaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 0}
   attackSpeed: 0
   attackDamage: 0
   amount: 0
@@ -83575,7 +83593,7 @@ GameObject:
   - component: {fileID: 765466085}
   - component: {fileID: 765466084}
   m_Layer: 0
-  m_Name: Main Weapon Slot
+  m_Name: Main_Weapon_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84274,7 +84292,7 @@ GameObject:
   - component: {fileID: 1178443687}
   - component: {fileID: 1178443686}
   m_Layer: 0
-  m_Name: Slot 4
+  m_Name: Slot_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84487,7 +84505,7 @@ GameObject:
   - component: {fileID: 1222153998}
   - component: {fileID: 1222153997}
   m_Layer: 0
-  m_Name: Slot 3
+  m_Name: Slot_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85040,7 +85058,7 @@ GameObject:
   - component: {fileID: 1591325560}
   - component: {fileID: 1591325561}
   m_Layer: 3
-  m_Name: Jeff_Pistol
+  m_Name: Bob_Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85108,10 +85126,10 @@ MonoBehaviour:
     durationUpgrades: []
     UpgradeText: 
   weaponLevel: 0
-  icon: {fileID: 21300000, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
+  icon: {fileID: -3337038689812066966, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
   weaponName: Jeff's Pistol
   availableUpgrades: 00000000030000000200000001000000
-  WeaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
   attackSpeed: 1.2
   attackDamage: 8
   attackRange: 6
@@ -85129,7 +85147,7 @@ GameObject:
   - component: {fileID: 1598031466}
   - component: {fileID: 1598031465}
   m_Layer: 0
-  m_Name: Slot 2
+  m_Name: Slot_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85283,7 +85301,7 @@ GameObject:
   - component: {fileID: 1696068150}
   - component: {fileID: 1696068152}
   m_Layer: 3
-  m_Name: Jeff_0
+  m_Name: Bob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85363,6 +85381,55 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1740798624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1740798626}
+  - component: {fileID: 1740798625}
+  m_Layer: 0
+  m_Name: Inventory_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1740798625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740798624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6700698684f1484a9fe51abd1a2f3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySystem
+  bobMainWeapon: {fileID: 1591325561}
+  jeffMainWeapon: {fileID: 0}
+  bobWeapons: []
+  jeffWeapons: []
+  bobActive: 1
+--- !u!4 &1740798626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740798624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2089.9998, y: 80.00842, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1769810516
 GameObject:
   m_ObjectHideFlags: 0
@@ -100450,7 +100517,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   weaponName: 
   availableUpgrades: 000000000300000004000000
-  WeaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 0}
   attackDamage: 15
   attackSpeed: 0.33
   attackRange: 10
@@ -167022,6 +167089,8 @@ MonoBehaviour:
   isActive: 1
   char1: {fileID: 1696068149}
   char2: {fileID: 81002988}
+  inventorySystem: {fileID: 1740798625}
+  inventoryUI: {fileID: 194161586}
 --- !u!1 &2000288232
 GameObject:
   m_ObjectHideFlags: 0
@@ -221141,3 +221210,4 @@ SceneRoots:
   - {fileID: 179380105}
   - {fileID: 404105753}
   - {fileID: 1054028104}
+  - {fileID: 1740798626}
