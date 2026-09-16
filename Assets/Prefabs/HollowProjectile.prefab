@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3365868280745997144}
   - component: {fileID: 2075840609708017345}
   - component: {fileID: 5762119084977715214}
+  - component: {fileID: 7473899508015482008}
   m_Layer: 0
   m_Name: HollowProjectile
   m_TagString: Untagged
@@ -164,3 +165,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b77856d82c6db47b91d7118bcfdfe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HollowProjectile
+  channelTime: 1
+--- !u!111 &7473899508015482008
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201904102879486987}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
