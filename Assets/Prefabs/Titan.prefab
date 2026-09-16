@@ -253,7 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bfed230f75c4e438b3a413d662606b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitanEnemyController
-  RB: {fileID: 3806599139381506063}
   moveSpeed: 1.5
   attack: 25
   health: 200
@@ -261,6 +260,8 @@ MonoBehaviour:
   hitCounter: 0
   knockbackTime: 0.15
   expDrop: 50
+  isElite: 0
+  chest: {fileID: 0}
   poisonEffect: {fileID: 1321935010863589947}
   range: 4
   attackChannelTime: 0.5
