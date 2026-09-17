@@ -7,11 +7,11 @@ public class BossHealthBar : MonoBehaviour
 
     private BossController boss;
 
-    void Awake()
+   /* void Awake()
     {
         //Hides health bar at start of game
         gameObject.SetActive(false);
-    }
+    }*/
 
     public void SetBoss(BossController newBoss)
     {
