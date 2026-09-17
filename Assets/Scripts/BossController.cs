@@ -80,8 +80,7 @@ public class BossController : EnemyController
 
     private void chooseAttack()
     {
-        bossAttack.OrbAttack();
-       /* //Choose between 2 attacks
+       //Choose between 2 attacks
         int attackChoice = Random.Range(0, 2);
 
         //0 is orb attack
@@ -93,6 +92,6 @@ public class BossController : EnemyController
         else
         {
             bossAttack.LightningAttack();
-        } */
+        } 
     }
 }

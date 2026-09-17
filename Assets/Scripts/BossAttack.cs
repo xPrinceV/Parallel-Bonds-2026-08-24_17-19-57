@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BossAttack : MonoBehaviour
 {
+    //Orb projectile
     public GameObject orbProjectile;
     public float orbSpeed = 8f;
     public int orbCount = 8;
@@ -10,6 +11,21 @@ public class BossAttack : MonoBehaviour
     public float orbFireInterval = 0.15f;
     //damage of the orbs
     public float orbDamage = 20f;
+
+    //Lightning Projectile
+    public GameObject lightningPrefab;
+
+    //number of lightning strikes per attack
+    public int lightningCount = 5;
+
+    //damage of each lightning strike
+    public float lightningDamage = 20f;
+
+    //spawn area of the lightning
+    public float lightningSpawnRange = 8f;
+
+    //Minimum distance between lightning strikes
+    public float lightningMinSpacing = 2f;
 
     private BossController bossController;
 
@@ -54,8 +70,26 @@ public class BossAttack : MonoBehaviour
     public void LightningAttack()
     {
         Debug.Log("Lightning Attack");
+
+        for (int i = 0; i < lightningCount; i++)
+        {
+            Vector2 randomPosition = 
+                (Vector2)PlayerController.instance.transform.position +
+                Random.insideUnitCircle * lightningSpawnRange;
+
+            GameObject newLightning = Instantiate(
+                lightningPrefab,
+                randomPosition,
+                Quaternion.identity
+            );
+
+            BossLightning lightning = 
+                newLightning.GetComponent<BossLightning>();
+
+            lightning.SetDamage(lightningDamage);
+        }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+  /*  // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
@@ -65,5 +99,5 @@ public class BossAttack : MonoBehaviour
     void Update()
     {
         
-    }
+    } */
 }
