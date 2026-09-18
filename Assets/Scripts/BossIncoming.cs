@@ -15,6 +15,9 @@ public class BossIncoming : MonoBehaviour
     //Length of the floating animation
     public float moveDuration = 2f;
 
+    //Length of boss warning display
+    public float displayTime = 10f;
+
     public void ShowBossIncoming()
     {
         StartCoroutine(MoveBannerDown());
@@ -48,6 +51,12 @@ public class BossIncoming : MonoBehaviour
 
         //End the position of the banner at endY position
         bossBanner.anchoredPosition = endPosition;
+
+        //Banner on screen
+        yield return new WaitForSeconds(displayTime);
+
+        //Boss Incoming screen hidden
+        gameObject.SetActive(false);
     }
 
 }
