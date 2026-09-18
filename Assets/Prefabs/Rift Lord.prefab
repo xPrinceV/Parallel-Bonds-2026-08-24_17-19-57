@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   moveSpeed: 2
   attack: 0
-  health: 500
+  health: 1000
   hitWaitTime: 1
   hitCounter: 0
   knockbackTime: 0.25
