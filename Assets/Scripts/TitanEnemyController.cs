@@ -58,6 +58,10 @@ public class TitanEnemyController : EnemyController
     {
         attackLocation = target.position;
         GameObject newAttack = Instantiate(titanAttack, target.position, Quaternion.identity);
+        //Scale attack size based on Titan size (default size is 0.25)
+        //So if Titan is set to 0.5 (2x normal size), it will multiply the attack size by 2
+        float scaleMultiplier = transform.localScale.x / 0.25f;
+        newAttack.transform.localScale *= scaleMultiplier;
         newAttack.GetComponent<TitanAttack>().SetDamage(attack);
     }
 }

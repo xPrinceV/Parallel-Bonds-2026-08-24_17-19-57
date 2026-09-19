@@ -324,6 +324,8 @@ MonoBehaviour:
   hitCounter: 0
   knockbackTime: 0.25
   expDrop: 15
+  isElite: 0
+  chest: {fileID: 5053777913027155689, guid: 3e232c47460e58f49acd6dd59b00c0c1, type: 3}
   poisonEffect: {fileID: 2872569289930403033}
   range: 8
   projectileSpeed: 5

@@ -238,7 +238,7 @@ MonoBehaviour:
   healthText: {fileID: 1847001157}
   gameOverManager: {fileID: 417984749}
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 150
 --- !u!50 &5576028
 Rigidbody2D:
   serializedVersion: 5
@@ -1180,11 +1180,11 @@ MonoBehaviour:
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
-    - 0.08
-    - 0.12
-    - 0.17
-    - 0.22
+    - 0.1
+    - 0.2
     - 0.3
+    - 0.4
+    - 0.5
     amountUpgrades: []
     durationUpgrades: []
     bouncesUpgrades: []
@@ -1195,10 +1195,11 @@ MonoBehaviour:
   weaponName: Sniper Rifle
   availableUpgrades: 0000000003000000
   weaponIcon: {fileID: 3351058555426389599, guid: a9c03bf3990ce9a44b7cf70d226fe649, type: 3}
-  attackSpeed: 0.2
-  attackDamage: 20
+  attackSpeed: 0.25
+  attackDamage: 25
   attackRange: 15
-  bullet: {fileID: 9132437147970937572, guid: e44e30c026ba5234b90ca6115ba14481, type: 3}
+  projectileSpeed: 50
+  bullet: {fileID: 8368246425237141308, guid: 305b4d82310ac2748b0ea17937f007ce, type: 3}
 --- !u!1 &179380101
 GameObject:
   m_ObjectHideFlags: 0
@@ -68898,6 +68899,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   ui: {fileID: 179380106}
   timer: 0
+  bossIncoming: {fileID: 0}
+  bossWarningTime: 475
 --- !u!4 &404105753
 Transform:
   m_ObjectHideFlags: 0
@@ -68978,8 +68981,67 @@ MonoBehaviour:
     - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
     - {fileID: 7750153534527334857, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
     - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
+    - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
     waveLength: 59
     timeBetweenSpawns: 0.5
+  - enemiesToSpawn:
+    - {fileID: 1150195270067518534, guid: daa8b9df83354ce41a2cc9a593344188, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 2
+  - enemiesToSpawn:
+    - {fileID: 3064874776718830798, guid: f1b6049c388b92d42b3d86545995d2a6, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 2
+  - enemiesToSpawn:
+    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
+    - {fileID: 7750153534527334857, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
+    - {fileID: 2301725259980351992, guid: 75e22483062410448a916a0b5b73c901, type: 3}
+    - {fileID: 56760197707603932, guid: a5b0420728abeff49ac2e63e73656a51, type: 3}
+    - {fileID: 7750153534527334857, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
+    - {fileID: 2301725259980351992, guid: 75e22483062410448a916a0b5b73c901, type: 3}
+    - {fileID: 8027336863805150937, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+    waveLength: 58
+    timeBetweenSpawns: 0.5
+  - enemiesToSpawn:
+    - {fileID: 4232851896964875134, guid: e34830a2588ae1f40939b37d23d1e8e9, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 2
+  - enemiesToSpawn:
+    - {fileID: 1150195270067518534, guid: daa8b9df83354ce41a2cc9a593344188, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 2
+  - enemiesToSpawn:
+    - {fileID: 56760197707603932, guid: a5b0420728abeff49ac2e63e73656a51, type: 3}
+    - {fileID: 627238578857692513, guid: 62d4e14618c435642854f38435856ec3, type: 3}
+    - {fileID: 6732484615074077710, guid: f9eb74c309007e547b30a37bb6eeebec, type: 3}
+    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
+    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
+    - {fileID: 8027336863805150937, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+    - {fileID: 56760197707603932, guid: a5b0420728abeff49ac2e63e73656a51, type: 3}
+    waveLength: 58
+    timeBetweenSpawns: 0.45
+  - enemiesToSpawn:
+    - {fileID: 1124348446612466077, guid: d3cdfab921c918d4b909af7df5885bb9, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 2
+  - enemiesToSpawn:
+    - {fileID: 1124348446612466077, guid: d3cdfab921c918d4b909af7df5885bb9, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 2
+  - enemiesToSpawn:
+    - {fileID: 4188618570226773041, guid: 63582668e0a08534aa23d05a44a6889d, type: 3}
+    - {fileID: 6732484615074077710, guid: f9eb74c309007e547b30a37bb6eeebec, type: 3}
+    - {fileID: 7436844910272054870, guid: bd0023cc4ff2bad40a237d0e6cf4c107, type: 3}
+    - {fileID: 627238578857692513, guid: 62d4e14618c435642854f38435856ec3, type: 3}
+    - {fileID: 8027336863805150937, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
+    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
+    - {fileID: 7436844910272054870, guid: bd0023cc4ff2bad40a237d0e6cf4c107, type: 3}
+    waveLength: 118
+    timeBetweenSpawns: 0.4
+  - enemiesToSpawn:
+    - {fileID: 6027154536818486633, guid: aba025b3528dd0b43b61dea1af213259, type: 3}
+    waveLength: 120
+    timeBetweenSpawns: 10000
 --- !u!4 &413176122
 Transform:
   m_ObjectHideFlags: 0
@@ -69180,7 +69242,7 @@ MonoBehaviour:
   ui: {fileID: 179380106}
   currentExperience: 0
   pickup: {fileID: 3931066615594718357, guid: d8d3a3df25b563244a1e76bc2b1c14fc, type: 3}
-  expLevels: 0000000005000000080000000b0000000f00000013000000170000001c00000022000000280000002e000000340000003b00000041000000470000004d00000053000000590000005f000000640000006e00000078000000820000008e0000009a000000a6000000bc000000c8000000d7000000e6000000
+  expLevels: 000000000500000007000000090000000b0000000d0000000f0000001200000015000000180000001b0000001e00000022000000260000002a0000002e00000032000000370000003c00000041000000460000004d000000540000005b000000640000006c000000750000008000000088000000910000009b000000a6000000b1000000bc000000c8000000d4000000e0000000eb000000f50000000401000013010000220100003601000047010000590100006e0100007e01000094010000ac010000c2010000
   currentLevels: 1
   levelCount: 100
 --- !u!1 &441805110
@@ -69332,7 +69394,7 @@ MonoBehaviour:
     - 0.15
     - 0.22
     - 0.3
-    - 4
+    - 0.4
     speedUpgrades:
     - 0.05
     - 0.07
@@ -88173,9 +88235,7 @@ MonoBehaviour:
     - 0.15
     - 0.2
     rangeUpgrades:
-    - 0.03
     - 0.05
-    - 0.07
     - 0.1
     - 0.15
     attackSpeedUpgrades:
@@ -88194,7 +88254,7 @@ MonoBehaviour:
   weaponName: Jeff's Pistol
   availableUpgrades: 00000000030000000200000001000000
   weaponIcon: {fileID: 21300000, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
-  attackSpeed: 1.5
+  attackSpeed: 1.6
   attackDamage: 9
   attackRange: 7.5
   projectileSpeed: 8.5

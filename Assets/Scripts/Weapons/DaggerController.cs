@@ -11,7 +11,7 @@ public class DaggerController : Weapon
     [SerializeField] private float bounces;
     [SerializeField] private GameObject dagger;
     private float attackCounter;
-    public AudioManager audioManager;
+    [HideInInspector] public AudioManager audioManager;
     void Start()
     {
         attackCounter = 0;

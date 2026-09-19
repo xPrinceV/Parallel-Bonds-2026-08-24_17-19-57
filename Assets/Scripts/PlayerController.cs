@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         //Temporary for now until weapon chest implemented
-        AddWeapon(5, true);
+        AddWeapon(0, true);
         // AddWeapon(0, true);
         // AddWeapon(0, true);
         // AddWeapon(0, false);

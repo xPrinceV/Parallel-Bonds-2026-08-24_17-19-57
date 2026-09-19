@@ -289,6 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitanAttack
   damage: 0
-  attackDelay: 2.5
+  attackDelay: 2
   effectAnimation: {fileID: 1360281212900402319}
   attackCollider: {fileID: 1169440481448947795}

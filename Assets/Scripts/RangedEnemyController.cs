@@ -58,11 +58,11 @@ public class RangedEnemyController : EnemyController
         // Remember where the player is when the attack finishes
         attackLocation = target.position;
 
-        GameObject newProjectile = Instantiate(
-            projectile,
-            transform.position + Vector3.up * 0.5f,
-            Quaternion.identity
-        );
+        GameObject newProjectile = Instantiate(projectile, transform.position + Vector3.up * 0.5f,Quaternion.identity);
+        //Scale projectile size based on Hollow size (default size is 0.2)
+        //So if Hollow is set to 0.4 (2x normal size), it will multiply the projectile size by 2
+        float scaleMultiplier = transform.localScale.x / 0.2f;
+        newProjectile.transform.localScale *= scaleMultiplier;
 
         newProjectile.GetComponent<HollowProjectile>().SetDamage(attack);
         newProjectile.GetComponent<HollowProjectile>().SetTarget(attackLocation);

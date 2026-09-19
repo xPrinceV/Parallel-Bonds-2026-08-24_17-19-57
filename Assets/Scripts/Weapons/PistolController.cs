@@ -7,7 +7,7 @@ public class PistolController : Weapon
     [SerializeField] private float attackRange;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private GameObject bullet;
-    public AudioManager audioManager;
+    [HideInInspector] public AudioManager audioManager;
 
 
     private float attackCounter;

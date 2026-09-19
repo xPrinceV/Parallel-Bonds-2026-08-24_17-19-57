@@ -10,7 +10,7 @@ public class BowController : Weapon
     private Vector2 facingDirection;
     private float attackCounter;
     private float spreadAngle = 45f;
-    public AudioManager audioManager;
+    [HideInInspector] public AudioManager audioManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {

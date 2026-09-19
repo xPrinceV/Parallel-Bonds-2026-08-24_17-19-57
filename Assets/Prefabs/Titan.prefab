@@ -259,7 +259,7 @@ MonoBehaviour:
   hitWaitTime: 1
   hitCounter: 0
   knockbackTime: 0.15
-  expDrop: 50
+  expDrop: 60
   isElite: 0
   chest: {fileID: 0}
   poisonEffect: {fileID: 1321935010863589947}
