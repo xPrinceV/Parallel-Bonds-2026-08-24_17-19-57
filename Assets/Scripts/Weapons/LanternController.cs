@@ -9,9 +9,11 @@ public class LanternController : Weapon
     [SerializeField] private float amount;
     public GameObject lantern;
     private float attackCounter;
+    public AudioManager audioManager;
 
     void Start()
     {
+        audioManager = AudioManager.instance;
         attackCounter = 0;
     }
 
@@ -26,6 +28,7 @@ public class LanternController : Weapon
                 GameObject newLantern = Instantiate(lantern, transform.position, Quaternion.identity);
                 newLantern.GetComponent<LanternProjController>().SetDamage(attackDamage * stats.damage);
                 newLantern.GetComponent<LanternProjController>().SetDuration(duration * stats.duration);
+                audioManager.PlaySFXPitch(audioManager.lanternThrow, 0.1f);
             }
             attackCounter = 1f / (attackSpeed * stats.attackSpeed);
         }

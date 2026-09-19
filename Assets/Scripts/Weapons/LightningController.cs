@@ -12,10 +12,14 @@ public class LightningController : Weapon
     private float strikeCounter;
     private float strikeInterval;
     private float strikes;
+    
+    //Call Sound
+    public AudioManager audioManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         attackCounter = 0;
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -49,6 +53,8 @@ public class LightningController : Weapon
                 {
                     Instantiate(lightningPrefab, targetEnemy.transform.position, Quaternion.identity);
                     targetEnemy.TakeDamage(attackDamage * stats.damage);
+                    //Play lightning audio
+                    audioManager.PlaySFXPitch(audioManager.lightning, 0.15f);
                 }
                 strikes--;
                 strikeCounter = strikeInterval;

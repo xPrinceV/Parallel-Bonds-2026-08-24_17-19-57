@@ -111,7 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716c460188d798c48b43e9478c97bfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  RB: {fileID: 3319737271526617470}
   moveSpeed: 1.5
   attack: 8
   health: 10
@@ -119,6 +118,8 @@ MonoBehaviour:
   hitCounter: 0
   knockbackTime: 0.25
   expDrop: 2
+  isElite: 0
+  chest: {fileID: 0}
   poisonEffect: {fileID: 4947021466788729881}
 --- !u!1 &4947021466788729881
 GameObject:
@@ -311,8 +312,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 909366775
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1453210893535345519, guid: a305c7231004b414884b77fafb714899, type: 3}

@@ -10,10 +10,12 @@ public class BowController : Weapon
     private Vector2 facingDirection;
     private float attackCounter;
     private float spreadAngle = 45f;
+    public AudioManager audioManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         attackCounter = 0;
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -45,6 +47,7 @@ public class BowController : Weapon
                 arrowHandle.projectileSpeed = projectileSpeed * stats.speed;
                 arrowHandle.SetDirection(arrowDirection);
                 arrowHandle.playerCollider = player.GetComponent<Collider2D>();
+                audioManager.PlaySFXPitch(audioManager.bow,0.2f);
             }
 
             attackCounter = 1f / (attackSpeed * stats.attackSpeed);

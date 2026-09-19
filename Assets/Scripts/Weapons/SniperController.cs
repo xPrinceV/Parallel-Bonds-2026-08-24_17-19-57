@@ -20,6 +20,7 @@ public class SniperController : Weapon {
                 bulletHandle.player = player;
                 bulletHandle.muzzleVelocity = 973F;
                 attackCounter = 1F / (attackSpeed * stats.attackSpeed);
+                AudioManager.instance.PlaySFXPitch(AudioManager.instance.sniper, 0.3f);
             }
         } else {
             attackCounter -= Time.deltaTime;

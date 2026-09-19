@@ -12,6 +12,7 @@ public class ScytheHitController : MonoBehaviour
 
     [HideInInspector] public float damage;
     [HideInInspector] public float area;
+    public AudioManager audioManager;
     private float swingTimer;
 
     private float startAngle;
@@ -24,6 +25,7 @@ public class ScytheHitController : MonoBehaviour
     }
 
     void Start() {
+        audioManager = AudioManager.instance;
         animator.SetTrigger("Swing");
 
         //Set size
@@ -69,6 +71,7 @@ public class ScytheHitController : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage, true);
+                audioManager.PlaySFXPitch(audioManager.scytheHit, 0.2f);
             }
         }
     }

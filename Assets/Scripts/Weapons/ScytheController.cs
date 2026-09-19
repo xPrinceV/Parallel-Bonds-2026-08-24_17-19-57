@@ -7,10 +7,12 @@ public class ScytheController : Weapon {
     [SerializeField] private float area;
     [SerializeField] private GameObject scythe;
     private float attackCounter;
+    public AudioManager audioManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         attackCounter = 0f;
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class ScytheController : Weapon {
             handle.area = area * stats.area;
             handle.player = player;
             handle.SetDirection(facingDirection);
+            audioManager.PlaySFXPitch(audioManager.scythe, 0.2f);
 
             attackCounter = 1f / (attackSpeed * stats.attackSpeed);
         }

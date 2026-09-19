@@ -11,7 +11,8 @@ public class ShieldOrbitController : MonoBehaviour
             EnemyController enemy = collision.GetComponent<EnemyController>();
             if(enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage, true);
+                AudioManager.instance.PlaySFXPitch(AudioManager.instance.shield, 0.2f);
             }
         }       
     }

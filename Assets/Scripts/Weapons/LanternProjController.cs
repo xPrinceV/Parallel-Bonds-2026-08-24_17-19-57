@@ -11,9 +11,11 @@ public class LanternProjController : MonoBehaviour
     public float duration;
     public GameObject explosion;
     public GameObject fire;
+    public AudioManager audioManager;
 
     void Start()
     {
+        audioManager = AudioManager.instance;
         //50% chance to choose -1 or 1 (throw left, throw right)
         float throwDirection = Random.value < 0.5f ? -1f: 1f;
 
@@ -37,6 +39,8 @@ public class LanternProjController : MonoBehaviour
             newFire.GetComponent<LanternFire>().SetDamage(damage);
             newFire.GetComponent<LanternFire>().SetDuration(duration);
             Instantiate(explosion, transform.position, Quaternion.identity);
+            audioManager.PlaySFXPitch(audioManager.lanternBreak, 0.2f);
+            audioManager.PlaySFXPitch(audioManager.lanternBurn, 0.15f);
             Destroy(gameObject);
         }
     }

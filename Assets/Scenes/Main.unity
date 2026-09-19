@@ -1081,8 +1081,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
@@ -1116,6 +1116,7 @@ MonoBehaviour:
   duration: 10
   amount: 0
   lantern: {fileID: 5361012015849273172, guid: e524b71f3d9f5b644a0756cdd5e28523, type: 3}
+  audioManager: {fileID: 0}
 --- !u!1 &143472807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,8 +1662,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 0.4
     speedUpgrades:
     - 0.05
     - 0.07
@@ -1709,6 +1710,7 @@ MonoBehaviour:
   projectileSpeed: 6
   bounces: 3
   dagger: {fileID: 5184616330106527083, guid: a2e8aaf1d4fd97d4c9f8cf274094245d, type: 3}
+  audioManager: {fileID: 0}
 --- !u!4 &273773927
 Transform:
   m_ObjectHideFlags: 0
@@ -68950,24 +68952,33 @@ MonoBehaviour:
     waveLength: 1
     timeBetweenSpawns: 2
   - enemiesToSpawn:
-    - {fileID: 6055514803848717499, guid: 65cb5017b05ec7842ad5f296ea558326, type: 3}
-    waveLength: 60
+    - {fileID: 751250583785907397, guid: 316a25f50cec07745bd2ebec5e9fbe76, type: 3}
+    waveLength: 59
     timeBetweenSpawns: 0.65
   - enemiesToSpawn:
-    - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
-    - {fileID: 7750153534527334857, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
+    - {fileID: 6055514803848717499, guid: 65cb5017b05ec7842ad5f296ea558326, type: 3}
     waveLength: 60
     timeBetweenSpawns: 0.6
   - enemiesToSpawn:
-    - {fileID: 2301725259980351992, guid: 75e22483062410448a916a0b5b73c901, type: 3}
-    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
-    waveLength: 30
-    timeBetweenSpawns: 0.55
+    - {fileID: 3064874776718830798, guid: f1b6049c388b92d42b3d86545995d2a6, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 2
   - enemiesToSpawn:
-    - {fileID: 56760197707603932, guid: a5b0420728abeff49ac2e63e73656a51, type: 3}
-    - {fileID: 9017429728530141373, guid: 818d54b4b0a26b947aab41299c3752f6, type: 3}
-    - {fileID: 8027336863805150937, guid: fde4f377358e7cd48bdd9bc0cafc5b57, type: 3}
-    waveLength: 10
+    - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
+    - {fileID: 7750153534527334857, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
+    - {fileID: 6055514803848717499, guid: 65cb5017b05ec7842ad5f296ea558326, type: 3}
+    waveLength: 59
+    timeBetweenSpawns: 0.6
+  - enemiesToSpawn:
+    - {fileID: 1150195270067518534, guid: daa8b9df83354ce41a2cc9a593344188, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 2
+  - enemiesToSpawn:
+    - {fileID: 2301725259980351992, guid: 75e22483062410448a916a0b5b73c901, type: 3}
+    - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
+    - {fileID: 7750153534527334857, guid: e09159870ff5fe340b7b3fd06ae834e9, type: 3}
+    - {fileID: 1011129406107022128, guid: e31d8ab3eb1bc5d4c8b764a9c6e40d8e, type: 3}
+    waveLength: 59
     timeBetweenSpawns: 0.5
 --- !u!4 &413176122
 Transform:
@@ -69169,7 +69180,7 @@ MonoBehaviour:
   ui: {fileID: 179380106}
   currentExperience: 0
   pickup: {fileID: 3931066615594718357, guid: d8d3a3df25b563244a1e76bc2b1c14fc, type: 3}
-  expLevels: 0000000005000000080000000b0000000f00000013000000180000001d000000230000002a0000003100000039000000
+  expLevels: 0000000005000000080000000b0000000f00000013000000170000001c00000022000000280000002e000000340000003b00000041000000470000004d00000053000000590000005f000000640000006e00000078000000820000008e0000009a000000a6000000bc000000c8000000d7000000e6000000
   currentLevels: 1
   levelCount: 100
 --- !u!1 &441805110
@@ -69257,9 +69268,9 @@ MonoBehaviour:
   weaponIcon: {fileID: -4178046375966092550, guid: 1b88d48cbfd3d83488e65bb1d97778ec, type: 3}
   shieldPrefab: {fileID: 1825500607332492713, guid: f330b57cd9192a743981b2c473504d13, type: 3}
   shieldPivot: {fileID: 0}
-  orbitDistance: 2.5
+  orbitDistance: 2.25
   orbitSpeed: 180
-  damage: 11
+  damage: 10
   duration: 7
   cooldown: 2.5
 --- !u!1 &508784821
@@ -69317,15 +69328,11 @@ MonoBehaviour:
     bounces: 1
     area: 1
     damageUpgrades:
-    - 0.05
-    - 0.15
-    - 0.2
-    - 0.35
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
-    - 0.5
+    - 0.3
+    - 4
     speedUpgrades:
     - 0.05
     - 0.07
@@ -69355,10 +69362,11 @@ MonoBehaviour:
   availableUpgrades: 00000000030000000400000001000000
   weaponIcon: {fileID: 1208040086343421634, guid: 4d74bfd68161d314cbcdfa49228dfb30, type: 3}
   attackSpeed: 1
-  attackDamage: 10
+  attackDamage: 8
   amount: 1
   projectileSpeed: 10
   arrow: {fileID: 1929202282129024446, guid: 5efe8dcf1c6c81f418f56615b4dd2445, type: 3}
+  audioManager: {fileID: 0}
 --- !u!1 &528264699
 GameObject:
   m_ObjectHideFlags: 0
@@ -69394,14 +69402,19 @@ MonoBehaviour:
   ruinedworld: {fileID: 8300000, guid: f870f407e1d8e8441be05eaa87e8345c, type: 3}
   bossmusic: {fileID: 8300000, guid: 70346df061647e44e9f3b1a6a78c99d0, type: 3}
   victory: {fileID: 8300000, guid: b3ce68ecc2cbc6a4ea64fd247c6c9206, type: 3}
-  jeffPistol: {fileID: 0}
-  lantern: {fileID: 8300000, guid: a3e641690f752224d801b16969568587, type: 3}
-  lightning: {fileID: 0}
-  bow: {fileID: 0}
-  aura: {fileID: 0}
-  sniper: {fileID: 0}
-  dagger: {fileID: 0}
-  scythe: {fileID: 8300000, guid: a2811d3b7dc55b54cb0a00316871a52d, type: 3}
+  jeffPistol: {fileID: 8300000, guid: 09ea7c9b92ace1e44b80934fd8847321, type: 3}
+  lanternThrow: {fileID: 8300000, guid: 3a19e90aaadc95c4f92726c6fe24d4c7, type: 3}
+  lanternBreak: {fileID: 8300000, guid: 19a6f2f172e3def4e9f9f4b671a73a2d, type: 3}
+  lanternBurn: {fileID: 8300000, guid: b8faf28db19df2d4084af84d529b8af9, type: 3}
+  lightning: {fileID: 8300000, guid: ee92dbf08d8cc8e438bfa5fedaab60ba, type: 3}
+  bow: {fileID: 8300000, guid: 29794aba2c582e14bb7a65425bf78abc, type: 3}
+  arrow: {fileID: 8300000, guid: fc979e358b9a96d4da46325e16039562, type: 3}
+  shield: {fileID: 8300000, guid: 18110c87fc9b8d84cbc524665263a138, type: 3}
+  sniper: {fileID: 8300000, guid: dced81ee4514c9143bf2134a3e77027b, type: 3}
+  daggerThrow: {fileID: 8300000, guid: 0df64f8dc06a1eb41bd4355bb68933b6, type: 3}
+  daggerHit: {fileID: 8300000, guid: 3bacb30cdd5f2d341ad2bfe69108bfd9, type: 3}
+  scythe: {fileID: 8300000, guid: 6f2b836efc42e834ab37a71b39585f8b, type: 3}
+  scytheHit: {fileID: 8300000, guid: ecaedede1e84a3940bee8f8c353eae3e, type: 3}
 --- !u!4 &528264701
 Transform:
   m_ObjectHideFlags: 0
@@ -70073,8 +70086,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432925941
+  m_SortingLayer: -1
   m_SortingOrder: 3
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -86656,7 +86669,8 @@ MonoBehaviour:
     - 0.1
     - 0.15
     - 0.22
-    - 0.35
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
@@ -86680,10 +86694,11 @@ MonoBehaviour:
   weaponName: Scythe
   availableUpgrades: 000000000700000003000000
   weaponIcon: {fileID: 21300000, guid: f515dea91edd1104e9d62e157cc66d4e, type: 3}
-  attackSpeed: 0.25
+  attackSpeed: 0.65
   attackDamage: 17
   area: 1
   scythe: {fileID: 8707379270009512402, guid: d785e792ba634c7449d299cf4073bfa8, type: 3}
+  audioManager: {fileID: 0}
 --- !u!1 &1177454780
 GameObject:
   m_ObjectHideFlags: 0
@@ -88180,10 +88195,11 @@ MonoBehaviour:
   availableUpgrades: 00000000030000000200000001000000
   weaponIcon: {fileID: 21300000, guid: fb30c68abb2633e4cb41e8d1fa661e29, type: 3}
   attackSpeed: 1.5
-  attackDamage: 8
+  attackDamage: 9
   attackRange: 7.5
-  projectileSpeed: 7.5
+  projectileSpeed: 8.5
   bullet: {fileID: 8317864461979714340, guid: 464db4f813d6c3a4197fea2ffab31090, type: 3}
+  audioManager: {fileID: 0}
 --- !u!1 &1598031463
 GameObject:
   m_ObjectHideFlags: 0
@@ -104113,12 +104129,24 @@ MonoBehaviour:
     area: 1
     damageUpgrades:
     - 0.1
+    - 0.15
+    - 0.22
+    - 0.3
+    - 0.4
     speedUpgrades: []
     rangeUpgrades: []
     attackSpeedUpgrades:
-    - 0.1
+    - 0.08
+    - 0.12
+    - 0.17
+    - 0.22
+    - 0.3
     amountUpgrades:
     - 0.2
+    - 0.3
+    - 0.4
+    - 0.55
+    - 0.75
     durationUpgrades: []
     bouncesUpgrades: []
     areaUpgrades: []
@@ -104129,10 +104157,11 @@ MonoBehaviour:
   availableUpgrades: 000000000300000004000000
   weaponIcon: {fileID: 21300000, guid: a70d854d34af7864fbb7e6c140fa81cb, type: 3}
   attackDamage: 15
-  attackSpeed: 0.75
+  attackSpeed: 1
   attackRange: 10
   amount: 1
   lightningPrefab: {fileID: 3230747778455743204, guid: 9453d2d067bb87f43a4b485177da48c3, type: 3}
+  audioManager: {fileID: 0}
 --- !u!1 &1898056171
 GameObject:
   m_ObjectHideFlags: 0
@@ -171291,11 +171320,11 @@ AudioSource:
   m_GameObject: {fileID: 2003423178}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -207327424098399229, guid: 71b5e87626aa5f84b9dbe1f44f133b52, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -171550,8 +171579,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432925941
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}

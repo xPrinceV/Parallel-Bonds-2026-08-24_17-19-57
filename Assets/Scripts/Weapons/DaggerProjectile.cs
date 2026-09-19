@@ -12,9 +12,10 @@ public class DaggerProjectile : MonoBehaviour
     public bool shouldKnockback;
     private bool isFirstHit;
     private List<EnemyController> hitList= new List<EnemyController>();
-
+    public AudioManager audioManager;
     void Start()
     {
+        audioManager = AudioManager.instance;
         //Destroy projectile after 7 seconds
         Destroy(gameObject, 7f);
         isFirstHit = true;
@@ -57,6 +58,9 @@ public class DaggerProjectile : MonoBehaviour
             //Deal damage to the enemy and apply poison effect
             currentEnemy.TakeDamage(damage, shouldKnockback);
             currentEnemy.ApplyPoison(damage*0.2f, duration);
+            
+            //Play SFX
+            audioManager.PlaySFXPitch(audioManager.daggerHit, 0.3f);
 
             if (!isFirstHit)
             {
@@ -71,6 +75,8 @@ public class DaggerProjectile : MonoBehaviour
             if (newTarget != null)
             {
                 target = newTarget;
+                //Play throwing audio when new target acquired
+                // audioManager.PlaySFXPitch(audioManager.daggerThrow, 0.2f);
             }
             else
             {

@@ -11,9 +11,11 @@ public class DaggerController : Weapon
     [SerializeField] private float bounces;
     [SerializeField] private GameObject dagger;
     private float attackCounter;
+    public AudioManager audioManager;
     void Start()
     {
         attackCounter = 0;
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class DaggerController : Weapon
                 newDagger.GetComponent<DaggerProjectile>().SetBounces(Mathf.FloorToInt(bounces + stats.bounces));
                 newDagger.GetComponent<DaggerProjectile>().SetSpeed(projectileSpeed * stats.speed);
                 newDagger.GetComponent<DaggerProjectile>().SetTarget(target);
+                audioManager.PlaySFXPitch(audioManager.daggerThrow, 0.2f);
             }
             //Reset attack counter based on the attack speed
             attackCounter = 1f / (attackSpeed * stats.attackSpeed);

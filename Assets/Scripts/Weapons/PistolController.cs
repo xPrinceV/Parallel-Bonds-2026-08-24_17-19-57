@@ -7,12 +7,14 @@ public class PistolController : Weapon
     [SerializeField] private float attackRange;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private GameObject bullet;
+    public AudioManager audioManager;
 
 
     private float attackCounter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         attackCounter = 0;
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -35,6 +37,8 @@ public class PistolController : Weapon
                 bulletController.speed = projectileSpeed * stats.speed;
                 bulletController.shouldKnockback = true;
                 bulletController.playerCollider = player.GetComponent<Collider2D>();
+                //Play sound for pistol
+                audioManager.PlaySFXPitch(audioManager.jeffPistol, 0.1f);
             }
             attackCounter = 1f / (attackSpeed*stats.attackSpeed);
         }

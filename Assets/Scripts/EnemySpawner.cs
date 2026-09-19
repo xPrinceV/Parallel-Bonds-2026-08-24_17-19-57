@@ -69,8 +69,9 @@ public class EnemySpawner : MonoBehaviour
                 //Check if it isn't empty
                 if (spawnedEnemies[enemyToCheck] != null)
                 {
-                    //If the particular enemy is further than the set despawned distance
-                    if(Vector3.Distance(transform.position, spawnedEnemies[enemyToCheck].transform.position) > despawnDistance)
+                    EnemyController enemyController = spawnedEnemies[enemyToCheck].GetComponent<EnemyController>();
+                    //If the particular enemy is further than the set despawned distance (Excluding Elites)
+                    if(Vector3.Distance(transform.position, spawnedEnemies[enemyToCheck].transform.position) > despawnDistance && !enemyController.isElite)
                     {
                         //Destroy the enemy game object, then remove it from the list.
                         Destroy(spawnedEnemies[enemyToCheck]);

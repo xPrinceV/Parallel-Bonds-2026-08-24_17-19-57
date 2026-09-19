@@ -32,7 +32,7 @@ public class ArrowController : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
-            // Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.GetComponent<Collider>(), true);
+            AudioManager.instance.PlaySFXPitch(AudioManager.instance.arrow, 0.2f);
         }
     }
 
