@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2382516750221461833}
   - component: {fileID: 3365868280745997144}
   - component: {fileID: 2075840609708017345}
-  - component: {fileID: 5762119084977715214}
   - component: {fileID: 7473899508015482008}
+  - component: {fileID: -7136283680140537771}
   m_Layer: 0
-  m_Name: HollowProjectile
+  m_Name: Boss Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3063032946011566187, guid: d37ce84393e584346a355526f3080177, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,19 +153,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.05
---- !u!114 &5762119084977715214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201904102879486987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2b77856d82c6db47b91d7118bcfdfe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HollowProjectile
-  channelTime: 1
 --- !u!111 &7473899508015482008
 Animation:
   m_ObjectHideFlags: 0
@@ -182,3 +169,19 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
+--- !u!114 &-7136283680140537771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201904102879486987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d0650633a7a7d43bb0079361497840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossProjectiles
+  orbitRadius: 1.5
+  orbitSpeed: 120
+  orbitTime: 2
+  trackingTime: 1
